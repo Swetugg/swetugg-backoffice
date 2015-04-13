@@ -1,0 +1,76 @@
+﻿@model Swetugg.Web.Models.Conference
+@{
+    ViewBag.Title = "Conference";
+    var buttonLabel = "Create";
+
+    var id = Model != null && Model.Id != 0 ? (int?)Model.Id : null;
+    if (id != null)
+    {
+        buttonLabel = "Update";
+    }
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    @if (id != null)
+    {
+        <li>@Html.ActionLink(Model.Name, "Conference", "ConferenceAdmin", new { id }, null)</li>
+    }
+    <li class="active">@buttonLabel</li>
+</ol>
+
+@Html.ValidationSummary()
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Conference</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "ConferenceAdmin", new { id }, FormMethod.Post))
+    {
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Start)
+                        @Html.TextBoxFor(m => m.Start, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Start)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.End)
+                        @Html.TextBoxFor(m => m.End, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.End)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 10 })
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Publish settings
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Slug)
+                                @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Slug)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">@buttonLabel</button>
+        </div>
+    }
+</div>

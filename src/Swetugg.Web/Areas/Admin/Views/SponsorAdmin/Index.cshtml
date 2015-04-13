@@ -1,0 +1,26 @@
+﻿@using Swetugg.Web.Models
+@model List<Sponsor>
+@{
+    ViewBag.Title = "title";
+    Conference conference = ViewBag.Conference;
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li class="active">Sponsors</li>
+</ol>
+
+<h2>Sponsors</h2>
+<div class="list-group">
+    @foreach (var sponsor in Model)
+    {
+        <a href="@Url.Action("Sponsor", new { id = sponsor.Id })" class="list-group-item">
+            @Common.GetPublished(sponsor.Published)
+            @sponsor.Name
+        </a>
+    }
+</div>
+
+@Html.ActionLink("New sponsor", "Edit", new {}, new { @class = "btn btn-primary"})

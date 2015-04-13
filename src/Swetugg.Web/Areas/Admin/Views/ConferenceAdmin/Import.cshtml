@@ -1,0 +1,27 @@
+﻿@model Swetugg.Web.Areas.Admin.Controllers.ConferenceImportModel
+@{
+    ViewBag.Title = "Import conference data";
+    var conference = Model.Conference;
+    var id = conference != null && conference.Id != 0 ? (int?)conference.Id : null;
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    @if (id != null)
+    {
+        <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { id })</li>
+    }
+    <li class="active">Import</li>
+</ol>
+
+<h2>Import</h2>
+@using (Html.BeginForm("Import", "ConferenceAdmin", new {id}, FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConnectionString)
+
+        @Html.TextBoxFor(m => m.ConnectionString, new {@class = "form-control"})
+        </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+}

@@ -1,0 +1,62 @@
+﻿@using Swetugg.Web.Models
+@model CfpSpeaker
+
+@{
+    Conference conference = ViewBag.Conference;
+    
+    ViewBag.Title = "Call For Papers - " + conference.Name;
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Call For Papers", "Index", "CallForPapers", new { Area = "" }, null)</li>
+    <li class="active">@conference.Name</li>
+</ol>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>@conference.Name</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="@Model.Image" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-sm-6">
+                <h3>@Model.Name</h3>
+                <p>@Model.Bio</p>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sessions</div>
+                    </div>
+                    <div class="list-group">
+                        @foreach (var session in Model.Sessions)
+                        {
+                            <div class="list-group-item">
+                                @Html.ActionLink(session.Name, "Session", "CallForPapers", new {id = session.Id}, null)
+                            </div>
+                        }
+                    </div>
+                    <div class="panel-footer">
+                        @Html.ActionLink("Add", "Session", "CallForPapers", null, new {@class = "btn btn-default"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Edit", "Speaker", new { }, new { @class = "btn btn-default" })
+
+        <a href="" class="btn btn-danger pull-right"
+           data-confirm-form="#deleteForm"
+           data-modal-title="Are you sure?"
+           data-modal-message="This will delete all your submission data including any sessions you have entered."
+           data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+    </div>
+</div>
+
+@using (Html.BeginForm("DeleteSpeaker", "CallForPapers", new { conferenceSlug = conference.Slug }, FormMethod.Post, new { id = "deleteForm", @class = "form-inline" }))
+{
+}

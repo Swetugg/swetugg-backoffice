@@ -1,0 +1,31 @@
+﻿@using Swetugg.Web.Models
+@model Slot
+@{
+    var buttonLabel = "Create";
+    var currentDate = (DateTime)ViewData["CurrentDate"];
+
+    var id = Model != null && Model.Id != 0 ? (int?)Model.Id : null;
+
+    if (id != null)
+    {
+        buttonLabel = "Update";
+    }
+}
+
+@using (Html.BeginForm("Slot", "ScheduleAdmin", new { id }, FormMethod.Post, new { @class = "" }))
+{
+    @Html.Hidden("Day", currentDate.Date)
+    
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.Start, "{0:t}", new { @class = "form-control", placeholder = "Start time" })
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.End, "{0:t}", new { @class = "form-control", placeholder = "End time" })
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Title" })
+    </div>
+    <button type="submit" class="btn btn-primary">@buttonLabel</button>
+}
+
+

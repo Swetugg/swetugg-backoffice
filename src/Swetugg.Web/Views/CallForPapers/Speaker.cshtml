@@ -1,0 +1,91 @@
+﻿@using Swetugg.Web.Models
+@model Swetugg.Web.Models.CfpSpeaker
+
+@{
+    Conference conference = ViewBag.Conference;
+    
+    ViewBag.Title = "Call For Paper - Speaker information";
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Call For Papers", "Index", "CallForPapers", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "CallForPapers", new { Area = "", conferenceSlug = conference.Slug }, null)</li>
+    <li class="active">Speaker</li>
+</ol>
+
+@Html.ValidationSummary()
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Speaker information</h3>
+    </div>
+
+    @using (Html.BeginForm("Speaker", "CallForPapers", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Company)
+                        @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Company)
+                    </div>
+                    <div class="form-group">
+                        <label class="btn btn-primary" for="speakerImageFileSelector">
+                            <input id="speakerImageFileSelector" name="ImageFile" type="file" style="display: none;">
+                            Select image file...
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Bio)
+                        @Html.TextAreaFor(m => m.Bio, new { @class = "form-control", rows = 10 })
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Contact info</div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Web)
+                                @Html.TextBoxFor(m => m.Web, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Web)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Twitter)
+                                <div class="input-group">
+                                    <div class="input-group-addon">@@</div>
+                                    @Html.TextBoxFor(m => m.Twitter, new {@class = "form-control"})
+                                </div>
+                                @Html.ValidationMessageFor(m => m.Twitter)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.GitHub)
+                                <div class="input-group">
+                                    <div class="input-group-addon">github.com/</div>
+                                    @Html.TextBoxFor(m => m.GitHub, new {@class = "form-control"})
+                                </div>
+                                @Html.ValidationMessageFor(m => m.GitHub)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    }
+</div>

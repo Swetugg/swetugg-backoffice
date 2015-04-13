@@ -1,0 +1,20 @@
+﻿@model System.Collections.Generic.List<Swetugg.Web.Models.Conference>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li class="active">Conferences</li>
+</ol>
+
+<h2>Conferences</h2>
+<div class="list-group">
+    @foreach (var conf in Model)
+    {
+        @Html.ActionLink(conf.Name, "Conference", new {id = conf.Id}, new {@class = "list-group-item"})
+    }
+</div>
+@Html.ActionLink("New conference", "Edit", new {}, new { @class = "btn btn-primary"})
+

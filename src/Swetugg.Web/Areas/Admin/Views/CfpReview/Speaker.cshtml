@@ -1,0 +1,107 @@
+﻿@using Swetugg.Web.Controllers
+@using Swetugg.Web.Models
+@model Swetugg.Web.Models.CfpSpeaker
+
+@{
+    ViewBag.Title = "Call For Papers - Speaker";
+
+    Conference conference = ViewBag.Conference;
+
+    ViewBag.Title = "Call For Paper - Speaker information";
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Call For Papers", "Index")</li>
+    <li class="active">@Model.Name</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            @if (Model.Speaker != null)
+            {
+                <a href="@Url.Action("Speaker", "SpeakerAdmin", new {id = Model.Speaker.Id})" class="pull-right">
+                    <i class="glyphicon glyphicon-link"></i>
+                </a>
+            }
+
+            @Model.Name
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="@Model.Image" class="img-rounded img-responsive"/>
+            </div>
+            <div class="col-sm-6">
+                <p>@Model.Bio</p>
+            </div>
+            <div class="col-sm-4">
+                @using (Html.BeginForm("PromoteSessions", "CfpReview"))
+                {
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Sessions</div>
+                        </div>
+                        <div class="list-group">
+                            @foreach (var session in Model.Sessions)
+                            {
+                                <div class="list-group-item">
+                                    <div class="list-group-item-heading">
+                                        @if (session.Session != null)
+                                        {
+                                            <a href="@Url.Action("Session", "SessionAdmin", new {id = session.Session.Id})" class="pull-right">
+                                                <i class="glyphicon glyphicon-link"></i>
+                                            </a>
+                                        }
+                                        else if (Model.Speaker != null)
+                                        {
+                                            <input type="checkbox" name="SessionIds" value="@session.Id" class="pull-right"/>
+                                        }
+                                        <a href="@Url.Action("Session", "CfpReview", new {id = session.Id})">
+                                            @session.Name
+                                        </a>
+                                    </div>
+                                    <div class="list-group-item-text">
+                                        @session.Description.Truncate(200)
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+                        <div class="panel-footer">
+                            @if (Model.Speaker != null)
+                            {
+                                <button type="submit" class="btn btn-info">Promote</button>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        @if (Model.Speaker == null)
+        {
+            using (Html.BeginForm("Promote", "CfpReview", new {id = Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+            {
+                <button type="submit" class="btn btn-default">Promote</button>
+            }
+        }
+        else
+        {
+            <a href="" class="btn btn-danger"
+               data-confirm-form="#updateSubmissionForm"
+               data-modal-title="Are you sure?"
+               data-modal-message="This will update all speaker information and linked sessions."
+               data-toggle="modal" data-target="#formConfirmationModal">Update</a>
+
+            using (Html.BeginForm("Update", "CfpReview", new {id = Model.Id}, FormMethod.Post, new {@class = "form-inline", id = "updateSubmissionForm"}))
+            {
+            }
+        }
+    </div>
+</div>

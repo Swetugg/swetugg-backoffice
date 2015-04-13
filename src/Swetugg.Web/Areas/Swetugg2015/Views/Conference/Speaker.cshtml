@@ -1,0 +1,70 @@
+﻿@model Swetugg.Web.Models.Speaker
+
+@{
+    ViewBag.Title = "Speaker";
+    Layout = "~/Areas/Swetugg2015/Views/Shared/_LayoutSimple.cshtml";
+}
+
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+
+<section id="info" class="content-section text-center">
+    <!-- Work in progress -->
+    <div class="program-section" style="background-image: url(@Url.Content("~/Content/swetugg-2015/img/bak1.JPG"))">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <img class="img-circle" src="~/Content/swetugg-2015/SpeakerPictures/org/@(Model.Slug + ".jpg")" />
+                    <h1 style="margin-top: 20px; color: white;">@Model.Name</h1>
+                    <h2 style="color: white;">@Model.Company</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="content-section text-center">
+    <div class="program-section" style="background-color: white; padding-top: 40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+
+                    <p>
+                        @Html.Raw(@Model.Bio.Replace("\n", "<br/>"))
+                    </p>
+
+                    <p>
+                        @{
+                        var nameText = Model.Name;
+                        if (!string.IsNullOrEmpty(Model.Twitter))
+                        {
+                            nameText = nameText + " (@" + Model.Twitter + ")";
+                        }
+                        var twitterText = nameText + " ska tala på @Swetugg";
+                    }
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="@twitterText">Tweet</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+
+                @foreach (var session in @Model.Sessions.Select(s => s.Session))
+                {
+                    <h1>@session.Name</h1>
+                    <p>
+                        @Html.Raw(session.Description.Replace("\n", "<br/>"))
+                    </p>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+@section meta {
+    <meta property="og:image" content="~/Content/swetugg-2015/SpeakerPictures/@(Model.Slug +".png") " />
+}

@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@using Swetugg.Web.Models
+@model List<ApplicationUser>
+
+@{
+    ViewBag.Title = "Users";
+    var roles = ((IEnumerable<IdentityRole>)ViewBag.Roles).ToList();
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
+    <li class="active">Users</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Users</h3>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>User</th>
+            @foreach (var role in roles)
+            {
+                <th class="text-center">@role.Name</th>
+            }
+            <th colspan="2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+
+                @using (Html.BeginForm("SetRoles", "Users", new {userId = user.Id}))
+                {
+                    foreach (var role in roles)
+                    {
+                        <td class="text-center">
+                            <div class="checkbox-inline">
+                                <input type="checkbox" name="Roles" value="@role.Name" @(user.Roles.Any(r => r.RoleId == role.Id) ? "checked" : "") />
+                            </div>
+                        </td>
+                    }
+                    <td><button type="submit" class="btn btn-info">Update</button></td>
+                }
+                @using (Html.BeginForm("Delete", "Users", new {userId = user.Id}))
+                {
+                    <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

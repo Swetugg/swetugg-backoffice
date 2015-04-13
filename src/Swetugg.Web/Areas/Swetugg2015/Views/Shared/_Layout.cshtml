@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    @RenderSection("meta", false)
+
+    <title>Swetugg - en konferens i Swenugs anda</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="/Content/swetugg-2015/css/swetugg.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <nav class="navbar navbar-custom navbar-fixed-top transform" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Conference")">
+                    <i class="fa fa-home"></i>
+                    Swetugg
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#speakers">Talare</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#schedule">Schema</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CodeOfConduct", "Conference")">Uppförandekod</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#sponsor">Sponsorer</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Kontakta oss</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    @RenderBody()
+
+    <footer>
+        <section id="mainFooter" class="footer-section">
+            <div class="container" id="footer">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Plats</h3>
+                        <p>
+                            <strong style="font-size: 24px;">Årsta Folkets Hus</strong><br />
+                            Hjälmarsvägen 26<br>
+                            120 52 ÅRSTA
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>Allmänna kommunikationer</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                Tunnelbanans gröna linjer passerar Gullmarsplan och därifrån tar man buss
+                                160, 168 eller 164 till Årsta Torg.
+                            </li>
+                            <li>
+                                Tvärbanan tar man till Valla Torg, antingen från Gullmarsplan,
+                                Alvik eller Liljeholmen.
+                            </li>
+                            <li>
+                                Från Årstabergs pendeltågsstation kan man ta tvärbanan till Valla torg, eller
+                                buss 160 till Årsta Torg.
+                            </li>
+                        </ul>
+                        <h3>Om du kör bil</h3>
+                        <ul class="list-unstyled">
+                            <li>Parkering finns alldeles utanför Folkets Hus.</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    @*TODO: Make sure content is centered vertically in the footer *@
+    <section id="footerRights" class="footer-rights-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <a href="http://www.swenug.se/" target="blank"><img src="/Content/swetugg-2015/img/swenug.png" /></a>
+                </div>
+                <div class="col-sm-4">
+                    <ul class="socialNetwork pull-right">
+                        <li><a title="" class="tips" href="https://www.facebook.com/Swetugg" data-original-title="follow us on Facebook"><i class="icon-facebook-1 iconRounded"></i></a></li>
+                        <li><a title="" class="tips" href="https://twitter.com/swetugg" target="_blank" data-original-title="follow us on Twitter"><i class="icon-twitter-bird iconRounded"></i></a></li>
+                        <li><a title="" class="tips" href="#" data-original-title="follow us on Google+"><i class="icon-gplus-1 iconRounded"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps - TODO: Get our own API key -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <script src="/Content/swetugg-2015/js/swetugg.js"></script>
+
+    <!-- Google Universal Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-51956274-1', 'swetugg.se');
+        ga('send', 'pageview');
+
+    </script>
+
+    @RenderSection("scripts", false)
+</body>
+
+</html>

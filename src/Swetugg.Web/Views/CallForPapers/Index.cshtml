@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Swetugg.Web.Models.Conference>
+
+@{
+    ViewBag.Title = "Swetugg Call For Papers";
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
+    <li class="active">Call For Papers</li>
+</ol>
+
+<h2>Select conference</h2>
+<div class="list-group">
+    @foreach (var conference in @Model)
+    {
+        <a href="@Url.Action("Conference", "CallForPapers", new { conferenceSlug = conference.Slug })" class="list-group-item">
+            <div class="media">
+                <div class="media-left">
+                    <img class="media-object" src=""/>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        @conference.Name
+                        @if (conference.Start.HasValue && conference.End.HasValue)
+                        {
+                            <small>@conference.Start.Value.ToString("yyyy-MM-dd") - @conference.End.Value.ToString("yyyy-MM-dd")</small>
+                        }
+                    </h4>
+                    <p>@conference.Description</p>
+                </div>
+            </div>
+        </a>
+    }
+</div>

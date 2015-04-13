@@ -1,0 +1,42 @@
+﻿@using Swetugg.Web.Models
+@model Sponsor
+@{
+    ViewBag.Title = "Sponsor";
+    Conference conference = ViewBag.Conference;
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Sponsors", "Index")</li>
+    <li class="active">@Model.Name</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            @Common.GetPublished(Model.Published)
+            @Model.Name
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+
+        <a href="" class="btn btn-danger pull-right"
+           data-confirm-form="#deleteSponsorForm"
+           data-modal-title="Are you sure?"
+           data-modal-message="This will delete the sponsor."
+           data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+
+        @using (Html.BeginForm("Delete", "SponsorAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSponsorForm" }))
+        {
+        }
+    </div>
+</div>

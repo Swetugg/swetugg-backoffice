@@ -1,0 +1,89 @@
+﻿@using Swetugg.Web.Models
+@model Sponsor
+@{
+    ViewBag.Title = "Edit Sponsor";
+    Conference conference = ViewBag.Conference;
+    var buttonLabel = "Create";
+
+    var id = Model != null && Model.Id != 0 ? (int?)Model.Id : null;
+    if (id != null)
+    {
+        buttonLabel = "Update";
+    }
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Sponsors", "Index", "SponsorAdmin")</li>
+    @if (id != null)
+    {
+        <li>@Html.ActionLink(Model.Name, "Sponsor", "SponsorAdmin", new { id })</li>
+    }
+    <li class="active">@buttonLabel</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Sponsor</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "SponsorAdmin", new { id }, FormMethod.Post))
+    {
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Twitter)
+                        <div class="input-group">
+                            <div class="input-group-addon">@@</div>
+                            @Html.TextBoxFor(m => m.Twitter, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Web)
+                        @Html.TextBoxFor(m => m.Web, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 10 })
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Publish settings
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        @Html.CheckBoxFor(m => m.Published)
+                                        @Html.DisplayNameFor(m => m.Published)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Slug)
+                                @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Priority, "Priority")
+                                @Html.TextBoxFor(m => m.Priority, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">@buttonLabel</button>
+        </div>
+    }
+</div>

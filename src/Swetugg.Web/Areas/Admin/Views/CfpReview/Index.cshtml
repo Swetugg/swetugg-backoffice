@@ -1,0 +1,27 @@
+﻿@using Swetugg.Web.Models
+@model List<CfpSpeaker>
+
+@{
+    ViewBag.Title = "Call For Papers";
+
+    Conference conference = ViewBag.Conference;
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li class="active">Call For Papers</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Submissions</h3>
+    </div>
+    <div class="list-group">
+        @foreach (var speaker in Model)
+        {
+            @Html.ActionLink(speaker.Name, "Speaker", "CfpReview", new { id = speaker.Id }, new { @class = "list-group-item"})
+        }
+    </div>
+</div>

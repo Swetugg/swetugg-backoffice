@@ -1,0 +1,62 @@
+﻿@using Swetugg.Web.Models
+@model CfpSession
+
+@{
+    ViewBag.Title = "Call For Paper - Session";
+    Conference conference = ViewBag.Conference;
+    CfpSpeaker speaker = ViewBag.Speaker;
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new {conference.Id}, null)</li>
+    <li>@Html.ActionLink("Call For Papers", "Index")</li>
+    <li>@Html.ActionLink(speaker.Name, "Speaker", new {id = speaker.Id})</li>
+    <li class="active">@Model.Name</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            @if (Model.Session != null)
+            {
+                <a href="@Url.Action("Session", "SessionAdmin", new { id = Model.Session.Id })" class="pull-right">
+                    <i class="glyphicon glyphicon-link"></i>
+                </a>
+            }
+
+            @Model.Name
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                @Model.Description
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Information</div>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Tags</h4>
+                        <p>@Model.Tags</p>
+
+                        <h4>Audience</h4>
+                        <p>@Model.Audience</p>
+
+                        <h4>Level</h4>
+                        <p>@Model.Level</p>
+
+                        <h4>Comments</h4>
+                        <p>@Model.Comments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        
+    </div>
+</div>

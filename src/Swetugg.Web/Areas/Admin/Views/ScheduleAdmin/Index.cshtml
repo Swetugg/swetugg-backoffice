@@ -1,0 +1,130 @@
+﻿@using System
+@using System.Linq
+@using System.Threading.Tasks
+@using Swetugg.Web.Models
+@model Swetugg.Web.Areas.Admin.Controllers.ScheduleViewModel
+
+@{
+    ViewBag.Title = "Schedule";
+    Conference conference = ViewBag.Conference;
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li class="active">Schedule</li>
+</ol>
+
+<h2>Schedule</h2>
+<div class="panel panel-default">
+    @{
+        var startDate = Model.Conference.Start.GetValueOrDefault().Date;
+        var endDate = (Model.Conference.End ?? Model.Conference.Start).GetValueOrDefault().Date;
+        var currentDate = startDate;
+    }
+    @while (currentDate <= endDate)
+    {
+        ViewData["CurrentDate"] = currentDate;
+        <div class="panel-heading">
+            @currentDate.ToString("D")
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Timeslot</th>
+                @foreach (var room in Model.Rooms)
+                {
+                    <th>@Html.ActionLink(room.Name, "Edit", "RoomAdmin", new { id = room.Id }, null)</th>
+                }
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var slot in Model.Slots.Where(s => s.Start.Date == currentDate).ToArray())
+            {
+                <tr>
+                    <td>
+                        @if (Model.EditSlot != null && Model.EditSlot.Id == slot.Id)
+                        {
+                            @Html.Partial("Slot", Model.EditSlot, ViewData)
+                        }
+                        else
+                        {
+                            <div class="pull-right">
+                                <a href="@Url.Action("Index", new {slotId = slot.Id})"><i class="glyphicon glyphicon-edit"></i></a>
+
+                                <a href="" class="text-danger pull-right"
+                                   data-confirm-form="#@("deleteSlotForm" + slot.Id)"
+                                   data-modal-title="Are you sure?"
+                                   data-modal-message="This will delete the slot."
+                                   data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i></a>
+                                
+                                @using (Html.BeginForm("DeleteSlot", "ScheduleAdmin", new {id = slot.Id}, FormMethod.Post, new {@class = "form-inline", id = "deleteSlotForm" + slot.Id}))
+                                {
+                                }
+                            </div>
+                            <span class="slot-start">@slot.Start.ToString("t")</span>
+                            <span>-</span>
+                            <span class="slot-start">@slot.End.ToString("t")</span>
+                        }
+
+                    </td>
+                    @if (!string.IsNullOrEmpty(slot.Title))
+                    {
+                        <th colspan="@Model.Rooms.Count">@slot.Title</th>
+                    }
+                    else
+                    {
+
+                        foreach (var room in Model.Rooms)
+                        {
+                            var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                            if (roomSlot != null)
+                            {
+                                <td>
+                                    <a href="javascript:document.getElementById('@("deleteRoomSlotForm" + slot.Id + "_" + room.Id)').submit()" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+
+                                    @using (Html.BeginForm("DeleteRoomSlot", "ScheduleAdmin", new { roomId = room.Id, slotId = slot.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteRoomSlotForm" + slot.Id + "_" + room.Id }))
+                                    { 
+                                    }
+
+                                    @if (roomSlot.AssignedSession != null)
+                                    {
+                                        <div class="session-name">@roomSlot.AssignedSession.Name</div>
+
+                                        if (roomSlot.AssignedSession.Speakers != null)
+                                        {
+                                            foreach (var speaker in roomSlot.AssignedSession.Speakers)
+                                            {
+                                                <div class="speaker-name">@speaker.Speaker.Name</div>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="session-name">(None)</div>
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.Partial("RoomSlot", new RoomSlot() {RoomId = room.Id, SlotId = slot.Id}, new ViewDataDictionary(ViewData) {{"UnplacedSessions", Model.UnplacedSessions}})
+                                </td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+            <tr>
+                <td>
+                    @Html.Partial("Slot", Model.NewSlot)
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+        currentDate = currentDate.AddDays(1);
+    }
+</div>

@@ -1,0 +1,87 @@
+﻿@using Swetugg.Web.Models
+@model Session
+
+@{
+    ViewBag.Title = "Session";
+    Conference conference = ViewBag.Conference;
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Sessions", "Index", "SessionAdmin")</li>
+    <li class="active">@Model.Name</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            @Common.GetPublished(Model.Published)
+            @Model.Name
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <p>@Model.Description</p>
+                @if (Model.VideoUrl != null)
+                {
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            @Common.GetPublished(Model.VideoPublished)
+                            Video
+                        </div>
+                        <div class="panel-body">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe src="@Model.VideoUrl" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Speakers</div>
+                    </div>
+                    <div class="list-group">
+                        @foreach (var speaker in Model.Speakers.Select(s => s.Speaker))
+                        {
+                            <div class="list-group-item">
+                                @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                                {
+                                    @Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new { speaker.Id }, null)
+
+                                    <button type="submit" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    @Html.Hidden("SpeakerId", speaker.Id)
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="panel-footer">
+                        @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                        {
+                            <div class="form-group">
+                                @Html.DropDownList("speakerId", ((List<Speaker>)ViewBag.Speakers).Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default(" - Select speaker - ", ""), new { @class = "form-control" })
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+
+        <a href="" class="btn btn-danger pull-right"
+           data-confirm-form="#deleteSessionForm"
+           data-modal-title="Are you sure?"
+           data-modal-message="This will delete the session."
+           data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+
+        @using (Html.BeginForm("Delete", "SessionAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id="deleteSessionForm" }))
+        {
+        }
+    </div>
+</div>

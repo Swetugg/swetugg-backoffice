@@ -1,0 +1,55 @@
+﻿@model Swetugg.Web.Models.Conference
+
+@{
+    ViewBag.Title = "title";
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li class="active">@Model.Name</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            @Model.Name
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <p>@Model.Description</p>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Conference actions</div>
+                    </div>
+                    <div class="list-group">
+                        @Html.ActionLink("Import", "Import", new { id = Model.Id }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Call For Papers", "Index", "CfpReview", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Speakers", "Index", "SpeakerAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sessions", "Index", "SessionAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sponsors", "Index", "SponsorAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Rooms", "Index", "RoomAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Schedule", "Index", "ScheduleAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+
+        <a href="" class="btn btn-danger pull-right"
+           data-confirm-form="#deleteConferenceForm"
+           data-modal-title="Are you sure?"
+           data-modal-message="This will delete the conference and all associated data."
+           data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+
+        @using (Html.BeginForm("Delete", "ConferenceAdmin", new {id = Model.Id}, FormMethod.Post, new { @class = "pull-right", id = "deleteConferenceForm"}))
+        {
+        }
+    </div>
+</div>
+

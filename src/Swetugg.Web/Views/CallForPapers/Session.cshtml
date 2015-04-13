@@ -1,0 +1,90 @@
+﻿@using Swetugg.Web.Models
+@model Swetugg.Web.Models.CfpSession
+
+@{
+    ViewBag.Title = "title";
+    Conference conference = ViewBag.Conference;
+    CfpSpeaker speaker = ViewBag.Speaker;
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
+    <li>@Html.ActionLink("Call For Papers", "Index", "CallForPapers", new {Area = ""}, null)</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "CallForPapers", new {Area = "", conferenceSlug = conference.Slug}, null)</li>
+    <li class="active">Session</li>
+</ol>
+
+@Html.ValidationSummary()
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Session information</h3>
+    </div>
+
+    @using (Html.BeginForm(new {id = Model.Id}))
+    {
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new {@class = "form-control", rows = 18})
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">More info</div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Tags)
+                                @Html.TextBoxFor(m => m.Tags, new {@class = "form-control"})
+                                @Html.ValidationMessageFor(m => m.Tags)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Audience)
+                                @Html.TextBoxFor(m => m.Audience, new {@class = "form-control"})
+                                @Html.ValidationMessageFor(m => m.Audience)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Level)
+                                @Html.TextBoxFor(m => m.Level, new {@class = "form-control"})
+                                @Html.ValidationMessageFor(m => m.Level)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Comments)
+                                @Html.TextAreaFor(m => m.Comments, new {@class = "form-control", rows = 6})
+                                @Html.ValidationMessageFor(m => m.Comments)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            @if (Model.Id != 0)
+            {
+                <a href="" class="btn btn-danger pull-right"
+                   data-confirm-form="#deleteForm"
+                   data-modal-title="Are you sure?"
+                   data-modal-message="This will delete the session."
+                   data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+            }
+        </div>
+    }
+
+</div>
+
+@using (Html.BeginForm("DeleteSession", "CallForPapers", new {confernceSlug = conference.Slug, id = Model.Id}, FormMethod.Post, new {id = "deleteForm", @class = "form-inline"}))
+{
+
+}
+

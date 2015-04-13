@@ -1,0 +1,384 @@
+﻿@using System.Globalization
+@using Swetugg.Web.Models
+@{
+    ViewBag.Title = "Swetugg - en konferens i Swenugs anda";
+
+    Conference conference = ViewBag.Conference;
+
+    IEnumerable<Slot> slots = ViewBag.Slots;
+    IEnumerable<Room> rooms = ViewBag.Rooms;
+    IEnumerable<Sponsor> sponsors = ViewBag.Sponsors;
+    IEnumerable<Speaker> speakers = ViewBag.Speakers;
+}
+
+<section class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">Swetugg</h1>
+                    <p class="intro-text">En konferens för .NET-utvecklare, i Swenugs anda.<br />Stockholm 2-3 februari 2015</p>
+                    <div class="page-scroll">
+                        <a href="#about" class="btn btn-circle">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="container content-section">
+    <div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="noSubtitle">Vad är Swetugg?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1">
+                <table>
+                    <p>
+                        Vi på Swenug har genom våra föreläsningar länge känt till att svenska .NET-utvecklare har en otrolig törst på kunskap. Lyckligtvis har vi också märkt att det finns en stor mängd
+                        riktigt duktiga föreläsare runt om i landet som bara väntar på en chans att få dela med sig av sitt kunnande. Dessutom har vi sett önskemål från företag att nå ut till fler utvecklare.
+                    </p>
+                </table>
+            </div>
+            <div class="col-lg-5">
+                <p>
+                    Vi tar nu våra populära evenemang ett steg längre och anordnar därför Swetugg 2015!<br /><br />
+                    Med Swetugg vill vi skapa en konferens för alla .NET-utvecklare, sprida kunskap, knyta nätverk och ge sponsorer möjligheter att nå ut till branschen. Swetugg anordnas ideellt och till självkostnadspris.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <img src="/Content/swetugg-2015/img/swenug.png" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="speakers" class="content-section text-center">
+    <div class="program-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Talare</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="photo-collection">
+                        @foreach (var speaker in @speakers)
+                        {
+                            <li>
+                                <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
+                                    <img class="img-circle" src="/Content/swetugg-2015/SpeakerPictures/@(speaker.Slug + ".png")"/>
+                                    <div>
+                                        @speaker.Name
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="schedule" class="content-section text-center">
+    <div class="schedule-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Schema</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    @foreach (var day in slots.GroupBy(s => s.Start.Date))
+                    {
+                        var columnWidth = 90/(rooms.Count());
+                        <h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
+                        <table class="table table-bordered schema">
+                            <thead>
+                            <tr>
+                                <th style="width: 10%">Tid</th>
+                                @foreach (var room in rooms)
+                                {
+                                    <th style="width: @columnWidth%">@room.Name</th>
+                                }
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var slot in day)
+                            {
+                                <tr>
+                                    <th>@slot.Start.ToString("HH:mm") <br/> @slot.End.ToString("HH:mm")</th>
+
+                                    @if (string.IsNullOrEmpty(slot.Title))
+                                    {
+                                        foreach (var room in rooms)
+                                        {
+                                            var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                                            bool isChanged = roomSlot != null && roomSlot.IsChanged;
+                                            string changedClass = isChanged ? "changed" : "unchanged";
+                                            var session = roomSlot != null ? roomSlot.AssignedSession : null;
+                                            if (roomSlot != null)
+                                            {
+                                                <td class="@changedClass">
+                                                    <div class="schemacell">
+                                                        @if (isChanged)
+                                                        {
+                                                            <span class="pull-right glyphicon glyphicon-info-sign"></span>
+                                                        }
+                                                        @if (session != null)
+                                                        {
+                                                            var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
+                                                            if (sessionSpeakers.Count > 0)
+                                                            {
+                                                                
+                                                            }
+                                                            var firstSpeaker = sessionSpeakers.First();
+                                                            <div class="schemacell-rad1">
+                                                                @foreach (var speaker in sessionSpeakers)
+                                                                {
+                                                                    @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
+                                                                }
+                                                            </div>
+                                                            <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})">
+                                                                <div class="schemacell-rad2">
+                                                                    @session.Name
+                                                                </div>
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    <div class="schemacell">
+                                                        @if (false)
+                                                        {
+                                                            <span class="pull-right glyphicon glyphicon-info-sign"></span>
+                                                        }
+                                                        <div class="schemacell-rad1">
+                                                            -
+                                                        </div>
+                                                        <div class="schemacell-rad2">
+                                                            Inte klart ännu
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <th colspan="@rooms.Count()">
+                                            @slot.Title
+                                        </th>
+                                    }
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    }
+
+                    <p class="schema-disclaimer">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        Förändrat sedan schemat trycktes
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*<section id="tickets" class="content-section text-center">
+        <div class="tickets-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="noSubtitle">Biljetter</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <table>
+                            <p>
+                                Tyvärr så har biljetterna till årets Swetugg tagit slut. Om vi lyckas få fram ytterligare några kommer
+                                bästa sättet att få reda på det vara att följa oss på <a href="http://facebook.com/swetugg">Facebook</a>
+                                och/eller <a href="http://twitter.com/swetugg">Twitter</a>.
+                            </p>
+                        </table>
+                    </div>
+                    <form role="form" action="http://simplesignup.se/event/53058/signup/tickets" method="post">
+                            <div class="form-group col-lg-2 col-lg-offset-5">
+                                <select class="form-control" id="tickets_175601" name="tickets[175601]">
+                                    <option value="1" selected="selected">1 biljett - 500kr</option>
+                                    <option value="2">2 biljetter - 1000kr</option>
+                                    <option value="3">3 biljetter - 1500kr</option>
+                                    <option value="4">4 biljetter - 2000kr</option>
+                                </select>
+                            </div>
+
+                            <input name="commit" type="submit" class="col-lg-2 col-lg-offset-5 btn btn-default" value="Köp" />
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+*@
+<section id="sponsor" class="content-section text-center">
+    <div class="sponsor-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Sponsorer</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+                        
+                        @foreach (var sponsor in @sponsors)
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2015/SponsorPictures/@(sponsor.Slug + ".png") "/>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact" class="container content-section contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="noSubtitle">Kontakta oss</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>Vill du fråga något? Eller bara säga hej? Tveka inte att kontakta oss.</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p><a href="mailto:info@swetugg.se">info@swetugg.se</a></p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                    @*<li>
+                        <a href="https://plus.google.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="members" class="container members-section">
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>
+                    Styrelsen
+                </h2>
+                <div class="members">
+                    <div class="member">
+                        <div class="member-name">Anders Ljusberg</div>
+                        <div class="member-twitter"><a href="http://twitter.com/CodingInsomnia">@@CodingInsomnia</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Cecilia Wirén</div>
+                        <div class="member-twitter"><a href="http://twitter.com/CeciliaSHARP">@@CeciliaSHARP</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Jessica Engström</div>
+                        <div class="member-twitter"><a href="http://twitter.com/Grytlappen">@@Grytlappen</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Jimmy Engström</div>
+                        <div class="member-twitter"><a href="http://twitter.com/Apeoholic">@@Apeoholic</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Kristoffer Arfvidson</div>
+                        <div class="member-twitter">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>
+                    Medlemmar
+                </h2>
+                <div class="members">
+                    <div class="member">
+                        <div class="member-name">Fabian Miiro</div>
+                        <div class="member-twitter"><a href="http://twitter.com/iloabn">@@iloabn</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">John Bergdahl</div>
+                        <div class="member-twitter"><a href="http://twitter.com/beridaru">@@beridaru</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Kaj Sevelin</div>
+                        <div class="member-twitter">&nbsp;</div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Magnus Sax</div>
+                        <div class="member-twitter"><a href="http://twitter.com/Magnus_Sax">@@Magnus_Sax</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Malin Dingfors</div>
+                        <div class="member-twitter"><a href="http://twitter.com/Dingfors">@@Dingfors</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Peter Örneholm</div>
+                        <div class="member-twitter"><a href="http://twitter.com/PeterOrneholm">@@PeterOrneholm</a></div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Ulrika Bladh</div>
+                        <div class="member-twitter">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<div id="map"></div>
+
+@section scripts {
+    <script>
+        initializeMap();
+    </script>
+}
+
+@section meta {
+    <meta property="og:image" content="/Content/swetugg-2015/img/swetugg-rosa-kvadrat.png" />
+}
