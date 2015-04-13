@@ -3,6 +3,8 @@ Swetugg Web
 
 This is the source code for the (upcoming) Swetugg website. See anything broken? Why not send a PR? :)
 
+A possibly working sample of this is published to http://swetuggpreview.azurewebsites.net/start. If you want admin privileges to try it out, create an account and ping me [@CodingInsomnia](https://twitter.com/CodingInsomnia) on Twitter.
+
 Getting started
 ---------------
 You should be able to start up an empty version of the swetugg site simply by hitting F5 in Visual Studio. This will create a local database using Entity Framework Code First Migrations. However, since the database will be empty you won't be able to actually browse to the frontpage.
@@ -62,3 +64,4 @@ In order to be able to confirm email addresses and send password reset emails, c
     <add key="SendGrid_Messaging_MailAccount" value="{Sendgrid Account}"/>
     <add key="SendGrid_Messaging_MailPassword" value="{Sendgrid Password}"/>
     <!-- / Messaging -->
+
