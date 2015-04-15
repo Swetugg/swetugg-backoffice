@@ -44,7 +44,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         }
 
         [Route("code-of-conduct")]
-        public async Task<ActionResult> CodeOfConduct()
+        public ActionResult CodeOfConduct()
         {
             ViewData["Conference"] = Conference;
             return View();

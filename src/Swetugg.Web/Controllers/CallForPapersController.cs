@@ -148,13 +148,13 @@ namespace Swetugg.Web.Controllers
 
                                         dbSpeaker.Image = blockBlob.Uri.ToString();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         ModelState.AddModelError("ImageFile", "File upload failed");
                                     }
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 ModelState.AddModelError("ImageFile",
                                     "Unable to parse file as image. Please use JPG or PNG files");
@@ -184,7 +184,9 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/session")]
+        #pragma warning disable 0108
         public async Task<ActionResult> Session(string conferenceSlug, int? id)
+        #pragma warning restore 0108
         {
             var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
@@ -197,10 +199,13 @@ namespace Swetugg.Web.Controllers
 
             return View(session);
         }
+        
 
         [Route("{conferenceSlug}/session")]
         [HttpPost]
+        #pragma warning disable 0108
         public async Task<ActionResult> Session(string conferenceSlug, int? id, CfpSession session)
+        #pragma warning restore 0108
         {
             var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
