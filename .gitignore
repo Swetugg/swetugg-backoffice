@@ -214,3 +214,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#Cake Binaries Ignore
+[Tt]ools/
+build.cake
