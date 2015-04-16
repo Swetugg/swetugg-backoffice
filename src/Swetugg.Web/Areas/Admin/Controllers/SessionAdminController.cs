@@ -15,20 +15,22 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
         }
 
-		[Route("{conferenceSlug}/sessions")]
+        [Route("{conferenceSlug}/sessions")]
         public async Task<ActionResult> Index()
         {
             var conferenceId = ConferenceId;
-		    var sessions = from s in dbContext.Sessions
-		        where s.ConferenceId == conferenceId
-		        orderby s.Name
-		        select s;
+            var sessions = from s in dbContext.Sessions
+                where s.ConferenceId == conferenceId
+                orderby s.Name
+                select s;
             var sessionsList = await sessions.ToListAsync();
             return View(sessionsList);
         }
 
-		[Route("{conferenceSlug}/sessions/{id:int}")]
+        [Route("{conferenceSlug}/sessions/{id:int}")]
+        #pragma warning disable 0108
         public async Task<ActionResult> Session(int id)
+        #pragma warning restore 0108
         {
             var conferenceId = ConferenceId;
 
@@ -40,7 +42,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(session);
         }
 
-		[Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
+        [Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id)
         {
             var session = await dbContext.Sessions.SingleAsync(s => s.Id == id);
@@ -48,7 +50,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-		[Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
+        [Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Session session)
         {
             if (ModelState.IsValid)
@@ -56,8 +58,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 try
                 {
                     session.ConferenceId = ConferenceId;
-					dbContext.Entry(session).State = EntityState.Modified;
-					await dbContext.SaveChangesAsync();
+                    dbContext.Entry(session).State = EntityState.Modified;
+                    await dbContext.SaveChangesAsync();
 
                     return RedirectToAction("Session", new { session.Id });
                 }
@@ -70,7 +72,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-		[Route("{conferenceSlug}/sessions/addspeaker/{id:int}")]
+        [Route("{conferenceSlug}/sessions/addspeaker/{id:int}")]
         public async Task<ActionResult> AddSpeaker(int id, int speakerId)
         {
             var session = await dbContext.Sessions.Include(m => m.Speakers).SingleAsync(s => s.Id == id);
@@ -82,27 +84,27 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
 
         [HttpPost]
-		[Route("{conferenceSlug}/sessions/removespeaker/{id:int}")]
+        [Route("{conferenceSlug}/sessions/removespeaker/{id:int}")]
         public async Task<ActionResult> RemoveSpeaker(int id, int speakerId)
         {
             var session = await dbContext.Sessions.Include(m => m.Speakers).Where(s => s.Id == id).SingleAsync();
             var sessionSpeaker = session.Speakers.Single(s => s.SpeakerId == speakerId);
 
-			dbContext.Entry(sessionSpeaker).State = EntityState.Deleted;
+            dbContext.Entry(sessionSpeaker).State = EntityState.Deleted;
 
             await dbContext.SaveChangesAsync();
 
             return RedirectToAction("Session", new { id });
         }
 
-		[Route("{conferenceSlug}/sessions/new", Order = 2)]
+        [Route("{conferenceSlug}/sessions/new", Order = 2)]
         public ActionResult Edit()
         {
             return View();
         }
 
         [HttpPost]
-		[Route("{conferenceSlug}/sessions/new", Order = 2)]
+        [Route("{conferenceSlug}/sessions/new", Order = 2)]
         public async Task<ActionResult> Edit(Session session)
         {
             if (ModelState.IsValid)

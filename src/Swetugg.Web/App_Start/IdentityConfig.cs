@@ -50,7 +50,7 @@ namespace Swetugg.Web
                 {
                     transportWeb.DeliverAsync(myMessage).Wait();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //
                 }

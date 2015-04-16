@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,7 +35,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp/session/{id:int}")]
+        #pragma warning disable 0108
         public async Task<ViewResult> Session(int id)
+        #pragma warning restore 0108
         {
             var session = await dbContext.CfpSessions.Include(s => s.Speaker).Include(s => s.Session).SingleAsync(s => s.Id == id);
 
