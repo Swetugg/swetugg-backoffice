@@ -17,7 +17,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/cfp")]
         public async Task<ActionResult> Index()
         {
-            var speakers = await dbContext.CfpSpeakers.Include(s => s.Sessions).ToListAsync();
+            var conferenceId = ConferenceId;
+            var speakers = await dbContext.CfpSpeakers
+                .Where(s => s.ConferenceId == conferenceId)
+                .Include(s => s.Sessions).ToListAsync();
 
             ViewBag.Conference = Conference;
             
@@ -27,7 +30,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/cfp/speaker/{id:int}")]
         public async Task<ViewResult> Speaker(int id)
         {
-            var speaker = await dbContext.CfpSpeakers.Include(s => s.Sessions.Select(se => se.Session)).Include(s => s.Speaker).SingleAsync(s => s.Id == id);
+            var conferenceId = ConferenceId;
+            var speaker = await dbContext.CfpSpeakers
+                .Include(s => s.Sessions.Select(se => se.Session))
+                .Include(s => s.Speaker).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
 
             ViewBag.Conference = Conference;
 
@@ -39,7 +45,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         public async Task<ViewResult> Session(int id)
         #pragma warning restore 0108
         {
-            var session = await dbContext.CfpSessions.Include(s => s.Speaker).Include(s => s.Session).SingleAsync(s => s.Id == id);
+            var conferenceId = ConferenceId;
+            var session = await dbContext.CfpSessions
+                .Include(s => s.Speaker)
+                .Include(s => s.Session).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
 
             ViewBag.Conference = Conference;
             ViewBag.Speaker = session.Speaker;
@@ -51,9 +60,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/promote")]
         public async Task<RedirectToRouteResult> Promote(int id)
         {
-            var cfpSpeaker = await dbContext.CfpSpeakers.SingleAsync(s => s.Id == id);
-
             var conferenceId = ConferenceId;
+            var cfpSpeaker = await dbContext.CfpSpeakers
+                .SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
 
             var speaker = new Speaker()
             {
@@ -79,12 +88,14 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/promote-sessions")]
         public async Task<ActionResult> PromoteSessions(int id, List<int> sessionIds)
         {
-            var cfpSpeaker = await dbContext.CfpSpeakers.Include(s => s.Sessions).Include(s => s.Speaker.Sessions).SingleAsync(s => s.Id == id);
+            var conferenceId = ConferenceId;
+
+            var cfpSpeaker = await dbContext.CfpSpeakers.Include(s => s.Sessions)
+                .Include(s => s.Speaker.Sessions).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
             var cfpSessions = cfpSpeaker.Sessions;
             
             var speaker = cfpSpeaker.Speaker;
 
-            var conferenceId = ConferenceId;
             if (sessionIds != null && sessionIds.Any())
             {
                 foreach (var s in cfpSessions.Where(s => sessionIds.Contains(s.Id)))
@@ -112,7 +123,11 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/update")]
         public async Task<ActionResult> Update(int id)
         {
-            var cfpSpeaker = await dbContext.CfpSpeakers.Include(s => s.Sessions.Select(se => se.Session)).Include(s => s.Speaker).SingleAsync(s => s.Id == id);
+            var conferenceId = ConferenceId;
+
+            var cfpSpeaker = await dbContext.CfpSpeakers
+                .Include(s => s.Sessions.Select(se => se.Session))
+                .Include(s => s.Speaker).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
             var cfpSessions = cfpSpeaker.Sessions;
 
             var speaker = cfpSpeaker.Speaker;
