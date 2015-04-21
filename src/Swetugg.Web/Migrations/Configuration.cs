@@ -58,8 +58,9 @@ namespace Swetugg.Web.Migrations
                 manager.Create(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "info@swetugg.se"))
+            if (!context.Users.Any())
             {
+                // If no users have been created yet, insert a default Admin account. 
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser { UserName = "info@swetugg.se", Email = "info@swetugg.se"};
