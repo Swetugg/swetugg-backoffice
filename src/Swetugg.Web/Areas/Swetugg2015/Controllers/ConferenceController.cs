@@ -21,7 +21,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         {
             this.dbContext = dbContext;
             this.conferenceSlug = "swetugg-2015";
-            this.conferenceService = new ConferenceService(dbContext);
+            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
         }
         
         [Route("")]
