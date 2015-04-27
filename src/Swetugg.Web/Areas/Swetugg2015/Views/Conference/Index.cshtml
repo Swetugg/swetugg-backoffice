@@ -150,7 +150,7 @@
                                                                     @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
                                                                 }
                                                             </div>
-                                                            <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})">
+                                                            <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
                                                                 <div class="schemacell-rad2">
                                                                     @session.Name
                                                                 </div>
