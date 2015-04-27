@@ -26,48 +26,47 @@
 <section class="content-section text-center">
     <div class="program-section" style="background-color: white; padding-top: 40px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <p>
-                        @Html.Raw(@Model.Bio.Replace("\n", "<br/>"))
-                    </p>
-
-                    <p>
-                        @{
-                            var nameText = Model.Name;
-                            if (!string.IsNullOrEmpty(Model.Twitter))
-                            {
-                                nameText = nameText + " (@" + Model.Twitter + ")";
-                            }
-                            var twitterText = nameText + " ska tala på @Swetugg";
-                        }
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@twitterText">Tweet</a>
-                    </p>
-                </div>
-            </div>
             @foreach (var session in @Model.Sessions.Select(s => s.Session))
             {
-                <br id="@session.Slug" />
-                <hr/>
-                <br/>
-                <br/>
+                <div id="@session.Slug" style="position: relative; top: -60px"></div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
+                        @{
+                            var nameText = session.Name;
+                            if (!string.IsNullOrEmpty(Model.Twitter))
+                            {
+                                nameText = nameText + " - @" + Model.Twitter;
+                            }
+                            var twitterText = nameText + " (från @Swetugg)";
+                            var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
+                        }
+                        <a href="https://twitter.com/share" class="twitter-share-button pull-right" data-url="@linkUrl" data-text="@twitterText">Tweet</a>
+
                         <a href="#@session.Slug">
                             <h2>@session.Name</h2>
                         </a>
-                        <p>
-                            @Html.Raw(session.Description.Replace("\n", "<br/>"))
-                        </p>
                         @if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
                         {
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe src="@session.VideoUrl" allowfullscreen></iframe>
                             </div>
                         }
+                        <p>
+                            @Html.Raw(session.Description.Replace("\n", "<br/>"))
+                        </p>
                     </div>
                 </div>
             }
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>@Model.Name</h2>
+                    <p>
+                        @Html.Raw(@Model.Bio.Replace("\n", "<br/>"))
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
