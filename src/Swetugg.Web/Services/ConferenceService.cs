@@ -6,7 +6,7 @@ using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Services
 {
-	public class ConferenceService : IConferenceService
+    public class ConferenceService : IConferenceService
 	{
 		private readonly ApplicationDbContext _dbContext;
 
