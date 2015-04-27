@@ -28,40 +28,48 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-
                     <p>
                         @Html.Raw(@Model.Bio.Replace("\n", "<br/>"))
                     </p>
 
                     <p>
                         @{
-                        var nameText = Model.Name;
-                        if (!string.IsNullOrEmpty(Model.Twitter))
-                        {
-                            nameText = nameText + " (@" + Model.Twitter + ")";
+                            var nameText = Model.Name;
+                            if (!string.IsNullOrEmpty(Model.Twitter))
+                            {
+                                nameText = nameText + " (@" + Model.Twitter + ")";
+                            }
+                            var twitterText = nameText + " ska tala på @Swetugg";
                         }
-                        var twitterText = nameText + " ska tala på @Swetugg";
-                    }
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="@twitterText">Tweet</a>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-
-                @foreach (var session in @Model.Sessions.Select(s => s.Session))
-                {
-                    <h1>@session.Name</h1>
-                    <p>
-                        @Html.Raw(session.Description.Replace("\n", "<br/>"))
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@twitterText">Tweet</a>
                     </p>
-
-                }
-
+                </div>
             </div>
+            @foreach (var session in @Model.Sessions.Select(s => s.Session))
+            {
+                <br id="@session.Slug" />
+                <hr/>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <a href="#@session.Slug">
+                            <h2>@session.Name</h2>
+                        </a>
+                        <p>
+                            @Html.Raw(session.Description.Replace("\n", "<br/>"))
+                        </p>
+                        @if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
+                        {
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe src="@session.VideoUrl" allowfullscreen></iframe>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
         </div>
     </div>
-</div>
 </section>
 
 
