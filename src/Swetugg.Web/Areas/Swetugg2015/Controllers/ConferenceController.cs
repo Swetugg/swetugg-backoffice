@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
@@ -16,14 +17,22 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         private int conferenceId;
         private string conferenceSlug;
         private Conference conference;
+        private string appInsightsInstrumentationKey;
 
         public ConferenceController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
             this.conferenceSlug = "swetugg-2015";
             this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
+            this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
         }
-        
+
+        protected override void OnResultExecuting(ResultExecutingContext filterContext)
+        {
+            ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
+            base.OnResultExecuting(filterContext);
+        }
+
         [Route("")]
         public async Task<ActionResult> Index()
         {
