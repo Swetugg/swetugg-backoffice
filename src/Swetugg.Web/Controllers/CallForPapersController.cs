@@ -28,11 +28,13 @@ namespace Swetugg.Web.Controllers
         private readonly IConferenceService _conferenceService;
         private ApplicationUserManager _userManager;
         private readonly ApplicationDbContext _dbContext;
+        private readonly string _cfpSpeakerImageContainerName;
 
         public CallForPapersController(IConferenceService conferenceService, ApplicationDbContext dbContext)
         {
             _conferenceService = conferenceService;
             _dbContext = dbContext;
+            _cfpSpeakerImageContainerName = ConfigurationManager.AppSettings["Storage.Container.CallForPaper.SpeakerImages"];
         }
 
         public ApplicationUserManager UserManager
@@ -136,7 +138,7 @@ namespace Swetugg.Web.Controllers
 
                                         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
                                         CloudBlobContainer container =
-                                            blobClient.GetContainerReference("cfp-speaker-images");
+                                            blobClient.GetContainerReference(_cfpSpeakerImageContainerName);
                                         container.CreateIfNotExists(BlobContainerPublicAccessType.Blob);
 
                                         var speakerFileName = "speaker-image-" + dbSpeaker.Email + "-" + Guid.NewGuid();
