@@ -15,6 +15,17 @@
 
 @Html.ValidationSummary()
 
+@helper Popover(string title, string content)
+{
+    <a href="" class=""
+       data-toggle="popover"
+       data-placement="top"
+       data-trigger="hover"
+       title="@title"
+       data-html="true"
+       data-content="@content"><i class="glyphicon glyphicon-info-sign"></i></a>
+}
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3>Session information</h3>
@@ -44,21 +55,25 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Tags)
+                                @Popover("Tags", "Comma-separated list of suitable tags for your session. <br />Example 'asp.net, c#, architecture'")
                                 @Html.TextBoxFor(m => m.Tags, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Tags)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Audience)
+                                @Popover("Intended audience", "Who should come see your session? <br />Example 'Developers, Architects'")
                                 @Html.TextBoxFor(m => m.Audience, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Audience)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Level)
+                                @Popover("Difficulty level", "100 = Introduction <br />200 = Intermediate <br />300 = Advanced <br />400 = Expert")
                                 @Html.TextBoxFor(m => m.Level, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Level)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Comments)
+                                @Popover("Other comments to the organizers", "Are you more than one speaker? Do you need special props? Anything else we should know about?")
                                 @Html.TextAreaFor(m => m.Comments, new {@class = "form-control", rows = 6})
                                 @Html.ValidationMessageFor(m => m.Comments)
                             </div>
@@ -88,3 +103,11 @@
 
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+}

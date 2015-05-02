@@ -30,20 +30,28 @@
 
             @if (conference.CfpStart.HasValue && conference.CfpStart > today)
             {
-                <small>Call For Paper opens on @conference.CfpStart.Value.ToString("yyyy-MM-dd")</small><br />
+                <small>Call For Paper opens on @conference.CfpStart.Value.ToString("yyyy-MM-dd")</small><br/>
             }
             @if (conference.CfpEnd.HasValue && conference.CfpEnd > today)
             {
-                <small>Call For Paper closes on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br />
+                <small>Call For Paper closes on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
             }
             @if (conference.CfpEnd.HasValue && conference.CfpEnd < today)
             {
-                <small>Call For Paper closed on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br />
+                <small>Call For Paper closed on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
             }
         </div>
     </div>
 }
-<h2>Select conference</h2>
+
+<h2>Call For Papers</h2>
+<p>
+    Welcome to the Swetugg Call For Papers area. This is where you can submit a bio and one or more sessions to the Swetugg conference.
+    You will only be able to submit new sessions when the Call For Papers period is open. Sessions that have already been submitted may be
+    updated after the CFP is closed, but please only use this for minor edits.
+</p>
+
+<h3>Select conference</h3>
 <div class="list-group">
     @foreach (var conference in @Model)
     {
