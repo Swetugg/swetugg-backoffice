@@ -20,8 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <NuGetPackageImportStamp>59df30cb</NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/17b224f7-0fc8-48f7-a750-29d35c5532b6/resourcegroups/Default-Web-NorthEurope/providers/microsoft.insights/components/swetuggpreview</ApplicationInsightsResourceId>
+    <NuGetPackageImportStamp>b01bd050</NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/17b224f7-0fc8-48f7-a750-29d35c5532b6/resourcegroups/swetugg/providers/microsoft.insights/components/swetugg</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
