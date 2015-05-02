@@ -1,33 +1,65 @@
-﻿@model IEnumerable<Swetugg.Web.Models.Conference>
+﻿@using Swetugg.Web.Models
+@model IEnumerable<Swetugg.Web.Models.Conference>
 
 @{
     ViewBag.Title = "Call For Papers";
+    IEnumerable<int> cfpAlreadyCreatedFor = ViewBag.CfpAlreadyCreatedFor;
 }
+
 <ol class="breadcrumb">
     <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
     <li class="active">Call For Papers</li>
 </ol>
 
+@helper CfpConference(Conference conference)
+{
+    var today = DateTime.Now.Date;
+    <div class="media">
+        <div class="media-left">
+            <img class="media-object" src="" />
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+                @conference.Name
+                @if (conference.Start.HasValue && conference.End.HasValue)
+                {
+                    <small>@conference.Start.Value.ToString("yyyy-MM-dd") - @conference.End.Value.ToString("yyyy-MM-dd")</small>
+                }
+            </h4>
+            <p>@conference.Description</p>
+
+            @if (conference.CfpStart.HasValue && conference.CfpStart > today)
+            {
+                <small>Call For Paper opens on @conference.CfpStart.Value.ToString("yyyy-MM-dd")</small><br />
+            }
+            @if (conference.CfpEnd.HasValue && conference.CfpEnd > today)
+            {
+                <small>Call For Paper closes on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br />
+            }
+            @if (conference.CfpEnd.HasValue && conference.CfpEnd < today)
+            {
+                <small>Call For Paper closed on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br />
+            }
+        </div>
+    </div>
+}
 <h2>Select conference</h2>
 <div class="list-group">
     @foreach (var conference in @Model)
     {
-        <a href="@Url.Action("Conference", "CallForPapers", new { conferenceSlug = conference.Slug })" class="list-group-item">
-            <div class="media">
-                <div class="media-left">
-                    <img class="media-object" src=""/>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        @conference.Name
-                        @if (conference.Start.HasValue && conference.End.HasValue)
-                        {
-                            <small>@conference.Start.Value.ToString("yyyy-MM-dd") - @conference.End.Value.ToString("yyyy-MM-dd")</small>
-                        }
-                    </h4>
-                    <p>@conference.Description</p>
-                </div>
-            </div>
-        </a>
+        var isEnabled = conference.IsCfpOpen();
+
+        if (isEnabled || cfpAlreadyCreatedFor.Contains(conference.Id))
+        {
+            <a href="@Url.Action("Conference", "CallForPapers", new { conferenceSlug = conference.Slug })" class="list-group-item">
+                @CfpConference(conference)
+            </a>
+        }
+        else
+        {
+            <a class="list-group-item disabled">
+                @CfpConference(conference)
+            </a>
+        }
     }
 </div>

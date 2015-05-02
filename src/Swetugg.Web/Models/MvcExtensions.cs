@@ -1,9 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Swetugg.Web.Models
 {
+    public static class ConferenceInfoExtensions
+    {
+        public static bool IsCfpOpen(this Conference conference)
+        {
+            var today = DateTime.Now.Date;
+            return conference.CfpStart.HasValue && conference.CfpStart < today &&
+                   (!conference.CfpEnd.HasValue || conference.CfpEnd > today);
+        }
+    }
+
     public static class MvcExtensions
     {
         public static SelectList PreAppend(this IEnumerable<SelectListItem> list, string dataTextField, string selectedValue, bool selected = false)

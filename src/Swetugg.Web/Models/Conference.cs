@@ -29,6 +29,14 @@ namespace Swetugg.Web.Models
                ApplyFormatInEditMode = true)]
         public DateTime? End { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
+               ApplyFormatInEditMode = true)]
+        public DateTime? CfpStart { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
+               ApplyFormatInEditMode = true)]
+        public DateTime? CfpEnd { get; set; }
+
         public ICollection<Speaker> Speakers { get; set; }
         public ICollection<Session> Sessions { get; set; }
         public ICollection<Sponsor> Sponsors { get; set; }
