@@ -312,6 +312,10 @@
     <Compile Include="Migrations\201504121921565_LinkCfpsToSpeakerAndSession.Designer.cs">
       <DependentUpon>201504121921565_LinkCfpsToSpeakerAndSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505021721031_OpenCloseCfp.cs" />
+    <Compile Include="Migrations\201505021721031_OpenCloseCfp.Designer.cs">
+      <DependentUpon>201505021721031_OpenCloseCfp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -924,6 +928,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504121921565_LinkCfpsToSpeakerAndSession.resx">
       <DependentUpon>201504121921565_LinkCfpsToSpeakerAndSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505021721031_OpenCloseCfp.resx">
+      <DependentUpon>201505021721031_OpenCloseCfp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

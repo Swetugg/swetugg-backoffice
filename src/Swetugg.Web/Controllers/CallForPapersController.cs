@@ -53,7 +53,12 @@ namespace Swetugg.Web.Controllers
         [Route("")]
         public async Task<ActionResult> Index()
         {
+            var userId = User.Identity.GetUserId();
             var conferences = await _conferenceService.GetConferences();
+            var cfpAlreadyCreatedFor = await _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArrayAsync();
+
+            ViewBag.CfpAlreadyCreatedFor = cfpAlreadyCreatedFor;
+
             return View(conferences);
         }
 
@@ -65,7 +70,14 @@ namespace Swetugg.Web.Controllers
             var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
-                return RedirectToAction("Speaker");
+                if (conference.IsCfpOpen())
+                {
+                    return RedirectToAction("Speaker");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.Conference = conference;
 
@@ -80,6 +92,11 @@ namespace Swetugg.Web.Controllers
             var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
+                if (!conference.IsCfpOpen())
+                {
+                    // CFP Isn't open. Can't create new speakers.
+                    return RedirectToAction("Index");
+                }
                 speaker = new CfpSpeaker()
                 {
                     Email = User.Identity.Name
@@ -106,6 +123,11 @@ namespace Swetugg.Web.Controllers
 
                     if (dbSpeaker == null)
                     {
+                        if (!conference.IsCfpOpen())
+                        {
+                            // CFP Isn't open. Can't create new speakers.
+                            return RedirectToAction("Index");
+                        }
                         dbSpeaker = new CfpSpeaker();
                         _dbContext.Entry(dbSpeaker).State = EntityState.Added;
                         dbSpeaker.UserId = userId;
@@ -194,7 +216,20 @@ namespace Swetugg.Web.Controllers
             var userId = User.Identity.GetUserId();
             var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
-            var session = id.HasValue ? speaker.Sessions.SingleOrDefault(s => s.Id == id) : new CfpSession() { Speaker = speaker };
+            CfpSession session;
+            if (id.HasValue)
+            {
+                session = speaker.Sessions.SingleOrDefault(s => s.Id == id);
+            }
+            else
+            {
+                if (!conference.IsCfpOpen())
+                {
+                    // CFP Isn't open. Can't create new sessions.
+                    return RedirectToAction("Conference");
+                }
+                session = new CfpSession() { Speaker = speaker };
+            }
 
             ViewBag.Conference = conference;
             ViewBag.Speaker = speaker;
@@ -221,6 +256,11 @@ namespace Swetugg.Web.Controllers
                     var dbSession = id.HasValue ? speaker.Sessions.SingleOrDefault(s => s.Id == id) : null;
                     if (dbSession == null)
                     {
+                        if (!conference.IsCfpOpen())
+                        {
+                            // CFP Isn't open. Can't create new sessions.
+                            return RedirectToAction("Conference");
+                        }
                         dbSession = new CfpSession();
                         _dbContext.Entry(dbSession).State = EntityState.Added;
                         dbSession.ConferenceId = conference.Id;
