@@ -3,8 +3,8 @@
 
 @{
     Conference conference = ViewBag.Conference;
-    
-    ViewBag.Title = "Call For Paper - Speaker information";
+
+    ViewBag.Title = conference.Name + " - Call For Papers - Speaker";
 }
 <ol class="breadcrumb">
     <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>

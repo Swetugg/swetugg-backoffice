@@ -286,6 +286,7 @@
     <Compile Include="Controllers\ConferenceExtensions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageExtensions.cs" />
+    <Compile Include="Controllers\LegacyRedirectController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />

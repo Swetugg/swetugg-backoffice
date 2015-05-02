@@ -2,9 +2,9 @@
 @model Swetugg.Web.Models.CfpSession
 
 @{
-    ViewBag.Title = "title";
     Conference conference = ViewBag.Conference;
     CfpSpeaker speaker = ViewBag.Speaker;
+    ViewBag.Title = conference.Name + " - Call For Papers - " + speaker.Name;
 }
 <ol class="breadcrumb">
     <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
