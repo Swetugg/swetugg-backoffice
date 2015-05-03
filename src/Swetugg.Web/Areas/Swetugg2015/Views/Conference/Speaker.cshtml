@@ -1,6 +1,8 @@
-﻿@model Swetugg.Web.Models.Speaker
+﻿@using Swetugg.Web.Controllers
+@model Swetugg.Web.Models.Speaker
 
 @{
+    var fbAppId = ViewData["FacebookAppId"];
     ViewBag.Title = "Speaker";
     Layout = "~/Areas/Swetugg2015/Views/Shared/_LayoutSimple.cshtml";
 }
@@ -40,8 +42,6 @@
                             var twitterText = nameText + " (från @Swetugg)";
                             var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
                         }
-                        <a href="https://twitter.com/share" class="twitter-share-button pull-right" data-url="@linkUrl" data-text="@twitterText">Tweet</a>
-
                         <a href="#@session.Slug">
                             <h2>@session.Name</h2>
                         </a>
@@ -51,6 +51,10 @@
                                 <iframe src="@session.VideoUrl" allowfullscreen></iframe>
                             </div>
                         }
+                        <div style="margin-top:8px">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="@linkUrl" data-text="@twitterText">Tweet</a>
+                            <div class="fb-like" data-href="@linkUrl" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                        </div>
                         <p>
                             @Html.Raw(session.Description.Replace("\n", "<br/>"))
                         </p>
@@ -73,5 +77,34 @@
 
 
 @section meta {
-    <meta property="og:image" content="~/Content/swetugg-2015/SpeakerPictures/@(Model.Slug +".png") " />
+    @{
+        var session = Model.Sessions.Select(s => s.Session).FirstOrDefault();
+        var speakerUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme);
+    }
+
+    @if (session != null)
+    {
+        var sessionUrl = speakerUrl + "#" + session.Slug;
+
+        <meta property="og:url" content="@sessionUrl" />
+        <meta property="og:title" content="@session.Name"/>
+        <meta property="og:description" content="@session.Description"/>
+        if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
+        {
+            var youtubeId = session.VideoUrl.Substring(session.VideoUrl.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
+            
+            <meta property="og:type" content="video:other"/>
+
+            <meta property="og:image" content="https://i1.ytimg.com/vi/@(youtubeId)/hqdefault.jpg"/>
+            <meta property="og:video" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+            <meta property="og:video:secure_url" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+        }
+    }
+    else
+    {
+        <meta property="og:url" content="@speakerUrl" />
+        <meta property="og:image" content="/Content/swetugg-2015/SpeakerPictures/@(Model.Slug + ".png") " />
+        <meta property="og:title" content="@Model.Name"/>
+        <meta property="og:description" content="@Model.Bio"/>
+    }
 }

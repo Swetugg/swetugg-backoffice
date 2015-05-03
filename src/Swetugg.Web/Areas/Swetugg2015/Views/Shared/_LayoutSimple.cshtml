@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var fbAppId = ViewData["FacebookAppId"];
+    var appInsightsInstrumentationKey = ViewData["InstrumentationKey"];
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,6 +16,9 @@
     <meta name="author" content="">
 
     @RenderSection("meta", false)
+
+    <meta property="og:site_name" content="Swetugg 2015" />
+    <meta property="fb:app_id" content="@fbAppId" />
 
     <title>Swetugg - en konferens i Swenugs anda</title>
 
@@ -31,7 +38,7 @@
         var appInsights = window.appInsights || function (config) {
             function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
         }({
-            instrumentationKey: "@ViewData["InstrumentationKey"]"
+            instrumentationKey: "@appInsightsInstrumentationKey"
         });
 
         window.appInsights = appInsights;
@@ -40,6 +47,17 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.3&appId=@fbAppId";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
         <div class="container">
