@@ -18,6 +18,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         private string conferenceSlug;
         private Conference conference;
         private string appInsightsInstrumentationKey;
+        private string facebookAppId;
 
         public ConferenceController(ApplicationDbContext dbContext)
         {
@@ -25,11 +26,13 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
             this.conferenceSlug = "swetugg-2015";
             this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
             this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
+            this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
         }
 
         protected override void OnResultExecuting(ResultExecutingContext filterContext)
         {
             ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
+            ViewData["FacebookAppId"] = facebookAppId;
             base.OnResultExecuting(filterContext);
         }
 
