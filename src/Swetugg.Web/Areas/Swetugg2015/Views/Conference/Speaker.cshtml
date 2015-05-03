@@ -93,7 +93,7 @@
         {
             var youtubeId = session.VideoUrl.Substring(session.VideoUrl.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
             
-            <meta property="og:type" content="video:other"/>
+            <meta property="og:type" content="video.other"/>
 
             <meta property="og:image" content="https://i1.ytimg.com/vi/@(youtubeId)/hqdefault.jpg"/>
             <meta property="og:video" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
@@ -103,7 +103,7 @@
     else
     {
         <meta property="og:url" content="@speakerUrl" />
-        <meta property="og:image" content="/Content/swetugg-2015/SpeakerPictures/@(Model.Slug + ".png") " />
+        <meta property="og:image" content="http://swetugg.se/Content/swetugg-2015/SpeakerPictures/@(Model.Slug + ".png") " />
         <meta property="og:title" content="@Model.Name"/>
         <meta property="og:description" content="@Model.Bio"/>
     }
