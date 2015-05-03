@@ -87,7 +87,7 @@
         var sessionUrl = speakerUrl + "#" + session.Slug;
 
         <meta property="og:url" content="@sessionUrl" />
-        <meta property="og:title" content="@session.Name"/>
+        <meta property="og:title" content="@Model.Name - @session.Name"/>
         <meta property="og:description" content="@session.Description"/>
         if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
         {
@@ -96,8 +96,10 @@
             <meta property="og:type" content="article"/>
 
             <meta property="og:image" content="https://i1.ytimg.com/vi/@(youtubeId)/hqdefault.jpg"/>
-            <meta property="og:video" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
-            <meta property="og:video:secure_url" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+            @*
+                <meta property="og:video" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+                <meta property="og:video:secure_url" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+            *@
         }
     }
     else
