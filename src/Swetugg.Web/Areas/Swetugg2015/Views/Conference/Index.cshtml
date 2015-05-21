@@ -6,9 +6,25 @@
     Conference conference = ViewBag.Conference;
 
     IEnumerable<Slot> slots = ViewBag.Slots;
+    if (slots == null)
+    {
+        slots = new List<Slot>();
+    }
     IEnumerable<Room> rooms = ViewBag.Rooms;
+    if (rooms == null)
+    {
+        rooms = new List<Room>();
+    }
     IEnumerable<Sponsor> sponsors = ViewBag.Sponsors;
+    if (sponsors == null)
+    {
+        sponsors = new List<Sponsor>();
+    }
     IEnumerable<Speaker> speakers = ViewBag.Speakers;
+    if (speakers == null)
+    {
+        speakers = new List<Speaker>();
+    }
 
 }
 
