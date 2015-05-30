@@ -15,74 +15,72 @@ namespace Swetugg.Web.Services
 			this._dbContext = dbContext;
 		}
 
-	    public async Task<IEnumerable<Conference>> GetConferences()
+	    public IEnumerable<Conference> GetConferences()
 	    {
-	        var conferences = await _dbContext.Conferences.OrderByDescending(c => c.Start).ToListAsync();
+	        var conferences = _dbContext.Conferences.OrderByDescending(c => c.Start).ToList();
 	        return conferences;
 	    }
 
-	    public async Task<Conference> GetConferenceBySlug(string slug)
+	    public Conference GetConferenceBySlug(string slug)
 	    {
-            var conference = await _dbContext.Conferences.SingleOrDefaultAsync(c => c.Slug == slug);
+            var conference = _dbContext.Conferences.SingleOrDefault(c => c.Slug == slug);
             return conference;
         }
 
-	    public async Task<IEnumerable<Slot>> GetSlotsAndSessions(int conferenceId)
+	    public IEnumerable<Slot> GetSlotsAndSessions(int conferenceId)
 		{
 			var slotsWithSessions =
-				await
 					_dbContext.Slots
 						.Include(s => s.RoomSlots.Select(rs => rs.AssignedSession))
 						.Where(sl => sl.ConferenceId == conferenceId)
 						.OrderBy(s => s.Start)
-						.ToListAsync();
+						.ToList();
 			return slotsWithSessions;
 		}
 
-		public async Task<IEnumerable<Session>> GetSessions(int conferenceId)
+		public IEnumerable<Session> GetSessions(int conferenceId)
 		{
 			var sessions =
-				await
 					_dbContext.Sessions
 						.Include(s => s.Speakers.Select(sp => sp.Speaker))
 						.Where(sl => sl.ConferenceId == conferenceId)
 						.OrderBy(s => s.Priority)
-						.ToListAsync();
+						.ToList();
 			return sessions;
 		}
 
-		public async Task<IEnumerable<Room>> GetRooms(int conferenceId)
+		public IEnumerable<Room> GetRooms(int conferenceId)
 		{
-			var allRooms = await _dbContext.Rooms.Where(r => r.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToListAsync();
+			var allRooms = _dbContext.Rooms.Where(r => r.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToList();
 			return allRooms;
 		}
 
-		public async Task<IEnumerable<Speaker>> GetSpeakers(int conferenceId)
+		public IEnumerable<Speaker> GetSpeakers(int conferenceId)
 		{
-			var allSpeakers = await _dbContext.Speakers.Where(s => s.ConferenceId == conferenceId && s.Published).OrderBy(s => s.Priority).ToListAsync();
+			var allSpeakers = _dbContext.Speakers.Where(s => s.ConferenceId == conferenceId && s.Published).OrderBy(s => s.Priority).ToList();
 			return allSpeakers;
 		}
 
-		public async Task<IEnumerable<Sponsor>> GetSponsors(int conferenceId)
+		public IEnumerable<Sponsor> GetSponsors(int conferenceId)
 		{
-			var allSponsors = await _dbContext.Sponsors.Where(s => s.ConferenceId == conferenceId && s.Published).OrderBy(s => s.Priority).ToListAsync();
+			var allSponsors = _dbContext.Sponsors.Where(s => s.ConferenceId == conferenceId && s.Published).OrderBy(s => s.Priority).ToList();
 			return allSponsors;
 		}
 
-	    public async Task<Speaker> GetSpeakerBySlug(int conferenceId, string slug)
+	    public Speaker GetSpeakerBySlug(int conferenceId, string slug)
 	    {
-	        var speaker = await _dbContext.Speakers.
+	        var speaker = _dbContext.Speakers.
                 Where(s => s.ConferenceId == conferenceId && s.Slug == slug).
-	            Include(s => s.Sessions.Select(se => se.Session)).SingleOrDefaultAsync();
+	            Include(s => s.Sessions.Select(se => se.Session)).SingleOrDefault();
 	        
             return speaker;
 	    }
 
-	    public async Task<Session> GetSessionBySlug(int conferenceId, string slug)
+	    public Session GetSessionBySlug(int conferenceId, string slug)
 	    {
-	        var session = await _dbContext.Sessions.
+	        var session = _dbContext.Sessions.
 	            Where(s => s.ConferenceId == conferenceId && s.Slug == slug).
-	            Include(s => s.Speakers.Select(sp => sp.Speaker)).SingleOrDefaultAsync();
+	            Include(s => s.Speakers.Select(sp => sp.Speaker)).SingleOrDefault();
 	        
             return session;
 	    }

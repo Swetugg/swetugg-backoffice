@@ -37,13 +37,13 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         }
 
         [Route("")]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var speakers = await conferenceService.GetSpeakers(ConferenceId);
-            var sessions = await conferenceService.GetSessions(ConferenceId);
-            var slots = await conferenceService.GetSlotsAndSessions(ConferenceId);
-            var rooms = await conferenceService.GetRooms(ConferenceId);
-            var sponsors = await conferenceService.GetSponsors(ConferenceId);
+            var speakers = conferenceService.GetSpeakers(ConferenceId);
+            var sessions = conferenceService.GetSessions(ConferenceId);
+            var slots = conferenceService.GetSlotsAndSessions(ConferenceId);
+            var rooms = conferenceService.GetRooms(ConferenceId);
+            var sponsors = conferenceService.GetSponsors(ConferenceId);
 
             ViewData["Speakers"] = speakers;
             ViewData["Sessions"] = sessions;
@@ -63,9 +63,9 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         }
 
         [Route("speakers/{speakerSlug}")]
-        public async Task<ActionResult> Speaker(string speakerSlug)
+        public ActionResult Speaker(string speakerSlug)
         {
-            var speaker = await conferenceService.GetSpeakerBySlug(ConferenceId, speakerSlug);
+            var speaker = conferenceService.GetSpeakerBySlug(ConferenceId, speakerSlug);
             return View(speaker);
         }
 
