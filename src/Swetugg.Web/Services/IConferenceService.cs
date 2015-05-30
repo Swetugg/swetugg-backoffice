@@ -7,16 +7,16 @@ namespace Swetugg.Web.Services
 
     public interface IConferenceService
     {
-        Task<IEnumerable<Conference>> GetConferences();
-        Task<Conference> GetConferenceBySlug(string slug);
+        IEnumerable<Conference> GetConferences();
+        Conference GetConferenceBySlug(string slug);
 
-        Task<IEnumerable<Slot>> GetSlotsAndSessions(int conferenceId);
-        Task<IEnumerable<Session>> GetSessions(int conferenceId);
-        Task<IEnumerable<Room>> GetRooms(int conferenceId);
-        Task<IEnumerable<Speaker>> GetSpeakers(int conferenceId);
-        Task<IEnumerable<Sponsor>> GetSponsors(int conferenceId);
+        IEnumerable<Slot> GetSlotsAndSessions(int conferenceId);
+        IEnumerable<Session> GetSessions(int conferenceId);
+        IEnumerable<Room> GetRooms(int conferenceId);
+        IEnumerable<Speaker> GetSpeakers(int conferenceId);
+        IEnumerable<Sponsor> GetSponsors(int conferenceId);
         
-        Task<Speaker> GetSpeakerBySlug(int conferenceId, string slug);
-        Task<Session> GetSessionBySlug(int conferenceId, string slug);
+        Speaker GetSpeakerBySlug(int conferenceId, string slug);
+        Session GetSessionBySlug(int conferenceId, string slug);
     }
 }

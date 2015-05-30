@@ -28,14 +28,14 @@ namespace Swetugg.Web.Services
             _conferenceService = conferenceService;
         }
 
-        private async Task<T> FromCache<T>(string key, Func<Task<T>> fetch)
+        private T FromCache<T>(string key, Func<T> fetch)
             where T: class
         {
             var httpCache = HttpContext.Current.Cache;
             var cached = (T)httpCache.Get(key);
             if (cached == null)
             {
-                cached = (await fetch());
+                cached = fetch();
                 httpCache.Add(key, cached, 
                     null, 
                     DateTime.Now.AddMinutes(MinutesToCache), 
@@ -45,58 +45,58 @@ namespace Swetugg.Web.Services
             return cached;
         }
 
-        public async Task<IEnumerable<Conference>> GetConferences()
+        public IEnumerable<Conference> GetConferences()
         {
-            return await FromCache("GetConferences",
-                async () => (await _conferenceService.GetConferences()).ToArray());
+            return FromCache("GetConferences",
+                () => (_conferenceService.GetConferences()).ToArray());
         }
 
-        public async Task<Conference> GetConferenceBySlug(string slug)
+        public Conference GetConferenceBySlug(string slug)
         {
-            return await FromCache("GetConferenceBySlug_" + slug,
-                async () => (await _conferenceService.GetConferenceBySlug(slug)));
+            return FromCache("GetConferenceBySlug_" + slug,
+                () => (_conferenceService.GetConferenceBySlug(slug)));
         }
 
-        public async Task<IEnumerable<Slot>> GetSlotsAndSessions(int conferenceId)
+        public IEnumerable<Slot> GetSlotsAndSessions(int conferenceId)
         {
-            return await FromCache("GetSlotsAndSessions_" + conferenceId,
-                async () => (await _conferenceService.GetSlotsAndSessions(conferenceId)));
+            return FromCache("GetSlotsAndSessions_" + conferenceId,
+                () => (_conferenceService.GetSlotsAndSessions(conferenceId)));
         }
 
-        public async Task<IEnumerable<Session>> GetSessions(int conferenceId)
+        public IEnumerable<Session> GetSessions(int conferenceId)
         {
-            return await FromCache("GetSessions_" + conferenceId,
-                async () => (await _conferenceService.GetSessions(conferenceId)));
+            return FromCache("GetSessions_" + conferenceId,
+                () => (_conferenceService.GetSessions(conferenceId)));
         }
 
-        public async Task<IEnumerable<Room>> GetRooms(int conferenceId)
+        public IEnumerable<Room> GetRooms(int conferenceId)
         {
-            return await FromCache("GetRooms_" + conferenceId,
-                async () => (await _conferenceService.GetRooms(conferenceId)));
+            return FromCache("GetRooms_" + conferenceId,
+                () => (_conferenceService.GetRooms(conferenceId)));
         }
 
-        public async Task<IEnumerable<Speaker>> GetSpeakers(int conferenceId)
+        public IEnumerable<Speaker> GetSpeakers(int conferenceId)
         {
-            return await FromCache("GetSpeakers_" + conferenceId,
-                async () => (await _conferenceService.GetSpeakers(conferenceId)).ToArray());
+            return FromCache("GetSpeakers_" + conferenceId,
+                () => (_conferenceService.GetSpeakers(conferenceId)).ToArray());
         }
 
-        public async Task<IEnumerable<Sponsor>> GetSponsors(int conferenceId)
+        public IEnumerable<Sponsor> GetSponsors(int conferenceId)
         {
-            return await FromCache("GetSponsors_" + conferenceId,
-                async () => (await _conferenceService.GetSponsors(conferenceId)).ToArray());
+            return FromCache("GetSponsors_" + conferenceId,
+                () => (_conferenceService.GetSponsors(conferenceId)).ToArray());
         }
 
-        public async Task<Speaker> GetSpeakerBySlug(int conferenceId, string slug)
+        public Speaker GetSpeakerBySlug(int conferenceId, string slug)
         {
-            return await FromCache("GetSpeakerBySlug_" + conferenceId + "_" + slug,
-                async () => (await _conferenceService.GetSpeakerBySlug(conferenceId, slug)));
+            return FromCache("GetSpeakerBySlug_" + conferenceId + "_" + slug,
+                () => (_conferenceService.GetSpeakerBySlug(conferenceId, slug)));
         }
 
-        public async Task<Session> GetSessionBySlug(int conferenceId, string slug)
+        public Session GetSessionBySlug(int conferenceId, string slug)
         {
-            return await FromCache("GetSessionBySlug_" + conferenceId + "_" + slug,
-                async () => (await _conferenceService.GetSessionBySlug(conferenceId, slug)));
+            return FromCache("GetSessionBySlug_" + conferenceId + "_" + slug,
+                () => (_conferenceService.GetSessionBySlug(conferenceId, slug)));
         }
     }
 }

@@ -51,11 +51,11 @@ namespace Swetugg.Web.Controllers
 
 
         [Route("")]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var conferences = await _conferenceService.GetConferences();
-            var cfpAlreadyCreatedFor = await _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArrayAsync();
+            var conferences = _conferenceService.GetConferences();
+            var cfpAlreadyCreatedFor = _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArray();
 
             ViewBag.CfpAlreadyCreatedFor = cfpAlreadyCreatedFor;
 
@@ -63,11 +63,11 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}")]
-        public async Task<ActionResult> Conference(string conferenceSlug)
+        public ActionResult Conference(string conferenceSlug)
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
                 if (conference.IsCfpOpen())
@@ -85,11 +85,11 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/speaker")]
-        public async Task<ActionResult> Speaker(string conferenceSlug)
+        public ActionResult Speaker(string conferenceSlug)
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
                 if (!conference.IsCfpOpen())
@@ -109,17 +109,17 @@ namespace Swetugg.Web.Controllers
 
         [Route("{conferenceSlug}/speaker")]
         [HttpPost]
-        public async Task<ActionResult> Speaker(string conferenceSlug, CfpSpeaker speaker, HttpPostedFileBase imageFile)
+        public ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, HttpPostedFileBase imageFile)
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
             
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var dbSpeaker = await
-                        _dbContext.CfpSpeakers.SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+                    var dbSpeaker = 
+                        _dbContext.CfpSpeakers.SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
                     if (dbSpeaker == null)
                     {
@@ -149,7 +149,7 @@ namespace Swetugg.Web.Controllers
                             {
                                 using (var memStream = new MemoryStream())
                                 {
-                                    await imageFile.InputStream.CopyToAsync(memStream);
+                                    imageFile.InputStream.CopyTo(memStream);
 
                                     var parsedImage = Image.FromStream(memStream);
 
@@ -192,7 +192,7 @@ namespace Swetugg.Web.Controllers
                     // If there are still no errors
                     if (ModelState.IsValid)
                     {
-                        await _dbContext.SaveChangesAsync();
+                        _dbContext.SaveChanges();
 
                         return RedirectToAction("Conference");
                     }
@@ -209,12 +209,12 @@ namespace Swetugg.Web.Controllers
 
         [Route("{conferenceSlug}/session")]
         #pragma warning disable 0108
-        public async Task<ActionResult> Session(string conferenceSlug, int? id)
+        public ActionResult Session(string conferenceSlug, int? id)
         #pragma warning restore 0108
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             CfpSession session;
             if (id.HasValue)
@@ -241,12 +241,12 @@ namespace Swetugg.Web.Controllers
         [Route("{conferenceSlug}/session")]
         [HttpPost]
         #pragma warning disable 0108
-        public async Task<ActionResult> Session(string conferenceSlug, int? id, CfpSession session)
+        public ActionResult Session(string conferenceSlug, int? id, CfpSession session)
         #pragma warning restore 0108
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             session.Speaker = speaker;
 
             if (ModelState.IsValid)
@@ -273,7 +273,7 @@ namespace Swetugg.Web.Controllers
                     dbSession.Level = session.Level;
                     dbSession.Tags = session.Tags;
 
-                    await _dbContext.SaveChangesAsync();
+                    _dbContext.SaveChanges();
                     return RedirectToAction("Conference");
                 }
                 catch (Exception ex)
@@ -289,17 +289,17 @@ namespace Swetugg.Web.Controllers
 
         [HttpPost]
         [Route("{conferenceSlug}/delete-session")]
-        public async Task<ActionResult> DeleteSession(string conferenceSlug, int id)
+        public ActionResult DeleteSession(string conferenceSlug, int id)
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             var session = speaker.Sessions.SingleOrDefault(s => s.Id == id);
             if (session != null)
             {
                 _dbContext.Entry(session).State = EntityState.Deleted;
-                await _dbContext.SaveChangesAsync();
+                _dbContext.SaveChanges();
             }
 
             return RedirectToAction("Conference", new { conferenceSlug });
@@ -307,11 +307,11 @@ namespace Swetugg.Web.Controllers
 
         [HttpPost]
         [Route("{conferenceSlug}/delete-speaker")]
-        public async Task<ActionResult> DeleteSpeaker(string conferenceSlug)
+        public ActionResult DeleteSpeaker(string conferenceSlug)
         {
-            var conference = await _conferenceService.GetConferenceBySlug(conferenceSlug);
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = await _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefaultAsync(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             if (speaker != null)
             {
@@ -320,7 +320,7 @@ namespace Swetugg.Web.Controllers
                     _dbContext.Entry(session).State = EntityState.Deleted;
                 }
                 _dbContext.Entry(speaker).State = EntityState.Deleted;
-                await _dbContext.SaveChangesAsync();
+                _dbContext.SaveChanges();
             }
 
             return RedirectToAction("Index");
