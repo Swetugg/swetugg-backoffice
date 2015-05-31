@@ -11,7 +11,6 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
     [RouteArea("Swetugg2015", AreaPrefix = "swetugg-2015")]
     public class ConferenceController : Controller
     {
-        private readonly ApplicationDbContext dbContext;
         private readonly IConferenceService conferenceService;
 
         private int conferenceId;
@@ -22,7 +21,6 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
 
         public ConferenceController(ApplicationDbContext dbContext)
         {
-            this.dbContext = dbContext;
             this.conferenceSlug = "swetugg-2015";
             this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
             this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
@@ -39,18 +37,20 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         [Route("")]
         public ActionResult Index()
         {
-            var speakers = conferenceService.GetSpeakers(ConferenceId);
-            var sessions = conferenceService.GetSessions(ConferenceId);
-            var slots = conferenceService.GetSlotsAndSessions(ConferenceId);
-            var rooms = conferenceService.GetRooms(ConferenceId);
-            var sponsors = conferenceService.GetSponsors(ConferenceId);
+            var conf = Conference;
+
+            var speakers = conferenceService.GetSpeakers(conf.Id);
+            var sessions = conferenceService.GetSessions(conf.Id);
+            var slots = conferenceService.GetSlotsAndSessions(conf.Id);
+            var rooms = conferenceService.GetRooms(conf.Id);
+            var sponsors = conferenceService.GetSponsors(conf.Id);
 
             ViewData["Speakers"] = speakers;
             ViewData["Sessions"] = sessions;
             ViewData["Slots"] = slots;
             ViewData["Rooms"] = rooms;
             ViewData["Sponsors"] = sponsors;
-            ViewData["Conference"] = Conference;
+            ViewData["Conference"] = conf;
 
             return View();
         }
@@ -81,7 +81,8 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
             {
                 if (conference != null)
                     return conference;
-                return conference = dbContext.Conferences.Single(c => c.Slug == ConferenceSlug);
+
+                return conference = conferenceService.GetConferenceBySlug(ConferenceSlug);
             }
 
         }
