@@ -907,6 +907,7 @@
     <Content Include="Views\CallForPapers\Speaker.cshtml" />
     <Content Include="Views\CallForPapers\Session.cshtml" />
     <Content Include="Scripts\jquery.validate.globalize.min.js.map" />
+    <Content Include="Views\Home\Migrations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

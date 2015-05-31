@@ -26,7 +26,8 @@ namespace Swetugg.Web.Models
 
 		public static ApplicationDbContext Create()
 		{
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Database.SetInitializer(new NullDatabaseInitializer<ApplicationDbContext>());
+            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
             return new ApplicationDbContext();
 		}
 

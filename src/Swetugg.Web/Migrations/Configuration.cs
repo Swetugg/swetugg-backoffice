@@ -14,6 +14,7 @@ namespace Swetugg.Web.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            
         }
 
         protected override void Seed(Swetugg.Web.Models.ApplicationDbContext context)
