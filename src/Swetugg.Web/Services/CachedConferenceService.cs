@@ -87,6 +87,12 @@ namespace Swetugg.Web.Services
                 () => (_conferenceService.GetSponsors(conferenceId)).ToArray());
         }
 
+        public IDictionary<int, IDictionary<string, SpeakerImage>> GetSpeakerImages(int conferenceId)
+        {
+            return FromCache("GetSpeakerImages_" + conferenceId,
+                () => (_conferenceService.GetSpeakerImages(conferenceId)));
+        }
+
         public Speaker GetSpeakerBySlug(int conferenceId, string slug)
         {
             return FromCache("GetSpeakerBySlug_" + conferenceId + "_" + slug,
