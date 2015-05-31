@@ -88,5 +88,24 @@ namespace Swetugg.Web.Services
 	        
             return session;
 	    }
+
+        public IDictionary<int, IDictionary<string, SpeakerImage>> GetSpeakerImages(int conferenceId)
+        {
+            var speakers = _dbContext.Speakers.
+                Where(s => s.ConferenceId == conferenceId).
+                Include(s => s.Images.Select(i => i.ImageType));
+
+            var speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
+            foreach (var speaker in speakers)
+            {
+                var lookup = new Dictionary<string, SpeakerImage>();
+                foreach (var img in speaker.Images)
+                {
+                    lookup[img.ImageType.Slug] = img;
+                }
+                speakerImages[speaker.Id] = lookup;
+            }
+            return speakerImages;
+        }
 	}
 }

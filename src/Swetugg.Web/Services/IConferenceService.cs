@@ -15,7 +15,8 @@ namespace Swetugg.Web.Services
         IEnumerable<Room> GetRooms(int conferenceId);
         IEnumerable<Speaker> GetSpeakers(int conferenceId);
         IEnumerable<Sponsor> GetSponsors(int conferenceId);
-        
+        IDictionary<int, IDictionary<string, SpeakerImage>> GetSpeakerImages(int conferenceId);
+
         Speaker GetSpeakerBySlug(int conferenceId, string slug);
         Session GetSessionBySlug(int conferenceId, string slug);
     }

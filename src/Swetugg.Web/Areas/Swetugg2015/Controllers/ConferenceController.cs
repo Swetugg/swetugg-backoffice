@@ -44,6 +44,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
             var slots = conferenceService.GetSlotsAndSessions(conf.Id);
             var rooms = conferenceService.GetRooms(conf.Id);
             var sponsors = conferenceService.GetSponsors(conf.Id);
+            var speakerImages = conferenceService.GetSpeakerImages(conf.Id);
 
             ViewData["Speakers"] = speakers;
             ViewData["Sessions"] = sessions;
@@ -51,6 +52,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
             ViewData["Rooms"] = rooms;
             ViewData["Sponsors"] = sponsors;
             ViewData["Conference"] = conf;
+            ViewData["SpeakerImages"] = speakerImages;
 
             return View();
         }

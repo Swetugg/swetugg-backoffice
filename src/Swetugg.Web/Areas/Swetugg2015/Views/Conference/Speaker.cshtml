@@ -5,6 +5,13 @@
     var fbAppId = ViewData["FacebookAppId"];
     ViewBag.Title = "Speaker";
     Layout = "~/Areas/Swetugg2015/Views/Shared/_LayoutSimple.cshtml";
+
+    var speakerImageUrl = "/Content/swetugg-2015/SpeakerPictures/org/" + Model.Slug + ".jpg";
+    var firstThumb = Model.Images.FirstOrDefault(i => i.ImageType.Slug == "thumb");
+    if (firstThumb != null)
+    {
+        speakerImageUrl = firstThumb.ImageUrl;
+    }
 }
 
 <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
@@ -15,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <img class="img-circle" src="~/Content/swetugg-2015/SpeakerPictures/org/@(Model.Slug + ".jpg")" />
+                    <img class="img-circle" src="@speakerImageUrl" />
                     <h1 style="margin-top: 20px; color: white;">@Model.Name</h1>
                     <h2 style="color: white;">@Model.Company</h2>
                 </div>

@@ -25,6 +25,11 @@
     {
         speakers = new List<Speaker>();
     }
+    IDictionary<int, IDictionary<string, SpeakerImage>> speakerImages = ViewBag.SpeakerImages;
+    if (speakerImages == null)
+    {
+        speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
+    }
 
 }
 
@@ -92,7 +97,19 @@
                         {
                             <li>
                                 <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
-                                    <img class="img-circle" src="/Content/swetugg-2015/SpeakerPictures/@(speaker.Slug + ".png")"/>
+                                    @{
+                                        string imageUrl = "/Content/swetugg-2015/SpeakerPictures/" + speaker.Slug + ".png";
+                                        IDictionary<string, SpeakerImage> imgLookup;
+                                        if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
+                                        {
+                                            SpeakerImage speakerImage;
+                                            if (imgLookup.TryGetValue("thumb-front", out speakerImage))
+                                            {
+                                                imageUrl = speakerImage.ImageUrl;
+                                            }
+                                        }
+                                    }
+                                    <img class="img-circle" src="@imageUrl"/>
                                     <div>
                                         @speaker.Name
                                     </div>
