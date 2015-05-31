@@ -9,6 +9,15 @@
 }
 
 <h2>Migrations</h2>
+@if (!string.IsNullOrEmpty(errorMsg))
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @errorMsg
+    </div>
+}
 
 <div class="row">
     <div class="col-sm-4">
@@ -23,7 +32,7 @@
                 }
             </div>
             <div class="panel-footer">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("RunMigrations", "Home"))
                 {
                     <button class="btn btn-primary @(pendingMigrations.Any() ? "enabled" : "disabled") " type="submit">Apply</button>
                 }

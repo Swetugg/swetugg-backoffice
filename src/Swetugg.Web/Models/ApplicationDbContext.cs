@@ -19,7 +19,8 @@ namespace Swetugg.Web.Models
 		public DbSet<Sponsor> Sponsors { get; set; }
 		public DbSet<Room> Rooms { get; set; }
 		public DbSet<Slot> Slots { get; set; }
-		public DbSet<RoomSlot> RoomSlots { get; set; }
+        public DbSet<RoomSlot> RoomSlots { get; set; }
+        public DbSet<ImageType> ImageTypes { get; set; }
 
         public DbSet<CfpSpeaker> CfpSpeakers { get; set; }
         public DbSet<CfpSession> CfpSessions { get; set; }
@@ -37,9 +38,10 @@ namespace Swetugg.Web.Models
 			modelBuilder.Entity<RoomSlot>().HasRequired(rs => rs.Room).WithMany(r => r.RoomSlots).WillCascadeOnDelete(false);
 			modelBuilder.Entity<RoomSlot>().HasRequired(rs => rs.Slot).WithMany(s => s.RoomSlots).WillCascadeOnDelete(false);
 		    modelBuilder.Entity<RoomSlot>().HasOptional(rs => rs.AssignedSession).WithMany(s => s.RoomSlots);
-			// modelBuilder.Entity<RoomSlot>().HasOptional(rs => rs.Session).WithOptionalDependent( s => s.RoomSlot).WillCascadeOnDelete(false);
 
-            // modelBuilder.Entity<Session>().HasOptional(s => s.RoomSlot).WithOptionalPrincipal(rs => rs.Session).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Speaker>().HasMany(s => s.Images).WithRequired().WillCascadeOnDelete(false);
+            
+            modelBuilder.Entity<SpeakerImage>().HasRequired(s => s.ImageType).WithMany().WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<RoomSlot>().HasKey(r => new { r.RoomId, r.SlotId });
 
@@ -52,6 +54,7 @@ namespace Swetugg.Web.Models
 			modelBuilder.Entity<Conference>().HasMany(c => c.Speakers).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Slots).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Sponsors).WithRequired().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Conference>().HasMany(c => c.ImageTypes).WithRequired().WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CfpSpeaker>().HasMany(c => c.Sessions).WithRequired(c => c.Speaker).WillCascadeOnDelete(false);
 		    modelBuilder.Entity<CfpSpeaker>().HasOptional(c => c.Speaker).WithMany(sp => sp.CfpSpeakers).WillCascadeOnDelete(false);

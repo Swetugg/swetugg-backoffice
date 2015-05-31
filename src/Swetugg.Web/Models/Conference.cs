@@ -42,6 +42,7 @@ namespace Swetugg.Web.Models
         public ICollection<Sponsor> Sponsors { get; set; }
         public ICollection<Slot> Slots { get; set; }
         public ICollection<Room> Rooms { get; set; }
+        public ICollection<ImageType> ImageTypes { get; set; }
 
     }
 }

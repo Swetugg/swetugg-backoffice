@@ -40,6 +40,8 @@ namespace Swetugg.Web.Models
 
         public ICollection<SessionSpeaker> Sessions { get; set; }
 
+        public ICollection<SpeakerImage> Images { get; set; }
+
         public ICollection<CfpSpeaker> CfpSpeakers { get; set; }
     }
 }

@@ -34,7 +34,10 @@
                                 @if (User.IsInRole("Administrator"))
                                 {
                                     <li>
-                                        @Html.ActionLink("Users", "Index", "Users", routeValues: new {Area = "Admin"}, htmlAttributes: null)
+                                        @Html.ActionLink("Users", "Index", "Users", routeValues: new { Area = "Admin" }, htmlAttributes: null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Migration", "Migrations", "Home", routeValues: new {Area = ""}, htmlAttributes: null)
                                     </li>
                                 }
                             </ul>
