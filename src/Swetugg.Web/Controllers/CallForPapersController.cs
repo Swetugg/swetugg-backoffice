@@ -26,13 +26,15 @@ namespace Swetugg.Web.Controllers
     public class CallForPapersController : Controller
     {
         private readonly IConferenceService _conferenceService;
+        private readonly IImageUploader _imageUploader;
         private ApplicationUserManager _userManager;
         private readonly ApplicationDbContext _dbContext;
         private readonly string _cfpSpeakerImageContainerName;
 
-        public CallForPapersController(IConferenceService conferenceService, ApplicationDbContext dbContext)
+        public CallForPapersController(IConferenceService conferenceService, IImageUploader imageUploader, ApplicationDbContext dbContext)
         {
             _conferenceService = conferenceService;
+            _imageUploader = imageUploader;
             _dbContext = dbContext;
             _cfpSpeakerImageContainerName = ConfigurationManager.AppSettings["Storage.Container.CallForPaper.SpeakerImages"];
         }
@@ -150,38 +152,13 @@ namespace Swetugg.Web.Controllers
                                 using (var memStream = new MemoryStream())
                                 {
                                     imageFile.InputStream.CopyTo(memStream);
-
-                                    var parsedImage = Image.FromStream(memStream);
-
-                                    try
-                                    {
-                                        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                                            ConfigurationManager.ConnectionStrings["StorageConnection"].ConnectionString);
-
-                                        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                                        CloudBlobContainer container =
-                                            blobClient.GetContainerReference(_cfpSpeakerImageContainerName);
-                                        container.CreateIfNotExists(BlobContainerPublicAccessType.Blob);
-
-                                        var speakerFileName = "speaker-image-" + dbSpeaker.Email + "-" + Guid.NewGuid();
-
-                                        CloudBlockBlob blockBlob = container.GetBlockBlobReference(speakerFileName);
-                                        blockBlob.Properties.ContentType = parsedImage.RawFormat.GetMimeType();
-                                        memStream.Seek(0, SeekOrigin.Begin);
-                                        blockBlob.UploadFromStream(memStream);
-
-                                        dbSpeaker.Image = blockBlob.Uri.ToString();
-                                    }
-                                    catch (Exception)
-                                    {
-                                        ModelState.AddModelError("ImageFile", "File upload failed");
-                                    }
+                                    var imageUrl = _imageUploader.UploadToStorage(memStream, dbSpeaker.Email, _cfpSpeakerImageContainerName);
+                                    dbSpeaker.Image = imageUrl;
                                 }
                             }
-                            catch (Exception)
+                            catch (ImageUploadException e)
                             {
-                                ModelState.AddModelError("ImageFile",
-                                    "Unable to parse file as image. Please use JPG or PNG files");
+                                ModelState.AddModelError("ImageFile", e.Message);
                             }
                         }
                         else

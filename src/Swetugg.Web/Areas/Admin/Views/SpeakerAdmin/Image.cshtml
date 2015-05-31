@@ -1,0 +1,70 @@
+﻿@using Swetugg.Web.Models
+@model SpeakerImage
+@{
+    ViewBag.Title = "Speaker Image - Edit";
+    Conference conference = ViewBag.Conference;
+
+    var speaker = (Speaker) ViewBag.Speaker;
+    
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Speakers", "Index", "SpeakerAdmin")</li>
+    <li>@Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new { speaker.Id })</li>
+    <li class="active">Image</li>
+</ol>
+
+@Html.ValidationSummary()
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Speaker image</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <img src="@Model.ImageUrl" style="width: 100%" />
+            </div>
+
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Image info</div>
+                    </div>
+                    <div class="panel-body">
+                        <dl>
+                            <dt>Image type</dt>
+                            <dd>@Model.ImageType.Name</dd>
+                            <dt>Url</dt>
+                            <dd><input type="text" class="form-control" readonly="readonly" value="@Model.ImageUrl"/></dd>
+                            @if (Model.ImageType.Width.HasValue)
+                            {
+                                <dt>Width</dt>
+                                <dd>@(Model.ImageType.Width)</dd>
+                            }
+                            @if (Model.ImageType.Height.HasValue)
+                            {
+                                <dt>Height</dt>
+                                <dd>@(Model.ImageType.Height)</dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer text-right">
+        <a href="" class="btn btn-danger"
+           data-confirm-form="#deleteImageForm"
+           data-modal-title="Are you sure?"
+           data-modal-message="This will delete the image."
+           data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+
+
+        @using (Html.BeginForm("DeleteImage", "SpeakerAdmin", new { id = Model.Id, SpeakerId = speaker.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteImageForm" }))
+        {
+        }
+    </div>
+</div>

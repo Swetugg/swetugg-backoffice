@@ -23,11 +23,11 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     [RoutePrefix("conferences")]
     public class ConferenceAdminController : Controller
     {
-        private ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public ConferenceAdminController(ApplicationDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
         [OverrideAuthorization()]
@@ -35,7 +35,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("")]
         public async Task<ActionResult> Index()
         {
-            var conferences = await dbContext.Conferences.OrderByDescending(c => c.Start).ToListAsync();
+            var conferences = await _dbContext.Conferences.OrderByDescending(c => c.Start).ToListAsync();
             return View(conferences);
         }
 
@@ -44,14 +44,14 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{id:int}")]
         public async Task<ActionResult> Conference(int id)
         {
-            var conferences = await dbContext.Conferences.SingleAsync(c => c.Id == id);
+            var conferences = await _dbContext.Conferences.SingleAsync(c => c.Id == id);
             return View(conferences);
         }
 
         [Route("edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id)
         {
-            var conference = await dbContext.Conferences.SingleAsync(c => c.Id == id);
+            var conference = await _dbContext.Conferences.SingleAsync(c => c.Id == id);
             return View(conference);
         }
 
@@ -63,8 +63,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             {
                 try
                 {
-					dbContext.Entry(conference).State = EntityState.Modified;
-					await dbContext.SaveChangesAsync();
+					_dbContext.Entry(conference).State = EntityState.Modified;
+					await _dbContext.SaveChangesAsync();
 
                     return RedirectToAction("Conference", "ConferenceAdmin", new { id });
                 }
@@ -80,7 +80,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("import/{id:int}")]
         public async Task<ActionResult> Import(int id)
         {
-            var conference = await dbContext.Conferences.SingleAsync(c => c.Id == id);
+            var conference = await _dbContext.Conferences.SingleAsync(c => c.Id == id);
             return View(new ConferenceImportModel() { Conference = conference});
         }
 
@@ -104,9 +104,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         Published = oldSponsor.Published,
                         Slug = ((string)oldSponsor.Name).Slugify()
                     };
-                    dbContext.Sponsors.Add(sponsor);
+                    _dbContext.Sponsors.Add(sponsor);
                 }
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
 
                 var oldSpeakers = oldSwetugg.Query("SELECT * FROM Speakers");
                 foreach (var oldSpeaker in oldSpeakers)
@@ -123,9 +123,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         Published = oldSpeaker.Published,
                         Slug = ((string)oldSpeaker.Name).Slugify()
                     };
-                    dbContext.Speakers.Add(speaker);
+                    _dbContext.Speakers.Add(speaker);
                 }
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
 
                 var oldSessions = oldSwetugg.Query(
                     "SELECT s.Id, s.Name, s.Description, s.EmbeddedVideoLink, s.Priority, s.Deleted, ssp.SpeakerId, sp.Name AS SpeakerName " +
@@ -153,19 +153,19 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                             Speakers = new List<SessionSpeaker>(),
                             Slug = ((string)oldSession.Name).Slugify()
                         };
-                        dbContext.Sessions.Add(session);
+                        _dbContext.Sessions.Add(session);
                     }
                     if (oldSession.SpeakerId != null && session != null)
                     {
                         var speakerSlug = ((string) oldSession.SpeakerName).Slugify();
-                        var speaker = await dbContext.Speakers.SingleOrDefaultAsync(s => s.Slug == speakerSlug);
+                        var speaker = await _dbContext.Speakers.SingleOrDefaultAsync(s => s.Slug == speakerSlug);
                         if (speaker != null)
                         {
                             session.Speakers.Add(new SessionSpeaker() { Session = session, Speaker = speaker});
                         }
                     }
                 }
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
 
                 var oldRooms = oldSwetugg.Query("SELECT * FROM Rooms");
                 foreach (var oldRoom in oldRooms)
@@ -178,9 +178,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         Priority = oldRoom.Priority,
                         Slug = ((string)oldRoom.Name).Slugify()
                     };
-                    dbContext.Rooms.Add(room);
+                    _dbContext.Rooms.Add(room);
                 }
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
 
                 var oldSlots = oldSwetugg.Query("SELECT * FROM Slots");
                 foreach (var oldSlot in oldSlots)
@@ -192,13 +192,13 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         End = oldSlot.End,
                         Title = oldSlot.Description
                     };
-                    dbContext.Slots.Add(slot);
+                    _dbContext.Slots.Add(slot);
                 }
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
 
-                var allRooms = await dbContext.Rooms.Where(r => r.ConferenceId == id).ToListAsync();
-                var allSessions = await dbContext.Sessions.Where(r => r.ConferenceId == id).ToListAsync();
-                foreach (var slot in await dbContext.Slots.Where(s => s.ConferenceId == id).ToListAsync())
+                var allRooms = await _dbContext.Rooms.Where(r => r.ConferenceId == id).ToListAsync();
+                var allSessions = await _dbContext.Sessions.Where(r => r.ConferenceId == id).ToListAsync();
+                foreach (var slot in await _dbContext.Slots.Where(s => s.ConferenceId == id).ToListAsync())
                 {
                     foreach (var room in allRooms)
                     {
@@ -227,7 +227,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         }
                     }
                 }
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
 
             return RedirectToAction("Conference", new {id});
@@ -248,8 +248,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    dbContext.Conferences.Add(conference);
-                    await dbContext.SaveChangesAsync();
+                    _dbContext.Conferences.Add(conference);
+                    await _dbContext.SaveChangesAsync();
                     return RedirectToAction("Conference", "ConferenceAdmin", new { conference.Id });
                 }
                 catch (Exception ex)
@@ -264,65 +264,78 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("delete/{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var conf = await dbContext.Conferences.SingleOrDefaultAsync(c => c.Id == id);
+            var conf = await _dbContext.Conferences.SingleOrDefaultAsync(c => c.Id == id);
 
-            var slots = await dbContext.Slots.Where(s => s.ConferenceId == id).Include(rs => rs.RoomSlots).ToListAsync();
+            var slots = await _dbContext.Slots.Where(s => s.ConferenceId == id).Include(rs => rs.RoomSlots).ToListAsync();
             // Delete Schedule
             foreach (var slot in slots)
             {
                 foreach (var roomSlot in slot.RoomSlots.ToArray())
                 {
-                    dbContext.Entry(roomSlot).State = EntityState.Deleted;
+                    _dbContext.Entry(roomSlot).State = EntityState.Deleted;
                 }
-                dbContext.Entry(slot).State = EntityState.Deleted;
+                _dbContext.Entry(slot).State = EntityState.Deleted;
             }
 
             // Delete Rooms
-            var rooms = await dbContext.Rooms.Where(r => r.ConferenceId == id).ToListAsync();
+            var rooms = await _dbContext.Rooms.Where(r => r.ConferenceId == id).ToListAsync();
             foreach (var room in rooms)
             {
-                dbContext.Entry(room).State=EntityState.Deleted;
+                _dbContext.Entry(room).State=EntityState.Deleted;
             }
 
             // Delete Sessions
-            var sessions = await dbContext.Sessions.Where(s => s.ConferenceId == id).Include(s => s.Speakers).ToListAsync();
+            var sessions = await _dbContext.Sessions.Where(s => s.ConferenceId == id).Include(s => s.Speakers).ToListAsync();
             foreach (var session in sessions)
             {
                 foreach (var speaker in session.Speakers.ToArray())
                 {
-                    dbContext.Entry(speaker).State=EntityState.Deleted;
+                    _dbContext.Entry(speaker).State=EntityState.Deleted;
                 }
-                dbContext.Entry(session).State=EntityState.Deleted;
+                _dbContext.Entry(session).State=EntityState.Deleted;
             }
 
             // Delete Speakers
-            var speakers = await dbContext.Speakers.Where(s => s.ConferenceId == id).ToListAsync();
+            var speakers = await _dbContext.Speakers.Where(s => s.ConferenceId == id).ToListAsync();
             foreach (var speaker in speakers)
             {
-                dbContext.Entry(speaker).State = EntityState.Deleted;
+                // Delete speaker images
+                foreach (var image in speaker.Images.ToArray())
+                {
+                    _dbContext.Entry(image).State = EntityState.Deleted;
+                }
+
+                _dbContext.Entry(speaker).State = EntityState.Deleted;
+            }
+
+            // Delete Image types
+            var imageTypes = await _dbContext.ImageTypes.Where(r => r.ConferenceId == id).ToListAsync();
+            foreach (var imageType in imageTypes)
+            {
+                _dbContext.Entry(imageType).State = EntityState.Deleted;
             }
 
             // Delete Sponsors
-            var sponsors = await dbContext.Sponsors.Where(s => s.ConferenceId == id).ToListAsync();
+            var sponsors = await _dbContext.Sponsors.Where(s => s.ConferenceId == id).ToListAsync();
             foreach (var sponsor in sponsors)
             {
-                dbContext.Entry(sponsor).State = EntityState.Deleted;
+                _dbContext.Entry(sponsor).State = EntityState.Deleted;
             }
 
             // Delete Cfp
-            var cfpSpeakers = await dbContext.CfpSpeakers.Where(s => s.ConferenceId == id).Include(s => s.Sessions).ToListAsync();
+            var cfpSpeakers = await _dbContext.CfpSpeakers.Where(s => s.ConferenceId == id).Include(s => s.Sessions).ToListAsync();
             foreach (var speaker in cfpSpeakers)
             {
                 foreach (var session in speaker.Sessions.ToArray())
                 {
-                    dbContext.Entry(session).State = EntityState.Deleted;
+                    _dbContext.Entry(session).State = EntityState.Deleted;
                 }
-                dbContext.Entry(speaker).State = EntityState.Deleted;
+                _dbContext.Entry(speaker).State = EntityState.Deleted;
             }
 
-            dbContext.Entry(conf).State = EntityState.Deleted;
+            _dbContext.Entry(conf).State = EntityState.Deleted;
 
-            await dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }

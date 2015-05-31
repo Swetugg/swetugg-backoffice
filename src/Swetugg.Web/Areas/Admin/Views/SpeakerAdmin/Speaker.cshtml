@@ -1,8 +1,13 @@
-﻿@using Swetugg.Web.Models
+﻿@using System.Collections
+@using System.Globalization
+@using Swetugg.Web.Models
 @model Speaker
 @{
     ViewBag.Title = "Speaker";
     Conference conference = ViewBag.Conference;
+    var imageTypes = (IEnumerable<ImageType>)ViewBag.ImageTypes;
+    var errorMsg = ViewBag.ErrorMessage;
+    
 }
 <ol class="breadcrumb">
     <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
@@ -11,6 +16,15 @@
     <li>@Html.ActionLink("Speakers", "Index")</li>
     <li class="active">@Model.Name</li>
 </ol>
+@if (!string.IsNullOrEmpty(errorMsg))
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @errorMsg
+    </div>
+}
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -34,6 +48,43 @@
                         {
                             <div class="list-group-item">
                                 @Html.ActionLink(session.Name, "Session", "SessionAdmin", new {session.Id}, null)
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Images</div>
+                    </div>
+                    <div class="list-group">
+                        @foreach (var image in Model.Images)
+                        {
+                            <div class="list-group-item">
+                                @Html.ActionLink(image.ImageType.Name, "Image", "SpeakerAdmin", new { image.Id, SpeakerId = Model.Id }, null)
+                            </div>
+                        }
+                    </div>
+                    <div class="panel-footer">
+                        @using (Html.BeginForm("NewImage", "SpeakerAdmin", new { SpeakerId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                @Html.DropDownList("ImageTypeId",
+                                    imageTypes.Select(it => new SelectListItem() { Text = it.Name, Value = it.Id.ToString(CultureInfo.InvariantCulture) }),
+                                    new { @class = "form-control" })
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="btn btn-default" for="imageFileSelector">
+                                            <input id="imageFileSelector" name="ImageFile" type="file" style="display: none;">
+                                            Select image...
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-primary" type="submit">Upload</button>
+                                </div>
                             </div>
                         }
                     </div>

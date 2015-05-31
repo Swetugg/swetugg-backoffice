@@ -273,6 +273,7 @@
     <Compile Include="Areas\Admin\Controllers\CfpReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminControllerBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\ImageTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ScheduleAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SessionAdminController.cs" />
@@ -316,6 +317,10 @@
     <Compile Include="Migrations\201505021721031_OpenCloseCfp.Designer.cs">
       <DependentUpon>201505021721031_OpenCloseCfp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505311134043_SpeakerImages.cs" />
+    <Compile Include="Migrations\201505311134043_SpeakerImages.Designer.cs">
+      <DependentUpon>201505311134043_SpeakerImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -331,11 +336,16 @@
     <Compile Include="Models\SessionSpeaker.cs" />
     <Compile Include="Models\Slot.cs" />
     <Compile Include="Models\Speaker.cs" />
+    <Compile Include="Models\SpeakerImage.cs" />
+    <Compile Include="Models\ImageType.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CachedConferenceService.cs" />
     <Compile Include="Services\ConferenceService.cs" />
     <Compile Include="Services\IConferenceService.cs" />
+    <Compile Include="Services\IImageUploader.cs" />
+    <Compile Include="Services\ImageUploader.cs" />
+    <Compile Include="Services\ImageUploadException.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +502,9 @@
     <Content Include="Areas\Admin\Views\CfpReview\Speaker.cshtml" />
     <Content Include="Areas\Admin\Views\CfpReview\Session.cshtml" />
     <Content Include="ApplicationInsights.config" />
+    <Content Include="Areas\Admin\Views\ImageTypeAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageTypeAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SpeakerAdmin\Image.cshtml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -932,6 +945,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505021721031_OpenCloseCfp.resx">
       <DependentUpon>201505021721031_OpenCloseCfp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505311134043_SpeakerImages.resx">
+      <DependentUpon>201505311134043_SpeakerImages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
