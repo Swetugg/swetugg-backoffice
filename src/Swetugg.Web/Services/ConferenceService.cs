@@ -31,7 +31,7 @@ namespace Swetugg.Web.Services
 		{
 			var slotsWithSessions =
 					_dbContext.Slots
-						.Include(s => s.RoomSlots.Select(rs => rs.AssignedSession))
+						.Include(s => s.RoomSlots.Select(rs => rs.AssignedSession).Select(se => se.Speakers.Select(sp => sp.Speaker)))
 						.Where(sl => sl.ConferenceId == conferenceId)
 						.OrderBy(s => s.Start)
 						.ToList();
