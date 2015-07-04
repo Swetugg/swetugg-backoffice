@@ -103,6 +103,7 @@ a {
     color: @primary;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
 
@@ -155,6 +156,7 @@ a:focus {
 .navbar-custom .nav li a {
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
+    -o-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;
 }
 
@@ -184,6 +186,7 @@ a:focus {
         background: transparent;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -o-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
@@ -216,12 +219,9 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: @light;
-    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background: url(../img/swetugg-2016-bg.jpg) no-repeat top center scroll;
     background-color: @dark;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
     background-size: cover;
-    -o-background-size: cover;
 }
 
 .intro-body {
@@ -269,6 +269,7 @@ a:focus {
     background: transparent;
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
+    -o-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;
 }
 
@@ -281,35 +282,56 @@ a:focus {
 
 .page-scroll .btn-circle i.animated {
     -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 1s;
+    -o-transition-property: -moz-transform;
     -moz-transition-property: -moz-transform;
+    transition-property: -moz-transform;
+    -webkit-transition-duration: 1s;
     -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
 }
 
 .page-scroll .btn-circle:hover i.animated {
     -webkit-animation-name: pulse;
     -moz-animation-name: pulse;
+    -o-animation-name: pulse;
+    animation-name: pulse;
     -webkit-animation-duration: 1.5s;
     -moz-animation-duration: 1.5s;
+    -o-animation-duration: 1.5s;
+    animation-duration: 1.5s;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
 }
 
 @-webkit-keyframes pulse {
     0 {
         -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
         transform: scale(1);
     }
 
     50% {
         -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
         transform: scale(1.2);
     }
 
     100% {
         -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
         transform: scale(1);
     }
 }
@@ -317,21 +339,50 @@ a:focus {
 @-moz-keyframes pulse {
     0 {
         -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        -webkit-transform: scale(1);
         transform: scale(1);
     }
 
     50% {
         -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
         transform: scale(1.2);
     }
 
     100% {
         -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        -webkit-transform: scale(1);
         transform: scale(1);
     }
 }
 
 // Content Sections
+
+.even-section {
+    width: 100%;
+    padding: 50px 0;
+    color: @dark;
+    background-color: @offlight;
+    background-size: cover;
+    text-align: left;
+}
+
+.odd-section {
+    width: 100%;
+    padding: 50px 0;
+    color: @dark;
+    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
+    background-color: @light;
+    background-size: cover;
+    text-align: left;
+    padding-top: 0px;
+}
 
 .content-section > div {
     padding: 50px 0 50px 0;
@@ -347,50 +398,26 @@ a:focus {
     font-weight: normal;
 }
 
-.sponsor-section {
-    width: 100%;
-    padding: 50px 0;
-    color: @dark;
-    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-    background-color: @light;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+// Members
+
+.member {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 160px;
+    float: left;
     text-align: left;
-    padding-top: 0px;
+    display: inline-block;
 }
 
-.program-section {
-    width: 100%;
-    padding: 50px 0;
-    color: @dark;
-    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-    background-color: @offlight;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    text-align: left;
+.member-name {
+    font-size: 18px;
+    line-height: 16px;
 }
 
-.program-section form {
-    background-color: @offlight;
-    font-family: @body-font-family;
+.member-twitter {
+    font-size: 14px;
 }
 
-.contact-section {
-    width: 100%;
-    padding: 50px 0;
-    color: @dark;
-    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-    background-color: @light;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    text-align: left;
-}
 
 footer, .footer-section {
     background-color: @light;
@@ -434,6 +461,7 @@ footer, .footer-section {
     font-weight: 400;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
@@ -501,7 +529,7 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: rgba(255,255,255,0.2);
+    -webkit-tap-highlight-color: rgba(255,255,255,0.2);
 }
 
 ul.socialNetwork {
