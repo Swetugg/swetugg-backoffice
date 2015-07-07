@@ -34,7 +34,7 @@ function initializeMap(id) {
     var overlayTitle = 'Swetugg 2016';
 
     var locations = [
-        //point number 1
+        //point number 1 
         ['Swetugg 2016', 'Stockholm', '59.326142', '17.9875455'],
     ];
 
