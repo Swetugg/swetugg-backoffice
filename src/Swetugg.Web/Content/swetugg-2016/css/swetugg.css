@@ -4,7 +4,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #524149;
-  background-color: #ffffff;
+  background-color: #f2fcff;
 }
 html {
   width: 100%;
@@ -122,7 +122,7 @@ a:focus {
   padding-right: 10px;
 }
 .navbar-custom a {
-  color: #ffffff;
+  color: #f2fcff;
 }
 .navbar-custom .nav li a {
   -webkit-transition: background 0.3s ease-in-out;
@@ -139,7 +139,7 @@ a:focus {
 .navbar-toggle {
   padding: 4px 6px;
   font-size: 16px;
-  color: #ffffff;
+  color: #f2fcff;
 }
 .navbar-toggle:focus,
 .navbar-toggle:active {
@@ -176,7 +176,7 @@ a:focus {
   height: auto;
   padding: 100px 0;
   text-align: center;
-  color: #ffffff;
+  color: #f2fcff;
   background: url(../img/swetugg-2016-bg.jpg) no-repeat top center scroll;
   background-color: #524149;
   background-size: cover;
@@ -187,7 +187,7 @@ a:focus {
 }
 .brand-heading {
   font-size: 40px;
-  color: #ffffff;
+  color: #f2fcff;
   padding-bottom: 30px;
   font-family: 'Rock Salt';
 }
@@ -213,10 +213,10 @@ a:focus {
   height: 70px;
   margin-top: 15px;
   padding: 7px 16px;
-  border: 2px solid #ffffff;
+  border: 2px solid #f2fcff;
   border-radius: 35px;
   font-size: 40px;
-  color: #ffffff;
+  color: #f2fcff;
   background: transparent;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
@@ -226,7 +226,7 @@ a:focus {
 .btn-circle:hover,
 .btn-circle:focus {
   outline: none;
-  color: #ffffff;
+  color: #f2fcff;
   background: rgba(255, 255, 255, 0.1);
 }
 .page-scroll .btn-circle i.animated {
@@ -307,7 +307,7 @@ a:focus {
   width: 100%;
   padding: 50px 0;
   color: #524149;
-  background-color: #f0dcdc;
+  background-color: #fff7fa;
   background-size: cover;
   text-align: left;
 }
@@ -316,7 +316,7 @@ a:focus {
   padding: 50px 0;
   color: #524149;
   /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-  background-color: #ffffff;
+  background-color: #f2fcff;
   background-size: cover;
   text-align: left;
   padding-top: 0px;
@@ -349,14 +349,14 @@ a:focus {
 }
 footer,
 .footer-section {
-  background-color: #ffffff;
+  background-color: #f2fcff;
 }
 .footer-rights-section {
   background-color: #524149;
-  color: #ffffff;
+  color: #f2fcff;
 }
 .footer-rights-section a {
-  color: #f0dcdc;
+  color: #fff7fa;
 }
 #map {
   width: 100%;
@@ -393,7 +393,7 @@ footer,
 .btn-default:focus {
   border: 1px solid #a30046;
   outline: none;
-  color: #ffffff;
+  color: #f2fcff;
   background-color: #a30046;
 }
 .btn-huge {

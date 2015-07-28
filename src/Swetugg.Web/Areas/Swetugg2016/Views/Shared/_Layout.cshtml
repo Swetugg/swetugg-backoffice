@@ -1,13 +1,14 @@
 ﻿@{
     var fbAppId = ViewData["FacebookAppId"];
     var appInsightsInstrumentationKey = ViewData["InstrumentationKey"];
+    var transformNavBar = ViewBag.TransformNavBar == true;
 }
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link href="//fonts.googleapis.com/css?family=Rock+Salt" rel='stylesheet' type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300" rel='stylesheet' type="text/css">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    <link href="//fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 
     <meta charset="utf-8">
@@ -59,9 +60,9 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <nav class="navbar navbar-custom navbar-fixed-top transform" role="navigation">
+    <nav class="navbar navbar-custom navbar-fixed-top @(transformNavBar ? "transform": "top-nav-collapse" )" role="navigation">
         <div class="container">
-            <div class="navbar-header page-scroll">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -82,7 +83,7 @@
                         <a href="@Url.Action("Index", "Conference")#speakers" data-target="#speakers">Talare</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="@Url.Action("Index", "Conference")#schedule" data-target="#schedule">Schema</a>
+                        <a href="@Url.Action("Index", "Conference")#tickets" data-target="#tickets">Biljetter</a>
                     </li>
                     <li>
                         <a href="@Url.Action("CodeOfConduct", "Conference")">Uppförandekod</a>

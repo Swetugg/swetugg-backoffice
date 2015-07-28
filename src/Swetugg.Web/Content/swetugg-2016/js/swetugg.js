@@ -11,8 +11,12 @@ $(window).scroll(function() {
 $(function() {
     $('.page-scroll a').bind('click', function(event) {
         var $anchor = $(this);
+        var targetEl = $($anchor.data('target'));
+        if (targetEl.length === 0)
+            return;
+
         $('html, body').stop().animate({
-            scrollTop: $($anchor.data('target')).offset().top
+            scrollTop: targetEl.offset().top
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
