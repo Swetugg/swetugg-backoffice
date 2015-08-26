@@ -17,7 +17,7 @@
 
 @helper Popover(string title, string content)
 {
-    <a href="" class=""
+    <a class=""
        data-toggle="popover"
        data-placement="top"
        data-trigger="hover"
@@ -43,6 +43,7 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Description)
+                        @Popover("Description", "Please write the session description in the language you will be presenting. Note that the main language of the Swetugg conference is Swedish.")
                         @Html.TextAreaFor(m => m.Description, new {@class = "form-control", rows = 18})
                         @Html.ValidationMessageFor(m => m.Description)
                     </div>
@@ -67,7 +68,7 @@
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Level)
-                                @Popover("Difficulty level", "100 = Introduction <br />200 = Intermediate <br />300 = Advanced <br />400 = Expert")
+                                @Popover("Difficulty level", @"What level is your session? <br />Example 'Introduction', 'Intermediate', 'Advanced'")
                                 @Html.TextBoxFor(m => m.Level, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Level)
                             </div>
