@@ -13,6 +13,7 @@ namespace Swetugg.Web.Models
 
         [Required]
         [StringLength(250)]
+        [Display(Name = "Title")]
         public string Name { get; set; }
 
         [StringLength(250)]

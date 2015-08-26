@@ -15,12 +15,22 @@
 
 @Html.ValidationSummary()
 
+@helper Popover(string title, string content)
+{
+    <a class=""
+       data-toggle="popover"
+       data-placement="top"
+       data-trigger="hover"
+       title="@title"
+       data-html="true"
+       data-content="@content"><i class="glyphicon glyphicon-info-sign"></i></a>
+}
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3>Speaker information</h3>
     </div>
 
-    @using (Html.BeginForm("Speaker", "CallForPapers", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Speaker", "CallForPapers", new {id = Model.Id}, FormMethod.Post, new {enctype = "multipart/form-data"}))
     {
         <div class="panel-body">
             <div class="row">
@@ -32,7 +42,7 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Company)
-                        @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Company, new {@class = "form-control"})
                         @Html.ValidationMessageFor(m => m.Company)
                     </div>
                     <div class="form-group">
@@ -43,7 +53,8 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Bio)
-                        @Html.TextAreaFor(m => m.Bio, new { @class = "form-control", rows = 10 })
+                        @Popover("Biography", "A description of yourself, written in the third person.")
+                        @Html.TextAreaFor(m => m.Bio, new {@class = "form-control", rows = 10})
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -54,12 +65,12 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Email)
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Email)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Web)
-                                @Html.TextBoxFor(m => m.Web, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Web, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Web)
                             </div>
                             <div class="form-group">
@@ -89,3 +100,12 @@
         </div>
     }
 </div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+}
