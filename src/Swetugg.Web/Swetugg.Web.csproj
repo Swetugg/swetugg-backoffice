@@ -327,6 +327,10 @@
     <Compile Include="Migrations\201508271136334_AdditionalSpeakerInfo.Designer.cs">
       <DependentUpon>201508271136334_AdditionalSpeakerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508271342404_TravelAndAccommodation.cs" />
+    <Compile Include="Migrations\201508271342404_TravelAndAccommodation.Designer.cs">
+      <DependentUpon>201508271342404_TravelAndAccommodation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -974,6 +978,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508271136334_AdditionalSpeakerInfo.resx">
       <DependentUpon>201508271136334_AdditionalSpeakerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508271342404_TravelAndAccommodation.resx">
+      <DependentUpon>201508271342404_TravelAndAccommodation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

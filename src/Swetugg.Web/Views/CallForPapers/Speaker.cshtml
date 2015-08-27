@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Comments)
-                        @Popover("More information", "Do you need help with trip and accommodation?<br/>Any links to previous talks we could look at?<br/>Any other information that may be useful for the organizers?")
+                        @Popover("More information", "Any links to previous talks we could look at?<br/>Any other information that may be useful for the organizers?")
                         @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", rows = 6 })
                     </div>
                 </div>
@@ -93,6 +93,28 @@
                                     @Html.TextBoxFor(m => m.GitHub, new {@class = "form-control"})
                                 </div>
                                 @Html.ValidationMessageFor(m => m.GitHub)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Travel</div>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Would you want us to cover travel/accommodation?
+                            </p>
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.NeedTravel)
+                                    Travel
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.NeedAccommodation)
+                                    Accommodation
+                                </label>
                             </div>
                         </div>
                     </div>
