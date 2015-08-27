@@ -59,7 +59,7 @@
                     <div class="form-group">
                         @Html.LabelFor(m => m.Comments)
                         @Popover("More information", "Any links to previous talks we could look at?<br/>Any other information that may be useful for the organizers?")
-                        @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", rows = 6 })
+                        @Html.TextAreaFor(m => m.Comments, new {@class = "form-control", rows = 6})
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -120,7 +120,11 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    <em>Make sure that you have read and agree to abide by our <a href="@Url.Action("CodeOfConduct", "Conference", new { Area="Swetugg2016" })" target="_blank">Code of Conduct</a></em>
+                </div>
+            </div>
         </div>
         <div class="panel-footer">
             <button type="submit" class="btn btn-primary">Save</button>
