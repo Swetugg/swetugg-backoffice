@@ -56,6 +56,11 @@
                         @Popover("Biography", "A description of yourself, written in the third person.")
                         @Html.TextAreaFor(m => m.Bio, new {@class = "form-control", rows = 10})
                     </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Comments)
+                        @Popover("More information", "Do you need help with trip and accommodation?<br/>Any links to previous talks we could look at?<br/>Any other information that may be useful for the organizers?")
+                        @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", rows = 6 })
+                    </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="panel panel-info">

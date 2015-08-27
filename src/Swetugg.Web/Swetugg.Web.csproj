@@ -323,6 +323,10 @@
     <Compile Include="Migrations\201505311134043_SpeakerImages.Designer.cs">
       <DependentUpon>201505311134043_SpeakerImages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508271136334_AdditionalSpeakerInfo.cs" />
+    <Compile Include="Migrations\201508271136334_AdditionalSpeakerInfo.Designer.cs">
+      <DependentUpon>201508271136334_AdditionalSpeakerInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -967,6 +971,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505311134043_SpeakerImages.resx">
       <DependentUpon>201505311134043_SpeakerImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508271136334_AdditionalSpeakerInfo.resx">
+      <DependentUpon>201508271136334_AdditionalSpeakerInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
