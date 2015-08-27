@@ -467,6 +467,8 @@
     <Content Include="Content\swetugg-2016\img\intro-bg.jpg" />
     <Content Include="Content\swetugg-2016\img\swenug.png" />
     <Content Include="Content\swetugg-2016\img\swetugg-2016-bg.jpg" />
+    <Content Include="Content\swetugg-2016\img\swetugg-rosa-avlang-mini.png" />
+    <Content Include="Content\swetugg-2016\img\swetugg-rosa-kvadrat.png" />
     <Content Include="Content\swetugg-2016\js\swetugg.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
