@@ -1,4 +1,5 @@
 ﻿@using Swetugg.Web.Models
+@using Swetugg.Web.Helpers
 @model CfpSpeaker
 
 @{
@@ -24,7 +25,7 @@
             </div>
             <div class="col-sm-6">
                 <h3>@Model.Name</h3>
-                <p>@Model.Bio</p>
+                <p>@Html.Raw(Html.FromMarkdown(Model.Bio))</p>
             </div>
             <div class="col-sm-4">
                 <div class="panel panel-info">
