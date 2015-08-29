@@ -43,6 +43,18 @@ namespace Swetugg.Web.Models
         [Display(Name = "GitHub user")]
         public string GitHub { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        [Column(TypeName = "ntext")]
+        [Display(Name = "Additional information")]
+        public string Comments { get; set; }
+
+
+        [Display(Name = "Travel")]
+        public bool NeedTravel { get; set; }
+
+        [Display(Name = "Accommodation")]
+        public bool NeedAccommodation { get; set; }
+
         public ICollection<CfpSession> Sessions { get; set; }
         
         public Speaker Speaker { get; set; }

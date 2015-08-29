@@ -142,6 +142,9 @@ namespace Swetugg.Web.Controllers
                     dbSpeaker.Name = speaker.Name;
                     dbSpeaker.Twitter = speaker.Twitter;
                     dbSpeaker.Web = speaker.Web;
+                    dbSpeaker.Comments = speaker.Comments;
+                    dbSpeaker.NeedTravel = speaker.NeedTravel;
+                    dbSpeaker.NeedAccommodation = speaker.NeedAccommodation;
 
                     if (imageFile != null && imageFile.ContentLength > 0)
                     {
