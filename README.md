@@ -29,6 +29,7 @@ There are a few things that needs to be set up in order for the web site to work
 
 ### Connection strings
 The connection string named `DefaultConnection` is used as the main database for the Swetugg site. By default this is a local SQL Express file placed in the `App_Data` folder.
+If running SQL Server 2014 then change `Data Source=(LocalDb)\v11.0;` to `Data Source=(LocalDb)\v12.0;` in the `DefaultConnection` connection string. SQL2014 doesn't create a local db instance some cases, you can resolve that by running `sqllocaldb create "v12.0"` from administrator command prompt.
 
 Speaker images are uploaded to Azure Blob storage if the StorageConnection connection string is set correctly
 
