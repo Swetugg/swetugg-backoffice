@@ -36,11 +36,14 @@ namespace Swetugg.Web.Services
             if (cached == null)
             {
                 cached = fetch();
-                httpCache.Add(key, cached, 
-                    null, 
-                    DateTime.Now.AddMinutes(MinutesToCache), 
-                    Cache.NoSlidingExpiration,
-                    CacheItemPriority.Default, null);
+                if (cached != null)
+                {
+                    httpCache.Add(key, cached,
+                        null,
+                        DateTime.Now.AddMinutes(MinutesToCache),
+                        Cache.NoSlidingExpiration,
+                        CacheItemPriority.Default, null);
+                }
             }
             return cached;
         }
