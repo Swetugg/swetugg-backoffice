@@ -224,6 +224,34 @@ namespace Swetugg.Web.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
+                    //Notify unknown user that password reset attempt was made
+                    if (_useSendGrid)
+                    {
+                        await UserManager.EmailService.SendAsync(
+                            new IdentityMessage
+                            {
+                                Destination = model.Email,
+                                Subject = "Reset password",
+                                Body = string.Format(
+                                    @"Hi,<br/>
+<br/>
+Someone as tried to reset your password for email {0} on our site.<br/>
+<br/>
+Unfortunately we can’t find any user with that email in our database, if you’d like to register a new account please use the link below:<br/>
+{1}
+",
+                                    model.Email,
+                                    Url.Action(
+                                        protocol: Request.Url.Scheme,
+                                        actionName: "Register",
+                                        controllerName: "Account",
+                                        routeValues: new {}
+                                        )
+                                    )
+                            }
+                            );
+                    }
+
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }

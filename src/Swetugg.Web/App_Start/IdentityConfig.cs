@@ -25,7 +25,7 @@ namespace Swetugg.Web
             return configSendGridasync(message);
         }
 
-        private Task configSendGridasync(IdentityMessage message)
+        private async Task configSendGridasync(IdentityMessage message)
         {
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
@@ -44,21 +44,13 @@ namespace Swetugg.Web
             var transportWeb = new SendGrid.Web(credentials);
 
             // Send the email.
-            if (transportWeb != null)
+            try
             {
-                try
-                {
-                    transportWeb.DeliverAsync(myMessage).Wait();
-                }
-                catch (Exception)
-                {
-                    //
-                }
-                return Task.FromResult(0);
+                await transportWeb.DeliverAsync(myMessage);
             }
-            else
+            catch (Exception)
             {
-                return Task.FromResult(0);
+                //
             }
         }
         
