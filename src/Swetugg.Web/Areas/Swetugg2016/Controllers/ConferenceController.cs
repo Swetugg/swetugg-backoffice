@@ -38,6 +38,10 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
         public ActionResult Index()
         {
             var conf = Conference;
+            if (conf == null)
+            {
+                return HttpNotFound();
+            }
 
             var speakers = conferenceService.GetSpeakers(conf.Id);
             var sessions = conferenceService.GetSessions(conf.Id);
@@ -68,6 +72,11 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
         public ActionResult Speaker(string speakerSlug)
         {
             var speaker = conferenceService.GetSpeakerBySlug(ConferenceId, speakerSlug);
+            if (speaker == null)
+            {
+                return HttpNotFound();
+            }
+
             return View(speaker);
         }
 
@@ -94,6 +103,9 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
             {
                 if (conferenceId != 0)
                     return conferenceId;
+
+                if (Conference == null)
+                    return 0;
 
                 return conferenceId = Conference.Id;
             }
