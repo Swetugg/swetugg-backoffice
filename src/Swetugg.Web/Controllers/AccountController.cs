@@ -235,9 +235,9 @@ namespace Swetugg.Web.Controllers
                                 Body = string.Format(
                                     @"Hi,<br/>
 <br/>
-Someone as tried to reset your password for email {0} on our site.<br/>
+Someone tried to reset the password for email {0} on our site.<br/>
 <br/>
-Unfortunately we can’t find any user with that email in our database, if you’d like to register a new account please use the link below:<br/>
+Unfortunately we can’t find any user with that address in our database. If you’d like to register a new account please use the link below:<br/>
 {1}
 ",
                                     model.Email,
