@@ -21,6 +21,9 @@ namespace Swetugg.Web.Controllers
 
         public static string Truncate(this string value, int maxChars)
         {
+            if (string.IsNullOrWhiteSpace(value))
+                return value;
+            
             if (value.Length <= maxChars)
                 return value;
             var maxString = value.Substring(0, maxChars);
