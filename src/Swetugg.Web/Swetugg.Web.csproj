@@ -304,6 +304,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MarkdownHelpers.cs" />
+    <Compile Include="Helpers\WebSiteLinkHelpers.cs" />
     <Compile Include="Migrations\201504091913478_SwetuggDb.cs" />
     <Compile Include="Migrations\201504091913478_SwetuggDb.Designer.cs">
       <DependentUpon>201504091913478_SwetuggDb.cs</DependentUpon>

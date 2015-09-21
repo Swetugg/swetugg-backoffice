@@ -21,7 +21,13 @@
     <div class="list-group">
         @foreach (var speaker in Model)
         {
-            @Html.ActionLink(speaker.Name, "Speaker", "CfpReview", new { id = speaker.Id }, new { @class = "list-group-item"})
+            <a href="@Url.Action("Speaker", "CfpReview", new {id = speaker.Id})" class="list-group-item">
+                @speaker.Name
+                @if (speaker.Sessions.Count > 0)
+                {
+                    <span class="badge info">@speaker.Sessions.Count</span>
+                }
+            </a>
         }
     </div>
 </div>
