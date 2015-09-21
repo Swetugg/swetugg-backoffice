@@ -44,6 +44,32 @@
                         @Html.ActionLink("Add", "Session", "CallForPapers", null, new {@class = "btn btn-default"})
                     </div>
                 </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Information</div>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Company</h4>
+                        <p>@Model.Company</p>
+
+                        <h4>Twitter</h4>
+                        <p><a href="https://twitter.com/@Model.Twitter">@@@Model.Twitter</a></p>
+
+                        <h4>Email</h4>
+                        <p><a href="mailto:@Model.Email">@Model.Email</a></p>
+
+                        <h4>Web</h4>
+                        <p><a href="@Model.Web.EnsureHttpLink()">@Model.Web</a></p>
+
+                        <h4>GitHub</h4>
+                        <p><a href="https://github.com/@Model.GitHub">@Model.GitHub</a></p>
+
+                        <h4>Comments</h4>
+                        <p>@Model.Comments</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
