@@ -56,7 +56,7 @@ namespace Swetugg.Web.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End > DateTime.Now.Date);
+            var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End >= c.CurrentTime().Date);
             var cfpAlreadyCreatedFor = _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArray();
 
             ViewBag.CfpAlreadyCreatedFor = cfpAlreadyCreatedFor;

@@ -7,11 +7,23 @@ namespace Swetugg.Web.Models
 {
     public static class ConferenceInfoExtensions
     {
+        public static DateTime CurrentTime(this Conference conference)
+        {
+            // TODO Store conference timezone on conference object
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+            var now = DateTime.UtcNow;
+            if (timeZone != null)
+            {
+                now = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
+            }
+            return now;
+        }
+
         public static bool IsCfpOpen(this Conference conference)
         {
-            var today = DateTime.Now.Date;
+            var today = conference.CurrentTime().Date;
             return conference.CfpStart.HasValue && conference.CfpStart < today &&
-                   (!conference.CfpEnd.HasValue || conference.CfpEnd > today);
+                   (!conference.CfpEnd.HasValue || conference.CfpEnd >= today);
         }
     }
 
