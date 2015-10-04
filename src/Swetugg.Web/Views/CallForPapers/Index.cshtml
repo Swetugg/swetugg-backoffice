@@ -13,7 +13,7 @@
 
 @helper CfpConference(Conference conference)
 {
-    var today = DateTime.Now.Date;
+    var today = conference.CurrentTime().Date;
     <div class="media">
         <div class="media-left">
             <img class="media-object" src="" />
@@ -32,7 +32,7 @@
             {
                 <small>Call For Paper opens on @conference.CfpStart.Value.ToString("yyyy-MM-dd")</small><br/>
             }
-            @if (conference.CfpEnd.HasValue && conference.CfpEnd > today)
+            @if (conference.CfpEnd.HasValue && conference.CfpEnd >= today)
             {
                 <small>Call For Paper closes on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
             }
