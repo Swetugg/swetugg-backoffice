@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201508271342404_TravelAndAccommodation.Designer.cs">
       <DependentUpon>201508271342404_TravelAndAccommodation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510051845590_CfpVipCode.cs" />
+    <Compile Include="Migrations\201510051845590_CfpVipCode.Designer.cs">
+      <DependentUpon>201510051845590_CfpVipCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -953,6 +957,7 @@
     <Content Include="Views\CallForPapers\Session.cshtml" />
     <Content Include="Scripts\jquery.validate.globalize.min.js.map" />
     <Content Include="Views\Home\Migrations.cshtml" />
+    <Content Include="Views\CallForPapers\Invite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -987,6 +992,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508271342404_TravelAndAccommodation.resx">
       <DependentUpon>201508271342404_TravelAndAccommodation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510051845590_CfpVipCode.resx">
+      <DependentUpon>201510051845590_CfpVipCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

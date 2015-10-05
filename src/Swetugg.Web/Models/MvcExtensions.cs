@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace Swetugg.Web.Models
 {
@@ -24,6 +26,22 @@ namespace Swetugg.Web.Models
             var today = conference.CurrentTime().Date;
             return conference.CfpStart.HasValue && conference.CfpStart < today &&
                    (!conference.CfpEnd.HasValue || conference.CfpEnd >= today);
+        }
+    }
+
+    public static class PrincipalExtensions
+    {
+        public static bool IsAllowedToCreateCfp(this IPrincipal user, Conference conference)
+        {
+            if (conference.IsCfpOpen())
+                return true;
+
+            // TODO Only allow for certain conferences.
+            if (user != null && user.IsInRole("VipSpeaker"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 

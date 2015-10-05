@@ -78,6 +78,7 @@ namespace Swetugg.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.ReturnUrl = returnUrl;
                 return View(model);
             }
 
@@ -95,6 +96,7 @@ namespace Swetugg.Web.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
+                    ViewBag.ReturnUrl = returnUrl;
                     return View(model);
             }
         }
@@ -145,8 +147,9 @@ namespace Swetugg.Web.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -155,7 +158,7 @@ namespace Swetugg.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -177,6 +180,8 @@ namespace Swetugg.Web.Controllers
                             UserManager.SendEmailAsync(user.Id, "Confirm your email",
                                 "Please confirm your email address by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     }
+                    if (!string.IsNullOrWhiteSpace(returnUrl))
+                        return RedirectToLocal(returnUrl);
                     return RedirectToAction("Start", "Home");
                 }
                 AddErrors(result);

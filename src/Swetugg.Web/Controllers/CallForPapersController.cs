@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Instrumentation;
@@ -20,6 +21,7 @@ using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Controllers
 {
+
     [RequireHttps]
     [RoutePrefix("cfp")]
     [Authorize()]
@@ -28,6 +30,7 @@ namespace Swetugg.Web.Controllers
         private readonly IConferenceService _conferenceService;
         private readonly IImageUploader _imageUploader;
         private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
         private readonly ApplicationDbContext _dbContext;
         private readonly string _cfpSpeakerImageContainerName;
 
@@ -51,6 +54,18 @@ namespace Swetugg.Web.Controllers
             }
         }
 
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
 
         [Route("")]
         public ActionResult Index()
@@ -64,6 +79,30 @@ namespace Swetugg.Web.Controllers
             return View(conferences);
         }
 
+
+        [Route("{conferenceSlug}/vip-invite/{code}")]
+        public async Task<ActionResult> Invite(string conferenceSlug, string code)
+        {
+            var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
+
+            if (conference.CfpVipCode.Equals(code, StringComparison.InvariantCultureIgnoreCase))
+            {
+                var userId = User.Identity.GetUserId();
+                var user = UserManager.FindById(userId);
+                
+                await UserManager.AddToRoleAsync(userId, "VipSpeaker");
+                await SignInManager.SignInAsync(user, false, false); // Sign in again
+                ViewBag.Success = true;
+            }
+            else
+            {
+                ViewBag.Success = false;
+            }
+
+            ViewBag.Conference = conference;
+            return View(conference);
+        }
+
         [Route("{conferenceSlug}")]
         public ActionResult Conference(string conferenceSlug)
         {
@@ -72,7 +111,7 @@ namespace Swetugg.Web.Controllers
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
-                if (conference.IsCfpOpen())
+                if (User.IsAllowedToCreateCfp(conference))
                 {
                     return RedirectToAction("Speaker");
                 }
@@ -94,7 +133,7 @@ namespace Swetugg.Web.Controllers
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
-                if (!conference.IsCfpOpen())
+                if (!User.IsAllowedToCreateCfp(conference))
                 {
                     // CFP Isn't open. Can't create new speakers.
                     return RedirectToAction("Index");
@@ -125,7 +164,7 @@ namespace Swetugg.Web.Controllers
 
                     if (dbSpeaker == null)
                     {
-                        if (!conference.IsCfpOpen())
+                        if (!User.IsAllowedToCreateCfp(conference))
                         {
                             // CFP Isn't open. Can't create new speakers.
                             return RedirectToAction("Index");
@@ -203,7 +242,7 @@ namespace Swetugg.Web.Controllers
             }
             else
             {
-                if (!conference.IsCfpOpen())
+                if (!User.IsAllowedToCreateCfp(conference))
                 {
                     // CFP Isn't open. Can't create new sessions.
                     return RedirectToAction("Conference");
@@ -236,7 +275,7 @@ namespace Swetugg.Web.Controllers
                     var dbSession = id.HasValue ? speaker.Sessions.SingleOrDefault(s => s.Id == id) : null;
                     if (dbSession == null)
                     {
-                        if (!conference.IsCfpOpen())
+                        if (!User.IsAllowedToCreateCfp(conference))
                         {
                             // CFP Isn't open. Can't create new sessions.
                             return RedirectToAction("Conference");

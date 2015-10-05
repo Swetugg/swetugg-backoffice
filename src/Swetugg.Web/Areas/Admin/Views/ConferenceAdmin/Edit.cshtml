@@ -57,18 +57,25 @@
                         @Html.ValidationMessageFor(m => m.Description)
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.CfpStart)
                                 @Html.TextBoxFor(m => m.CfpStart, "{0:yyyy-MM-dd}", new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.CfpStart)
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.CfpEnd)
-                                @Html.TextBoxFor(m => m.CfpEnd, "{0:yyyy-MM-dd}", new {@class = "form-control"})
+                                @Html.TextBoxFor(m => m.CfpEnd, "{0:yyyy-MM-dd}", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.CfpEnd)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CfpVipCode)
+                                @Html.TextBoxFor(m => m.CfpVipCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CfpVipCode)
                             </div>
                         </div>
                     </div>
