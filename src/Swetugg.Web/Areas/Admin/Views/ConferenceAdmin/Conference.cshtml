@@ -36,6 +36,28 @@
                         @Html.ActionLink("Schedule", "Index", "ScheduleAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                     </div>
                 </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Call For Papers</div>
+                    </div>
+                    <div class="panel-body">
+                        <dl>
+                            <dt>Start</dt>
+                            <dd>@Html.DisplayFor(m =>m.CfpStart)</dd>
+
+                            <dt>End</dt>
+                            <dd>@Html.DisplayFor(m => m.CfpEnd)</dd>
+
+                            @if (!string.IsNullOrWhiteSpace(Model.CfpVipCode))
+                            {
+                                <dt>VIP Invite URL</dt>
+                                <dd>
+                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)"/>
+                                </dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

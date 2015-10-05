@@ -37,6 +37,10 @@ namespace Swetugg.Web.Models
                ApplyFormatInEditMode = true)]
         public DateTime? CfpEnd { get; set; }
 
+        [StringLength(50)]
+        [Display(Name = "VIP invite code")]
+        public string CfpVipCode { get; set; }
+
         public ICollection<Speaker> Speakers { get; set; }
         public ICollection<Session> Sessions { get; set; }
         public ICollection<Sponsor> Sponsors { get; set; }

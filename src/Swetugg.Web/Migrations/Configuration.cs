@@ -14,7 +14,6 @@ namespace Swetugg.Web.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            
         }
 
         protected override void Seed(Swetugg.Web.Models.ApplicationDbContext context)
@@ -46,6 +45,15 @@ namespace Swetugg.Web.Migrations
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole { Name = "ConferenceManager" };
+
+                manager.Create(role);
+            }
+
+            if (!context.Roles.Any(r => r.Name == "VipSpeaker"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "VipSpeaker" };
 
                 manager.Create(role);
             }

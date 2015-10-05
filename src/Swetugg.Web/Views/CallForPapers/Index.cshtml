@@ -58,7 +58,7 @@
 <div class="list-group">
     @foreach (var conference in @Model)
     {
-        var isEnabled = conference.IsCfpOpen();
+        var isEnabled = User.IsAllowedToCreateCfp(conference);
 
         if (isEnabled || cfpAlreadyCreatedFor.Contains(conference.Id))
         {
