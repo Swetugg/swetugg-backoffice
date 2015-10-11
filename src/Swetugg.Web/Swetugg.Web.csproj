@@ -481,6 +481,8 @@
       <DependentUpon>swetugg.css</DependentUpon>
     </Content>
     <Content Include="Content\swetugg-2016\css\variables.css" />
+    <Content Include="Content\swetugg-2016\img\150_SwetuggOrigamiButterfly.png" />
+    <Content Include="Content\swetugg-2016\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
     <Content Include="Content\swetugg-2016\img\icon-map.png" />
     <Content Include="Content\swetugg-2016\img\intro-bg.jpg" />
     <Content Include="Content\swetugg-2016\img\swenug.png" />
