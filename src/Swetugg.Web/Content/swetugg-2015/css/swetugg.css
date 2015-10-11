@@ -107,6 +107,9 @@ a:focus {
   font-family: 'Rock Salt';
   font-size: 14px;
 }
+.navbar-brand > img {
+    top: -10px;
+}
 .navbar-brand > i {
   font-size: 28px;
   line-height: 0.5;
