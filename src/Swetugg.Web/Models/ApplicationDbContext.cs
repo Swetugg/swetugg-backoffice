@@ -1,7 +1,7 @@
-﻿using System;
+﻿using System.Configuration;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Swetugg.Web.Migrations;
+using Configuration = Swetugg.Web.Migrations.Configuration;
 
 namespace Swetugg.Web.Models
 {
@@ -27,8 +27,26 @@ namespace Swetugg.Web.Models
 
 		public static ApplicationDbContext Create()
 		{
-            Database.SetInitializer(new NullDatabaseInitializer<ApplicationDbContext>());
-            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            IDatabaseInitializer<ApplicationDbContext> strategy;
+            switch (ConfigurationManager.AppSettings["Database_Initialize_Strategy"])
+            {
+                case "CreateDatabaseIfNotExists":
+                    strategy = new CreateDatabaseIfNotExists<ApplicationDbContext>();
+                    break;
+                case "DropCreateDatabaseAlways":
+                    strategy = new DropCreateDatabaseAlways<ApplicationDbContext>();
+                    break;
+                case "DropCreateDatabaseIfModelChanges":
+                    strategy = new DropCreateDatabaseIfModelChanges<ApplicationDbContext>();
+                    break;
+                case "MigrateDatabaseToLatestVersion":
+                    strategy = new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>();
+                    break;
+                default:
+                    strategy = new NullDatabaseInitializer<ApplicationDbContext>();
+                    break;
+            }
+            Database.SetInitializer(strategy);
             return new ApplicationDbContext();
 		}
 
