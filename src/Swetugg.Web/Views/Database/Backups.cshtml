@@ -1,0 +1,18 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Database backups";
+
+    var errorMsg = (string)ViewBag.ErrorMessage;
+}
+
+<h2>Backups</h2>
+@if (!string.IsNullOrEmpty(errorMsg))
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @errorMsg
+    </div>
+}
