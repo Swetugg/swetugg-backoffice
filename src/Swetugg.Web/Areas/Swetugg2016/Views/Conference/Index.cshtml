@@ -31,6 +31,8 @@
     {
         speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
     }
+    var totalNumberOfSpeakers = 35;
+    var speakersLeft = totalNumberOfSpeakers - speakers.Count();
 
 }
 
@@ -83,34 +85,86 @@
     </div>
 </section>
 
-<section id="speakers" class="even-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="noSubtitle">Call for papers</h1>
+<section id="speakers" class="even-section content-section text-center">
+    <div class="program-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Talare</h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <p>
-                    Vår öppna Call for Papers har stängt för den här gången. Har du redan fyllt i men vill ändra något
-                    så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new {Area = ""}, null)-siten.
-                    Skicka sedan helst även ett mail till <a href="mailto:tala@swetugg.se">tala@swetugg.se</a> och berätta vad du
-                    ändrat och varför.
-                </p>
-                <p>
-                    <em>Hjälp, jag missade CFP:n!</em><br/>
-                    Det kan fortfarande finnas enstaka platser kvar, så maila oss gärna på <a href="mailto:tala@swetugg.se">tala@swetugg.se</a>
-                    och berätta lite kort vad du vill prata om.
-                </p>
-                <p>
-                    <em>När får jag besked?</em><br/>
-                    Alla som var med i den öppna CFP:n kommer att få svar från oss senast den 20:e oktober.
-                </p>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="photo-collection">
+                        @foreach (var speaker in @speakers)
+                        {
+                            <li>
+                                <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
+                                    @{
+                                        string imageUrl = "/Content/swetugg-2016/SpeakerPictures/" + speaker.Slug + ".png";
+                                        IDictionary<string, SpeakerImage> imgLookup;
+                                        if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
+                                        {
+                                            SpeakerImage speakerImage;
+                                            if (imgLookup.TryGetValue("thumb-front", out speakerImage))
+                                            {
+                                                imageUrl = speakerImage.ImageUrl;
+                                            }
+                                        }
+                                    }
+                                    <img class="img-circle" src="@imageUrl" />
+                                    <div>
+                                        @speaker.Name
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                        @for (int i = 0; i < speakersLeft; i++)
+                        {
+                            <li>
+                                <img class="img-circle" src="/Content/swetugg-2016/img/unknown.png" />
+                                <div>
+                                    
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+
+@*<section id="speakers" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Call for papers</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <p>
+                        Vår öppna Call for Papers har stängt för den här gången. Har du redan fyllt i men vill ändra något
+                        så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new {Area = ""}, null)-siten.
+                        Skicka sedan helst även ett mail till <a href="mailto:tala@swetugg.se">tala@swetugg.se</a> och berätta vad du
+                        ändrat och varför.
+                    </p>
+                    <p>
+                        <em>Hjälp, jag missade CFP:n!</em><br/>
+                        Det kan fortfarande finnas enstaka platser kvar, så maila oss gärna på <a href="mailto:tala@swetugg.se">tala@swetugg.se</a>
+                        och berätta lite kort vad du vill prata om.
+                    </p>
+                    <p>
+                        <em>När får jag besked?</em><br/>
+                        Alla som var med i den öppna CFP:n kommer att få svar från oss senast den 20:e oktober.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+*@
 
 @*<section id="schedule" class="content-section text-center">
         <div class="schedule-section">
