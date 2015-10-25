@@ -1,4 +1,5 @@
-﻿@using Swetugg.Web.Models
+﻿@using Swetugg.Web.Helpers
+@using Swetugg.Web.Models
 @model Session
 
 @{
@@ -23,7 +24,9 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8">
-                <p>@Model.Description</p>
+                <p>
+                    @Html.Raw(Html.FromMarkdown(Model.Description))
+                </p>
                 @if (Model.VideoUrl != null)
                 {
                     <div class="panel panel-info">

@@ -1,0 +1,123 @@
+﻿@using Swetugg.Web.Controllers
+@using Swetugg.Web.Helpers
+@model Swetugg.Web.Models.Speaker
+
+@{
+    var fbAppId = ViewData["FacebookAppId"];
+    ViewBag.Title = "Speaker";
+    Layout = "~/Areas/Swetugg2015/Views/Shared/_LayoutSimple.cshtml";
+
+    var speakerImageUrl = string.Empty;
+    var firstThumb = Model.Images.FirstOrDefault(i => i.ImageType.Slug == "thumb");
+    if (firstThumb != null)
+    {
+        speakerImageUrl = firstThumb.ImageUrl;
+    }
+}
+
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+
+<section id="info" class="content-section text-center">
+    <!-- Work in progress -->
+    <div class="program-section" style="background-image: url(@Url.Content("~/Content/swetugg-2015/img/bak1.JPG"))">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <img class="img-circle" src="@speakerImageUrl" />
+                    <h1 style="margin-top: 20px; color: white;">@Model.Name</h1>
+                    <h2 style="color: white;">@Model.Company</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="content-section text-center">
+    <div class="program-section" style="background-color: white; padding-top: 40px;">
+        <div class="container">
+            @foreach (var session in @Model.Sessions.Select(s => s.Session))
+            {
+                <div id="@session.Slug" style="position: relative; top: -60px"></div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        @{
+                var nameText = "Missa inte \"" + session.Name + "\"";
+                if (!string.IsNullOrEmpty(Model.Twitter))
+                {
+                    nameText = nameText + " med @" + Model.Twitter;
+                }
+                var twitterText = nameText + " på @Swetugg 2016!";
+                var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
+                        }
+                        <a href="#@session.Slug">
+                            <h2>@session.Name</h2>
+                        </a>
+
+                        @if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
+                        {
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe src="@session.VideoUrl" allowfullscreen></iframe>
+                            </div>
+                        }
+                        <p>
+                            @Html.Raw(Html.FromMarkdown(session.Description))
+                        </p>
+                        <div style="margin-bottom: 2em">
+                            <div class="pull-left" style="margin-right: 5px; margin-top:2px">
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="@linkUrl" data-text="@twitterText">Tweet</a>
+                            </div>
+                            <div class="fb-like" data-href="@linkUrl" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>@Model.Name</h2>
+                    <p>
+                        @Html.Raw(Html.FromMarkdown(Model.Bio))
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+@section meta {
+    @{
+        var session = Model.Sessions.Select(s => s.Session).FirstOrDefault();
+        var speakerUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme);
+    }
+
+    @if (session != null)
+    {
+        var sessionUrl = speakerUrl + "#" + session.Slug;
+
+        <meta property="og:url" content="@sessionUrl" />
+        <meta property="og:title" content="@Model.Name - @session.Name" />
+        <meta property="og:description" content="@session.Description" />
+        if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
+        {
+            var youtubeId = session.VideoUrl.Substring(session.VideoUrl.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
+
+            <meta property="og:type" content="article" />
+
+            <meta property="og:image" content="https://i1.ytimg.com/vi/@(youtubeId)/hqdefault.jpg" />
+            @*
+                <meta property="og:video" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+                <meta property="og:video:secure_url" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
+            *@
+        }
+    }
+    else
+    {
+        <meta property="og:url" content="@speakerUrl" />
+        <meta property="og:image" content="http://swetugg.se/Content/swetugg-2015/SpeakerPictures/@(Model.Slug + ".png") " />
+        <meta property="og:title" content="@Model.Name" />
+        <meta property="og:description" content="@Model.Bio" />
+    }
+}

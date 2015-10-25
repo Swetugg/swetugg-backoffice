@@ -1,5 +1,6 @@
 ﻿@using System.Collections
 @using System.Globalization
+@using Swetugg.Web.Helpers
 @using Swetugg.Web.Models
 @model Speaker
 @{
@@ -36,7 +37,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8">
-                <p>@Model.Bio</p>
+                <p>@Html.Raw(Html.FromMarkdown(Model.Bio))</p>
             </div>
             <div class="col-sm-4">
                 <div class="panel panel-info">
