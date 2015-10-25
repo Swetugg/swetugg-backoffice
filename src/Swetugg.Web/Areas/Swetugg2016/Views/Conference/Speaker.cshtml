@@ -5,7 +5,6 @@
 @{
     var fbAppId = ViewData["FacebookAppId"];
     ViewBag.Title = "Speaker";
-    Layout = "~/Areas/Swetugg2015/Views/Shared/_LayoutSimple.cshtml";
 
     var speakerImageUrl = string.Empty;
     var firstThumb = Model.Images.FirstOrDefault(i => i.ImageType.Slug == "thumb");
@@ -33,7 +32,7 @@
     </div>
 </section>
 
-<section class="content-section text-center">
+<section class="content-section">
     <div class="program-section" style="background-color: white; padding-top: 40px;">
         <div class="container">
             @foreach (var session in @Model.Sessions.Select(s => s.Session))
