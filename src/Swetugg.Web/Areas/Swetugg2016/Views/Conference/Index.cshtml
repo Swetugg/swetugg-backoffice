@@ -312,22 +312,52 @@
 </section>
 
 <section id="sponsor" class="even-section content-section text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="noSubtitle">Sponsorer</h1>
+    <div class="sponsor-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Sponsorer</h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1">
-                <h3>Intresserad av att sponsra Swetugg 2016?</h3>
-                <p>
-                    Swetugg drivs helt idellt och är beroende av sponsorer för att gå runt. Till nästa år kommer
-                    vi satsa ytterligare lite mer så det finns gott om möjligheter att hjälpa till!<br /><br />
-                    Vill du veta mer om hur just ditt företag kan sponsra?
-                    Kontakta oss på <a href="mailto:sponsor@swetugg.se">sponsor@@swetugg.se</a>
-                </p>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Utställare</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
 
+                        @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Stödsponsorer</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

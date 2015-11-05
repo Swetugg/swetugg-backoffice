@@ -51,7 +51,8 @@ h2.subTitle {
   font-weight: 300;
   font-style: normal;
   padding: 0;
-  margin-bottom: 90px;
+  margin-top: 20px;
+  margin-bottom: 17px;
   text-align: center;
 }
 h2.subTitle:after,
