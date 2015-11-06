@@ -40,7 +40,7 @@ function initializeMap(id) {
     var locations = [
         //point number 1 
         // ['Swetugg 2016', 'Stockholm', '59.326142', '17.9875455'],
-        ['Swetugg 2016', 'Stockholm', 59.332, 18.07],
+        ['Swetugg 2016', 'Stockholm', 59.2910932, 18.0836 ]
     ];
 
     id = (id === undefined) ? 'map' : id;
@@ -55,7 +55,7 @@ function initializeMap(id) {
         },
         streetViewControl: true,
         scaleControl: false,
-        zoom: 12,
+        zoom: 11,
     });
 
     var myLatlng;
