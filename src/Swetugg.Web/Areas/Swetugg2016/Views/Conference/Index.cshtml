@@ -42,8 +42,10 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h1 class="brand-heading">Swetugg</h1>
-                    <p class="intro-text">En konferens för .NET-utvecklare, i Swenugs anda.<br/>
-                        Stockholm, 1-2 februari 2016</p>
+                    <p class="intro-text">
+                        En konferens för .NET-utvecklare, i Swenugs anda.<br />
+                        Stockholm, 1-2 februari 2016
+                    </p>
                     <div class="page-scroll">
                         <a href="#about" data-target="#about" class="btn btn-circle">
                             <i class="fa fa-angle-double-down animated"></i>
@@ -102,16 +104,16 @@
                             <li>
                                 <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
                                     @{
-                                        string imageUrl = "/Content/swetugg-2016/SpeakerPictures/" + speaker.Slug + ".png";
-                                        IDictionary<string, SpeakerImage> imgLookup;
-                                        if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
-                                        {
-                                            SpeakerImage speakerImage;
-                                            if (imgLookup.TryGetValue("thumb-front", out speakerImage))
-                                            {
-                                                imageUrl = speakerImage.ImageUrl;
-                                            }
-                                        }
+                            string imageUrl = "/Content/swetugg-2016/SpeakerPictures/" + speaker.Slug + ".png";
+                            IDictionary<string, SpeakerImage> imgLookup;
+                            if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
+                            {
+                                SpeakerImage speakerImage;
+                                if (imgLookup.TryGetValue("thumb-front", out speakerImage))
+                                {
+                                    imageUrl = speakerImage.ImageUrl;
+                                }
+                            }
                                     }
                                     <img class="img-circle" src="@imageUrl" />
                                     <div>
@@ -125,7 +127,7 @@
                             <li>
                                 <img class="img-circle" src="/Content/swetugg-2016/img/unknown.png" />
                                 <div>
-                                    
+
                                 </div>
                             </li>
                         }
@@ -278,7 +280,65 @@
         </div>
     </section>
 *@
-<section id="tickets" class="odd-section content-section">
+<section id="sponsor" class="odd-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Sponsorer</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
+                <p>
+                    Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="subTitle">Utställare</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <ul class="logo-collection">
+
+                    @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
+                    {
+                        <li>
+                            <a href="@sponsor.Web">
+                                <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="subTitle">Stödsponsorer</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <ul class="logo-collection">
+
+                    @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
+                    {
+                        <li>
+                            <a href="@sponsor.Web">
+                                <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tickets" class="even-section content-section">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -311,63 +371,6 @@
     </div>
 </section>
 
-<section id="sponsor" class="even-section content-section text-center">
-    <div class="sponsor-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h1>Sponsorer</h1>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
-                    <p>Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2 class="subTitle">Utställare</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <ul class="logo-collection">
-
-                        @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
-                        {
-                            <li>
-                                <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2 class="subTitle">Stödsponsorer</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <ul class="logo-collection">
-
-                        @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
-                        {
-                            <li>
-                                <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section id="contact" class="content-section contact-section">
     <div class="container">
