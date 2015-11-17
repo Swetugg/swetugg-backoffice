@@ -512,8 +512,10 @@
     <Content Include="Content\swetugg-2016\img\intro-bg.jpg" />
     <Content Include="Content\swetugg-2016\img\sponsors\activesolution-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\aptitud-thumb.png" />
+    <Content Include="Content\swetugg-2016\img\sponsors\attentec-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\combitech-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\cornerstone-thumb.png" />
+    <Content Include="Content\swetugg-2016\img\sponsors\dynabyte-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\etimo-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\informator-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\kentor-thumb.png" />
@@ -525,6 +527,7 @@
     <Content Include="Content\swetugg-2016\img\sponsors\squeed-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\tretton37-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\ving-thumb.png" />
+    <Content Include="Content\swetugg-2016\img\sponsors\wcom-thumb.png" />
     <Content Include="Content\swetugg-2016\img\sponsors\webstep-thumb.png" />
     <Content Include="Content\swetugg-2016\img\swenug.png" />
     <Content Include="Content\swetugg-2016\img\swetugg-2016-bg.jpg" />
