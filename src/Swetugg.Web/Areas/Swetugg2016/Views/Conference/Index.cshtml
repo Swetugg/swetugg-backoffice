@@ -34,6 +34,8 @@
     var totalNumberOfSpeakers = 35;
     var speakersLeft = totalNumberOfSpeakers - speakers.Count();
 
+    string ticketUrl = ViewBag.TicketUrl;
+    bool ticketSalesOpen = ViewBag.TicketSalesOpen;
 }
 
 <section class="intro">
@@ -347,27 +349,39 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
-                <p class="text-center">
-                    Biljetter till Swetugg 2016 släpps den 24:e november kl 10:00.<br /><br />
+                @if (ticketSalesOpen)
+                {
+                    <p class="text-center">
+                        Biljetterna till Swetugg 2016 kostar 1000kr per styck.
+                    </p>
+                    <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
+                        <div class="form-group form-group-lg">
+                            <select class="form-control" id="tickets_175601" name="tickets[175601]">
+                                <option value="1" selected="selected">1 biljett - 1000kr</option>
+                                <option value="2">2 biljetter - 2000kr</option>
+                                <option value="3">3 biljetter - 3000kr</option>
+                                <option value="4">4 biljetter - 4000kr</option>
+                                <option value="5">5 biljetter - 5000kr</option>
+                            </select>
+                        </div>
 
-                    Gå med i evenemanget <a href="https://www.facebook.com/events/480878585432213/">Biljettsläpp Swetugg 2016</a>
-                    på Facebook så får du en påminnelse när biljetterna släpps.
+                        <input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
+                    </form>
+                    <p class="text-center">
+                        <br />
+                        Vill du köpa mer än fem biljetter och föredrar att bli fakturerad? Kontakta oss på <a href="mailto:info@swetugg.se">info@swetugg.se</a>
+                    </p>
+                }
+                else
+                {
+                    <p class="text-center">
+                        Biljetter till Swetugg 2016 släpps den 24:e november kl 10:00.<br /><br />
 
-                </p>
+                        Gå med i evenemanget <a href="https://www.facebook.com/events/480878585432213/">Biljettsläpp Swetugg 2016</a>
+                        på Facebook så får du en påminnelse när biljetterna släpps.
+                    </p>
+                }
             </div>
-            @*<form role="form" action="http://simplesignup.se/event/53058/signup/tickets" method="post">
-                    <div class="form-group col-lg-2 col-lg-offset-5">
-                        <select class="form-control" id="tickets_175601" name="tickets[175601]">
-                            <option value="1" selected="selected">1 biljett - 500kr</option>
-                            <option value="2">2 biljetter - 1000kr</option>
-                            <option value="3">3 biljetter - 1500kr</option>
-                            <option value="4">4 biljetter - 2000kr</option>
-                        </select>
-                    </div>
-
-                    <input name="commit" type="submit" class="col-lg-2 col-lg-offset-5 btn btn-default" value="Köp"/>
-                </form>
-            *@
         </div>
     </div>
 </section>

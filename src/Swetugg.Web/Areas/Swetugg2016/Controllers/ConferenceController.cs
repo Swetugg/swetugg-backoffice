@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -57,6 +59,25 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
             ViewData["Sponsors"] = sponsors;
             ViewData["Conference"] = conf;
             ViewData["SpeakerImages"] = speakerImages;
+
+            bool ticketSalesOpen;
+            
+            // Do we have forced open/close info for ticket sales?
+            if (!bool.TryParse(ConfigurationManager.AppSettings["Ticket_Sales_Force"], out ticketSalesOpen))
+            {
+                // No forced info. Let's see if we have an open date/time
+                DateTime ticketsOpenDateTime;
+                if (DateTime.TryParse(ConfigurationManager.AppSettings["Ticket_Sales_Open_Date"], 
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None, out ticketsOpenDateTime))
+                {
+                    // Ticket sales should be open if the local conference time is greater than the date/time
+                    ticketSalesOpen = conference.CurrentTime() > ticketsOpenDateTime;
+                }
+            }
+
+            ViewData["TicketSalesOpen"] = ticketSalesOpen;
+            ViewData["TicketUrl"] = ConfigurationManager.AppSettings["Ticket_Url"];
 
             return View();
         }
