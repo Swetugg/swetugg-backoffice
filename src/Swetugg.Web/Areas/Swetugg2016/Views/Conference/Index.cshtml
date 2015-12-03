@@ -172,7 +172,7 @@
     </section>
 *@
 
-@*<section id="schedule" class="content-section text-center">
+<section id="schedule" class="content-section">
         <div class="schedule-section">
             <div class="container">
                 <div class="row">
@@ -190,7 +190,9 @@
                             <table class="table table-bordered schema">
                                 <thead>
                                 <tr>
+                                @*
                                     <th style="width: 10%">Tid</th>
+                                *@
                                     @foreach (var room in rooms)
                                     {
                                         <th style="width: @columnWidth%">@room.Name</th>
@@ -201,7 +203,11 @@
                                 @foreach (var slot in day)
                                 {
                                     <tr>
-                                        <th>@slot.Start.ToString("HH:mm") <br/> @slot.End.ToString("HH:mm")</th>
+                                        @*
+                                            <th>
+                                                    @slot.Start.ToString("HH:mm") <br/> @slot.End.ToString("HH:mm")
+                                            </th>
+                                        *@
 
                                         @if (string.IsNullOrEmpty(slot.Title))
                                         {
@@ -224,20 +230,20 @@
                                                                 var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
                                                                 if (sessionSpeakers.Count > 0)
                                                                 {
-
-                                                                }
-                                                                var firstSpeaker = sessionSpeakers.First();
-                                                                <div class="schemacell-rad1">
-                                                                    @foreach (var speaker in sessionSpeakers)
-                                                                    {
-                                                                        @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
-                                                                    }
-                                                                </div>
-                                                                <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
-                                                                    <div class="schemacell-rad2">
-                                                                        @session.Name
+                                                                    var firstSpeaker = sessionSpeakers.First();
+                                                                    <div class="schemacell-rad1">
+                                                                        @foreach (var speaker in sessionSpeakers)
+                                                                        {
+                                                                            @Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
+                                                                        }
                                                                     </div>
-                                                                </a>
+                                                                    <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
+                                                                        <div class="schemacell-rad2">
+                                                                            @session.Name
+                                                                        </div>
+                                                                    </a>
+                                                                }
+
                                                             }
                                                         </div>
                                                     </td>
@@ -274,164 +280,165 @@
                         }
 
                         <p class="schema-disclaimer">
-                            <span class="glyphicon glyphicon-info-sign"></span>
-                            Förändrat sedan schemat trycktes
+                            Schemat är preliminärt och kan komma att ändras. Exakta tider är inte klara ännu, men kommer att publiceras snart.
+                            @*<span class="glyphicon glyphicon-info-sign"></span>
+                                Förändrat sedan schemat trycktes *@
                         </p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+    <section id="sponsor" class="odd-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Sponsorer</h1>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
+                    <p>
+                        Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Utställare</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Stödsponsorer</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                                </a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-*@
-<section id="sponsor" class="odd-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>Sponsorer</h1>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
-                <p>
-                    Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="subTitle">Utställare</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1">
-                <ul class="logo-collection">
 
-                    @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
+    <section id="tickets" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Biljetter</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    @if (ticketSalesOpen)
                     {
-                        <li>
-                            <a href="@sponsor.Web">
-                                <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="subTitle">Stödsponsorer</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1">
-                <ul class="logo-collection">
+                        <p class="text-center">
+                            Biljetterna till Swetugg 2016 kostar 1000kr per styck.
+                        </p>
+                        <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
+                            <div class="form-group form-group-lg">
+                                <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
+                                    <option value="1" selected="selected">1 biljett - 1000kr</option>
+                                    <option value="2">2 biljetter - 2000kr</option>
+                                    <option value="3">3 biljetter - 3000kr</option>
+                                    <option value="4">4 biljetter - 4000kr</option>
+                                    <option value="5">5 biljetter - 5000kr</option>
+                                </select>
+                            </div>
 
-                    @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
+                            <input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
+                        </form>
+                        <p>
+                            <h3>Student?</h3>
+                            Vi har ett begränsat antal gratisbiljetter för dig som är studerande. <br />
+                            <a href="https://sv.surveymonkey.com/r/VQT7WTN" target="_blank">Ansök genom att fylla i formuläret.</a>
+                        </p>
+                        <p>
+                            <h3>Faktura?</h3>
+                            Vill du köpa mer än fem biljetter och föredrar att bli fakturerad? Kontakta oss på <a href="mailto:info@swetugg.se">info@swetugg.se</a>
+                        </p>
+                        <p>
+                            <h3>Boende?</h3>
+                            Närmaste hotellet är <a href="https://www.nordicchoicehotels.se/quality/quality-hotel-globe/" target="_blank">Quality Hotel Globe</a> där vi har fått ett erbjudande
+                            om rum för deltagare på Swetugg.
+                            <ul>
+                                <li>Enkelrum 1155:- per natt</li>
+                                <li>Dubbelrum 1355:- per natt</li>
+                            </ul>
+                            Bokas på 08-686&nbsp;63&nbsp;05 alt. <a href="mailto:info.globe@choice.se">info.globe@choice.se</a> med bokningskod 394659.
+                        </p>
+                    }
+                    else
                     {
-                        <li>
-                            <a href="@sponsor.Web">
-                                <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
-                            </a>
-                        </li>
+                        <p class="text-center">
+                            Biljetter till Swetugg 2016 släpps den 24:e november kl 10:00.<br /><br />
+
+                            Gå med i evenemanget <a href="https://www.facebook.com/events/480878585432213/">Biljettsläpp Swetugg 2016</a>
+                            på Facebook så får du en påminnelse när biljetterna släpps.
+                        </p>
                     }
-                </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<section id="tickets" class="even-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="noSubtitle">Biljetter</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                @if (ticketSalesOpen)
-                {
-                    <p class="text-center">
-                        Biljetterna till Swetugg 2016 kostar 1000kr per styck.
-                    </p>
-                    <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
-                        <div class="form-group form-group-lg">
-                            <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
-                                <option value="1" selected="selected">1 biljett - 1000kr</option>
-                                <option value="2">2 biljetter - 2000kr</option>
-                                <option value="3">3 biljetter - 3000kr</option>
-                                <option value="4">4 biljetter - 4000kr</option>
-                                <option value="5">5 biljetter - 5000kr</option>
-                            </select>
-                        </div>
-
-                        <input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
-                    </form>
-                    <p>
-                        <h3>Student?</h3>
-                        Vi har ett begränsat antal gratisbiljetter för dig som är studerande. <br />
-                        <a href="https://sv.surveymonkey.com/r/VQT7WTN" target="_blank">Ansök genom att fylla i formuläret.</a>
-                    </p>
-                    <p>
-                        <h3>Faktura?</h3>
-                        Vill du köpa mer än fem biljetter och föredrar att bli fakturerad? Kontakta oss på <a href="mailto:info@swetugg.se">info@swetugg.se</a>
-                    </p>
-                    <p>
-                        <h3>Boende?</h3>
-                        Närmaste hotellet är <a href="https://www.nordicchoicehotels.se/quality/quality-hotel-globe/" target="_blank">Quality Hotel Globe</a> där vi har fått ett erbjudande
-                        om rum för deltagare på Swetugg.
-                        <ul>
-                            <li>Enkelrum 1155:- per natt</li>
-                            <li>Dubbelrum 1355:- per natt</li>
-                        </ul>
-                        Bokas på 08-686&nbsp;63&nbsp;05 alt. <a href="mailto:info.globe@choice.se">info.globe@choice.se</a> med bokningskod 394659.
-                    </p>
-                }
-                else
-                {
-                    <p class="text-center">
-                        Biljetter till Swetugg 2016 släpps den 24:e november kl 10:00.<br /><br />
-
-                        Gå med i evenemanget <a href="https://www.facebook.com/events/480878585432213/">Biljettsläpp Swetugg 2016</a>
-                        på Facebook så får du en påminnelse när biljetterna släpps.
-                    </p>
-                }
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-<section id="contact" class="content-section contact-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1 class="noSubtitle">Kontakta oss</h1>
+    <section id="contact" class="content-section contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="noSubtitle">Kontakta oss</h1>
+                </div>
             </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p>Vill du fråga något? Eller bara säga hej? Tveka inte att kontakta oss.</p>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p>Vill du fråga något? Eller bara säga hej? Tveka inte att kontakta oss.</p>
+                </div>
             </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p><a href="mailto:info@swetugg.se">info@swetugg.se</a></p>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p><a href="mailto:info@swetugg.se">info@swetugg.se</a></p>
+                </div>
             </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://facebook.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                    </li>
-                    @*<li>
-                        <a href="https://plus.google.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                        </li>*@
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://facebook.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        </li>
+                        @*<li>
+                            <a href="https://plus.google.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                            </li>*@
                 </ul>
             </div>
         </div>
