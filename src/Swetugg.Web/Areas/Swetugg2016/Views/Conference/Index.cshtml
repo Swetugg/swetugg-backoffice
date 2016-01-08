@@ -185,29 +185,30 @@
 
                         @foreach (var day in slots.GroupBy(s => s.Start.Date))
                         {
-                            var columnWidth = 90/(rooms.Count());
+                            var width = 90 / rooms.Count();
+
                             <h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
-                            <table class="table table-bordered schema">
+                            <table class="table table-bordered schema rwd-table">
                                 <thead>
-                                <tr>
-                                @*
-                                    <th style="width: 10%">Tid</th>
-                                *@
-                                    @foreach (var room in rooms)
-                                    {
-                                        <th style="width: @columnWidth%">@room.Name</th>
-                                    }
-                                </tr>
+                                    <tr>
+                                    
+                                        <th style="width: 10%">Tid</th>
+                                    
+                                        @foreach (var room in rooms)
+                                        {
+                                            <th style="width: @width%">@room.Name</th>
+                                        }
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 @foreach (var slot in day)
                                 {
                                     <tr>
-                                        @*
-                                            <th>
-                                                    @slot.Start.ToString("HH:mm") <br/> @slot.End.ToString("HH:mm")
+                                        
+                                            <th style="display: table-cell; text-align: center; width: 60px;">
+                                                    @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
                                             </th>
-                                        *@
+                                        
 
                                         @if (string.IsNullOrEmpty(slot.Title))
                                         {
@@ -219,7 +220,7 @@
                                                 var session = roomSlot != null ? roomSlot.AssignedSession : null;
                                                 if (roomSlot != null)
                                                 {
-                                                    <td class="@changedClass">
+                                                    <td data-th="@room.Name" class="@changedClass">
                                                         <div class="schemacell">
                                                             @if (isChanged)
                                                             {
@@ -250,15 +251,8 @@
                                                 }
                                                 else
                                                 {
-                                                    <td>
+                                                    <td data-th="@room.Name">
                                                         <div class="schemacell">
-                                                            @if (false)
-                                                            {
-                                                                <span class="pull-right glyphicon glyphicon-info-sign"></span>
-                                                            }
-                                                            <div class="schemacell-rad1">
-                                                                -
-                                                            </div>
                                                             <div class="schemacell-rad2">
                                                                 Inte klart ännu
                                                             </div>
@@ -269,9 +263,9 @@
                                         }
                                         else
                                         {
-                                            <th colspan="@rooms.Count()">
+                                            <td colspan="@rooms.Count()">
                                                 @slot.Title
-                                            </th>
+                                            </td>
                                         }
                                     </tr>
                                 }
