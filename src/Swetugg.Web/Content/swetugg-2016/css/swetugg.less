@@ -373,7 +373,7 @@ a:focus {
 
 .even-section {
     width: 100%;
-    padding: 50px 0;
+    padding: 50px inherit;
     color: @dark;
     background-color: @offlight;
     background-size: cover;
@@ -382,7 +382,7 @@ a:focus {
 
 .odd-section {
     width: 100%;
-    padding: 50px 0;
+    padding: 50px inherit;
     color: @dark;
     /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
     background-color: @light;
@@ -392,8 +392,15 @@ a:focus {
 }
 
 .content-section > div {
-    padding: 50px 0 50px 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
+
+.content-section > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 
 .program-section li {
     font-size: 20px;
@@ -489,7 +496,7 @@ footer, .footer-section {
     }
 
     .sponsor-section {
-        padding: 100px 0;
+        padding: 100px 15px;
     }
 
     #map {
