@@ -343,6 +343,9 @@ a:focus {
   text-transform: uppercase;
   font-weight: normal;
 }
+table.schema {
+  margin-bottom: 50px;
+}
 .schema td {
   padding: 0 !important;
 }
@@ -535,10 +538,12 @@ footer {
 .rwd-table {
   margin: 1em 0;
   min-width: 300px;
+  border-bottom: 1px solid #ddd;
+  background-color: #FFF7FA;
 }
 .rwd-table tr {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  /*border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;*/
 }
 .rwd-table th {
   display: none;
@@ -553,9 +558,15 @@ footer {
   padding-bottom: .5em;
 }
 .rwd-table td[data-th]:before {
-  content: attr(data-th) ": ";
-  font-weight: bold;
-  width: 6.5em;
+  content: attr(data-th) " ";
+  /*font-weight: bold;*/
+  text-wrap: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin-left: 10px;
+  margin-top: 13px;
+  /*width: .51em; // magic number :( adjust according to your own content*/
   display: inline-block;
 }
 @media (min-width: 480px) {
@@ -573,12 +584,16 @@ footer {
     display: table-cell;
     padding: .25em .5em;
   }
-  .rwd-table th:first-child,
-  .rwd-table td:first-child {
-    padding-left: 0;
-  }
-  .rwd-table th:last-child,
-  .rwd-table td:last-child {
-    padding-right: 0;
-  }
+}
+.rwd-table .all-rooms {
+  background-color: white;
+  height: 80px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+.rwd-table td.all-rooms {
+  letter-spacing: 5px;
+  font-size: 14px;
 }

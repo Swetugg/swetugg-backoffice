@@ -188,7 +188,7 @@
                             var width = 90 / rooms.Count();
 
                             <h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
-                            <table class="table table-bordered schema rwd-table">
+                            <table class="table schema rwd-table">
                                 <thead>
                                     <tr>
                                     
@@ -204,14 +204,12 @@
                                 @foreach (var slot in day)
                                 {
                                     <tr>
-                                        
-                                            <th style="display: table-cell; text-align: center; width: 60px;">
-                                                    @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
-                                            </th>
-                                        
-
                                         @if (string.IsNullOrEmpty(slot.Title))
                                         {
+                                            <th style="display: table-cell; text-align: center; width: 60px;">
+                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                            </th>
+
                                             foreach (var room in rooms)
                                             {
                                                 var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
@@ -263,8 +261,12 @@
                                         }
                                         else
                                         {
-                                            <td colspan="@rooms.Count()">
-                                                @slot.Title
+                                            <th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
+                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                            </th>
+
+                                            <td class="all-rooms" colspan="@rooms.Count()">
+                                                <div>@slot.Title</div>
                                             </td>
                                         }
                                     </tr>

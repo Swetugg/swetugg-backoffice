@@ -414,6 +414,10 @@ a:focus {
 
 // Schedule
 
+table.schema {
+    margin-bottom: 50px;
+}
+
 .schema td {
     padding: 0 !important;
 }
@@ -657,15 +661,17 @@ footer {
 // Responsive table
 // Source: http://codepen.io/geoffyuen/pen/FCBEg
 
-
-
 .rwd-table {
   margin: 1em 0;
   min-width: 300px; // adjust to your needs
+  border-bottom: 1px solid #ddd;
+
+  background-color: @offlight;
+
   
   tr {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    /*border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;*/
   }
   
   th {
@@ -684,11 +690,19 @@ footer {
   }
 
   td[data-th]:before {
-      content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
-      font-weight: bold;
+      content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
+      /*font-weight: bold;*/
+
+      text-wrap: none;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      margin-left: 10px;
+      margin-top: 13px;
 
       // optional stuff to make it look nicer
-      width: 6.5em; // magic number :( adjust according to your own content
+      /*width: .51em; // magic number :( adjust according to your own content*/
       display: inline-block;
       // end options
       
@@ -705,15 +719,28 @@ footer {
       padding: .25em .5em;
       
       &:first-child {
-        padding-left: 0;
       }
       
       &:last-child {
-        padding-right: 0;
       }
     }
 
   }
-  
+
+    .all-rooms {
+        background-color: white;
+        height: 80px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        text-transform: uppercase;
+        
+        
+    }  
+
+    td.all-rooms {
+        letter-spacing: 5px;
+        font-size: 14px;
+    }
   
 }
