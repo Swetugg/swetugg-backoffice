@@ -734,13 +734,16 @@ footer {
         text-align: center;
         vertical-align: middle;
         text-transform: uppercase;
-        
-        
     }  
 
     td.all-rooms {
         letter-spacing: 5px;
         font-size: 14px;
+
+        @media (max-width: @breakpoint-alpha) {
+            text-align: left;
+            padding-left: 10px !important;
+        }
     }
   
 }

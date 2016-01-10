@@ -597,3 +597,9 @@ footer {
   letter-spacing: 5px;
   font-size: 14px;
 }
+@media (max-width: 480px) {
+  .rwd-table td.all-rooms {
+    text-align: left;
+    padding-left: 10px !important;
+  }
+}
