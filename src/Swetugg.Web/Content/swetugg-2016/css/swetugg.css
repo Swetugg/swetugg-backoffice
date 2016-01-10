@@ -505,6 +505,7 @@ footer {
 }
 .photo-collection {
   list-style: none;
+  padding-left: 10px;
 }
 .photo-collection li {
   float: left;
@@ -514,10 +515,34 @@ footer {
   font-size: 14px;
   text-align: center;
 }
+@media (max-width: 480px) {
+  .photo-collection li {
+    width: 120px;
+    height: 120px;
+  }
+}
+@media (max-width: 320px) {
+  .photo-collection li {
+    width: 100px;
+    height: 100px;
+  }
+}
 .photo-collection li img {
   width: 130px;
   height: 130px;
   margin-bottom: 10px;
+}
+@media (max-width: 480px) {
+  .photo-collection li img {
+    width: 120px;
+    height: 120px;
+  }
+}
+@media (max-width: 320px) {
+  .photo-collection li img {
+    width: 100px;
+    height: 100px;
+  }
 }
 .logo-collection {
   list-style: none;
