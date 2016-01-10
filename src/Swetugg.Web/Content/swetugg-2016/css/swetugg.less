@@ -621,7 +621,11 @@ footer {
 
 .photo-collection {
     list-style: none;
-    padding-left: 10px;
+    padding-left: 20px;
+
+    @media (max-width: 320px) {
+        padding-left: 25px;
+    }
 }
 
 .photo-collection li {
@@ -633,13 +637,14 @@ footer {
     text-align: center;
 
     @media (max-width: @breakpoint-alpha) {
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
+        margin: 10px 10px 20px 10px;
     }
 
     @media (max-width: 320px) {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
 }
 
@@ -649,13 +654,14 @@ footer {
     margin-bottom: 10px;
 
     @media (max-width: @breakpoint-alpha) {
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0;
     }
-    
+
     @media (max-width: 320px) {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
 
 }
