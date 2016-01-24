@@ -314,6 +314,7 @@
     <Compile Include="Areas\Swetugg2016\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2016\Swetugg2016AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ScheduleApiController.cs" />
     <Compile Include="Controllers\CallForPapersController.cs" />
     <Compile Include="Controllers\ConferenceExtensions.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
