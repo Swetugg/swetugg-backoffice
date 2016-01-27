@@ -13,10 +13,10 @@ namespace Swetugg.Web.Controllers
     {
         public string Name { get; set; }
         public string Company { get; set; }
-        public string Bio { get; set; }
         public string Twitter { get; set; }
         public string Web { get; set; }
         public string GitHub { get; set; }
+        public string Bio { get; set; }
     }
 
     public class SessionView
@@ -70,7 +70,7 @@ namespace Swetugg.Web.Controllers
                         Name = sp.Speaker.Name, 
                         Company = sp.Speaker.Company,
                         Bio = sp.Speaker.Bio,
-                        Twitter = sp.Speaker.Twitter,
+                        Twitter = "@" + sp.Speaker.Twitter.Replace("@", string.Empty),
                         Web = sp.Speaker.Web,
                         GitHub = sp.Speaker.GitHub
                     }).ToArray(),
