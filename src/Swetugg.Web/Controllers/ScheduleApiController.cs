@@ -70,7 +70,7 @@ namespace Swetugg.Web.Controllers
                         Name = sp.Speaker.Name, 
                         Company = sp.Speaker.Company,
                         Bio = sp.Speaker.Bio,
-                        Twitter = "@" + sp.Speaker.Twitter.Replace("@", string.Empty),
+                        Twitter = sp.Speaker.Twitter != null ? "@" + sp.Speaker.Twitter .Replace("@", string.Empty) : null,
                         Web = sp.Speaker.Web,
                         GitHub = sp.Speaker.GitHub
                     }).ToArray(),
