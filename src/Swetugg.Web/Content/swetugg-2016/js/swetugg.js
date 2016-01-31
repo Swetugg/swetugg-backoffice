@@ -7,6 +7,13 @@ $(window).scroll(function() {
     }
 });
 
+$('.navbar-nav').children().click(function () {
+    var navbar = $('.navbar-main-collapse');
+    navbar.removeClass('in');
+    navbar.addClass('collapse');
+    navbar.css('height', '1px');
+});
+
 //jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
     $('.page-scroll a').bind('click', function(event) {
