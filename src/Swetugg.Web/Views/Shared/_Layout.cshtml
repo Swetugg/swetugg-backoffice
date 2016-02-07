@@ -2,8 +2,25 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="accept-language" content="@Culture"/>
+    <meta name="accept-language" content="@Culture" />
     <title>Swetugg - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -22,7 +39,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    
+
                     <li>@Html.ActionLink("Call For Papers", "Index", "CallForPapers", new { Area = "" }, null)</li>
 
                     @if (User.IsInRole("Administrator") || User.IsInRole("ConferenceManager"))
@@ -30,14 +47,14 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin", new {Area = "Admin"}, null)</li>
+                                <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin", new { Area = "Admin" }, null)</li>
                                 @if (User.IsInRole("Administrator"))
                                 {
                                     <li>
                                         @Html.ActionLink("Users", "Index", "Users", routeValues: new { Area = "Admin" }, htmlAttributes: null)
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Migration", "Migrations", "Database", routeValues: new {Area = ""}, htmlAttributes: null)
+                                        @Html.ActionLink("Migration", "Migrations", "Database", routeValues: new { Area = "" }, htmlAttributes: null)
                                     </li>
                                 }
                             </ul>
@@ -50,7 +67,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr/>
+        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Swetugg Events</p>
         </footer>
