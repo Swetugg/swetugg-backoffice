@@ -1,29 +1,21 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.Entity;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Instrumentation;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
-namespace Swetugg.Web.Controllers
+namespace Swetugg.Web.Areas.Cfp.Controllers
 {
 
     [RequireHttps]
-    [RoutePrefix("cfp")]
+    [RouteArea("Cfp", AreaPrefix = "cfp")]
     [Authorize()]
     public class CallForPapersController : Controller
     {
@@ -71,7 +63,7 @@ namespace Swetugg.Web.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End >= c.CurrentTime().Date);
+            var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End >= ConferenceInfoExtensions.CurrentTime(c).Date);
             var cfpAlreadyCreatedFor = _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArray();
 
             ViewBag.CfpAlreadyCreatedFor = cfpAlreadyCreatedFor;
