@@ -309,13 +309,14 @@
     <Compile Include="Areas\Admin\Controllers\SpeakerAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SponsorAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Cfp\CfpAreaRegistration.cs" />
+    <Compile Include="Areas\Cfp\Controllers\CallForPapersController.cs" />
     <Compile Include="Areas\Swetugg2015\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2015\Swetugg2015AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2016\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2016\Swetugg2016AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ScheduleApiController.cs" />
-    <Compile Include="Controllers\CallForPapersController.cs" />
     <Compile Include="Controllers\ConferenceExtensions.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -616,6 +617,8 @@
     <Content Include="Content\swetugg-2016\css\swetugg.css.map" />
     <Content Include="Areas\Swetugg2016\Views\Conference\CodeOfConduct.cshtml" />
     <Content Include="Areas\Swetugg2016\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Cfp\Views\web.config" />
+    <Content Include="Areas\Cfp\Views\_ViewStart.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1036,19 +1039,21 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
-    <Content Include="Views\CallForPapers\Index.cshtml" />
+    <Content Include="Areas\Cfp\Views\CallForPapers\Index.cshtml" />
     <Content Include="Views\Home\Start.cshtml" />
-    <Content Include="Views\CallForPapers\Conference.cshtml" />
-    <Content Include="Views\CallForPapers\Speaker.cshtml" />
-    <Content Include="Views\CallForPapers\Session.cshtml" />
+    <Content Include="Areas\Cfp\Views\CallForPapers\Conference.cshtml" />
+    <Content Include="Areas\Cfp\Views\CallForPapers\Speaker.cshtml" />
+    <Content Include="Areas\Cfp\Views\CallForPapers\Session.cshtml" />
     <Content Include="Scripts\jquery.validate.globalize.min.js.map" />
     <Content Include="Views\Database\Migrations.cshtml" />
-    <Content Include="Views\CallForPapers\Invite.cshtml" />
+    <Content Include="Areas\Cfp\Views\CallForPapers\Invite.cshtml" />
     <Content Include="Views\Database\Backups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Cfp\Models\" />
+    <Folder Include="Areas\Cfp\Views\Shared\" />
     <Folder Include="Areas\Swetugg2015\Models\" />
     <Folder Include="Areas\Swetugg2016\Models\" />
   </ItemGroup>
