@@ -16,7 +16,11 @@ $('.navbar-nav').children().click(function () {
 
 
 $(function () {
-    document.getElementById("videoBackground").playbackRate = 0.75;
+    var video = document.getElementById("videoBackground");
+    if (video) {
+        video.playbackRate = 0.75;
+        video.play();
+    }
 });
 
 //jQuery for page scrolling feature - requires jQuery Easing plugin
