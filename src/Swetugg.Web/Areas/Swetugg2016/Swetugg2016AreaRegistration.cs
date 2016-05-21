@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace Swetugg.Web.Areas.Swetugg2016
 {
@@ -12,13 +13,8 @@ namespace Swetugg.Web.Areas.Swetugg2016
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
-/*            context.MapRoute(
-                "Swetugg2016_default",
-                "swetugg-2016/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
-  */      }
+        }
     }
 }

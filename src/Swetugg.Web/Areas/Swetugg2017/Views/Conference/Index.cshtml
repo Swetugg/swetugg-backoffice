@@ -1,0 +1,583 @@
+﻿@using System.Globalization
+@using Swetugg.Web.Models
+@{
+    ViewBag.Title = "Swetugg - en konferens i Swenugs anda";
+    ViewBag.TransformNavBar = true;
+
+    Conference conference = ViewBag.Conference;
+
+    IEnumerable<Slot> slots = ViewBag.Slots;
+    if (slots == null)
+    {
+        slots = new List<Slot>();
+    }
+    IEnumerable<Room> rooms = ViewBag.Rooms;
+    if (rooms == null)
+    {
+        rooms = new List<Room>();
+    }
+    IEnumerable<Sponsor> sponsors = ViewBag.Sponsors;
+    if (sponsors == null)
+    {
+        sponsors = new List<Sponsor>();
+    }
+    IEnumerable<Speaker> speakers = ViewBag.Speakers;
+    if (speakers == null)
+    {
+        speakers = new List<Speaker>();
+    }
+    IDictionary<int, IDictionary<string, SpeakerImage>> speakerImages = ViewBag.SpeakerImages;
+    if (speakerImages == null)
+    {
+        speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
+    }
+    var totalNumberOfSpeakers = 35;
+    var speakersLeft = totalNumberOfSpeakers - speakers.Count();
+
+    string ticketUrl = ViewBag.TicketUrl;
+    string ticketKey = ViewBag.TicketKey;
+    bool ticketSalesOpen = ViewBag.TicketSalesOpen;
+}
+
+<section class="intro">
+    <div class="intro-body">
+        <video id="videoBackground" preload="auto" autoplay="" loop="" muted="">
+            <source src="~/Content/swetugg-2017/video/swetugg-hero-video-low.mp4" type="video/mp4" />
+        </video>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">Swetugg</h1>
+                    <p class="intro-text">
+                        Konferensen för .NET-utvecklare, av .NET-utvecklare<br />
+                        Stockholm, 30-31 januari 2017
+                    </p>
+                    <div class="page-scroll">
+                        <a href="#about" data-target="#about" class="btn btn-circle">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*
+    <section id="about" class="odd-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Vad är Swetugg?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <p>
+                        Swetugg är en konferens av och för .NET-utvecklare i Sverige. Det är årets bästa chans att ta
+                        del av och sprida kunskap, knyta nya kontakter och träffa intressanta företag i branschen.
+                        Konferensen anordnas ideellt och tack vare våra sponsorer kan vi hålla ett lågt pris.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <p>
+                        @Html.ActionLink("Swetugg 2015", "Index", new { Area = "Swetugg2015" }) var väldigt uppskattat. Med fler än 30 talare och ungefär 200 personer på plats
+                        fyllde vi upp Årsta Folkets Hus under två dagar. Den här gången satsar vi på större och bättre lokaler,
+                        mer yta för mingel och plats för ännu fler deltagare.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="/Content/swetugg-2016/img/150_SwetuggOrigamiButterfly.png" width="150" height="122" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="speakers" class="even-section content-section text-center">
+        <div class="program-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="noSubtitle">Talare</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <ul class="photo-collection">
+                            @foreach (var speaker in @speakers)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
+                                        @{
+                                string imageUrl = "/Content/swetugg-2016/SpeakerPictures/" + speaker.Slug + ".png";
+                                IDictionary<string, SpeakerImage> imgLookup;
+                                if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
+                                {
+                                    SpeakerImage speakerImage;
+                                    if (imgLookup.TryGetValue("thumb-front", out speakerImage))
+                                    {
+                                        imageUrl = speakerImage.ImageUrl;
+                                    }
+                                }
+                                        }
+                                        <img class="img-circle" src="@imageUrl" />
+                                        <div>
+                                            @speaker.Name
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                            @for (int i = 0; i < speakersLeft; i++)
+                            {
+                                <li>
+                                    <img class="img-circle" src="/Content/swetugg-2016/img/unknown.png" />
+                                    <div>
+
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+*@
+
+@*<section id="speakers" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Call for papers</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <p>
+                        Vår öppna Call for Papers har stängt för den här gången. Har du redan fyllt i men vill ändra något
+                        så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new {Area = ""}, null)-siten.
+                        Skicka sedan helst även ett mail till <a href="mailto:tala@swetugg.se">tala@swetugg.se</a> och berätta vad du
+                        ändrat och varför.
+                    </p>
+                    <p>
+                        <em>Hjälp, jag missade CFP:n!</em><br/>
+                        Det kan fortfarande finnas enstaka platser kvar, så maila oss gärna på <a href="mailto:tala@swetugg.se">tala@swetugg.se</a>
+                        och berätta lite kort vad du vill prata om.
+                    </p>
+                    <p>
+                        <em>När får jag besked?</em><br/>
+                        Alla som var med i den öppna CFP:n kommer att få svar från oss senast den 20:e oktober.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+*@
+@*
+<section id="schedule" class="content-section">
+        <div class="schedule-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="noSubtitle">Schema</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        @foreach (var day in slots.GroupBy(s => s.Start.Date))
+                        {
+                            var width = 90 / rooms.Count();
+
+                            <h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
+                            <table class="table schema rwd-table">
+                                <thead>
+                                    <tr>
+                                    
+                                        <th style="width: 10%">Tid</th>
+                                    
+                                        @foreach (var room in rooms)
+                                        {
+                                            <th style="width: @width%">@room.Name</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var slot in day)
+                                {
+                                    <tr>
+                                        @if (string.IsNullOrEmpty(slot.Title))
+                                        {
+                                            <th style="display: table-cell; text-align: center; width: 60px;">
+                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                            </th>
+
+                                            foreach (var room in rooms)
+                                            {
+                                                var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                                                bool isChanged = roomSlot != null && roomSlot.IsChanged;
+                                                string changedClass = isChanged ? "changed" : "unchanged";
+                                                var session = roomSlot != null ? roomSlot.AssignedSession : null;
+                                                if (roomSlot != null)
+                                                {
+                                                    <td data-th="@room.Name" class="@changedClass">
+                                                        <div class="schemacell">
+                                                            @if (isChanged)
+                                                            {
+                                                                <span class="pull-right glyphicon glyphicon-info-sign"></span>
+                                                            }
+                                                            @if (session != null)
+                                                            {
+                                                                var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
+                                                                if (sessionSpeakers.Count > 0)
+                                                                {
+                                                                    var firstSpeaker = sessionSpeakers.First();
+                                                                    <div class="schemacell-rad1">
+                                                                        @foreach (var speaker in sessionSpeakers)
+                                                                        {
+                                                                            @Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
+                                                                        }
+                                                                    </div>
+                                                                    <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
+                                                                        <div class="schemacell-rad2">
+                                                                            @session.Name
+                                                                        </div>
+                                                                    </a>
+                                                                }
+
+                                                            }
+                                                        </div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td data-th="@room.Name">
+                                                        <div class="schemacell">
+                                                            <div class="schemacell-rad2">
+                                                                Inte klart ännu
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
+                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                            </th>
+
+                                            <td class="all-rooms" colspan="@rooms.Count()">
+                                                <div>@slot.Title</div>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        }
+
+                        <p class="schema-disclaimer">
+    Schemat är preliminärt och kan komma att ändras.
+    <span class="glyphicon glyphicon-info-sign"></span>
+        Förändrat sedan schemat trycktes
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+*@
+
+@*
+    <section id="sponsor" class="odd-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Sponsorer</h1>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
+                    <p>
+                        Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Utställare</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Stödsponsorer</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+*@
+    @*<section id="tickets" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Biljetter</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    @if (ticketSalesOpen)
+                    {
+                        <p class="text-center">
+                            Biljetterna till Swetugg 2016 kostar 1000kr per styck.
+                        </p>
+                        <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
+                            <div class="form-group form-group-lg">
+                                <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
+                                    <option value="1" selected="selected">1 biljett - 1000kr</option>
+                                    <option value="2">2 biljetter - 2000kr</option>
+                                    <option value="3">3 biljetter - 3000kr</option>
+                                    <option value="4">4 biljetter - 4000kr</option>
+                                    <option value="5">5 biljetter - 5000kr</option>
+                                </select>
+                            </div>
+
+                            <input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
+                        </form>
+                        <p>
+                            <h3>Student?</h3>
+                            Vi har ett begränsat antal gratisbiljetter för dig som är studerande. <br />
+                            <a href="https://sv.surveymonkey.com/r/VQT7WTN" target="_blank">Ansök genom att fylla i formuläret.</a>
+                        </p>
+                        <p>
+                            <h3>Faktura?</h3>
+                            Vill du köpa mer än fem biljetter och föredrar att bli fakturerad? Kontakta oss på <a href="mailto:info@swetugg.se">info@swetugg.se</a>
+                        </p>
+                        <p>
+                            <h3>Boende?</h3>
+                            Närmaste hotellet är <a href="https://www.nordicchoicehotels.se/quality/quality-hotel-globe/" target="_blank">Quality Hotel Globe</a> där flera av
+                            talarna kommer att bo.
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="text-center">
+                            Biljetter till Swetugg 2016 släpps den 24:e november kl 10:00.<br /><br />
+
+                            Gå med i evenemanget <a href="https://www.facebook.com/events/480878585432213/">Biljettsläpp Swetugg 2016</a>
+                            på Facebook så får du en påminnelse när biljetterna släpps.
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+
+    <section id="contact" class="even-section content-section contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="noSubtitle">Kontakta oss</h1>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p>Vill du fråga något? Eller bara säga hej? Tveka inte att kontakta oss.</p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p><a href="mailto:info@swetugg.se">info@swetugg.se</a></p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://facebook.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        </li>
+                        @*<li>
+                            <a href="https://plus.google.com/swetugg" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                            </li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="members" class="content-section odd-section members-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h2>
+                    Styrelsen
+                </h2>
+                <div class="member">
+                    <div class="member-name">Anders Ljusberg</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/CodingInsomnia">@@CodingInsomnia</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Cecilia Wirén</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/CeciliaSHARP">@@CeciliaSHARP</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Jessica Engström</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/Grytlappen">@@Grytlappen</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Kristoffer Arfvidson</div>
+                    <div class="member-twitter">&nbsp;</div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Magnus Sax</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/Magnus_Sax">@@Magnus_Sax</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h2>
+                    Medlemmar
+                </h2>
+                <div class="member">
+                    <div class="member-name">Fabian Miiro</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/iloabn">@@iloabn</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Jimmy Engström</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/Apeoholic">@@Apeoholic</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">John Bergdahl</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/beridaru">@@beridaru</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Kaj Sevelin</div>
+                    <div class="member-twitter">&nbsp;</div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Malin Dingfors</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/Dingfors">@@Dingfors</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Peter Örneholm</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/PeterOrneholm">@@PeterOrneholm</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Sarah Kjörk</div>
+                    <div class="member-twitter">
+                        <a href="http://twitter.com/sarahkjork">@@sarahkjork</a>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-name">Ulrika Bladh</div>
+                    <div class="member-twitter">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*
+    <div id="map"></div>
+
+    <footer>
+        <section id="mainFooter" class="footer-section">
+            <div class="container" id="footer">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Plats</h3>
+                        <p>
+                            <strong style="font-size: 24px;">Ballroom 12</strong><br />
+                            Tolvgallerian under Tele2 Arena<br />
+                            Arenavägen 75<br />
+                            121 77 Johanneshov
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <h4>TUNNELBANA</h4>
+                        <p>
+                            Från Stockholm city tar du gröna linjens nr 19 eller 29 mot Hagsätra eller Högdalen, kliv av på t-banestation Globen. Du kan också välja linje nr 17 eller 18 och gå av vid Gullmarsplan. Därifrån är det bara en kort promenad innan du är framme vid arenan.
+                        </p>
+                        <h4>TVÄRBANAN</h4>
+                        <p>
+                            Stannar vid Globen och Gullmarsplan
+                        </p>
+                        <h4>BUSS</h4>
+                        <p>
+                            Det finns åtskilliga bussar som stannar vid Tele2 Arena. Bussterminalen vid Gullmarsplan ligger fem minuters
+                            promenadväg från Tele2 Arena.<br />
+
+                            Buss 4 stannar vi Gullmarsplan och du kan kliva på samma buss vid bland annat; Radiohuset, Odenplan, Fridhemsplan och Hornstull.<br />
+
+                            Buss 164 tar du från Södersjukhuset eller via Skanstull.<br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+*@
+@section scripts {
+    <script>
+        initializeMap();
+    </script>
+}
+
+@section meta {
+    <meta property="og:image" content="http://swetugg.se/Content/swetugg-2016/img/swetugg-rosa-kvadrat.png" />
+}
