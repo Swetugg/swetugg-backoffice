@@ -9,7 +9,7 @@ namespace Swetugg.Web.Controllers
 	{
 		public ActionResult Index()
 		{
-			return RedirectToAction("Index", "Conference", new { Area = "Swetugg2016"});
+			return RedirectToAction("Index", "Conference", new { Area = "Swetugg2017"});
 		}
         
         [Route("start")]
