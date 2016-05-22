@@ -19,7 +19,6 @@ $(function () {
     var video = document.getElementById("videoBackground");
     if (video) {
         video.playbackRate = 0.75;
-        video.play();
     }
 });
 
