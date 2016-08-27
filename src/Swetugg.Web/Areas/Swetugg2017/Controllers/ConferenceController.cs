@@ -23,7 +23,7 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
 
         public ConferenceController(ApplicationDbContext dbContext)
         {
-            this.conferenceSlug = "swetugg-2016";
+            this.conferenceSlug = "swetugg-2017";
             this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
             this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
             this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
