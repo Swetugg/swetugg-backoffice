@@ -11,6 +11,7 @@ You should be able to start up an empty version of the swetugg site simply by hi
 
 ### Seed the database
 In Visual Studio, open up the Package Manager Console and run:
+
     Update-Database
 
 ### Admin page
