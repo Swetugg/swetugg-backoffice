@@ -74,6 +74,11 @@
                                 @Html.ValidationMessageFor(m => m.Email)
                             </div>
                             <div class="form-group">
+                                @Html.LabelFor(m => m.Phone)
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Phone)
+                            </div>
+                            <div class="form-group">
                                 @Html.LabelFor(m => m.Web)
                                 @Html.TextBoxFor(m => m.Web, new {@class = "form-control"})
                                 @Html.ValidationMessageFor(m => m.Web)

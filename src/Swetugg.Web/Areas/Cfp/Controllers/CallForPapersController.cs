@@ -173,6 +173,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                     dbSpeaker.Name = speaker.Name;
                     dbSpeaker.Twitter = speaker.Twitter;
                     dbSpeaker.Web = speaker.Web;
+                    dbSpeaker.Phone = speaker.Phone;
                     dbSpeaker.Comments = speaker.Comments;
                     dbSpeaker.NeedTravel = speaker.NeedTravel;
                     dbSpeaker.NeedAccommodation = speaker.NeedAccommodation;
