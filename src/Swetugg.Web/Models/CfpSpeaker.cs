@@ -48,6 +48,9 @@ namespace Swetugg.Web.Models
         [Display(Name = "Additional information")]
         public string Comments { get; set; }
 
+        [StringLength(50)]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
 
         [Display(Name = "Travel")]
         public bool NeedTravel { get; set; }
