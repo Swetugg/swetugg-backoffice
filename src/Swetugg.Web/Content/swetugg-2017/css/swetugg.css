@@ -646,6 +646,13 @@ footer {
   }
 }
 
+.video-wrapper {
+    max-width: 420px;
+    max-height: 236px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -664,4 +671,8 @@ footer {
 
 .space-at-bottom {
     margin-bottom: 15px;
+}
+
+.margin-top {
+    margin-top: 40px;
 }
