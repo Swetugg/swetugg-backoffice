@@ -680,3 +680,22 @@ footer {
 .flickr-link {
    margin: auto;
 }
+
+.blockquote-container {
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.blockquote-small {
+    background-color: #FFF7FA;
+}
+
+.blockquote-small p {
+    font-size: 15px;
+    color: #A30046;    
+}
+
+.blockquote-small footer {
+    padding: 0;
+    background: inherit;
+}
