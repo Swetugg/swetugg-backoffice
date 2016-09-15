@@ -690,6 +690,10 @@ footer {
     background-color: #FFF7FA;
 }
 
+.blockquote-small-inverted {
+    background-color: #F2FCFF;
+}
+
 .blockquote-small p {
     font-size: 15px;
     color: #A30046;    
