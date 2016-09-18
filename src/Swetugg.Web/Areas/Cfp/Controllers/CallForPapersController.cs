@@ -60,6 +60,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
 
         [Route("")]
+        [OverrideAuthorization]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
