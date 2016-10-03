@@ -1,7 +1,7 @@
 Swetugg Web
 ===========
 
-This is the source code for the (upcoming) Swetugg website. See anything broken? Why not send a PR? :)
+This is the source code for the Swetugg website. See anything broken? Why not send a PR? :)
 
 A possibly working sample of this is published to http://swetuggpreview.azurewebsites.net/start. If you want admin privileges to try it out, create an account and ping me [@CodingInsomnia](https://twitter.com/CodingInsomnia) on Twitter.
 

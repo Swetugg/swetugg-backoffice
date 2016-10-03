@@ -68,7 +68,12 @@
                                     <div class="list-group-item-text">
                                         @session.Description.Truncate(200)
                                     </div>
-
+                                    @if (session.LastUpdate != null)
+                                    {
+                                        <div class="list-group-item-text text-right small">
+                                            Updated: @session.LastUpdate.Value.ToShortDateString()
+                                        </div>
+                                    }
                                 </div>
                             }
                         </div>
@@ -114,6 +119,12 @@
     </div>
 
     <div class="panel-footer">
+        @if (Model.LastUpdate != null)
+        {
+            var confTime = conference.ConvertDateTime(Model.LastUpdate.Value);
+
+            <div class="text-right">Last updated: @confTime.ToShortDateString() @confTime.ToShortTimeString()</div>
+        }
         @if (Model.Speaker == null)
         {
             using (Html.BeginForm("Promote", "CfpReview", new {id = Model.Id}, FormMethod.Post, new {@class = "form-inline"}))

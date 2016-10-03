@@ -58,6 +58,11 @@
         </div>
     </div>
     <div class="panel-footer">
-        
+        @if (Model.LastUpdate != null)
+        {
+            var confTime = conference.ConvertDateTime(Model.LastUpdate.Value);
+
+            <div class="text-right">Last updated: @confTime.ToShortDateString() @confTime.ToShortTimeString()</div>
+        }
     </div>
 </div>

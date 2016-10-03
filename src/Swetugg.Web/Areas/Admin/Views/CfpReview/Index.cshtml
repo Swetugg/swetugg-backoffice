@@ -6,6 +6,7 @@
     ViewBag.Title = "Call For Papers";
 
     Conference conference = ViewBag.Conference;
+    List<Tuple<string, bool, string>> orderByList = ViewBag.OrderByList;
 }
 
 <ol class="breadcrumb">
@@ -17,19 +18,66 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>Submissions</h3>
+        <div class="row">
+            <div class="col-md-10">
+                <h3>Submissions</h3>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="orderByMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Order by
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="orderByMenu">
+                        @foreach (var orderByItem in orderByList)
+                        {
+                            <li><a href="@Url.Action("Index", new {orderBy = orderByItem.Item1, descending = orderByItem.Item2})">@orderByItem.Item3</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="list-group">
         @foreach (var speaker in Model)
         {
+            var speakerLastUpdated = speaker.LastUpdate;
+            var sessionLastUpdated = speaker.Sessions.Max(s => s.LastUpdate);
+
             <a href="@Url.Action("Speaker", "CfpReview", new {id = speaker.Id})" class="list-group-item">
-                @if (speaker.Sessions.Count > 0)
-                {
-                    <span class="badge info">@speaker.Sessions.Count</span>
-                }
-                <p><b>@speaker.Name</b>
-                </p>
-                <span class="small">@speaker.Bio.Truncate(150)</span>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>
+                            @if (speaker.Sessions.Count > 0)
+                            {
+                                <span class="badge info pull-right">@speaker.Sessions.Count</span>
+                            }
+                            <b>@speaker.Name</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <span class="small">@speaker.Bio.Truncate(150)</span>
+                    </div>
+                    <div class="col-lg-4 small">
+                        <dl class="dl-horizontal pull-right">
+                            @if (speakerLastUpdated != null)
+                            {
+                                var confTime = conference.ConvertDateTime(speakerLastUpdated.Value);
+                                <dt>Last updated</dt>
+                                <dd>@confTime.ToShortDateString() @confTime.ToShortTimeString()</dd>
+                            }
+                            @if (sessionLastUpdated != null)
+                            {
+                                var confTime = conference.ConvertDateTime(sessionLastUpdated.Value);
+                                <dt>Sessions updated</dt>
+                                <dd>@confTime.ToShortDateString() @confTime.ToShortTimeString()</dd>
+                            }
+                        </dl>
+
+                    </div>
+                </div>
             </a>
         }
     </div>
