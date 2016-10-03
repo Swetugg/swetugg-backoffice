@@ -375,6 +375,10 @@
     <Compile Include="Migrations\201608291705559_CfpPhoneNumber.Designer.cs">
       <DependentUpon>201608291705559_CfpPhoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610020804533_LastUpdateOnCfp.cs" />
+    <Compile Include="Migrations\201610020804533_LastUpdateOnCfp.Designer.cs">
+      <DependentUpon>201610020804533_LastUpdateOnCfp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -1125,6 +1129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608291705559_CfpPhoneNumber.resx">
       <DependentUpon>201608291705559_CfpPhoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610020804533_LastUpdateOnCfp.resx">
+      <DependentUpon>201610020804533_LastUpdateOnCfp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

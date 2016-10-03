@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Principal;
 using System.Web.Mvc;
@@ -19,6 +21,23 @@ namespace Swetugg.Web.Models
                 now = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
             }
             return now;
+        }
+
+        public static DateTime ConvertDateTime(this Conference conference, DateTime utcDateTime)
+        {
+            // TODO Store conference timezone on conference object
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+            
+            if (timeZone != null)
+            {
+                return TimeZoneInfo.ConvertTimeFromUtc(utcDateTime, timeZone);
+            }
+            return utcDateTime;
+        }
+
+        public static CultureInfo GetCultureInfo(this Conference conference)
+        {
+            return new CultureInfo("sv-SE");
         }
 
         public static bool IsCfpOpen(this Conference conference)

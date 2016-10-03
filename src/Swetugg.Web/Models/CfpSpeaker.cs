@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -57,6 +58,8 @@ namespace Swetugg.Web.Models
 
         [Display(Name = "Accommodation")]
         public bool NeedAccommodation { get; set; }
+
+        public DateTime? LastUpdate { get; set; }
 
         public ICollection<CfpSession> Sessions { get; set; }
         

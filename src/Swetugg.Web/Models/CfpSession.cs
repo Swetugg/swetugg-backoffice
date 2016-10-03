@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Swetugg.Web.Models
@@ -32,6 +33,8 @@ namespace Swetugg.Web.Models
         [DataType(DataType.MultilineText)]
         [Column(TypeName = "ntext")]
         public string Comments { get; set; }
+
+        public DateTime? LastUpdate { get; set; }
 
         public Session Session { get; set; }
         public int? SessionId { get; set; }
