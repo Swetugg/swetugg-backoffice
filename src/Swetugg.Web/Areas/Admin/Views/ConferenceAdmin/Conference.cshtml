@@ -52,7 +52,7 @@
                             {
                                 <dt>VIP Invite URL</dt>
                                 <dd>
-                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)"/>
+                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "Cfp", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)"/>
                                 </dd>
                             }
                         </dl>
