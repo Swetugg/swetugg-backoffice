@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Swetugg.Web.Controllers;
@@ -8,6 +11,26 @@ using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
+    public static class OrderByQueryableExtensions
+    {
+        public static IOrderedQueryable<TSource> OrderByDynamic<TSource, TKey>(this IQueryable<TSource> source,
+            Expression<Func<TSource, TKey>> expression, IComparer<TKey> comparer, bool descending)
+        {
+            if (descending)
+                return source.OrderByDescending(expression, comparer);
+
+            return source.OrderBy(expression, comparer);
+        }
+        public static IOrderedQueryable<TSource> OrderByDynamic<TSource, TKey>(this IQueryable<TSource> source,
+            Expression<Func<TSource, TKey>> expression, bool descending)
+        {
+            if (descending)
+                return source.OrderByDescending(expression);
+
+            return source.OrderBy(expression);
+        }
+    }
+
     public class CfpReviewController : ConferenceAdminControllerBase
     {
         public CfpReviewController(ApplicationDbContext dbContext) : base(dbContext)
@@ -15,15 +38,49 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string orderBy, bool? descending)
         {
             var conferenceId = ConferenceId;
-            var speakers = await dbContext.CfpSpeakers
+            var speakersQuery = dbContext.CfpSpeakers
                 .Where(s => s.ConferenceId == conferenceId)
-                .Include(s => s.Sessions).ToListAsync();
+                .Include(s => s.Sessions);
+
+            if (string.IsNullOrWhiteSpace(orderBy))
+            {
+                orderBy = "Name";
+            }
+            switch (orderBy)
+            {
+                case "Name":
+                    speakersQuery = speakersQuery.OrderByDynamic(s => s.Name, descending.GetValueOrDefault());
+                    break;
+                case "LastUpdateSpeaker":
+                    speakersQuery = speakersQuery.OrderByDynamic(s => s.LastUpdate, descending.GetValueOrDefault());
+                    break;
+                case "LastUpdateSession":
+                    if (descending.GetValueOrDefault())
+                    {
+                        speakersQuery = speakersQuery.OrderByDescending(s => s.Sessions.Max(se => se.LastUpdate));
+                    }
+                    else
+                    {
+                        speakersQuery = speakersQuery.OrderBy(s => s.Sessions.Min(se => se.LastUpdate));
+                    }
+                    break;
+            }
+
+            var speakers = await speakersQuery
+                .ToListAsync();
 
             ViewBag.Conference = Conference;
-            
+            ViewBag.OrderByList = new List<Tuple<string, bool, string>>()
+            {
+                new Tuple<string, bool, string>("Name", false, "Name (A-Z)"),
+                new Tuple<string, bool, string>("Name", true, "Name (Z-A)"),
+                new Tuple<string, bool, string>("LastUpdateSpeaker", true, "Speaker update"),
+                new Tuple<string, bool, string>("LastUpdateSession", true, "Session update"),
+            };
+
             return View(speakers);
         }
 

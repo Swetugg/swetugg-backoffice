@@ -60,6 +60,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
 
         [Route("")]
+        [OverrideAuthorization]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
@@ -177,6 +178,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                     dbSpeaker.Comments = speaker.Comments;
                     dbSpeaker.NeedTravel = speaker.NeedTravel;
                     dbSpeaker.NeedAccommodation = speaker.NeedAccommodation;
+                    dbSpeaker.LastUpdate = DateTime.UtcNow;
 
                     if (imageFile != null && imageFile.ContentLength > 0)
                     {
@@ -284,6 +286,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                     dbSession.Audience = session.Audience;
                     dbSession.Level = session.Level;
                     dbSession.Tags = session.Tags;
+                    dbSession.LastUpdate = DateTime.UtcNow;
 
                     _dbContext.SaveChanges();
                     return RedirectToAction("Conference");

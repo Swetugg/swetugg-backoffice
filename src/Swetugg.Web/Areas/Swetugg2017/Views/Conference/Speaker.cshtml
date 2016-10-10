@@ -46,7 +46,7 @@
                 {
                     nameText = nameText + " med @" + Model.Twitter;
                 }
-                var twitterText = nameText + " på @Swetugg 2016!";
+                var twitterText = nameText + " på @Swetugg 2017!";
                 var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
                         }
                         <a href="#@session.Slug">
@@ -103,19 +103,23 @@
         {
             var youtubeId = session.VideoUrl.Substring(session.VideoUrl.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
 
-            <meta property="og:type" content="article" />
+            <meta property="og:type" content="article"/>
 
-            <meta property="og:image" content="https://i1.ytimg.com/vi/@(youtubeId)/hqdefault.jpg" />
+            <meta property="og:image" content="https://i1.ytimg.com/vi/@(youtubeId)/hqdefault.jpg"/>
             @*
                 <meta property="og:video" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
                 <meta property="og:video:secure_url" content="https://www.youtube.com/e/@(youtubeId)?autoplay=1"/>
             *@
         }
+        else
+        {
+            <meta property="og:image" content="@speakerImageUrl" />
+        }
     }
     else
     {
         <meta property="og:url" content="@speakerUrl" />
-        <meta property="og:image" content="http://swetugg.se/Content/swetugg-2015/SpeakerPictures/@(Model.Slug + ".png") " />
+        <meta property="og:image" content="@speakerImageUrl" />
         <meta property="og:title" content="@Model.Name" />
         <meta property="og:description" content="@Model.Bio" />
     }

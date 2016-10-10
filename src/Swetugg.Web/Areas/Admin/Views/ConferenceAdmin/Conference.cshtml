@@ -1,5 +1,5 @@
-﻿@model Swetugg.Web.Models.Conference
-
+﻿@using Swetugg.Web.Helpers
+@model Swetugg.Web.Models.Conference
 @{
     ViewBag.Title = "Conference";
 }
@@ -18,7 +18,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8">
-                <p>@Model.Description</p>
+                <p>@Html.Raw(Html.FromMarkdown(Model.Description))</p>
             </div>
             <div class="col-sm-4">
                 <div class="panel panel-info">
@@ -52,7 +52,7 @@
                             {
                                 <dt>VIP Invite URL</dt>
                                 <dd>
-                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)"/>
+                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "Cfp", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)"/>
                                 </dd>
                             }
                         </dl>

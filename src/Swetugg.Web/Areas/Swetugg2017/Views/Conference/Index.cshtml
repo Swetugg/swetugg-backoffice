@@ -31,7 +31,7 @@
     {
         speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
     }
-    var totalNumberOfSpeakers = 35;
+    var totalNumberOfSpeakers = 25;
     var speakersLeft = totalNumberOfSpeakers - speakers.Count();
 
     string ticketUrl = ViewBag.TicketUrl;
@@ -114,120 +114,51 @@
             <div class="blockquote-container col-lg-4">
                 <blockquote class="blockquote blockquote-small">
                     <p>&ldquo;Här bjöd konferensen Swetugg 2016 på en inspirationsinjektion som hette duga. Bland talarna fanns...&bdquo;<a href="https://valtech.se/blogg/swetugg-2016/" target="_blank" class="pull-right">[mer]</a></p>
-                    <footer class="blockquote-footer">Emma, deltagare 2016</footer>
+                    <footer class="blockquote-footer">Helena, deltagare 2016</footer>
                 </blockquote>
             </div>
         </div>
     </div>
 </section>
-
-<section id="cfp" class="even-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="noSubtitle">Talare</h1>
+@*
+    <section id="cfp" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Talare</h1>
+                </div>
             </div>
-        </div>
-        <div class="row text-center ">
-            <div class="col-md-8 col-md-offset-2">
-                <p>Vill du tala på Swetugg 2017? Registrera dig och din/dina sessioner här!</p>
-                <ul class="list-inline banner-buttons">
-                    <li>
-                        <a href="/cfp" class="btn btn-default btn-lg">Call For Papers</a>
-                    </li>
-                </ul>
+            <div class="row text-center ">
+                <div class="col-md-8 col-md-offset-2">
+                    <p>Vill du tala på Swetugg 2017? Registrera dig och din/dina sessioner här!</p>
+                    <ul class="list-inline banner-buttons">
+                        <li>
+                            <a href="/cfp" class="btn btn-default btn-lg">Call For Papers</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row margin-top">
-            <div class="blockquote-container col-lg-6">
-                <blockquote class="blockquote blockquote-small blockquote-small-inverted">
-                    <p>
-                        &ldquo;Jag inledde presentationen med att förklara hur säkerhet ofta blir en eftertanke. Sedan gick jag genom tre viktiga aspekter i att integrera säkerhet...&bdquo;<a href="http://www.dynabyte.se/blog/2016/02/11/swetugg-2016/" target="_blank" class="pull-right">[mer]</a>
-                    </p>
-                    <footer class="blockquote-footer">Simin, talare 2015</footer>
-                </blockquote>
-            </div>
-            <div class="blockquote-container col-lg-6">
-                <blockquote class="blockquote blockquote-small blockquote-small-inverted">
-                    <p>
-                        &ldquo;I have spoken a couple of times at user groups, many times at a company but I never ever had spoken at a conference before until this week at Swetugg 2016. It was awesome!!&bdquo;<a href="https://www.barbarianmeetscoding.com/blog/2016/02/03/speaking-at-swetugg-2016-was-a-blast/" target="_blank" class="pull-right">[mer]</a>
-                    </p>
-                    <footer class="blockquote-footer">Jaime, talare 2016</footer>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="signup" class="odd-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="noSubtitle">Mer information?</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <p>
-                    Vill du få ett mail när vi t.ex. släpper sponsorplatserna eller börjar sälja biljetter?
-                </p>
-                <!-- Begin MailChimp Signup Form -->
-                <div id="mc_embed_signup">
-                    <form action="//swetugg.us8.list-manage.com/subscribe/post?u=f8f35c45f37445d5d813b270c&amp;id=5260e75d8e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                        <div id="mc_embed_signup_scroll">
-                            <div class="mc-field-group form-group">
-                                <label for="mce-EMAIL">Epost-adress</label>
-                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL">
-                            </div>
-                            <div class="mc-field-group form-group">
-                                <label for="mce-FNAME">Förnamn</label>
-                                <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME">
-                            </div>
-                            <div class="mc-field-group form-group">
-                                <label for="mce-LNAME">Efternamn</label>
-                                <input type="text" value="" name="LNAME" class="form-control" id="mce-LNAME">
-                            </div>
-                            <div class="mc-field-group form-group">
-                                <strong>Jag är intresserad av</strong>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="1" name="group[14833][1]" id="mce-group[14833]-14833-0">
-                                        Allmän information om Swetugg
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="2" name="group[14833][2]" id="mce-group[14833]-14833-1">
-                                        Sponsoring av Swetugg
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="4" name="group[14833][4]" id="mce-group[14833]-14833-2">
-                                        Att tala på Swetugg
-                                    </label>
-                                </div>
-                            </div>
-                            <div id="mce-responses" class="clear">
-                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                <div class="response" id="mce-success-response" style="display:none"></div>
-                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f8f35c45f37445d5d813b270c_5260e75d8e" tabindex="-1" value=""></div>
-                            <div class="clear"><input type="submit" value="Skicka" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default"></div>
-                        </div>
-                    </form>
+            <div class="row margin-top">
+                <div class="blockquote-container col-lg-6">
+                    <blockquote class="blockquote blockquote-small blockquote-small-inverted">
+                        <p>
+                            &ldquo;Jag inledde presentationen med att förklara hur säkerhet ofta blir en eftertanke. Sedan gick jag genom tre viktiga aspekter i att integrera säkerhet...&bdquo;<a href="http://www.dynabyte.se/blog/2016/02/11/swetugg-2016/" target="_blank" class="pull-right">[mer]</a>
+                        </p>
+                        <footer class="blockquote-footer">Simin, talare 2015</footer>
+                    </blockquote>
+                </div>
+                <div class="blockquote-container col-lg-6">
+                    <blockquote class="blockquote blockquote-small blockquote-small-inverted">
+                        <p>
+                            &ldquo;I have spoken a couple of times at user groups, many times at a company but I never ever had spoken at a conference before until this week at Swetugg 2016. It was awesome!!&bdquo;<a href="https://www.barbarianmeetscoding.com/blog/2016/02/03/speaking-at-swetugg-2016-was-a-blast/" target="_blank" class="pull-right">[mer]</a>
+                        </p>
+                        <footer class="blockquote-footer">Jaime, talare 2016</footer>
+                    </blockquote>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="/Content/swetugg-2016/img/150_SwetuggOrigamiButterfly.png" width="150" height="122" />
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--End mc_embed_signup-->
+    </section>
+*@
 @*
     <section id="about" class="odd-section content-section">
         <div class="container">
@@ -259,6 +190,9 @@
             </div>
         </div>
     </section>
+    *@
+@if (speakers.Any())
+{
 
     <section id="speakers" class="even-section content-section text-center">
         <div class="program-section">
@@ -276,18 +210,18 @@
                                 <li>
                                     <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
                                         @{
-                                string imageUrl = "/Content/swetugg-2016/SpeakerPictures/" + speaker.Slug + ".png";
-                                IDictionary<string, SpeakerImage> imgLookup;
-                                if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
-                                {
-                                    SpeakerImage speakerImage;
-                                    if (imgLookup.TryGetValue("thumb-front", out speakerImage))
-                                    {
-                                        imageUrl = speakerImage.ImageUrl;
-                                    }
-                                }
+                                            string imageUrl = "/Content/swetugg-2017/SpeakerPictures/" + speaker.Slug + ".png";
+                                            IDictionary<string, SpeakerImage> imgLookup;
+                                            if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
+                                            {
+                                                SpeakerImage speakerImage;
+                                                if (imgLookup.TryGetValue("thumb-front", out speakerImage))
+                                                {
+                                                    imageUrl = speakerImage.ImageUrl;
+                                                }
+                                            }
                                         }
-                                        <img class="img-circle" src="@imageUrl" />
+                                        <img class="img-circle" src="@imageUrl"/>
                                         <div>
                                             @speaker.Name
                                         </div>
@@ -297,7 +231,7 @@
                             @for (int i = 0; i < speakersLeft; i++)
                             {
                                 <li>
-                                    <img class="img-circle" src="/Content/swetugg-2016/img/unknown.png" />
+                                    <img class="img-circle" src="/Content/swetugg-2017/img/unknown.png"/>
                                     <div>
 
                                     </div>
@@ -309,9 +243,10 @@
             </div>
         </div>
     </section>
-*@
-
-@*<section id="speakers" class="even-section content-section">
+}
+else
+{
+    <section id="speakers" class="even-section content-section">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -322,7 +257,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <p>
                         Vår öppna Call for Papers har stängt för den här gången. Har du redan fyllt i men vill ändra något
-                        så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new {Area = ""}, null)-siten.
+                        så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new {Area = "Cfp"}, null)-siten.
                         Skicka sedan helst även ett mail till <a href="mailto:tala@swetugg.se">tala@swetugg.se</a> och berätta vad du
                         ändrat och varför.
                     </p>
@@ -339,7 +274,8 @@
             </div>
         </div>
     </section>
-*@
+}
+
 @*
 <section id="schedule" class="content-section">
         <div class="schedule-section">
@@ -456,22 +392,30 @@
         </section>
 *@
 
-@*
-    <section id="sponsor" class="odd-section content-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h1>Sponsorer</h1>
-                </div>
+<section id="sponsor" class="odd-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Sponsorer</h1>
             </div>
-            <div class="row text-center">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>
+                    Vill du eller ditt företag vara med och sponsra Swetugg 2017? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
+                </p>
+                @*<p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
                     <p>
                         Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
-                    </p>
-                </div>
+                    </p>*@
             </div>
+        </div>
+        @{
+            var exhibitors = sponsors.Where(s => s.Priority < 100).ToArray();
+            var supportSponsors = sponsors.Where(s => s.Priority >= 100).ToArray();
+        }
+        @if (exhibitors.Any())
+        {
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="subTitle">Utställare</h2>
@@ -481,17 +425,21 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <ul class="logo-collection">
 
-                        @foreach (var sponsor in @sponsors.Where(s => s.Priority < 100))
+                        @foreach (var sponsor in exhibitors)
                         {
                             <li>
                                 <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                                    <img class="sponsor-image" src="/Content/swetugg-2017/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
                                 </a>
                             </li>
                         }
                     </ul>
                 </div>
             </div>
+        }
+
+        @if (supportSponsors.Any())
+        {
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="subTitle">Stödsponsorer</h2>
@@ -501,20 +449,94 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <ul class="logo-collection">
 
-                        @foreach (var sponsor in @sponsors.Where(s => s.Priority >= 100))
+                        @foreach (var sponsor in supportSponsors)
                         {
                             <li>
                                 <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="/Content/swetugg-2016/img/sponsors/@(sponsor.Slug + "-thumb.png") "/>
+                                    <img class="sponsor-image" src="/Content/swetugg-2017/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
                                 </a>
                             </li>
                         }
                     </ul>
                 </div>
             </div>
+        }
+    </div>
+</section>
+
+
+<section id="tickets" class="even-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="noSubtitle">Biljetter</h1>
+            </div>
         </div>
-    </section>
-*@
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p>
+                    Biljetterna börjar säljas den 1:a november.
+                    Vill du bli påmind och även få övrig information om Swetugg? Fyll i namn och adress i formuläret här!
+                </p>
+                <!-- Begin MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                    <form action="//swetugg.us8.list-manage.com/subscribe/post?u=f8f35c45f37445d5d813b270c&amp;id=5260e75d8e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group form-group">
+                                <label for="mce-EMAIL">Epost-adress</label>
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group form-group">
+                                <label for="mce-FNAME">Förnamn</label>
+                                <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group form-group">
+                                <label for="mce-LNAME">Efternamn</label>
+                                <input type="text" value="" name="LNAME" class="form-control" id="mce-LNAME">
+                            </div>
+                            @*<div class="mc-field-group form-group">
+                                    <strong>Jag är intresserad av</strong>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="1" name="group[14833][1]" id="mce-group[14833]-14833-0">
+                                            Allmän information om Swetugg
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="2" name="group[14833][2]" id="mce-group[14833]-14833-1">
+                                            Sponsoring av Swetugg
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="4" name="group[14833][4]" id="mce-group[14833]-14833-2">
+                                            Att tala på Swetugg
+                                        </label>
+                                    </div>
+                                </div>*@
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f8f35c45f37445d5d813b270c_5260e75d8e" tabindex="-1" value=""></div>
+                            <div class="clear"><input type="submit" value="Skicka" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="/Content/swetugg-2017/img/150_SwetuggOrigamiButterfly.png" width="150" height="122" />
+            </div>
+        </div>
+    </div>
+</section>
+<!--End mc_embed_signup-->
+
+
+
     @*<section id="tickets" class="even-section content-section">
         <div class="container">
             <div class="row">
@@ -571,8 +593,37 @@
         </div>
     </section>*@
 
+<section id="codeofconduct" class="odd-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="noSubtitle">Code of Conduct</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <p>
+                    Our conference is dedicated to providing a harassment-free conference experience for everyone, regardless of gender, gender identity and expression,
+                    age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion (or lack thereof), or technology choices.
+                    We do not tolerate harassment of conference participants in any form. Sexual language and imagery is not appropriate for any conference venue,
+                    including talks, workshops, parties, Twitter and other online media. Conference participants violating these rules may be sanctioned or expelled
+                    from the conference without a refund at the discretion of the conference organisers.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <small>
+                    Original source and credit: <a href="http://2012.jsconf.us/#/about">http://2012.jsconf.us/#/about</a> & The Ada Initiative
+                    Please help by translating or improving: <a href="http://github.com/leftlogic/confcodeofconduct.com">http://github.com/leftlogic/confcodeofconduct.com</a>
+                    This work is licensed under a Creative Commons Attribution 3.0 Unported License 
+                </small>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <section id="contact" class="even-section content-section contact-section">
+<section id="contact" class="even-section content-section contact-section">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
