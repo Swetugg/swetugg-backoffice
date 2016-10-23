@@ -499,7 +499,6 @@
                         <small>En biljett samt omnämnade/logotyp på siten ingår (om så önskas)</small>
                     </p>
                     <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
-
                         <div class="form-group form-group-lg">
                             <select class="form-control" id="tickets_@sponsorTicketKey" name="tickets[@sponsorTicketKey]">
                                 <option value="1" selected="selected">1 biljett - 5000kr</option>
@@ -508,15 +507,15 @@
 
                         <input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
                     </form>
-                    <p>
+                    @*<p>
                         <h3>Student?</h3>
                         Vi har ett begränsat antal gratisbiljetter för dig som är studerande. <br />
                         <a href="https://sv.surveymonkey.com/r/VQT7WTN" target="_blank">Ansök genom att fylla i formuläret.</a>
+                    </p>*@
+                    <p>
+                        <h3>Faktura?</h3>
+                        Vill du köpa mer än fem biljetter och föredrar att bli fakturerad? Kontakta oss på <a href="mailto:info@swetugg.se">info@swetugg.se</a>
                     </p>
-                        <p>
-                            <h3>Faktura?</h3>
-                            Vill du köpa mer än fem biljetter och föredrar att bli fakturerad? Kontakta oss på <a href="mailto:info@swetugg.se">info@swetugg.se</a>
-                        </p>
                 }
                 else
                 {
