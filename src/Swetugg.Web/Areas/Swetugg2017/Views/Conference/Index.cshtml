@@ -480,31 +480,32 @@
 				<p class="text-center">
 					Ordinarie biljett till Swetugg 2017 kostar 1500kr per styck.
 				</p>
-				<form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
-					<div class="form-group form-group-lg">
-						<select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
-							<option value="1" selected="selected">1 biljett - 1500kr</option>
-							<option value="2">2 biljetter - 3000kr</option>
-							<option value="3">3 biljetter - 4500kr</option>
-							<option value="4">4 biljetter - 6000kr</option>
-							<option value="5">5 biljetter - 7500kr</option>
-						</select>
-					</div>
+					<form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
+						<div class="form-group form-group-lg">
+							<select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
+								<option value="1" selected="selected">1 biljett - 1500kr</option>
+								<option value="2">2 biljetter - 3000kr</option>
+								<option value="3">3 biljetter - 4500kr</option>
+								<option value="4">4 biljetter - 6000kr</option>
+								<option value="5">5 biljetter - 7500kr</option>
+							</select>
+						</div>
 
-					<input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
-				</form>
+						<input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp"/>
+					</form>
+					<p></p>
 				<p class="text-center">
-					Stöd oss genom att bli sponsor, en biljett samt plats på wall of fame ingår
+					Köp en stödsponsor biljett, en biljett samt omnämnade ingår
 				</p>
 					<form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
 
-						<div class="hidden">
+						<div class="form-group form-group-lg">
 							<select class="form-control" id="tickets_@sponsorTicketKey" name="tickets[@sponsorTicketKey]">
 								<option value="1" selected="selected">1 biljett - 5000kr</option>
 							</select>
 						</div>
 
-						<input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp sponsorbiljett" />
+						<input name="commit" type="submit" class="btn btn-lg btn-default" value="Köp" />
 					</form>
 						<p>
 							<h3>Student?</h3>
