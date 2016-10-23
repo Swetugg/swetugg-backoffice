@@ -79,6 +79,7 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
             ViewData["TicketSalesOpen"] = ticketSalesOpen;
             ViewData["TicketUrl"] = ConfigurationManager.AppSettings["Ticket_Url"];
             ViewData["TicketKey"] = ConfigurationManager.AppSettings["Ticket_Key"];
+            ViewData["SponsorTicketKey"] = ConfigurationManager.AppSettings["SponsorTicket_Key"];
 
             return View();
         }
