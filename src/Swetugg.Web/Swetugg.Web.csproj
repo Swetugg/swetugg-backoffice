@@ -379,6 +379,10 @@
     <Compile Include="Migrations\201610020804533_LastUpdateOnCfp.Designer.cs">
       <DependentUpon>201610020804533_LastUpdateOnCfp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610290957547_MinNumberOfSpeakers.cs" />
+    <Compile Include="Migrations\201610290957547_MinNumberOfSpeakers.Designer.cs">
+      <DependentUpon>201610290957547_MinNumberOfSpeakers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -586,6 +590,7 @@
     <Content Include="Content\swetugg-2017\img\sponsors\attentec-thumb.png" />
     <Content Include="Content\swetugg-2017\img\sponsors\betsson-thumb.png" />
     <Content Include="Content\swetugg-2017\img\sponsors\combitech-thumb.png" />
+    <Content Include="Content\swetugg-2017\img\sponsors\conevo-thumb.png" />
     <Content Include="Content\swetugg-2017\img\sponsors\cornerstone-thumb.png" />
     <Content Include="Content\swetugg-2017\img\sponsors\dynabyte-thumb.png" />
     <Content Include="Content\swetugg-2017\img\sponsors\etimo-thumb.png" />
@@ -1157,6 +1162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610020804533_LastUpdateOnCfp.resx">
       <DependentUpon>201610020804533_LastUpdateOnCfp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610290957547_MinNumberOfSpeakers.resx">
+      <DependentUpon>201610290957547_MinNumberOfSpeakers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

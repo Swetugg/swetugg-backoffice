@@ -1,43 +1,43 @@
 ﻿@using System.Globalization
 @using Swetugg.Web.Models
 @{
-	ViewBag.Title = "Swetugg - en konferens i Swenugs anda";
-	ViewBag.TransformNavBar = true;
+    ViewBag.Title = "Swetugg - en konferens i Swenugs anda";
+    ViewBag.TransformNavBar = true;
 
-	Conference conference = ViewBag.Conference;
+    Conference conference = ViewBag.Conference;
 
-	IEnumerable<Slot> slots = ViewBag.Slots;
-	if (slots == null)
-	{
-		slots = new List<Slot>();
-	}
-	IEnumerable<Room> rooms = ViewBag.Rooms;
-	if (rooms == null)
-	{
-		rooms = new List<Room>();
-	}
-	IEnumerable<Sponsor> sponsors = ViewBag.Sponsors;
-	if (sponsors == null)
-	{
-		sponsors = new List<Sponsor>();
-	}
-	IEnumerable<Speaker> speakers = ViewBag.Speakers;
-	if (speakers == null)
-	{
-		speakers = new List<Speaker>();
-	}
-	IDictionary<int, IDictionary<string, SpeakerImage>> speakerImages = ViewBag.SpeakerImages;
-	if (speakerImages == null)
-	{
-		speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
-	}
-	var totalNumberOfSpeakers = 25;
-	var speakersLeft = totalNumberOfSpeakers - speakers.Count();
+    IEnumerable<Slot> slots = ViewBag.Slots;
+    if (slots == null)
+    {
+        slots = new List<Slot>();
+    }
+    IEnumerable<Room> rooms = ViewBag.Rooms;
+    if (rooms == null)
+    {
+        rooms = new List<Room>();
+    }
+    IEnumerable<Sponsor> sponsors = ViewBag.Sponsors;
+    if (sponsors == null)
+    {
+        sponsors = new List<Sponsor>();
+    }
+    IEnumerable<Speaker> speakers = ViewBag.Speakers;
+    if (speakers == null)
+    {
+        speakers = new List<Speaker>();
+    }
+    IDictionary<int, IDictionary<string, SpeakerImage>> speakerImages = ViewBag.SpeakerImages;
+    if (speakerImages == null)
+    {
+        speakerImages = new Dictionary<int, IDictionary<string, SpeakerImage>>();
+    }
+    int totalNumberOfSpeakers = conference.MinNumberOfSpeakers;
+    var speakersLeft = totalNumberOfSpeakers - speakers.Count();
 
-	string ticketUrl = ViewBag.TicketUrl;
-	string ticketKey = ViewBag.TicketKey;
-	string sponsorTicketKey = ViewBag.SponsorTicketKey;
-	bool ticketSalesOpen = ViewBag.TicketSalesOpen;
+    string ticketUrl = ViewBag.TicketUrl;
+    string ticketKey = ViewBag.TicketKey;
+    string sponsorTicketKey = ViewBag.SponsorTicketKey;
+    bool ticketSalesOpen = ViewBag.TicketSalesOpen;
 }
 
 <section class="intro">

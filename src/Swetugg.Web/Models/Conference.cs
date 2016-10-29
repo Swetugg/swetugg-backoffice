@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,6 +41,9 @@ namespace Swetugg.Web.Models
         [StringLength(50)]
         [Display(Name = "VIP invite code")]
         public string CfpVipCode { get; set; }
+
+        [Display(Name = "Min speakers on front page")]
+        public int MinNumberOfSpeakers { get; set; }
 
         public ICollection<Speaker> Speakers { get; set; }
         public ICollection<Session> Sessions { get; set; }
