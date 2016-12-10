@@ -4,17 +4,18 @@
 @{
     var unplacedSessions = (List<Session>) ViewData["UnplacedSessions"];
 }
-@using (Html.BeginForm("AssignRoomSlot", "ScheduleAdmin", new { Model.SlotId, Model.RoomId }, FormMethod.Post, new { @class = "form-inline" }))
+@using (Html.BeginForm("AssignRoomSlot", "ScheduleAdmin", new { Model.SlotId, Model.RoomId }, FormMethod.Post, new { @class = "" }))
 {
-    <div class="row">
-        <div class="col-xs-2">
-                @Html.DropDownListFor(
-            m => m.AssignedSessionId,
-            unplacedSessions.Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default("(None)", ""),
-            new { @class = "form-control" })
-            <button type="submit" class="btn btn-default">OK</button>
-        </div>
+    <div class="input-group">
+        @Html.DropDownListFor(
+        m => m.AssignedSessionId,
+        unplacedSessions.Select(s => new SelectListItem() { Text = ((s.Speakers.FirstOrDefault()?.Speaker?.Name) ?? "") + " - " + s.Name, Value = s.Id.ToString() }).Default("(None)", ""),
+        new { @class = "form-control" })
+        <button type="submit" class="btn btn-default input-group-addon">OK</button>
     </div>
 }
+
+
+
 
 
