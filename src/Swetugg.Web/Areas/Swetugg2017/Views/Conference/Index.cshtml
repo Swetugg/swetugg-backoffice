@@ -195,205 +195,203 @@
 @if (speakers.Any())
 {
 
-	<section id="speakers" class="even-section content-section text-center">
-		<div class="program-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<h1 class="noSubtitle">Talare</h1>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1">
-						<ul class="photo-collection">
-							@foreach (var speaker in @speakers)
-							{
-							<li>
-								<a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
-									@{
-										string imageUrl = "/Content/swetugg-2017/SpeakerPictures/" + speaker.Slug + ".png";
-										IDictionary<string, SpeakerImage> imgLookup;
-										if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
-										{
-											SpeakerImage speakerImage;
-											if (imgLookup.TryGetValue("thumb-front", out speakerImage))
-											{
-												imageUrl = speakerImage.ImageUrl;
-											}
-										}
-									}
-									<img class="img-circle" src="@imageUrl" />
-									<div>
-										@speaker.Name
-									</div>
-								</a>
-							</li>
-										}
-							@for (int i = 0; i < speakersLeft; i++)
-							{
-							<li>
-								<img class="img-circle" src="/Content/swetugg-2017/img/unknown.png" />
-								<div>
+    <section id="speakers" class="even-section content-section text-center">
+        <div class="program-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="noSubtitle">Talare</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <ul class="photo-collection">
+                            @foreach (var speaker in @speakers)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
+                                        @{
+                                            string imageUrl = "/Content/swetugg-2017/SpeakerPictures/" + speaker.Slug + ".png";
+                                            IDictionary<string, SpeakerImage> imgLookup;
+                                            if (speakerImages.TryGetValue(speaker.Id, out imgLookup))
+                                            {
+                                                SpeakerImage speakerImage;
+                                                if (imgLookup.TryGetValue("thumb-front", out speakerImage))
+                                                {
+                                                    imageUrl = speakerImage.ImageUrl;
+                                                }
+                                            }
+                                        }
+                                        <img class="img-circle" src="@imageUrl"/>
+                                        <div>
+                                            @speaker.Name
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                            @for (int i = 0; i < speakersLeft; i++)
+                            {
+                                <li>
+                                    <img class="img-circle" src="/Content/swetugg-2017/img/unknown.png"/>
+                                    <div>
 
-								</div>
-							</li>
-							}
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-										}
-										else
-										{
-	<section id="speakers" class="even-section content-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<h1 class="noSubtitle">Call for papers</h1>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<p>
-						Vår öppna Call for Papers har stängt för den här gången. Har du redan fyllt i men vill ändra något
-						så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new { Area = "Cfp" }, null)-siten.
-						Skicka sedan helst även ett mail till <a href="mailto:tala@swetugg.se">tala@swetugg.se</a> och berätta vad du
-						ändrat och varför.
-					</p>
-					<p>
-						<em>Hjälp, jag missade CFP:n!</em><br />
-						Det kan fortfarande finnas enstaka platser kvar, så maila oss gärna på <a href="mailto:tala@swetugg.se">tala@swetugg.se</a>
-						och berätta lite kort vad du vill prata om.
-					</p>
-					<p>
-						<em>När får jag besked?</em><br />
-						Alla som var med i den öppna CFP:n kommer att få svar från oss senast den 20:e oktober.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-										}
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section id="speakers" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Call for papers</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <p>
+                        Vår öppna Call for Papers har stängt för den här gången. Har du redan fyllt i men vill ändra något
+                        så ska det gå bra att logga in igen på @Html.ActionLink("Call for Papers", "Index", "CallForPapers", new {Area = "Cfp"}, null)-siten.
+                        Skicka sedan helst även ett mail till <a href="mailto:tala@swetugg.se">tala@swetugg.se</a> och berätta vad du
+                        ändrat och varför.
+                    </p>
+                    <p>
+                        <em>Hjälp, jag missade CFP:n!</em><br/>
+                        Det kan fortfarande finnas enstaka platser kvar, så maila oss gärna på <a href="mailto:tala@swetugg.se">tala@swetugg.se</a>
+                        och berätta lite kort vad du vill prata om.
+                    </p>
+                    <p>
+                        <em>När får jag besked?</em><br/>
+                        Alla som var med i den öppna CFP:n kommer att få svar från oss senast den 20:e oktober.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+}
 
-@*
-	<section id="schedule" class="content-section">
-			<div class="schedule-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<h1 class="noSubtitle">Schema</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
+<section id="schedule" class="odd-section content-section">
+    <div class="schedule-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Schema</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
 
-							@foreach (var day in slots.GroupBy(s => s.Start.Date))
-							{
-								var width = 90 / rooms.Count();
+                    @foreach (var day in slots.GroupBy(s => s.Start.Date))
+                    {
+                        var width = 90 / rooms.Count();
 
-								<h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
-								<table class="table schema rwd-table">
-									<thead>
-										<tr>
+                        <h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
+                        <table class="table schema rwd-table">
+                            <thead>
+                            <tr>
 
-											<th style="width: 10%">Tid</th>
+                                <th style="width: 10%">Tid</th>
 
-											@foreach (var room in rooms)
-											{
-												<th style="width: @width%">@room.Name</th>
-											}
-										</tr>
-									</thead>
-									<tbody>
-									@foreach (var slot in day)
-									{
-										<tr>
-											@if (string.IsNullOrEmpty(slot.Title))
-											{
-												<th style="display: table-cell; text-align: center; width: 60px;">
-													@slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
-												</th>
+                                @foreach (var room in rooms)
+                                {
+                                    <th style="width: @width%">@room.Name</th>
+                                }
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var slot in day)
+                            {
+                                <tr>
+                                    @if (string.IsNullOrEmpty(slot.Title))
+                                    {
+                                        <th style="display: table-cell; text-align: center; width: 60px;">
+                                            @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                        </th>
 
-												foreach (var room in rooms)
-												{
-													var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
-													bool isChanged = roomSlot != null && roomSlot.IsChanged;
-													string changedClass = isChanged ? "changed" : "unchanged";
-													var session = roomSlot != null ? roomSlot.AssignedSession : null;
-													if (roomSlot != null)
-													{
-														<td data-th="@room.Name" class="@changedClass">
-															<div class="schemacell">
-																@if (isChanged)
-																{
-																	<span class="pull-right glyphicon glyphicon-info-sign"></span>
-																}
-																@if (session != null)
-																{
-																	var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
-																	if (sessionSpeakers.Count > 0)
-																	{
-																		var firstSpeaker = sessionSpeakers.First();
-																		<div class="schemacell-rad1">
-																			@foreach (var speaker in sessionSpeakers)
-																			{
-																				@Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
-																			}
-																		</div>
-																		<a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
-																			<div class="schemacell-rad2">
-																				@session.Name
-																			</div>
-																		</a>
-																	}
+                                        foreach (var room in rooms)
+                                        {
+                                            var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                                            bool isChanged = roomSlot != null && roomSlot.IsChanged;
+                                            string changedClass = isChanged ? "changed" : "unchanged";
+                                            var session = roomSlot != null ? roomSlot.AssignedSession : null;
+                                            if (roomSlot != null)
+                                            {
+                                                <td data-th="@room.Name" class="@changedClass">
+                                                    <div class="schemacell">
+                                                        @if (isChanged)
+                                                        {
+                                                            <span class="pull-right glyphicon glyphicon-info-sign"></span>
+                                                        }
+                                                        @if (session != null)
+                                                        {
+                                                            var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
+                                                            if (sessionSpeakers.Count > 0)
+                                                            {
+                                                                var firstSpeaker = sessionSpeakers.First();
+                                                                <div class="schemacell-rad1">
+                                                                    @foreach (var speaker in sessionSpeakers)
+                                                                    {
+                                                                        @Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
+                                                                    }
+                                                                </div>
+                                                                <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
+                                                                    <div class="schemacell-rad2">
+                                                                        @session.Name
+                                                                    </div>
+                                                                </a>
+                                                            }
 
-																}
-															</div>
-														</td>
-													}
-													else
-													{
-														<td data-th="@room.Name">
-															<div class="schemacell">
-																<div class="schemacell-rad2">
-																	Inte klart ännu
-																</div>
-															</div>
-														</td>
-													}
-												}
-											}
-											else
-											{
-												<th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
-													@slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
-												</th>
+                                                        }
+                                                    </div>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td data-th="@room.Name">
+                                                    <div class="schemacell">
+                                                        <div class="schemacell-rad2">
+                                                            Inte klart ännu
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
+                                            @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                        </th>
 
-												<td class="all-rooms" colspan="@rooms.Count()">
-													<div>@slot.Title</div>
-												</td>
-											}
-										</tr>
-									}
-									</tbody>
-								</table>
-							}
+                                        <td class="all-rooms" colspan="@rooms.Count()">
+                                            <div>@slot.Title</div>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    }
 
-							<p class="schema-disclaimer">
-		Schemat är preliminärt och kan komma att ändras.
-		<span class="glyphicon glyphicon-info-sign"></span>
-			Förändrat sedan schemat trycktes
-							</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-*@
+                    <p class="schema-disclaimer">
+                        Schemat är preliminärt och kan komma att ändras.
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        Förändrat sedan schemat trycktes
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section id="sponsor" class="odd-section content-section">
+<section id="sponsor" class="even-section content-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -466,7 +464,7 @@
 </section>
 
 
-<section id="tickets" class="even-section content-section">
+<section id="tickets" class="odd-section content-section">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -560,7 +558,7 @@
     </div>
 </section>
 
-<section id="contact" class="odd-section content-section contact-section">
+<section id="contact" class="even-section content-section contact-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
