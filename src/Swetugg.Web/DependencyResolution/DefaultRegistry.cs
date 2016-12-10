@@ -15,6 +15,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using StructureMap;
+
 namespace Swetugg.Web.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
