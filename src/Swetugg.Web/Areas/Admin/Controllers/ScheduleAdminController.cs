@@ -190,6 +190,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     .Include(s => s.Speakers.Select(sp => sp.Speaker))
                     .Include(s => s.RoomSlots)
                     .Where(s => s.ConferenceId == conferenceId && s.RoomSlots.Count == 0)
+                    .OrderBy(s => s.Speakers.FirstOrDefault().Speaker.Name)
                     .ToListAsync();
             return sessions;
         }
