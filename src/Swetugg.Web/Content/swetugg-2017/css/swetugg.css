@@ -611,7 +611,7 @@ footer {
   /*width: .51em; // magic number :( adjust according to your own content*/
   display: inline-block;
 }
-@media (min-width: 480px) {
+@media (min-width: 640px) {
   .rwd-table td[data-th]:before {
     display: none;
   }
@@ -620,7 +620,7 @@ footer {
 .rwd-table td {
   text-align: left;
 }
-@media (min-width: 480px) {
+@media (min-width: 640px) {
   .rwd-table th,
   .rwd-table td {
     display: table-cell;
@@ -639,67 +639,58 @@ footer {
   letter-spacing: 5px;
   font-size: 14px;
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .rwd-table td.all-rooms {
     text-align: left;
     padding-left: 10px !important;
   }
 }
-
 .video-wrapper {
-    max-width: 420px;
-    max-height: 236px;
-    margin: auto;
-    margin-bottom: 50px;
+  max-width: 420px;
+  max-height: 236px;
+  margin: auto;
+  margin-bottom: 50px;
 }
-
 .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 }
-
 .video-container iframe,
 .video-container object,
 .video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-
 .space-at-bottom {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
-
 .margin-top {
-    margin-top: 40px;
+  margin-top: 40px;
 }
-
 .flickr-link {
-   margin: auto;
+  margin: auto;
 }
-
 .blockquote-container {
-    font-size: 15px;
-    padding-top: 10px;
+  font-size: 15px;
+  padding-top: 10px;
 }
-
 .blockquote-small {
-    background-color: #FFF7FA;
+  background-color: #FFF7FA;
 }
-
 .blockquote-small-inverted {
-    background-color: #F2FCFF;
+  background-color: #F2FCFF;
 }
-
 .blockquote-small p {
-    font-size: 15px;
-    color: #A30046;    
+  font-size: 15px;
+  color: #A30046;
 }
-
 .blockquote-small footer {
-    padding: 0;
-    background: inherit;
+  padding: 0;
+  background: inherit;
 }
