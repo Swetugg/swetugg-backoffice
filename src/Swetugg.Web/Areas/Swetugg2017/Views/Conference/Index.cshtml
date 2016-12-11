@@ -317,7 +317,7 @@ else
 
                                         foreach (var room in rooms)
                                         {
-                                            var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                                            var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id && (rs.AssignedSession == null || rs.AssignedSession.Published));
                                             bool isChanged = roomSlot != null && roomSlot.IsChanged;
                                             string changedClass = isChanged ? "changed" : "unchanged";
                                             var session = roomSlot != null ? roomSlot.AssignedSession : null;

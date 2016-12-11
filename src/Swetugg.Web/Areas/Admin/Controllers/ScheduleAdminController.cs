@@ -177,7 +177,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         private async Task<List<Room>> GetAllRooms()
         {
             var conferenceId = ConferenceId;
-            var allRooms = await dbContext.Rooms.Where(r => r.ConferenceId == conferenceId).ToListAsync();
+            var allRooms = await dbContext.Rooms.Where(r => r.ConferenceId == conferenceId).OrderBy(r => r.Priority).ToListAsync();
             return allRooms;
         }
 

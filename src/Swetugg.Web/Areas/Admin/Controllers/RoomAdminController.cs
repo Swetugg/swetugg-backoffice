@@ -17,9 +17,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         public async Task<ActionResult> Index()
         {
             var conferenceId = ConferenceId;
-            var rooms = from s in dbContext.Rooms
-                        where s.ConferenceId == conferenceId
-                           select s;
+            var rooms = from r in dbContext.Rooms
+                        where r.ConferenceId == conferenceId
+                        orderby r.Priority
+                        select r;
             var roomsList = await rooms.ToListAsync();
 
             return View(roomsList);
