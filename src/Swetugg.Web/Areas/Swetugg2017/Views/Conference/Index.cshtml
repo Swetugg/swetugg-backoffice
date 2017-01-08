@@ -347,7 +347,11 @@ else
                                                                     </div>
                                                                 </a>
                                                             }
-
+                                                            var tags = session.Tags;
+                                                            foreach (var tag in tags.Where(t => t.Featured))
+                                                            {
+                                                                <span class="label label-default">@tag.Name</span>
+                                                            }
                                                         }
                                                     </div>
                                                 </td>

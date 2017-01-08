@@ -330,6 +330,7 @@
     <Compile Include="Areas\Admin\Controllers\CfpReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminControllerBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ScheduleAdminController.cs" />
@@ -411,6 +412,14 @@
     <Compile Include="Migrations\201610290957547_MinNumberOfSpeakers.Designer.cs">
       <DependentUpon>201610290957547_MinNumberOfSpeakers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701081032489_SessionTags.cs" />
+    <Compile Include="Migrations\201701081032489_SessionTags.Designer.cs">
+      <DependentUpon>201701081032489_SessionTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081323374_FeaturedTags.cs" />
+    <Compile Include="Migrations\201701081323374_FeaturedTags.Designer.cs">
+      <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -429,6 +438,7 @@
     <Compile Include="Models\SpeakerImage.cs" />
     <Compile Include="Models\ImageType.cs" />
     <Compile Include="Models\Sponsor.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CachedConferenceService.cs" />
     <Compile Include="Services\ConferenceService.cs" />
@@ -719,6 +729,8 @@
     <Content Include="Areas\Swetugg2017\Views\Conference\CodeOfConduct.cshtml" />
     <Content Include="Areas\Swetugg2017\Views\Conference\Index.cshtml" />
     <Content Include="Areas\Swetugg2017\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Admin\Views\TagAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TagAdmin\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -860,6 +872,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610290957547_MinNumberOfSpeakers.resx">
       <DependentUpon>201610290957547_MinNumberOfSpeakers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081032489_SessionTags.resx">
+      <DependentUpon>201701081032489_SessionTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081323374_FeaturedTags.resx">
+      <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

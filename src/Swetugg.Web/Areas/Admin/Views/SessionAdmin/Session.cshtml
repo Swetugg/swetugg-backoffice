@@ -43,32 +43,64 @@
                 }
             </div>
             <div class="col-sm-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">Speakers</div>
-                    </div>
-                    <div class="list-group">
-                        @foreach (var speaker in Model.Speakers.Select(s => s.Speaker))
-                        {
-                            <div class="list-group-item">
-                                @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
-                                {
-                                    @Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new { speaker.Id }, null)
+                <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Speakers</div>
+                        </div>
+                        <div class="list-group">
+                            @foreach (var speaker in Model.Speakers.Select(s => s.Speaker))
+                            {
+                                <div class="list-group-item">
+                                    @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new {Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+                                    {
+                                        @Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new {speaker.Id}, null)
 
-                                    <button type="submit" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    @Html.Hidden("SpeakerId", speaker.Id)
-                                }
-                            </div>
-                        }
+                                        <button type="submit" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        @Html.Hidden("SpeakerId", speaker.Id)
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="panel-footer">
+                            @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new {Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+                            {
+                                <div class="form-group">
+                                    @Html.DropDownList("speakerId", ((List<Speaker>) ViewBag.Speakers).Select(s => new SelectListItem() {Text = s.Name, Value = s.Id.ToString()}).Default(" - Select speaker - ", ""), new {@class = "form-control"})
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            }
+                        </div>
                     </div>
-                    <div class="panel-footer">
-                        @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
-                        {
-                            <div class="form-group">
-                                @Html.DropDownList("speakerId", ((List<Speaker>)ViewBag.Speakers).Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default(" - Select speaker - ", ""), new { @class = "form-control" })
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        }
+                </div>
+                <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Tags</div>
+                        </div>
+                        <div class="list-group">
+                            @foreach (var tag in Model.Tags)
+                            {
+                                <div class="list-group-item">
+                                    @using (Html.BeginForm("RemoveTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                                    {
+                                        @tag.Name
+
+                                        <button type="submit" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        @Html.Hidden("TagId", tag.Id)
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="panel-footer">
+                            @using (Html.BeginForm("AddTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                            {
+                                <div class="form-group">
+                                    @Html.DropDownList("tagId", ((List<Tag>)ViewBag.Tags).Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default(" - Select tag - ", ""), new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
