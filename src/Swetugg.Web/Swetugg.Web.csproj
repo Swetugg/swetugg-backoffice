@@ -416,6 +416,10 @@
     <Compile Include="Migrations\201701081032489_SessionTags.Designer.cs">
       <DependentUpon>201701081032489_SessionTags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701081323374_FeaturedTags.cs" />
+    <Compile Include="Migrations\201701081323374_FeaturedTags.Designer.cs">
+      <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -871,6 +875,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701081032489_SessionTags.resx">
       <DependentUpon>201701081032489_SessionTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081323374_FeaturedTags.resx">
+      <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

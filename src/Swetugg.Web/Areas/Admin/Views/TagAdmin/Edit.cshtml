@@ -49,6 +49,14 @@
                                 @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Slug)
                             </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        @Html.CheckBoxFor(m => m.Featured)
+                                        @Html.DisplayNameFor(m => m.Featured)
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
