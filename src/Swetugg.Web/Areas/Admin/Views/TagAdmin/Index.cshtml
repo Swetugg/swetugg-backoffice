@@ -1,7 +1,7 @@
 ﻿@using Swetugg.Web.Models
-@model List<ImageType>
+@model List<Tag>
 @{
-    ViewBag.Title = "Image types";
+    ViewBag.Title = "Tags";
     Conference conference = ViewBag.Conference;
 }
 
@@ -9,15 +9,15 @@
     <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
     <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
     <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
-    <li class="active">Image Types</li>
+    <li class="active">Tags</li>
 </ol>
 
-<h2>Image Types</h2>
+<h2>Tags</h2>
 <div class="list-group">
-    @foreach (var imageType in Model)
+    @foreach (var tag in Model)
     {
-        @Html.ActionLink(imageType.Name, "Edit", new { id = imageType.Id }, new { @class = "list-group-item" })
+        @Html.ActionLink(tag.Name, "Edit", new { id = tag.Id }, new { @class = "list-group-item" })
     }
 </div>
 
-@Html.ActionLink("New image type", "Edit", new { }, new { @class = "btn btn-primary" })
+@Html.ActionLink("New tag", "Edit", new { }, new { @class = "btn btn-primary" })

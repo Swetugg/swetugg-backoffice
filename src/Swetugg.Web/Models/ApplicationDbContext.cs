@@ -21,6 +21,7 @@ namespace Swetugg.Web.Models
 		public DbSet<Slot> Slots { get; set; }
         public DbSet<RoomSlot> RoomSlots { get; set; }
         public DbSet<ImageType> ImageTypes { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         public DbSet<CfpSpeaker> CfpSpeakers { get; set; }
         public DbSet<CfpSession> CfpSessions { get; set; }
@@ -66,6 +67,8 @@ namespace Swetugg.Web.Models
 			modelBuilder.Entity<SessionSpeaker>().HasRequired(s => s.Speaker).WithMany(s => s.Sessions).WillCascadeOnDelete(false);
 			modelBuilder.Entity<SessionSpeaker>().HasRequired(s => s.Session).WithMany(s => s.Speakers).WillCascadeOnDelete(false);
 			modelBuilder.Entity<SessionSpeaker>().HasKey(s => new { s.SessionId, s.SpeakerId });
+
+		    modelBuilder.Entity<Session>().HasMany(s => s.Tags).WithMany(t => t.Sessions);
 
 			modelBuilder.Entity<Conference>().HasMany(c => c.Rooms).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Sessions).WithRequired().WillCascadeOnDelete(false);

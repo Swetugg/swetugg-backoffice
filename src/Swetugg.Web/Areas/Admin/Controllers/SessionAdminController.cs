@@ -34,10 +34,12 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             var conferenceId = ConferenceId;
 
-            var session = await dbContext.Sessions.Include(m => m.Speakers.Select(s => s.Speaker)).SingleAsync(s => s.Id == id);
+            var session = await dbContext.Sessions.Include(m => m.Speakers.Select(s => s.Speaker)).Include(s => s.Tags).SingleAsync(s => s.Id == id);
             var speakers = await dbContext.Speakers.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Name).ToListAsync();
+            var tags = await dbContext.Tags.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Name).ToListAsync();
 
             ViewBag.Speakers = speakers.Where(s => session.Speakers.All(se => se.SpeakerId != s.Id)).ToList();
+            ViewBag.Tags = tags.Where(t => session.Tags.All(st => st.Id != t.Id)).ToList();
 
             return View(session);
         }
@@ -91,6 +93,39 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             var sessionSpeaker = session.Speakers.Single(s => s.SpeakerId == speakerId);
 
             dbContext.Entry(sessionSpeaker).State = EntityState.Deleted;
+
+            await dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Session", new { id });
+        }
+
+        [HttpPost]
+        [Route("{conferenceSlug}/sessions/addtag/{id:int}")]
+        public async Task<ActionResult> AddTag(int id, int tagId)
+        {
+            var session = await dbContext.Sessions.Include(m => m.Tags).SingleAsync(s => s.Id == id);
+            var tag = await dbContext.Tags.FirstAsync(t => t.Id == tagId);
+            session.Tags.Add(tag);
+            await dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Session", new { id });
+        }
+
+
+        [HttpPost]
+        [Route("{conferenceSlug}/sessions/removetag/{id:int}")]
+        public async Task<ActionResult> RemoveTag(int id, int tagId)
+        {
+            var session = await dbContext.Sessions.Include(m => m.Tags).Where(s => s.Id == id).SingleAsync();
+            
+            foreach (var tag in session.Tags)
+            {
+                if (tag.Id == tagId)
+                {
+                    session.Tags.Remove(tag);
+                    break;
+                }
+            }
 
             await dbContext.SaveChangesAsync();
 

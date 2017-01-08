@@ -1,0 +1,61 @@
+﻿@using Swetugg.Web.Models
+@model Tag
+
+@{
+    ViewBag.Title = "Tag - Edit";
+    Conference conference = ViewBag.Conference;
+    var buttonLabel = "Create";
+
+    var id = Model != null && Model.Id != 0 ? (int?)Model.Id : null;
+    if (id != null)
+    {
+        buttonLabel = "Update";
+    }
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Tags", "Index", "TagAdmin")</li>
+    <li class="active">@buttonLabel</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Tag type</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "TagAdmin", new { id }, FormMethod.Post))
+    {
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Publish settings
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Slug)
+                                @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Slug)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">@buttonLabel</button>
+        </div>
+    }
+</div>
