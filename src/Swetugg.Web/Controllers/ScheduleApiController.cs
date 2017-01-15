@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Swetugg.Web.Models;
+using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Controllers
 {
@@ -31,6 +32,8 @@ namespace Swetugg.Web.Controllers
 
     public class ScheduleApiController : Controller
     {
+        private readonly IConferenceService conferenceService;
+
         private readonly ApplicationDbContext dbContext;
         private int conferenceId;
         private string conferenceSlug;
@@ -39,6 +42,8 @@ namespace Swetugg.Web.Controllers
         public ScheduleApiController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
+            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
+
         }
 
         [Route("{conferenceSlug}/schedule-feed")]
@@ -79,6 +84,33 @@ namespace Swetugg.Web.Controllers
                     Room = roomSlot.Room.Name
                 };
             return Json(sessionsView, JsonRequestBehavior.AllowGet);
+        }
+
+        [Route("{conferenceSlug}/slots-feed")]
+        public ActionResult GetSlots()
+        {
+            var slots = this.conferenceService.GetSlotsAndSessions(this.ConferenceId);
+            var res = from s in slots
+                      select new
+                      {
+                          Start = s.Start.ToString(),
+                          End = s.End.ToString(),
+                          s.Title,
+                          Sessions = from r in s.RoomSlots
+                          select new
+                          {
+                              Room = r.Room == null ? null : r.Room.Name,
+                              Name = r.AssignedSession == null ? null : r.AssignedSession.Name,
+                              Speakers = r.AssignedSession == null ? null :
+                                from speaker in r.AssignedSession.Speakers
+                                         select new
+                                         {
+                                             speaker.Speaker.Name
+                                         }
+                          }
+                      };
+
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
         private async Task<List<Session>> GetSessions()

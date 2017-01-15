@@ -20,5 +20,18 @@ namespace Swetugg.Web.Controllers
             var data = new NowData() { Data = "Hello" };
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        private string conferenceSlug;
+
+        protected string ConferenceSlug
+        {
+            get
+            {
+                if (conferenceSlug != null)
+                    return conferenceSlug;
+
+                return conferenceSlug = (string)RouteData.Values["conferenceSlug"];
+            }
+        }
     }
 }

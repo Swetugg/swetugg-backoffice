@@ -8,13 +8,23 @@
     <div class="program-section">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <h1 class="noSubtitle">Swetugg Now</h1>
+                <h2>Just nu</h2>
+                <div>{{ currentSlot.Start }} - {{ currentSlot.End }}</div>
+                <div>{{ currentSlot.Title }}</div>
+                <div ng-repeat="session in currentSlot.Sessions">
+                    <p>
+                        <div>{{ session.Name }}</div>
+                    </p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    {{ data }}
+                <h2>Kommer härnäst</h2>
+                <div>{{ nextSlot.Start }} - {{ nextSlot.End }}</div>
+                <div>{{ nexttSlot.Title }}</div>
+                <div ng-repeat="session in nextSlot.Sessions">
+                    <p>
+                        <div>{{ session.Name }}</div>
+                    </p>
                 </div>
             </div>
         </div>
