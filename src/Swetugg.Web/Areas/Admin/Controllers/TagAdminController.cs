@@ -20,6 +20,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             var conferenceId = ConferenceId;
             var tags = from s in dbContext.Tags
                 where s.ConferenceId == conferenceId
+                orderby s.Priority
                 select s;
             var tagList = await tags.ToListAsync();
 
