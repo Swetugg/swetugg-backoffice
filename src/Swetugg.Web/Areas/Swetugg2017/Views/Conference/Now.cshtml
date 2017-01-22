@@ -71,16 +71,17 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <div>
-                                {{ session.Description }}
+                            <div style="margin-bottom: 15px;" trunk8="{text: session.Description, more: '+more', less: '-less', expendable: true, resizable: false}">
                             </div>
-                            <div>
+                            <div style="float: right;">
                                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                                 {{ session.Room }}
                             </div>
-                            <div>
-                                <span ng-repeat="speaker in session.Speakers"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                <span ng-if="$index > 0">, </span>{{ speaker.Name }}</span>
+                            <div style="float: right; margin-right: 20px;">
+                                <span ng-repeat="speaker in session.Speakers">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    <span ng-if="$index > 0">, </span>{{ speaker.Name }}
+                                </span>
                             </div>
                         </div>
                     </div>

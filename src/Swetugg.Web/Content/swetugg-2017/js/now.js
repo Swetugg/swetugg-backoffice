@@ -25,6 +25,7 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
     filterSlots = function() {
         var now = new Date();
         now.setDate(30); // For testing purposes
+        now.setHours(now.getHours() - 8);
         console.log(now);
 
         var nextSlotIndex = 0;
