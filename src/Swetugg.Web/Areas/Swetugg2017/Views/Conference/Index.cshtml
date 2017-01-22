@@ -350,7 +350,7 @@ else
                                                             var tags = session.Tags;
                                                             foreach (var tag in tags.Where(t => t.Featured))
                                                             {
-                                                                <span class="label label-default">@tag.Name</span>
+                                                                <span class="label label-default" data-toggle="tooltip" data-placement="right" title="@tag.Description">@tag.Name</span>
                                                             }
                                                         }
                                                     </div>
@@ -721,6 +721,11 @@ else
 		</section>
 	</footer>
 @section scripts {
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
     @*<script>
         initializeMap();
     </script>

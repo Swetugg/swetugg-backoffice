@@ -420,6 +420,10 @@
     <Compile Include="Migrations\201701081323374_FeaturedTags.Designer.cs">
       <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701220812500_TagDescriptions.cs" />
+    <Compile Include="Migrations\201701220812500_TagDescriptions.Designer.cs">
+      <DependentUpon>201701220812500_TagDescriptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -878,6 +882,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701081323374_FeaturedTags.resx">
       <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701220812500_TagDescriptions.resx">
+      <DependentUpon>201701220812500_TagDescriptions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
