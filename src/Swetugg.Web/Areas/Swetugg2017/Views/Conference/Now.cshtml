@@ -39,6 +39,9 @@
                         <div class="panel-body">
                             <div style="margin-bottom: 15px;" trunk8="{text: session.Description, more: '+more', less: '-less', expendable: true, resizable: false}">
                             </div>
+                            <div style="float: left;" ng-repeat="tag in session.Tags">
+                                <span class="label label-default" data-toggle="tooltip" data-placement="right" title="{{ tag.Description }}">{{ tag.Name }}</span>
+                            </div>
                             <div style="float: right; margin-left: 20px;">
                                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                                 {{ session.Room }}
