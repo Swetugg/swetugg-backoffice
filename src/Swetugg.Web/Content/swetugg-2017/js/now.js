@@ -1,5 +1,9 @@
 ﻿// Define the `nowApp` module
-var nowApp = angular.module('nowApp', []);
+var nowApp = angular.module('nowApp', ['ng-trunk8']).config(function (trunk8ConfigProvider) {
+    trunk8ConfigProvider.setConfig({
+        lines: 2
+    })
+});
 
 // Define the `NowController` controller on the `nowApp` module
 nowApp.controller('NowController', function NowController($scope, $http, $interval) {
