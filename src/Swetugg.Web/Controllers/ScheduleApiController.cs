@@ -90,6 +90,8 @@ namespace Swetugg.Web.Controllers
         public ActionResult GetSlots()
         {
             var slots = this.conferenceService.GetSlotsAndSessions(this.ConferenceId);
+            var rooms = this.conferenceService.GetRooms(this.ConferenceId);
+
             var res = from s in slots
                       select new
                       {
@@ -99,8 +101,9 @@ namespace Swetugg.Web.Controllers
                           Sessions = from r in s.RoomSlots
                           select new
                           {
-                              Room = r.Room == null ? null : r.Room.Name,
+                              Room = rooms.Where(room => room.Id == r.RoomId).FirstOrDefault().Name,
                               Name = r.AssignedSession == null ? null : r.AssignedSession.Name,
+                              Description = r.AssignedSession == null ? null : r.AssignedSession.Description,
                               Speakers = r.AssignedSession == null ? null :
                                 from speaker in r.AssignedSession.Speakers
                                          select new

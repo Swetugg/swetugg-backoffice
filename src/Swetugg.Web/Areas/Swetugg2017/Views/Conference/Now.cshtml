@@ -9,22 +9,44 @@
         <div class="container">
             <div class="row">
                 <h2>Just nu</h2>
-                <div>{{ currentSlot.Start }} - {{ currentSlot.End }}</div>
-                <div>{{ currentSlot.Title }}</div>
-                <div ng-repeat="session in currentSlot.Sessions">
-                    <p>
-                        <div>{{ session.Name }}</div>
-                    </p>
+                
+                <div>{{ currentSlot.Start | date: 'HH:mm' }} - {{ currentSlot.End | date: 'HH:mm' }}</div>
+                <div ng-if="currentSlot.Title">
+                    <div>{{ currentSlot.Title }}</div>
+                </div>
+                <div ng-if="!currentSlot.Title" ng-repeat="session in currentSlot.Sessions">
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">{{ session.Name }}</div>
+                        <div class="panel-body">
+                            <div>{{ session.Room }}</div>
+                            <div>
+                                <span ng-repeat="speaker in session.Speakers"><span ng-if="$index > 0">, </span>{{ speaker.Name }}</span>
+                            </div>   
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <h2>Kommer härnäst</h2>
-                <div>{{ nextSlot.Start }} - {{ nextSlot.End }}</div>
-                <div>{{ nexttSlot.Title }}</div>
+                <h2>Kommande</h2>
+                <div>{{ nextSlot.Start | date: 'HH:mm' }} - {{ nextSlot.End | date: 'HH:mm' }}</div>
+                <div>{{ nextSlot.Title }}</div>
                 <div ng-repeat="session in nextSlot.Sessions">
-                    <p>
-                        <div>{{ session.Name }}</div>
-                    </p>
+                    <div class="panel panel-default panel-primary">
+                        <div class="panel-heading">{{ session.Name }}</div>
+                        <div class="panel-body">
+                            <div>
+                                {{ session.Description }}
+                            </div>
+                            <div>
+                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                {{ session.Room }}
+                            </div>
+                            <div>
+                                <span ng-repeat="speaker in session.Speakers"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <span ng-if="$index > 0">, </span>{{ speaker.Name }}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,3 +54,8 @@
 </section>
 
 
+@section Scripts {
+    $('.t8-lines').trunk8({
+      lines: 2
+    });    
+}
