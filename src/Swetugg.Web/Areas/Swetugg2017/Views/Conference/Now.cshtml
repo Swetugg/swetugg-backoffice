@@ -18,7 +18,7 @@
     <div class="now-section">
         <div class="container">
             <div class="row">
-                <h2>Just nu <small>{{ currentSlot.Start | date: 'HH:mm' }} - {{ currentSlot.End | date: 'HH:mm' }}</small></h2>
+                <h2 ng-if="currentSlot">Just nu <small>{{ currentSlot.Start | date: 'HH:mm' }} - {{ currentSlot.End | date: 'HH:mm' }}</small></h2>
 
                 <div ng-if="currentSlot.Title">
                     <div class="panel panel-default">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="row">
-                <h2>Kommande <small>{{ nextSlot.Start | date: 'HH:mm' }} - {{ nextSlot.End | date: 'HH:mm' }}</small></h2>
+                <h2 ng-if="nextSlot">Kommande <small>{{ nextSlot.Start | date: 'HH:mm' }} - {{ nextSlot.End | date: 'HH:mm' }}</small></h2>
 
                 <div ng-if="nextSlot.Title" class="panel panel-default">
                     <div class="panel-heading">
