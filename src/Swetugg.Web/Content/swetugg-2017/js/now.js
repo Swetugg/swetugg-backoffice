@@ -24,15 +24,14 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
 
     filterSlots = function() {
         var now = new Date();
-        now.setDate(30); // For testing purposes
-        //now.setHours(now.getHours() - 8);
+        now.setDate(31); // For testing purposes
+        now.setHours(now.getHours() - 7, now.getMinutes() - 10);
         console.log(now);
 
         var nextSlotIndex = 0;
         var currentSlotIndex = null;
 
         for (var n = 0; n < $scope.slots.length; n++) {
-            console.log(n);
             if ($scope.slots[n].Start <= now && $scope.slots[n].End >= now) {
                 currentSlotIndex = n;
             } else if ($scope.slots[n].Start > now) {
@@ -44,10 +43,14 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
 
         if (currentSlotIndex != null) {
             $scope.currentSlot = $scope.slots[currentSlotIndex];
+        } else {
+            $scope.currentSlot = null;
         }
 
         if (nextSlotIndex < $scope.slots.length) {
             $scope.nextSlot = $scope.slots[nextSlotIndex];
+        } else {
+            $scope.nextSlot = null;
         }
     }
 
