@@ -449,6 +449,18 @@ footer,
   color: #F2FCFF;
   background-color: #A30046;
 }
+.intro-body .btn-default {
+  border: 1px solid #F2FCFF;
+  color: #F2FCFF;
+  background-color: transparent;
+}
+.intro-body .btn-default:hover,
+.intro-body .btn-default:focus {
+  border: 1px solid #F2FCFF;
+  outline: none;
+  color: #A30046;
+  background-color: #F2FCFF;
+}
 .btn-huge {
   padding: 25px;
   font-size: 26px;
