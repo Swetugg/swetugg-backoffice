@@ -12,15 +12,17 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
     $scope.currentSlot = null;
     $scope.nextSlot = null;
 
-    $http.get('slots-feed').then(function (response) {
-        $scope.slots = response.data;
-        for (var n = 0; n < $scope.slots.length; n++) {
-            $scope.slots[n].Start = Date.parse($scope.slots[n].Start);
-            $scope.slots[n].End = Date.parse($scope.slots[n].End);
-        }
-        console.log(response.data);
-        filterSlots();
-    });
+    refreshFeed = function () {
+        $http.get('slots-feed').then(function (response) {
+            $scope.slots = response.data;
+            for (var n = 0; n < $scope.slots.length; n++) {
+                $scope.slots[n].Start = Date.parse($scope.slots[n].Start);
+                $scope.slots[n].End = Date.parse($scope.slots[n].End);
+            }
+            console.log(response.data);
+            filterSlots();
+        })
+    };
 
     filterSlots = function() {
         var now = new Date();
@@ -54,6 +56,9 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
         }
     }
 
+    refreshFeed();
+
+    $interval(refreshFeed, 30 * 60000);
     $interval(filterSlots, 60000);
 
 })
