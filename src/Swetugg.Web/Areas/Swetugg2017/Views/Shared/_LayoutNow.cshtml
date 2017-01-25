@@ -82,9 +82,9 @@
     <nav class="navbar navbar-custom navbar-fixed-top @(transformNavBar ? "transform": "top-nav-collapse" )" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
+                <a href="." class="navbar-toggle">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </a>
                 <a class="navbar-brand" href="@Url.Action("Index", "Conference")#page-top" data-target="#page-top">
                     <img src="/Content/swetugg-2017/img/40_WhiteBG_GraySwetuggOrigamiButterfly.png" width="50" height="41" class="pull-left"/>
                     Swetugg
