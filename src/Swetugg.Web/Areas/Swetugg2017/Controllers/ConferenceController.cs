@@ -81,9 +81,6 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
             ViewData["TicketKey"] = ConfigurationManager.AppSettings["Ticket_Key"];
             ViewData["SponsorTicketKey"] = ConfigurationManager.AppSettings["SponsorTicket_Key"];
 
-            if (((System.Web.Routing.Route)this.RouteData.Route).Url.EndsWith("/now"))
-                return View("Now");
-
             return View();
         }
 
