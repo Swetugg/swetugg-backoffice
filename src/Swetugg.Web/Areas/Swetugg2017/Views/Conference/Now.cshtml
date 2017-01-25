@@ -1,7 +1,14 @@
-﻿
+﻿@using Swetugg.Web.Models
+
 @{
     ViewBag.Title = "Now";
     Layout = "~/Areas/Swetugg2017/Views/Shared/_LayoutNow.cshtml";
+
+    IEnumerable<Sponsor> sponsors = ViewBag.Sponsors;
+    if (sponsors == null)
+    {
+        sponsors = new List<Sponsor>();
+    }
 }
 
 <style>
@@ -17,8 +24,8 @@
 <section id="now" class="even-section content-section text-center" ng-controller="NowController">
     <div class="now-section">
         <div class="container">
-            <div class="row">
-                <h2 ng-if="currentSlot">Just nu <small>{{ currentSlot.Start | date: 'HH:mm' }} - {{ currentSlot.End | date: 'HH:mm' }}</small></h2>
+            <div class="row" ng-if="currentSlot" style="margin-bottom: 40px;">
+                <h2>Just nu <small>{{ currentSlot.Start | date: 'HH:mm' }} - {{ currentSlot.End | date: 'HH:mm' }}</small></h2>
 
                 <div ng-if="currentSlot.Title">
                     <div class="panel panel-default">
@@ -54,8 +61,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <h2 ng-if="nextSlot">Kommande <small>{{ nextSlot.Start | date: 'HH:mm' }} - {{ nextSlot.End | date: 'HH:mm' }}</small></h2>
+            <div class="row" ng-if="nextSlot" style="margin-bottom: 40px;">
+                <h2>Kommande <small>{{ nextSlot.Start | date: 'HH:mm' }} - {{ nextSlot.End | date: 'HH:mm' }}</small></h2>
 
                 <div ng-if="nextSlot.Title" class="panel panel-default">
                     <div class="panel-heading">
@@ -89,4 +96,85 @@
         </div>
     </div>
 </section>
+
+<section id="sponsor" class="even-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center;">
+                <a href="code-of-conduct" class="btn btn-default btn-lg">Uppförandekod</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sponsor" class="even-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Sponsorer</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>
+                    Vill du eller ditt företag vara med och sponsra Swetugg 2017? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
+                </p>
+                @*<p>Ett stort tack till våra sponsorer som gör Swetugg möjligt att genomföra!</p>
+                    <p>
+                        Vill du också sponsra? Hör av dig till <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>
+                    </p>*@
+            </div>
+        </div>
+        @{
+            var exhibitors = sponsors.Where(s => s.Priority < 100).ToArray();
+            var supportSponsors = sponsors.Where(s => s.Priority >= 100).ToArray();
+        }
+        @if (exhibitors.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Utställare</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in exhibitors)
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2017/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>}
+
+        @if (supportSponsors.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Stödsponsorer</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in supportSponsors)
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/swetugg-2017/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>}
+    </div>
+</section>
+
 

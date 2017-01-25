@@ -90,6 +90,15 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
         [Route("now")]
         public ActionResult Now()
         {
+            var conf = Conference;
+            if (conf == null)
+            {
+                return HttpNotFound();
+            }
+
+            var sponsors = conferenceService.GetSponsors(conf.Id);
+            ViewData["Sponsors"] = sponsors;
+
             return View();
         }
 
