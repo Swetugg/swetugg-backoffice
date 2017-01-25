@@ -48,7 +48,7 @@
                             </div>
                             <div style="float: right;">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                <span ng-repeat="speaker in session.Speakers"><span ng-if="$index > 0">, </span>{{ speaker.Name }}</span>
+                                <span ng-repeat="speaker in session.Speakers"><span ng-if="$index > 0">, </span><a href="./speakers/{{ speaker.Slug }}">{{ speaker.Name }}</a></span>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             </div>
                             <div style="float: right;">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                <span ng-repeat="speaker in session.Speakers"><span ng-if="$index > 0">, </span>{{ speaker.Name }}</span>
+                                <span ng-repeat="speaker in session.Speakers"><span ng-if="$index > 0">, </span><a href="./speakers/{{ speaker.Slug }}">{{ speaker.Name }}</a></span>
                             </div>
                         </div>
                     </div>

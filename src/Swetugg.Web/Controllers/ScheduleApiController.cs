@@ -108,7 +108,8 @@ namespace Swetugg.Web.Controllers
                                 from speaker in r.AssignedSession.Speakers
                                          select new
                                          {
-                                             speaker.Speaker.Name
+                                             speaker.Speaker.Name,
+                                             speaker.Speaker.Slug
                                          },
                               Tags = r.AssignedSession == null ? null : from tag in r.AssignedSession.Tags.Where(t => t.Featured)
                                          select new
