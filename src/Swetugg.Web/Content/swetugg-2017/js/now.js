@@ -26,9 +26,9 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
 
     filterSlots = function() {
         var now = new Date();
-        now.setDate(31); // For testing purposes
-        now.setHours(now.getHours() - 7, now.getMinutes() - 10);
-        console.log(now);
+        //now.setDate(31); // For testing purposes
+        //now.setHours(now.getHours() - 7, now.getMinutes() - 10);
+        //console.log(now);
 
         var nextSlotIndex = 0;
         var currentSlotIndex = null;
@@ -61,9 +61,4 @@ nowApp.controller('NowController', function NowController($scope, $http, $interv
     $interval(refreshFeed, 30 * 60000);
     $interval(filterSlots, 60000);
 
-})
-    .directive('slot', function() {
-        return {
-            template: 'Slot: {{ slot.Start }}'
-        };
 });
