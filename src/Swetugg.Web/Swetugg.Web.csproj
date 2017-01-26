@@ -212,8 +212,8 @@
       <HintPath>..\packages\WindowsAzure.Storage.7.2.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SendGrid.CSharp.HTTP.Client, Version=3.0.0.0, Culture=neutral, PublicKeyToken=79219bf4e5ecaaca, processorArchitecture=MSIL">
@@ -264,6 +264,14 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -326,6 +334,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CfpReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
@@ -345,8 +354,10 @@
     <Compile Include="Areas\Swetugg2016\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2016\Swetugg2016AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2017\Controllers\ConferenceController.cs" />
+    <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\NowController.cs" />
     <Compile Include="Controllers\ScheduleApiController.cs" />
     <Compile Include="Controllers\ConferenceExtensions.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
@@ -669,6 +680,7 @@
     <Content Include="Content\swetugg-2017\img\swetugg_flickr.jpg" />
     <Content Include="Content\swetugg-2017\img\unknown.png" />
     <Content Include="Content\swetugg-2017\img\unknown2.png" />
+    <Content Include="Content\swetugg-2017\js\now.js" />
     <Content Include="Content\swetugg-2017\js\swetugg.js" />
     <Content Include="Content\swetugg-2017\video\swetugg-hero-video-low.mp4" />
     <Content Include="favicon-16x16.png" />
@@ -738,6 +750,8 @@
     <Content Include="Areas\Swetugg2017\Views\Conference\Speaker.cshtml" />
     <Content Include="Areas\Admin\Views\TagAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TagAdmin\Index.cshtml" />
+    <Content Include="Areas\Swetugg2017\Views\Conference\Now.cshtml" />
+    <Content Include="Areas\Swetugg2017\Views\Shared\_LayoutNow.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -781,11 +795,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\mvc-bootstrap.js" />
+    <Content Include="Scripts\ng-trunk8.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\trunk8.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -839,6 +855,7 @@
     <Folder Include="Areas\Swetugg2015\Models\" />
     <Folder Include="Areas\Swetugg2016\Models\" />
     <Folder Include="Areas\Swetugg2017\Models\" />
+    <Folder Include="Views\Now\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

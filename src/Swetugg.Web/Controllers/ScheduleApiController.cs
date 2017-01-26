@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Swetugg.Web.Models;
+using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Controllers
 {
@@ -31,6 +32,8 @@ namespace Swetugg.Web.Controllers
 
     public class ScheduleApiController : Controller
     {
+        private readonly IConferenceService conferenceService;
+
         private readonly ApplicationDbContext dbContext;
         private int conferenceId;
         private string conferenceSlug;
@@ -39,6 +42,8 @@ namespace Swetugg.Web.Controllers
         public ScheduleApiController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
+            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
+
         }
 
         [Route("{conferenceSlug}/schedule-feed")]
@@ -79,6 +84,43 @@ namespace Swetugg.Web.Controllers
                     Room = roomSlot.Room.Name
                 };
             return Json(sessionsView, JsonRequestBehavior.AllowGet);
+        }
+
+        [Route("{conferenceSlug}/slots-feed")]
+        public ActionResult GetSlots()
+        {
+            var slots = this.conferenceService.GetSlotsAndSessions(this.ConferenceId);
+            var rooms = this.conferenceService.GetRooms(this.ConferenceId);
+
+            var res = from s in slots
+                      select new
+                      {
+                          Start = s.Start.ToString(),
+                          End = s.End.ToString(),
+                          s.Title,
+                          Sessions = from r in s.RoomSlots
+                          select new
+                          {
+                              Room = rooms.Where(room => room.Id == r.RoomId).FirstOrDefault().Name,
+                              Name = r.AssignedSession == null ? null : r.AssignedSession.Name,
+                              Description = r.AssignedSession == null ? null : r.AssignedSession.Description,
+                              Speakers = r.AssignedSession == null ? null :
+                                from speaker in r.AssignedSession.Speakers
+                                         select new
+                                         {
+                                             speaker.Speaker.Name,
+                                             speaker.Speaker.Slug
+                                         },
+                              Tags = r.AssignedSession == null ? null : from tag in r.AssignedSession.Tags.Where(t => t.Featured)
+                                         select new
+                                         {
+                                             Name = tag.Name,
+                                             Description = tag.Description,
+                                         }
+                          }
+                      };
+
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
         private async Task<List<Session>> GetSessions()
