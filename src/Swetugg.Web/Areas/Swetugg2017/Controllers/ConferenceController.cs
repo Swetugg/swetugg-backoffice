@@ -76,7 +76,16 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
                 }
             }
 
+            bool conferenceOngoing = false;
+            if (conference.Start.HasValue && conference.End.HasValue)
+            {
+                var currentTime = conference.CurrentTime();
+                conferenceOngoing = currentTime > conference.Start.Value.Date &&
+                                    currentTime < conference.End.Value.Date.AddDays(1);
+            }
+
             ViewData["TicketSalesOpen"] = ticketSalesOpen;
+            ViewData["ConferenceOngoing"] = conferenceOngoing;
             ViewData["TicketUrl"] = ConfigurationManager.AppSettings["Ticket_Url"];
             ViewData["TicketKey"] = ConfigurationManager.AppSettings["Ticket_Key"];
             ViewData["SponsorTicketKey"] = ConfigurationManager.AppSettings["SponsorTicket_Key"];

@@ -38,6 +38,7 @@
     string ticketKey = ViewBag.TicketKey;
     string sponsorTicketKey = ViewBag.SponsorTicketKey;
     bool ticketSalesOpen = ViewBag.TicketSalesOpen;
+    bool conferenceOngoing = ViewBag.ConferenceOngoing;
 }
 
 <section class="intro">
@@ -53,9 +54,12 @@
 						Konferensen för .NET-utvecklare, av .NET-utvecklare<br />
 						Stockholm, 30-31 januari 2017
 					</p>
-                    <p>
-                        <a href="/swetugg-2017/now" class="btn btn-default btn-lg">Live-schema</a>
-                    </p>
+                    @if (conferenceOngoing)
+                    {
+                        <p>
+                            <a href="/swetugg-2017/now" class="btn btn-default btn-lg">Live-schema</a>
+                        </p>
+                    }
 
 					<!--<div class="page-scroll">
 						<a href="#about" data-target="#about" class="btn btn-circle">
