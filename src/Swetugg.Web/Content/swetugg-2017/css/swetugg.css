@@ -604,15 +604,15 @@ footer {
 
 .logo-collection-now {
     list-style: none;
-	margin: 0 -15px;
+	margin: 0 -25px;
 }
 
 .logo-collection-now li {
     float: left;
     width: 100px;
     height: 60px;
-    margin-right: 20px;
-	margin-bottom: 20px;
+    margin-right: 10px;
+	margin-bottom: 10px;
     font-size: 14px;
     text-align: center;
 }
