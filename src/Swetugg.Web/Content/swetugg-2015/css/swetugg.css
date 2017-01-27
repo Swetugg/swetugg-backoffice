@@ -499,16 +499,16 @@ footer {
 
 .logo-collection li {
     float: left;
-    width: 200px;
-    height: 120px;
+    width: 100px;
+    height: 60px;
     margin: 20px 50px 40px 20px;
     font-size: 14px;
     text-align: center;
 }
 
 .logo-collection li img {
-    width: 200px;
-    height: 120px;
+    width: 100px;
+    height: 60px;
     margin-bottom: 10px;
 }
 
