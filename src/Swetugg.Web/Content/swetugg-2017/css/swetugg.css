@@ -344,8 +344,6 @@ a:focus {
   color: #524149;
   /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
   background-color: #FFFFFF;
-  background-size: cover;
-  text-align: left;
   padding-top: 0px;
 }
 
