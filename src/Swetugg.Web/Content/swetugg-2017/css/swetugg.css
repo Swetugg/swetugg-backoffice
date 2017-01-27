@@ -337,6 +337,18 @@ a:focus {
   text-align: left;
   padding-top: 0px;
 }
+
+.sponsor-section {
+  width: 100%;
+  padding: 20px inherit;
+  color: #524149;
+  /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
+  background-color: #FFFFFF;
+  background-size: cover;
+  text-align: left;
+  padding-top: 0px;
+}
+
 .content-section > div {
   padding-top: 50px;
   padding-bottom: 50px;
