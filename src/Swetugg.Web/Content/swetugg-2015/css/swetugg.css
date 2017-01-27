@@ -495,14 +495,16 @@ footer {
 
 .logo-collection {
     list-style: none;
+	margin: 0 -15px
 }
 
 .logo-collection li {
     float: left;
     width: 100px;
     height: 60px;
-    margin: 20px 50px 40px 20px;
-    font-size: 14px;
+	margin-right: 20px;
+    margin-bottom: 20px;
+	font-size: 14px;
     text-align: center;
 }
 
