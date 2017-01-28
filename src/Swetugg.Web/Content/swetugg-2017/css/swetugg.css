@@ -337,7 +337,6 @@ a:focus {
   text-align: left;
   padding-top: 0px;
 }
-
 .sponsor-section {
   width: 100%;
   padding: 20px inherit;
@@ -346,7 +345,6 @@ a:focus {
   background-color: #FFFFFF;
   padding-top: 0px;
 }
-
 .content-section > div {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -354,6 +352,20 @@ a:focus {
 .content-section > .container {
   padding-left: 15px;
   padding-right: 15px;
+}
+.now-section > .container {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+@media (min-width: 767px) {
+  .now-section > .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
 .program-section li {
   font-size: 20px;
@@ -599,28 +611,24 @@ footer {
   height: 120px;
   margin-bottom: 10px;
 }
-
 .logo-collection-now {
-    list-style: none;
-	margin: 0 -25px;
+  list-style: none;
+  margin: 0 -25px;
 }
-
 .logo-collection-now li {
-    float: left;
-    width: 100px;
-    height: 60px;
-    margin-right: 10px;
-	margin-bottom: 10px;
-    font-size: 14px;
-    text-align: center;
+  float: left;
+  width: 100px;
+  height: 60px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
 }
-
 .logo-collection-now li img {
-    width: 100px;
-    height: 60px;
-    margin-bottom: 10px;
+  width: 100px;
+  height: 60px;
+  margin-bottom: 10px;
 }
-
 .rwd-table {
   margin: 1em 0;
   min-width: 300px;
