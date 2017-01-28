@@ -11,7 +11,13 @@ namespace Swetugg.Web.Controllers
 		{
 			return RedirectToAction("Index", "Conference", new { Area = "Swetugg2017"});
 		}
-        
+
+        [Route("now")]
+        public ActionResult Now()
+        {
+            return RedirectToAction("Now", "Conference", new { Area = "Swetugg2017" });
+        }
+
         [Route("start")]
 	    public ActionResult Start()
         {
