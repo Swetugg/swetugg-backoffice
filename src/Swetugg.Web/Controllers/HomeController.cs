@@ -18,6 +18,12 @@ namespace Swetugg.Web.Controllers
             return RedirectToAction("Now", "Conference", new { Area = "Swetugg2017" });
         }
 
+        [Route("code-of-conduct")]
+        public ActionResult CodeOfConduct()
+        {
+            return RedirectToAction("CodeOfConduct", "Conference", new { Area = "Swetugg2017" });
+        }
+
         [Route("start")]
 	    public ActionResult Start()
         {
