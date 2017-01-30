@@ -96,7 +96,7 @@ namespace Swetugg.Web.Controllers
                       select new
                       {
                           Start = s.Start.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+01:00"),
-                          End = (new DateTimeOffset(s.End, 1)).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"),
+                          End = s.End.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+01:00"),
                           s.Title,
                           Sessions = from r in s.RoomSlots
                           select new
