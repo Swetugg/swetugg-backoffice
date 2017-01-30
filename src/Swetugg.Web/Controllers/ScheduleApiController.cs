@@ -95,8 +95,8 @@ namespace Swetugg.Web.Controllers
             var res = from s in slots
                       select new
                       {
-                          Start = s.Start.ToString("yyyy-MM-ddTHH\\:mm\\:ss"),
-                          End = s.End.ToString("yyyy-MM-ddTHH\\:mm\\:ss"),
+                          Start = s.Start.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"),
+                          End = s.End.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"),
                           s.Title,
                           Sessions = from r in s.RoomSlots
                           select new
