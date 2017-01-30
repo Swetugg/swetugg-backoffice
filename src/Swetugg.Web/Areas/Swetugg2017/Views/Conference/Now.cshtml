@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div ng-if="!currentSlot.Title" ng-repeat="session in currentSlot.Sessions">
-                    <div class="panel panel-default">
+                    <div ng-if="session.Name" class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
                                 {{ session.Name }}
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div ng-if="!nextSlot.Title" ng-repeat="session in nextSlot.Sessions">
-                    <div class="panel panel-default">
+                    <div ng-if="session.Name" class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
                                 {{ session.Name }}
