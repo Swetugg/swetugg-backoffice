@@ -183,7 +183,7 @@ a:focus {
   padding: 100px 0;
   text-align: center;
   color: #F2FCFF;
-  background: url(/Content/swetugg-2017/img/swetugg-hero-video-firstframe.jpg);
+  background: url(../Content/swetugg-2017/img/swetugg-hero-video-firstframe.jpg);
   background-color: #524149;
   background-size: cover;
 }
