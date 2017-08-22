@@ -43,7 +43,7 @@ namespace Swetugg.Web.Models
         public static bool IsCfpOpen(this Conference conference)
         {
             var today = conference.CurrentTime().Date;
-            return conference.CfpStart.HasValue && conference.CfpStart < today &&
+            return conference.CfpStart.HasValue && conference.CfpStart <= today &&
                    (!conference.CfpEnd.HasValue || conference.CfpEnd >= today);
         }
     }
