@@ -95,7 +95,27 @@ a:focus {
 .light {
   font-weight: 400;
 }
+#old-conference {
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 50px;
+  line-height: 50px;
+  background-color: red;
+  text-align: center;
+  vertical-align: middle;
+  font-size: larger;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  color: #F2FCFF;
+}
+#old-conference a {
+  color: blue;
+  text-decoration: underline;
+}
 .navbar {
+  top: 50px;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
@@ -276,7 +296,7 @@ a:focus {
   }
 }
 .content-section > div {
-  padding: 50px 0 50px 0;
+  padding: 100px 0 50px 0;
 }
 .program-section li {
   font-size: 20px;
@@ -383,7 +403,7 @@ footer,
 }
 @media (min-width: 767px) {
   .content-section > div {
-    padding: 75px 0 75px 0;
+    padding: 125px 0 75px 0;
   }
   .sponsor-section {
     padding: 100px 0;

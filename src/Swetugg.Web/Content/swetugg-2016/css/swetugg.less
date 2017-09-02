@@ -118,9 +118,33 @@ a:focus {
     font-weight: 400;
 }
 
+// Old conference note
+
+#old-conference {
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    font-size: larger;
+    font-family: @header-font-family;
+    font-weight: bolder;
+    color: @light;
+}
+
+#old-conference a {
+    color: blue;
+    text-decoration: underline;
+}
+
 // Navigation
 
 .navbar {
+    top: 50px;
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,0.3);
     text-transform: uppercase;
@@ -392,7 +416,7 @@ a:focus {
 }
 
 .content-section > div {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 50px;
 }
 
@@ -496,7 +520,7 @@ footer, .footer-section {
 
 @media(min-width:767px) {
     .content-section > div {
-        padding: 75px 0 75px 0;
+        padding: 125px 0 75px 0;
     }
 
     .sponsor-section {
