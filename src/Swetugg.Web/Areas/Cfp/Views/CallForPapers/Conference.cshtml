@@ -101,6 +101,15 @@
                                 <dd>@Model.Comments</dd>
                             </dl>
                         }
+
+                        @if (!string.IsNullOrEmpty(Model.CountryOfResidence))
+                        {
+                            <dl>
+                                <dt>Country of Residence</dt>
+                                <dd>@Model.CountryOfResidence</dd>
+                            </dl>
+                        }
+
                     </div>
                 </div>
 

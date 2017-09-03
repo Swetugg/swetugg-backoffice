@@ -362,6 +362,10 @@
     <Compile Include="Migrations\201709031341596_SessionTypes.Designer.cs">
       <DependentUpon>201709031341596_SessionTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709031912150_CountryOfResidence.cs" />
+    <Compile Include="Migrations\201709031912150_CountryOfResidence.Designer.cs">
+      <DependentUpon>201709031912150_CountryOfResidence.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -986,6 +990,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709031341596_SessionTypes.resx">
       <DependentUpon>201709031341596_SessionTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031912150_CountryOfResidence.resx">
+      <DependentUpon>201709031912150_CountryOfResidence.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

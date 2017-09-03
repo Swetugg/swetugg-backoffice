@@ -108,6 +108,11 @@
                             <div class="panel-title">Travel</div>
                         </div>
                         <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CountryOfResidence)
+                                @Html.TextBoxFor(m => m.CountryOfResidence, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CountryOfResidence)
+                            </div>
                             <p>
                                 Would you like us to cover travel/accommodation?
                                 @Popover("Costs", "Note that for speakers located in Sweden, travel costs will NOT be a factor during selection. ")

@@ -53,6 +53,10 @@ namespace Swetugg.Web.Models
         [Display(Name = "Phone")]
         public string Phone { get; set; }
 
+        [StringLength(250)]
+        [Display(Name = "Country of residence")]
+        public string CountryOfResidence { get; set; }
+
         [Display(Name = "Travel")]
         public bool NeedTravel { get; set; }
 
