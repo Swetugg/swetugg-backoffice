@@ -51,6 +51,7 @@ namespace Swetugg.Web.Models
         public ICollection<Slot> Slots { get; set; }
         public ICollection<Room> Rooms { get; set; }
         public ICollection<ImageType> ImageTypes { get; set; }
+        public ICollection<SessionType> SessionTypes { get; set; }
 
     }
 }

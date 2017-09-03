@@ -105,6 +105,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             var conferenceId = ConferenceId;
             var session = await dbContext.CfpSessions
                 .Include(s => s.Speaker)
+                .Include(s => s.SessionType)
                 .Include(s => s.Session).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
 
             ViewBag.Conference = Conference;
@@ -147,8 +148,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             var conferenceId = ConferenceId;
 
-            var cfpSpeaker = await dbContext.CfpSpeakers.Include(s => s.Sessions)
-                .Include(s => s.Speaker.Sessions).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
+            var cfpSpeaker = await dbContext.CfpSpeakers
+                .Include(s => s.Sessions.Select(se => se.SessionType))
+                .Include(s => s.Speaker.Sessions)
+                .SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
             var cfpSessions = cfpSpeaker.Sessions;
             
             var speaker = cfpSpeaker.Speaker;
@@ -163,6 +166,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         Name = s.Name,
                         Slug = s.Name.Slugify(),
                         Description = s.Description,
+                        SessionType = s.SessionType,
                     };
                     s.Session = session;
                     speaker.Sessions.Add(new SessionSpeaker()
@@ -184,6 +188,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             var cfpSpeaker = await dbContext.CfpSpeakers
                 .Include(s => s.Sessions.Select(se => se.Session))
+                .Include(s => s.Sessions.Select(se => se.SessionType))
                 .Include(s => s.Speaker).SingleAsync(s => s.ConferenceId == conferenceId && s.Id == id);
             var cfpSessions = cfpSpeaker.Sessions;
 
@@ -204,6 +209,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 {
                     session.Name = cfpSession.Name;
                     session.Description = cfpSession.Description;
+                    session.SessionType = cfpSession.SessionType;
                 }
             }
             await dbContext.SaveChangesAsync();

@@ -1,0 +1,23 @@
+﻿@using Swetugg.Web.Models
+@model List<SessionType>
+@{
+    ViewBag.Title = "Session types";
+    Conference conference = ViewBag.Conference;
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li class="active">Session Types</li>
+</ol>
+
+<h2>Image Types</h2>
+<div class="list-group">
+    @foreach (var sessionType in Model)
+    {
+        @Html.ActionLink(sessionType.Name, "Edit", new { id = sessionType.Id }, new { @class = "list-group-item" })
+    }
+</div>
+
+@Html.ActionLink("New session type", "Edit", new { }, new { @class = "btn btn-primary" })

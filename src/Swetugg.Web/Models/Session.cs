@@ -30,6 +30,9 @@ namespace Swetugg.Web.Models
 
         public int Priority { get; set; }
 
+        public SessionType SessionType { get; set; }
+        public int? SessionTypeId { get; set; }
+
         public ICollection<SessionSpeaker> Speakers { get; set; }
 
         public ICollection<RoomSlot> RoomSlots { get; set; }

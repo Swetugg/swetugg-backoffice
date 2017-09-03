@@ -36,6 +36,10 @@ namespace Swetugg.Web.Models
 
         public DateTime? LastUpdate { get; set; }
 
+        [Display(Name = "Session type")]
+        public SessionType SessionType { get; set; }
+        public int? SessionTypeId { get; set; }
+
         public Session Session { get; set; }
         public int? SessionId { get; set; }
     }

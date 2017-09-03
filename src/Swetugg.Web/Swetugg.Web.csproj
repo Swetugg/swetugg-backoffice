@@ -340,6 +340,7 @@
     <Compile Include="Areas\Admin\Controllers\CfpReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminControllerBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\SessionTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomAdminController.cs" />
@@ -357,6 +358,10 @@
     <Compile Include="Areas\Swetugg2018\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2018\Swetugg2018AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2017\Controllers\ConferenceController.cs" />
+    <Compile Include="Migrations\201709031341596_SessionTypes.cs" />
+    <Compile Include="Migrations\201709031341596_SessionTypes.Designer.cs">
+      <DependentUpon>201709031341596_SessionTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -819,6 +824,8 @@
     <Content Include="Areas\Swetugg2018\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Swetugg2018\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Swetugg2018\Views\web.config" />
+    <Content Include="Areas\Admin\Views\SessionTypeAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SessionTypeAdmin\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -976,6 +983,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701220812500_TagDescriptions.resx">
       <DependentUpon>201701220812500_TagDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031341596_SessionTypes.resx">
+      <DependentUpon>201709031341596_SessionTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

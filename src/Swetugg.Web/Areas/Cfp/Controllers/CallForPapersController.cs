@@ -228,7 +228,9 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers
+                .Include(sp => sp.Sessions.Select(se => se.SessionType))
+                .SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             CfpSession session;
             if (id.HasValue)
@@ -247,6 +249,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
             ViewBag.Conference = conference;
             ViewBag.Speaker = speaker;
+            ViewBag.SessionTypes = _dbContext.SessionTypes.Where(m => m.ConferenceId == conference.Id).OrderBy(s => s.Priority).ToList();
 
             return View(session);
         }
@@ -260,14 +263,17 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
-            var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
+            var speaker = _dbContext.CfpSpeakers
+                .Include(sp => sp.Sessions.Select(se => se.SessionType))
+                .SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             session.Speaker = speaker;
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var dbSession = id.HasValue ? speaker.Sessions.SingleOrDefault(s => s.Id == id) : null;
+                    var dbSession = id.HasValue ? speaker.Sessions
+                        .SingleOrDefault(s => s.Id == id) : null;
                     if (dbSession == null)
                     {
                         if (!User.IsAllowedToCreateCfp(conference))
@@ -287,6 +293,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                     dbSession.Level = session.Level;
                     dbSession.Tags = session.Tags;
                     dbSession.LastUpdate = DateTime.UtcNow;
+                    dbSession.SessionTypeId = session.SessionTypeId;
 
                     _dbContext.SaveChanges();
                     return RedirectToAction("Conference");
@@ -297,6 +304,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                 }
             }
 
+            ViewBag.SessionTypes = _dbContext.SessionTypes.Where(m => m.ConferenceId == conference.Id).OrderBy(s => s.Priority).ToList();
             ViewBag.Conference = conference;
             ViewBag.Speaker = speaker;
             return View(session);

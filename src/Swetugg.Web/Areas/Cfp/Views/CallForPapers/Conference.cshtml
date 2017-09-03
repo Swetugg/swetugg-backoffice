@@ -52,24 +52,32 @@
                     <div class="panel-body">
                         <h4>Company</h4>
                         <p>@Model.Company</p>
+                        
+                        <dl>
+                            <dt>Twitter</dt>
+                            <dd><a href="https://twitter.com/@Model.Twitter">@@@Model.Twitter</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Email</dt>
+                            <dd><a href="mailto:@Model.Email">@Model.Email</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Phone</dt>
+                            <dd>@Model.Phone</dd>
+                        </dl>
+                        <dl>
+                            <dt>Web</dt>
+                            <dd><a href="@Model.Web.EnsureHttpLink()">@Model.Web</a></dd>
+                        </dl>
 
-                        <h4>Twitter</h4>
-                        <p><a href="https://twitter.com/@Model.Twitter">@@@Model.Twitter</a></p>
-
-                        <h4>Email</h4>
-                        <p><a href="mailto:@Model.Email">@Model.Email</a></p>
-
-                        <h4>Phone</h4>
-                        <p>@Model.Phone</p>
-
-                        <h4>Web</h4>
-                        <p><a href="@Model.Web.EnsureHttpLink()">@Model.Web</a></p>
-
-                        <h4>GitHub</h4>
-                        <p><a href="https://github.com/@Model.GitHub">@Model.GitHub</a></p>
-
-                        <h4>Comments</h4>
-                        <p>@Model.Comments</p>
+                        <dl>
+                            <dt>GitHub</dt>
+                            <dd><a href="https://github.com/@Model.GitHub">@Model.GitHub</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Comments</dt>
+                            <dd>@Model.Comments</dd>
+                        </dl>
                     </div>
                 </div>
 

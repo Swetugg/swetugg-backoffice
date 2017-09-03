@@ -34,7 +34,12 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             var conferenceId = ConferenceId;
 
-            var session = await dbContext.Sessions.Include(m => m.Speakers.Select(s => s.Speaker)).Include(s => s.Tags).SingleAsync(s => s.Id == id);
+            var session = await dbContext.Sessions
+                .Include(m => m.Speakers.Select(s => s.Speaker))
+                .Include(s => s.Tags)
+                .Include(s => s.SessionType)
+                .SingleAsync(s => s.Id == id);
+
             var speakers = await dbContext.Speakers.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Name).ToListAsync();
             var tags = await dbContext.Tags.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Name).ToListAsync();
 
@@ -47,7 +52,11 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id)
         {
-            var session = await dbContext.Sessions.SingleAsync(s => s.Id == id);
+            var conferenceId = ConferenceId;
+            var session = await dbContext.Sessions
+                .Include(s => s.SessionType)
+                .SingleAsync(s => s.Id == id);
+            ViewBag.SessionTypes = dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToList();
             return View(session);
         }
 
@@ -55,11 +64,12 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Session session)
         {
+            var conferenceId = ConferenceId;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    session.ConferenceId = ConferenceId;
+                    session.ConferenceId = conferenceId;
                     dbContext.Entry(session).State = EntityState.Modified;
                     await dbContext.SaveChangesAsync();
 
@@ -69,6 +79,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("Updating", ex);
                 }
+                ViewBag.SessionTypes = dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToList();
             }
             return View(session);
         }
@@ -133,8 +144,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/sessions/new", Order = 2)]
-        public ActionResult Edit()
+        public async Task<ActionResult> Edit()
         {
+            var conferenceId = ConferenceId;
+            ViewBag.SessionTypes = await dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToListAsync();
             return View();
         }
 
@@ -142,11 +155,12 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/sessions/new", Order = 2)]
         public async Task<ActionResult> Edit(Session session)
         {
+            var conferenceId = ConferenceId;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    session.ConferenceId = ConferenceId;
+                    session.ConferenceId = conferenceId;
                     dbContext.Sessions.Add(session);
                     await dbContext.SaveChangesAsync();
                     return RedirectToAction("Session", new { session.Id });
@@ -155,6 +169,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("Updating", ex);
                 }
+                ViewBag.SessionTypes = await dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToListAsync();
             }
             return View(session);
         }

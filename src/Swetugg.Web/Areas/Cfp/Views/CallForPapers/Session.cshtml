@@ -1,9 +1,11 @@
-﻿@using Swetugg.Web.Models
+﻿@using System.Globalization
+@using Swetugg.Web.Models
 @model Swetugg.Web.Models.CfpSession
 
 @{
     Conference conference = ViewBag.Conference;
     CfpSpeaker speaker = ViewBag.Speaker;
+    var sessionTypes = (IEnumerable<SessionType>)ViewBag.SessionTypes;
     ViewBag.Title = conference.Name + " - Call For Papers - " + speaker.Name;
 }
 <ol class="breadcrumb">
@@ -46,6 +48,12 @@
                         @Popover("Description", "Please write the session description in the language you will be presenting. Note that the main language of the Swetugg conference is Swedish.")
                         @Html.TextAreaFor(m => m.Description, new {@class = "form-control", rows = 18})
                         @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SessionType)
+                        @Html.DropDownList("SessionTypeId",
+                            sessionTypes.Select(it => new SelectListItem() { Text = it.Name, Value = it.Id.ToString(CultureInfo.InvariantCulture) }),
+                            new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-sm-4">

@@ -41,17 +41,43 @@
                         <div class="panel-title">Information</div>
                     </div>
                     <div class="panel-body">
-                        <h4>Tags</h4>
-                        <p>@Model.Tags</p>
+                        @if (Model.SessionType != null)
+                        {
+                            <dl>
+                                <dt>Session Type</dt>
+                                <dd>@Model.SessionType.Name</dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Tags))
+                        {
+                            <dl>
+                                <dt>Tags</dt>
+                                <dd>@Model.Tags</dd>
+                            </dl>
+                        }
 
-                        <h4>Audience</h4>
-                        <p>@Model.Audience</p>
+                        @if (!string.IsNullOrEmpty(Model.Audience))
+                        {
+                            <dl>
+                                <dt>Audience</dt>
+                                <dd>@Model.Audience</dd>
+                            </dl>
+                        }
 
-                        <h4>Level</h4>
-                        <p>@Model.Level</p>
-
-                        <h4>Comments</h4>
-                        <p>@Model.Comments</p>
+                        @if (!string.IsNullOrEmpty(Model.Level))
+                        {
+                            <dl>
+                                <dt>Level</dt>
+                                <dd>@Model.Level</dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Comments))
+                        {
+                            <dl>
+                                <dt>Comments</dt>
+                                <dd>@Model.Comments</dd>
+                            </dl>
+                        }
                     </div>
                 </div>
             </div>

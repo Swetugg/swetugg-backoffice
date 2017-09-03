@@ -21,7 +21,8 @@ namespace Swetugg.Web.Models
 		public DbSet<Slot> Slots { get; set; }
         public DbSet<RoomSlot> RoomSlots { get; set; }
         public DbSet<ImageType> ImageTypes { get; set; }
-        public DbSet<Tag> Tags { get; set; }
+	    public DbSet<Tag> Tags { get; set; }
+	    public DbSet<SessionType> SessionTypes { get; set; }
 
         public DbSet<CfpSpeaker> CfpSpeakers { get; set; }
         public DbSet<CfpSession> CfpSessions { get; set; }
@@ -69,17 +70,20 @@ namespace Swetugg.Web.Models
 			modelBuilder.Entity<SessionSpeaker>().HasKey(s => new { s.SessionId, s.SpeakerId });
 
 		    modelBuilder.Entity<Session>().HasMany(s => s.Tags).WithMany(t => t.Sessions);
+            modelBuilder.Entity<Session>().HasOptional(c => c.SessionType).WithMany(se => se.Sessions).WillCascadeOnDelete(false);
 
-			modelBuilder.Entity<Conference>().HasMany(c => c.Rooms).WithRequired().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Conference>().HasMany(c => c.Rooms).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Sessions).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Speakers).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Slots).WithRequired().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Conference>().HasMany(c => c.Sponsors).WithRequired().WillCascadeOnDelete(false);
             modelBuilder.Entity<Conference>().HasMany(c => c.ImageTypes).WithRequired().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Conference>().HasMany(c => c.SessionTypes).WithRequired().WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CfpSpeaker>().HasMany(c => c.Sessions).WithRequired(c => c.Speaker).WillCascadeOnDelete(false);
 		    modelBuilder.Entity<CfpSpeaker>().HasOptional(c => c.Speaker).WithMany(sp => sp.CfpSpeakers).WillCascadeOnDelete(false);
             modelBuilder.Entity<CfpSession>().HasOptional(c => c.Session).WithMany(se => se.CfpSessions).WillCascadeOnDelete(false);
-		}
-	}
+            modelBuilder.Entity<CfpSession>().HasOptional(c => c.SessionType).WithMany(se => se.CfpSessions).WillCascadeOnDelete(false);
+        }
+    }
 }
