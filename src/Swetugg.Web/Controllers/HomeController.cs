@@ -9,19 +9,19 @@ namespace Swetugg.Web.Controllers
 	{
 		public ActionResult Index()
 		{
-			return RedirectToAction("Index", "Conference", new { Area = "Swetugg2017"});
+			return RedirectToAction("Index", "Conference", new { Area = "Swetugg2018"});
 		}
 
         [Route("now")]
         public ActionResult Now()
         {
-            return RedirectToAction("Now", "Conference", new { Area = "Swetugg2017" });
+            return RedirectToAction("Now", "Conference", new { Area = "Swetugg2018" });
         }
 
         [Route("code-of-conduct")]
         public ActionResult CodeOfConduct()
         {
-            return RedirectToAction("CodeOfConduct", "Conference", new { Area = "Swetugg2017" });
+            return RedirectToAction("CodeOfConduct", "Conference", new { Area = "Swetugg2018" });
         }
 
         [Route("start")]
