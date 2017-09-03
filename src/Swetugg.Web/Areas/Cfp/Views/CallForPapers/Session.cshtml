@@ -20,6 +20,8 @@
 @helper Popover(string title, string content)
 {
     <a class=""
+       href=""
+       onclick="return false"
        data-toggle="popover"
        data-placement="top"
        data-trigger="hover"
@@ -45,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Description)
-                        @Popover("Description", "Please write the session description in the language you will be presenting. Note that the main language of the Swetugg conference is Swedish.")
+                        @Popover("Description", "Please write the session description in the language you will be presenting. ")
                         @Html.TextAreaFor(m => m.Description, new {@class = "form-control", rows = 18})
                         @Html.ValidationMessageFor(m => m.Description)
                     </div>

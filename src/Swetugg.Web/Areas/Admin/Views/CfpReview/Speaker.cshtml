@@ -140,6 +140,18 @@
                                 <dd>@Model.Comments</dd>
                             </dl>
                         }
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(m => m.NeedTravel, new { disabled = "disabled" })
+                                Travel
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(m => m.NeedAccommodation, new { disabled="disabled" })
+                                Accommodation
+                            </label>
+                        </div>
                     </div>
                 </div>
 

@@ -133,7 +133,9 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                 }
                 speaker = new CfpSpeaker()
                 {
-                    Email = User.Identity.Name
+                    Email = User.Identity.Name,
+                    NeedAccommodation = true,
+                    NeedTravel = true
                 };
             }
             ViewBag.Conference = conference;

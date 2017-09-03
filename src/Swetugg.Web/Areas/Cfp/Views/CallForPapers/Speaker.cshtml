@@ -18,6 +18,8 @@
 @helper Popover(string title, string content)
 {
     <a class=""
+       href=""
+       onclick="return false"
        data-toggle="popover"
        data-placement="top"
        data-trigger="hover"
@@ -101,14 +103,14 @@
                             </div>
                         </div>
                     </div>
-                    @*
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">Travel</div>
                         </div>
                         <div class="panel-body">
                             <p>
-                                Would you want us to cover travel/accommodation?
+                                Would you like us to cover travel/accommodation?
+                                @Popover("Costs", "Note that for speakers located in Sweden, travel costs will NOT be a factor during selection. ")
                             </p>
                             <div class="checkbox">
                                 <label>
@@ -124,12 +126,11 @@
                             </div>
                         </div>
                     </div>
-                    *@
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <em>Make sure that you have read and agree to abide by our <a href="@Url.Action("CodeOfConduct", "Conference", new { Area="Swetugg2016" })" target="_blank">Code of Conduct</a></em>
+                    <em>Make sure that you have read and agree to abide by our <a href="@Url.Action("CodeOfConduct", "Home", new { Area="" })" target="_blank">Code of Conduct</a></em>
                 </div>
             </div>
         </div>

@@ -50,34 +50,57 @@
                         <div class="panel-title">Information</div>
                     </div>
                     <div class="panel-body">
-                        <h4>Company</h4>
-                        <p>@Model.Company</p>
+                        @if (!string.IsNullOrEmpty(Model.Twitter))
+                        {
+                            <dl>
+                                <dt>Company</dt>
+                                <dd>@Model.Company</dd>
+                            </dl>
+                        }
                         
-                        <dl>
-                            <dt>Twitter</dt>
-                            <dd><a href="https://twitter.com/@Model.Twitter">@@@Model.Twitter</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>Email</dt>
-                            <dd><a href="mailto:@Model.Email">@Model.Email</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>Phone</dt>
-                            <dd>@Model.Phone</dd>
-                        </dl>
-                        <dl>
-                            <dt>Web</dt>
-                            <dd><a href="@Model.Web.EnsureHttpLink()">@Model.Web</a></dd>
-                        </dl>
+                        @if (!string.IsNullOrEmpty(Model.Twitter))
+                        {
+                            <dl>
+                                <dt>Twitter</dt>
+                                <dd><a href="https://twitter.com/@Model.Twitter">@@@Model.Twitter</a></dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Email))
+                        {
+                            <dl>
+                                <dt>Email</dt>
+                                <dd><a href="mailto:@Model.Email">@Model.Email</a></dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Phone))
+                        {
+                            <dl>
+                                <dt>Phone</dt>
+                                <dd>@Model.Phone</dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Web))
+                        {
 
-                        <dl>
-                            <dt>GitHub</dt>
-                            <dd><a href="https://github.com/@Model.GitHub">@Model.GitHub</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>Comments</dt>
-                            <dd>@Model.Comments</dd>
-                        </dl>
+                            <dl>
+                                <dt>Web</dt>
+                                <dd><a href="@Model.Web.EnsureHttpLink()">@Model.Web</a></dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.GitHub))
+                        {
+                            <dl>
+                                <dt>GitHub</dt>
+                                <dd><a href="https://github.com/@Model.GitHub">@Model.GitHub</a></dd>
+                            </dl>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Comments))
+                        {
+                            <dl>
+                                <dt>Comments</dt>
+                                <dd>@Model.Comments</dd>
+                            </dl>
+                        }
                     </div>
                 </div>
 
