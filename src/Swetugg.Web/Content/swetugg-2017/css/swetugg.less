@@ -141,6 +141,23 @@ a:focus {
     text-decoration: underline;
 }
 
+@media(max-width:650px) {
+    #old-conference {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:450px) {
+    #old-conference {
+        white-space: pre-line;  
+        line-height: 25px;
+
+         .part-two:before {
+            content: '\A';
+        }
+    }
+}
+
 // Navigation
 
 .navbar {
