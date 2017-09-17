@@ -116,6 +116,20 @@ a:focus {
   color: #F2FCFF;
   text-decoration: underline;
 }
+@media (max-width: 650px) {
+  #old-conference {
+    font-size: 14px;
+  }
+}
+@media (max-width: 450px) {
+  #old-conference {
+    white-space: pre-line;
+    line-height: 25px;
+  }
+  #old-conference .part-two:before {
+    content: '\A';
+  }
+}
 .navbar {
   top: 50px;
   margin-bottom: 0;
