@@ -1,6 +1,8 @@
-﻿
+﻿@using Swetugg.Web.Models
+
 @{
     ViewBag.Title = "Call for Papers";
+    var conference = (Conference)ViewBag.Conference;
 }
 
 
@@ -19,7 +21,7 @@
 				var d = $.Deferred();
 
 				$.ajax({
-					url: "/admin/swetugg-2018/cfp/api/sessions",
+					url: "/admin/@conference.Slug/cfp/api/sessions",
 					dataType: "json"
 				}).done(function (response) {
 					var filterIsEmpty =
@@ -58,7 +60,7 @@
 				var d = $.Deferred();
 
 				$.post({
-					url: "/admin/swetugg-2018/cfp/update",
+					url: "/admin/@conference.Slug/cfp/update",
 					data: item
 				}).done(function (response) {
 					d.resolve(response);
@@ -82,14 +84,14 @@
 		var speakerRenderer = function (value, item) {
 			return $("<td>")
 				.append($("<a>")
-					.attr("href", "/admin/swetugg-2018/cfp/speaker/" + item.SpeakerId)
+					.attr("href", "/admin/@conference.Slug/cfp/speaker/" + item.SpeakerId)
 				.text(value));
 		}
 
 		var sessionRenderer = function (value, item) {
 			return $("<td>")
 				.append($("<a>")
-					.attr("href", "/admin/swetugg-2018/cfp/session/" + item.Id)
+					.attr("href", "/admin/@conference.Slug/cfp/session/" + item.Id)
 				.text(value));
 		}
 

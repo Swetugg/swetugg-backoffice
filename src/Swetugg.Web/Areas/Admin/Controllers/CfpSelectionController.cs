@@ -59,6 +59,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 		[Route("{conferenceSlug}/cfp/list")]
 		public ActionResult List()
 		{
+		    ViewBag.Conference = Conference;
 			return View();
 		}
 
