@@ -337,6 +337,7 @@
     <Compile Include="Areas\Admin\Controllers\SponsorAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Cfp\CfpAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CfpSelectionController.cs" />
     <Compile Include="Areas\Cfp\Controllers\CallForPapersController.cs" />
     <Compile Include="Areas\Swetugg2015\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2015\Swetugg2015AreaRegistration.cs" />
@@ -352,6 +353,10 @@
     <Compile Include="Migrations\201709031912150_CountryOfResidence.cs" />
     <Compile Include="Migrations\201709031912150_CountryOfResidence.Designer.cs">
       <DependentUpon>201709031912150_CountryOfResidence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281210258_CfpSessionNotes.cs" />
+    <Compile Include="Migrations\201709281210258_CfpSessionNotes.Designer.cs">
+      <DependentUpon>201709281210258_CfpSessionNotes.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
@@ -817,6 +822,7 @@
     <Content Include="Areas\Swetugg2018\Views\web.config" />
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CfpSelection\List.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -980,6 +986,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709031912150_CountryOfResidence.resx">
       <DependentUpon>201709031912150_CountryOfResidence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281210258_CfpSessionNotes.resx">
+      <DependentUpon>201709281210258_CfpSessionNotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
