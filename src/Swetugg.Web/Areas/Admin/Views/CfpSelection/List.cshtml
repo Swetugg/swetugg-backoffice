@@ -6,7 +6,15 @@
 }
 
 
-	<h2>Call for papers</h2>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Call For Papers", "Index", "CfpReview")</li>
+    <li class="active">Selection</li>
+</ol>
+
+<h2>Call For Papers - Selection</h2>
 
 <div id="jsGrid"></div>
 
