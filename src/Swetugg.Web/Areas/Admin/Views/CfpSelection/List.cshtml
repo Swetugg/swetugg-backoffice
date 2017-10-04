@@ -25,7 +25,8 @@
             </div>
         </div>
     </div>
-    <div id="jsGrid"></div>
+	<div id="jsGrid"></div>
+	<span class="badge badge-primary">Count:&nbsp;<span id="session_count"></span></span>
 </div>
 
 @section scripts
@@ -67,6 +68,8 @@
 								(!filter.Status || session.Status && session.Status.indexOf(filter.Status) > -1) &&
 								(filter.IsDecided == undefined || session.IsDecided === filter.IsDecided));
 						});
+
+					$("#session_count").text(filteredData.length);
 
 					d.resolve(filteredData);
 				});
