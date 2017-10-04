@@ -1,5 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using Swetugg.Web.Models;
 
@@ -28,7 +30,33 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 		}
 
 		[Route("{conferenceSlug}/cfp/api/sessions")]
-		public ActionResult Index()
+		public ActionResult Sessions()
+		{
+			return Json(GetSessions(), JsonRequestBehavior.AllowGet);
+
+		}
+
+		[Route("{conferenceSlug}/cfp/api/sessions-csv")]
+		public ActionResult SessionsCsv()
+		{
+			var sessions = GetSessions();
+
+			var sb = new StringBuilder();
+
+			sb.AppendLine("Speaker,Title,Tags,Level,SessionType");
+
+			foreach (var session in sessions)
+			{
+				sb.AppendLine($"{session.Speaker},{session.Title},{session.Tags},{session.Level},{session.SessionType}");
+			}
+
+
+			Response.ContentType = "text/csv";
+
+			return Content(sb.ToString());
+		}
+
+		private IEnumerable<CfpSessionData> GetSessions()
 		{
 			var conferenceId = dbContext.Conferences.Single(c => c.Slug == ConferenceSlug).Id;
 
@@ -50,10 +78,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 					IsDecided = e.Decided,
 					Status = e.Status
 				}));
-				
 
-			return Json(sessions, JsonRequestBehavior.AllowGet);
-
+			return sessions;
 		}
 
 		[Route("{conferenceSlug}/cfp/list")]
