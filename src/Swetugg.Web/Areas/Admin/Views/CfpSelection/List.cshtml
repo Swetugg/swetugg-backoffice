@@ -60,7 +60,7 @@
 								((!filter.Title || session.Title && session.Title.toLowerCase().indexOf(filter.Title.toLowerCase()) > -1) &&
 								(!filter.Speaker || session.Speaker && session.Speaker.toLowerCase().indexOf(filter.Speaker.toLowerCase()) > -1) &&
 								(!filter.Level || session.Level && session.Level.toLowerCase().indexOf(filter.Level.toLowerCase()) > -1) &&
-								(!filter.SessionType || session.SessionType && session.SessionType.indexOf(filter.SessionType.toLowerCase()) > -1) &&
+								(!filter.SessionType || session.SessionType && session.SessionType === filter.SessionType) &&
 								(!filter.Tags || session.Tags && session.Tags.toLowerCase().indexOf(filter.Tags.toLowerCase()) > -1) &&
 								(!filter.Audience || session.Audience && session.Audience.toLowerCase().indexOf(filter.Audience.toLowerCase()) > -1) &&
 								(!filter.Notes || session.Notes && session.Notes.toLowerCase().indexOf(filter.Notes.toLowerCase()) > -1) &&
@@ -122,7 +122,7 @@
 			inserting: false,
 			editing: true,
 			sorting: true,
-			paging: true,
+			paging: false,
 
 			filtering: true,
 
@@ -133,7 +133,21 @@
 			fields: [
 				{ name: "Title", type: "text", width: 250, validate: "required", cellRenderer: sessionRenderer },
 				{ name: "Speaker", type: "text", width: 100, cellRenderer: speakerRenderer },
-				{ name: "SessionType", title: "Type", type: "text", width: 50, cellRenderer: sessionTypeRenderer },
+				{
+					name: "SessionType",
+					title: "Type",
+					type: "select",
+					items: [
+						{ Name: "", Value: "" },
+						{ Name: "S", Value: "session"},
+						{ Name: "D", Value: "session-discussion"},
+						{ Name: "N", Value: "new-talent"}
+					],
+					textField: "Name",
+					valueField: "Value",
+										width: 50,
+					cellRenderer: sessionTypeRenderer
+				},
 				{ name: "Tags", title: "Tags", type: "text", width: 150 },
 				{ name: "Notes", title: "Notes", type: "text", width: 150 },
 				{
