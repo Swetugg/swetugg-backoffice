@@ -47,7 +47,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
 			foreach (var session in sessions)
 			{
-				sb.AppendLine($"{session.Speaker},{session.Title},{session.Tags},{session.Level},{session.SessionType}");
+				sb.AppendLine($"{session.Speaker},{session.Title},{session.Tags?.Replace(',', ' ')},{session.Level},{session.SessionType}");
 			}
 
 
