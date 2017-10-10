@@ -1,7 +1,7 @@
 ﻿@using Swetugg.Web.Models
 
 @{
-	ViewBag.Title = "Call for Papers selection";
+    ViewBag.Title = "Call for Papers selection";
     var conference = (Conference)ViewBag.Conference;
 }
 
@@ -25,16 +25,16 @@
             </div>
         </div>
     </div>
-	<div id="jsGrid"></div>
-	<span class="badge badge-primary">Count:&nbsp;<span id="session_count"></span></span>
+    <div id="jsGrid"></div>
+    <span class="badge badge-primary">Count:&nbsp;<span id="session_count"></span></span>
 </div>
 
 @section scripts
 {
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 
 
-	<script>
+    <script>
 		var controller = {
 			loadData: function (filter) {
 				var d = $.Deferred();
@@ -134,6 +134,23 @@
 			controller: controller,
 
 			fields: [
+				{ name: "IsDecided", title: "Done", type: "checkbox", width: 50 },
+				{
+					name: "Status",
+					title: "Yes/No",
+					type: "select",
+					items: [
+                        { Name: "", Value: "" },
+						{ Name: "-", Value: "-" },
+                        { Name: "Gate1", Value: "Gate1" },
+                        { Name: "Gate2", Value: "Gate2" },
+                        { Name: "Yes", Value: "Yes" },
+						{ Name: "No", Value: "No" }
+					],
+					textField: "Name",
+					valueField: "Value",
+					with: 50
+				},
 				{ name: "Title", type: "text", width: 250, validate: "required", cellRenderer: sessionRenderer },
 				{ name: "Speaker", type: "text", width: 100, cellRenderer: speakerRenderer },
 				{
@@ -143,33 +160,19 @@
 					items: [
 						{ Name: "", Value: "" },
 						{ Name: "S", Value: "session"},
-						{ Name: "D", Value: "session-discussion"},
+                        { Name: "D", Value: "session-discussion" },
 						{ Name: "N", Value: "new-talent"}
 					],
 					textField: "Name",
 					valueField: "Value",
-										width: 50,
+					width: 60,
 					cellRenderer: sessionTypeRenderer
 				},
-				{ name: "Tags", title: "Tags", type: "text", width: 150 },
+				{ name: "Category", title: "Category", type: "text", width: 150 },
 				{ name: "Notes", title: "Notes", type: "text", width: 150 },
-				{
-					name: "Status",
-					title: "Yes/No",
-					type: "select",
-					items: [
-						{ Name: "", Value: "" },
-						{ Name: "Yes", Value: "Yes" },
-						{ Name: "No", Value: "No" }
-					],
-					textField: "Name",
-					valueField: "Value",
-					with: 50
-				},
-				{ name: "IsDecided", title: "Done", type: "checkbox", width: 50 },
 				{ type: "control", editButton: true, deleteButton: false, clearFilterButton: false, modeSwitchButton: false }
 			]
 		});
-	</script>
+    </script>
 
 }

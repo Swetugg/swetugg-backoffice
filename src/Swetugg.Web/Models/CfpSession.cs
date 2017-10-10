@@ -43,8 +43,9 @@ namespace Swetugg.Web.Models
         public Session Session { get; set; }
         public int? SessionId { get; set; }
 
+	    public string Category { get; set; }
 	    public string Notes { get; set; }
-	    public string Status { get; set; }
+        public string Status { get; set; }
 	    public bool? Decided { get; set; }
     }
 }

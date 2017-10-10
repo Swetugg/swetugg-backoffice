@@ -358,6 +358,10 @@
     <Compile Include="Migrations\201709281210258_CfpSessionNotes.Designer.cs">
       <DependentUpon>201709281210258_CfpSessionNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710101914219_CfpSessionCategory.cs" />
+    <Compile Include="Migrations\201710101914219_CfpSessionCategory.Designer.cs">
+      <DependentUpon>201710101914219_CfpSessionCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -878,7 +882,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\trunk8.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -990,6 +996,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709281210258_CfpSessionNotes.resx">
       <DependentUpon>201709281210258_CfpSessionNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101914219_CfpSessionCategory.resx">
+      <DependentUpon>201710101914219_CfpSessionCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
