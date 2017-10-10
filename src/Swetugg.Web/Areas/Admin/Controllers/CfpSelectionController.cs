@@ -43,11 +43,11 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
 			var sb = new StringBuilder();
 
-			sb.AppendLine("Speaker,Title,Tags,Level,SessionType");
+			sb.AppendLine("Speaker;Title;Tags;Level;SessionType");
 
 			foreach (var session in sessions)
 			{
-				sb.AppendLine($"{session.Speaker};{session.Title};{session.Tags};{session.Level};{session.SessionType}");
+				sb.AppendLine($"{session.Speaker};{session.Title.Replace(';', ',')};{session.Tags.Replace(';', ',')};{session.Level.Replace(';', ',')};{session.SessionType}");
 			}
 
 
