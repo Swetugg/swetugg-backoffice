@@ -145,38 +145,6 @@
 	</div>
 </section>
 
-@*
-	<section id="about" class="odd-section content-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<h1 class="noSubtitle">Vad är Swetugg?</h1>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-5 col-md-offset-1">
-					<p>
-						Swetugg är en konferens av och för .NET-utvecklare i Sverige. Det är årets bästa chans att ta
-						del av och sprida kunskap, knyta nya kontakter och träffa intressanta företag i branschen.
-						Konferensen anordnas ideellt och tack vare våra sponsorer kan vi hålla ett lågt pris.
-					</p>
-				</div>
-				<div class="col-md-5">
-					<p>
-						@Html.ActionLink("Swetugg 2015", "Index", new { Area = "Swetugg2015" }) var väldigt uppskattat. Med fler än 30 talare och ungefär 200 personer på plats
-						fyllde vi upp Årsta Folkets Hus under två dagar. Den här gången satsar vi på större och bättre lokaler,
-						mer yta för mingel och plats för ännu fler deltagare.
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<img src="/Content/swetugg-2016/img/150_SwetuggOrigamiButterfly.png" width="150" height="122" />
-				</div>
-			</div>
-		</div>
-	</section>
-*@
 @if (speakers.Any())
 {
     <section id="speakers" class="even-section content-section text-center">
@@ -626,7 +594,7 @@ else
 		</div>
 	</div>
 </section>
-@*
+
 	<section id="members" class="content-section odd-section members-section">
 		<div class="container">
 			<div class="row">
@@ -653,15 +621,17 @@ else
 						</div>
 					</div>
 					<div class="member">
-						<div class="member-name">Kristoffer Arfvidson</div>
-						<div class="member-twitter">&nbsp;</div>
-					</div>
-					<div class="member">
 						<div class="member-name">Magnus Sax</div>
 						<div class="member-twitter">
 							<a href="http://twitter.com/Magnus_Sax">@@Magnus_Sax</a>
 						</div>
 					</div>
+                    <div class="member">
+                        <div class="member-name">Sarah Kjörk</div>
+                        <div class="member-twitter">
+                            <a href="http://twitter.com/sarahkjork">@@sarahkjork</a>
+                        </div>
+                    </div>
 				</div>
 			</div>
 			<div class="row">
@@ -675,49 +645,44 @@ else
 							<a href="http://twitter.com/iloabn">@@iloabn</a>
 						</div>
 					</div>
+                    <div class="member">
+                        <div class="member-name">Håkan Fahlstedt</div>
+                        <div class="member-twitter">
+                            <a href="http://twitter.com/Apeoholic">@@H_Fahlstedt</a>
+                        </div>
+                    </div>                  
 					<div class="member">
 						<div class="member-name">Jimmy Engström</div>
 						<div class="member-twitter">
 							<a href="http://twitter.com/Apeoholic">@@Apeoholic</a>
 						</div>
 					</div>
+                    <div class="member">
+                        <div class="member-name">Joakim Olesen</div>
+                        <div class="member-twitter">&nbsp;</div>
+                    </div>
+                    
 					<div class="member">
 						<div class="member-name">John Bergdahl</div>
 						<div class="member-twitter">
 							<a href="http://twitter.com/beridaru">@@beridaru</a>
 						</div>
-					</div>
-					<div class="member">
-						<div class="member-name">Kaj Sevelin</div>
-						<div class="member-twitter">&nbsp;</div>
-					</div>
-					<div class="member">
-						<div class="member-name">Malin Dingfors</div>
-						<div class="member-twitter">
-							<a href="http://twitter.com/Dingfors">@@Dingfors</a>
-						</div>
-					</div>
-					<div class="member">
-						<div class="member-name">Peter Örneholm</div>
-						<div class="member-twitter">
-							<a href="http://twitter.com/PeterOrneholm">@@PeterOrneholm</a>
-						</div>
-					</div>
-					<div class="member">
-						<div class="member-name">Sarah Kjörk</div>
-						<div class="member-twitter">
-							<a href="http://twitter.com/sarahkjork">@@sarahkjork</a>
-						</div>
-					</div>
+					</div>                
+                    <div class="member">
+                        <div class="member-name">Pelle Johansson</div>
+                        <div class="member-twitter">
+                            <a href="http://twitter.com/beridaru">@@pellesoft</a>
+                        </div>
+                    </div>
 					<div class="member">
 						<div class="member-name">Ulrika Bladh</div>
 						<div class="member-twitter">&nbsp;</div>
-					</div>
+					</div>                 
 				</div>
 			</div>
 		</div>
 	</section>
-*@
+
 	@*<div id="map"></div>*@
 
 	<footer>
