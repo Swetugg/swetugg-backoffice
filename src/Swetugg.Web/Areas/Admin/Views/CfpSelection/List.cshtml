@@ -53,7 +53,7 @@
 							!filter.Audience &&
 							!filter.Notes &&
 							!filter.Status &&
-							!filter.IsDecided;
+							filter.IsDecided === undefined;
 
 					var filteredData = $.grep(response,
 						function (session) {
@@ -66,7 +66,7 @@
 								(!filter.Audience || session.Audience && session.Audience.toLowerCase().indexOf(filter.Audience.toLowerCase()) > -1) &&
 								(!filter.Notes || session.Notes && session.Notes.toLowerCase().indexOf(filter.Notes.toLowerCase()) > -1) &&
 								(!filter.Status || session.Status && session.Status.indexOf(filter.Status) > -1) &&
-								(filter.IsDecided == undefined || session.IsDecided === filter.IsDecided));
+								(filter.IsDecided === undefined || session.IsDecided === filter.IsDecided));
 						});
 
 					$("#session_count").text(filteredData.length);
