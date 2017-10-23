@@ -41,12 +41,17 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         @{
-                var nameText = "Missa inte \"" + session.Name + "\"";
+                var nameText = "Don't miss \"{0}\"";
                 if (!string.IsNullOrEmpty(Model.Twitter))
                 {
-                    nameText = nameText + " med @" + Model.Twitter;
+                    nameText = nameText + " with @" + Model.Twitter;
                 }
-                var twitterText = nameText + " på @Swetugg 2018!";
+                var twitterText = nameText + " at @Swetugg 2018!";
+                var avail = 119 - twitterText.Length;
+                twitterText = string.Format(
+                    twitterText,
+                    (session.Name.Length <= avail) ? session.Name : session.Name.Substring(0, avail - 3) + "..."
+                    );
                 var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
                         }
                         <a href="#@session.Slug">
