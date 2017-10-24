@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +12,14 @@ namespace Swetugg.Web.Controllers
 		{
 			return RedirectToAction("Index", "Conference", new { Area = "Swetugg2018"});
 		}
+
+	    [Route("techdays")]
+	    public ActionResult TechDays()
+	    {
+	        var ticketUrl = ConfigurationManager.AppSettings["Ticket_Url_Full"];
+
+	        return Redirect(ticketUrl);
+	    }
 
         [Route("now")]
         public ActionResult Now()
