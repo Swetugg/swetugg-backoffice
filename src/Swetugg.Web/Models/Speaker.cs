@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Swetugg.Web.Areas.Admin.Controllers;
 
 namespace Swetugg.Web.Models
 {
@@ -43,5 +44,7 @@ namespace Swetugg.Web.Models
         public ICollection<SpeakerImage> Images { get; set; }
 
         public ICollection<CfpSpeaker> CfpSpeakers { get; set; }
+
+	    public ICollection<SpeakerLogistics> SpeakerLogistics { get; set; }
     }
 }

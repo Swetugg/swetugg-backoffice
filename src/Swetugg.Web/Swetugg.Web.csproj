@@ -328,6 +328,7 @@
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminControllerBase.cs" />
     <Compile Include="Areas\Admin\Controllers\SessionTypeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SpeakerLogisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomAdminController.cs" />
@@ -361,6 +362,10 @@
     <Compile Include="Migrations\201710101914219_CfpSessionCategory.cs" />
     <Compile Include="Migrations\201710101914219_CfpSessionCategory.Designer.cs">
       <DependentUpon>201710101914219_CfpSessionCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710300558507_AddSpeakerLogistic.cs" />
+    <Compile Include="Migrations\201710300558507_AddSpeakerLogistic.Designer.cs">
+      <DependentUpon>201710300558507_AddSpeakerLogistic.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
@@ -460,6 +465,7 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\SpeakerImage.cs" />
     <Compile Include="Models\ImageType.cs" />
+    <Compile Include="Models\SpeakerLogistics.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -827,6 +833,7 @@
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CfpSelection\List.cshtml" />
+    <Content Include="Areas\Admin\Views\SpeakerLogistics\List.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -998,6 +1005,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710101914219_CfpSessionCategory.resx">
       <DependentUpon>201710101914219_CfpSessionCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710300558507_AddSpeakerLogistic.resx">
+      <DependentUpon>201710300558507_AddSpeakerLogistic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
