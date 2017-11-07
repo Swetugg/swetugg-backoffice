@@ -11,9 +11,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 		public string Company { get; set; }
 		public string Email { get; set; }
 		public string Twitter { get; set; }
-		public bool Published { get; set; }
-		public bool NeedAccomodation { get; set; }
-		public bool NeedTravel { get; set; }
+		public bool? Published { get; set; }
+		public bool? NeedAccomodation { get; set; }
+		public bool? NeedTravel { get; set; }
 		public string Notes { get; set; }
 		public bool? AttendingDinner { get; set; }
 		public bool? TwitterList { get; set; }
