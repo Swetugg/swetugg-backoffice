@@ -322,7 +322,7 @@ else
                                                                     <div class="schemacell-rad1">
                                                                         @foreach (var speaker in sessionSpeakers)
                                                                         {
-                                                                            @Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
+                                                                            @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
                                                                         }
                                                                     </div>
                                                                     <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
@@ -336,6 +336,12 @@ else
                                                                 {
                                                                     <span class="label label-default" data-toggle="tooltip" data-placement="right" title="@tag.Description">@tag.Name</span>
                                                                 }
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="schemacell-rad2">
+                                                                    (no session)
+                                                                </div>
                                                             }
                                                         </div>
                                                     </td>
