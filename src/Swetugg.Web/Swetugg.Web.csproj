@@ -650,6 +650,7 @@
     <Content Include="Content\swetugg-2018\css\variables.css" />
     <Content Include="Content\swetugg-2018\img\150_SwetuggOrigamiButterfly.png" />
     <Content Include="Content\swetugg-2018\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
+    <Content Include="Content\swetugg-2018\img\sponsors\cloudnine-thumb.png" />
     <Content Include="Content\swetugg-2018\img\top.jpg" />
     <Content Include="Content\swetugg-2018\img\icon-map.png" />
     <Content Include="Content\swetugg-2018\img\sponsors\activesolution-thumb.png" />
