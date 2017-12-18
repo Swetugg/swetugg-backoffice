@@ -54,6 +54,7 @@ namespace Swetugg.Web.Controllers
             public string byline { get; set; }
             public string github { get; set; }
             public string twitter { get; set; }
+            public string imageUrl { get; set; }
         }
 
         public class Activity
@@ -160,7 +161,8 @@ namespace Swetugg.Web.Controllers
                         bio = s.Bio,
                         byline = s.Company,
                         twitter = s.Twitter,
-                        github = s.GitHub
+                        github = s.GitHub,
+                        imageUrl = s.Images.FirstOrDefault(i => i.ImageType.Slug == "thumb")?.ImageUrl
                     };
                 }).ToArray(),
                 activities = slots.SelectMany(s => s.RoomSlots).Where(rs => rs.AssignedSession != null).Select(rs =>
@@ -175,7 +177,7 @@ namespace Swetugg.Web.Controllers
                         description = s.Description,
                         externalPlaceReferenceIds = new[] {"room_" + rs.Room.Id},
                         externalSpeakerReferenceIds = rs.AssignedSession.Speakers.Select(sp => "speaker_" + sp.Speaker.Id).ToArray(),
-                        externalTaxonomyReferenceIds = new [] { "sessions" }
+                        externalTaxonomyReferenceIds = new string[0] 
                     };
                 }).ToArray(),
                 sponsors = sponsors.Select(s => new Everens.Sponsor
