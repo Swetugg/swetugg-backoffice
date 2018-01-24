@@ -22,6 +22,17 @@ namespace Swetugg.Web.Models
             }
             return now;
         }
+        public static DateTime ConvertToUtcDateTime(this Conference conference, DateTime localDateTime)
+        {
+            // TODO Store conference timezone on conference object
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+
+            if (timeZone != null)
+            {
+                return TimeZoneInfo.ConvertTimeToUtc(localDateTime, timeZone);
+            }
+            return localDateTime;
+        }
 
         public static DateTime ConvertDateTime(this Conference conference, DateTime utcDateTime)
         {

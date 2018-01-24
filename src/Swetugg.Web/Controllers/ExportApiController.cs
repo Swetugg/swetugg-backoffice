@@ -168,12 +168,13 @@ namespace Swetugg.Web.Controllers
                 activities = slots.SelectMany(s => s.RoomSlots).Where(rs => rs.AssignedSession != null).Select(rs =>
                 {
                     var s = rs.AssignedSession;
+                    
                     return new Everens.Activity()
                     {
                         externalReferenceId = "session_" + rs.AssignedSession.Id,
                         title = s.Name,
-                        startTime = rs.Slot.Start.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture),
-                        endTime = rs.Slot.End.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture),
+                        startTime = Conference.ConvertToUtcDateTime(rs.Slot.Start).ToString("s", CultureInfo.InvariantCulture),
+                        endTime = Conference.ConvertToUtcDateTime(rs.Slot.End).ToString("s", CultureInfo.InvariantCulture),
                         description = s.Description,
                         externalPlaceReferenceIds = new[] {"room_" + rs.Room.Id},
                         externalSpeakerReferenceIds = rs.AssignedSession.Speakers.Select(sp => "speaker_" + sp.Speaker.Id).ToArray(),
