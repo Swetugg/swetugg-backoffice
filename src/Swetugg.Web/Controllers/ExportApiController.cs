@@ -172,8 +172,8 @@ namespace Swetugg.Web.Controllers
                     {
                         externalReferenceId = "session_" + rs.AssignedSession.Id,
                         title = s.Name,
-                        startTime = rs.Slot.Start.ToString("s", CultureInfo.InvariantCulture),
-                        endTime = rs.Slot.End.ToString("s", CultureInfo.InvariantCulture),
+                        startTime = rs.Slot.Start.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture),
+                        endTime = rs.Slot.End.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture),
                         description = s.Description,
                         externalPlaceReferenceIds = new[] {"room_" + rs.Room.Id},
                         externalSpeakerReferenceIds = rs.AssignedSession.Speakers.Select(sp => "speaker_" + sp.Speaker.Id).ToArray(),
