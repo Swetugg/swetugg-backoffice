@@ -651,6 +651,7 @@
     <Content Include="Content\swetugg-2018\css\variables.css" />
     <Content Include="Content\swetugg-2018\img\150_SwetuggOrigamiButterfly.png" />
     <Content Include="Content\swetugg-2018\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
+    <Content Include="Content\swetugg-2018\img\sponsors\chinsay-thumb.png" />
     <Content Include="Content\swetugg-2018\img\sponsors\cloudnine-thumb.png" />
     <Content Include="Content\swetugg-2018\img\sponsors\coderox-thumb.png" />
     <Content Include="Content\swetugg-2018\img\sponsors\everens-thumb.png" />
