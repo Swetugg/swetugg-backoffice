@@ -48,26 +48,23 @@
     </video>
 *@		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<h1 class="brand-heading">Swetugg</h1>
-					<p class="intro-text">
-                        by .NET developers, for .NET developers, <br />
-						Stockholm, 8-9 February 2018
-					</p>
-                    @if (conferenceOngoing)
-                    {
-                        <p>
-                            <a href="/swetugg-2018/now" class="btn btn-default btn-lg">Live-schedule</a>
-                        </p>
-                    }
-
-					<!--<div class="page-scroll">
-						<a href="#about" data-target="#about" class="btn btn-circle">
-							<i class="fa fa-angle-double-down animated"></i>
-						</a>
-					</div>-->
-				</div>
-			</div>
+			<div class="col-md-8 col-md-offset-2">
+			    <h1 class="brand-heading">Swetugg</h1>
+			    <p class="intro-text">
+			        by .NET developers, for .NET developers, <br />
+			        Stockholm, 8-9 February 2018
+			    </p>
+			    @if (conferenceOngoing)
+                {
+			        <p>
+			            <a href="/swetugg-2018/now" class="btn btn-default btn-lg">Live-schedule</a>
+			        </p>
+                    <p>
+                        <a href="https://get.everens.com/events?id=swetugg-2018" class="btn btn-default btn-lg">Get the app</a>
+                    </p>
+                }
+			    </div>
+            </div>
 		</div>
 	</div>
 </section>
@@ -276,12 +273,12 @@ else
                         {
                             var width = 90 / rooms.Count();
 
-                            <h2>@day.Key.ToString("dddd, yyyy-MM-dd", CultureInfo.GetCultureInfo("sv-SE"))</h2>
+                            <h2>@day.Key.ToString("dddd, yyyy-MM-dd")</h2>
                             <table class="table schema rwd-table">
                                 <thead>
                                 <tr>
 
-                                    <th style="width: 10%">Tid</th>
+                                    <th style="width: 10%">Time</th>
 
                                     @foreach (var room in rooms)
                                     {

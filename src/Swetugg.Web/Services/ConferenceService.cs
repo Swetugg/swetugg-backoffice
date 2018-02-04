@@ -77,7 +77,8 @@ namespace Swetugg.Web.Services
 	        var speaker = _dbContext.Speakers.
                 Where(s => s.ConferenceId == conferenceId && s.Slug == slug).
                 Include(s => s.Images.Select(i => i.ImageType)).
-	            Include(s => s.Sessions.Select(se => se.Session)).SingleOrDefault();
+	            Include(s => s.Sessions.Select(se => se.Session).Select(se => se.RoomSlots.Select(rs => rs.Room))).
+	            Include(s => s.Sessions.Select(se => se.Session).Select(se => se.RoomSlots.Select(rs => rs.Slot))).SingleOrDefault();
 	        
             return speaker;
 	    }

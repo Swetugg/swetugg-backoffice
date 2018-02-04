@@ -48,6 +48,8 @@
                 }
                 var twitterText = nameText + " at @Swetugg 2018!";
                 var avail = 119 - twitterText.Length;
+                var roomSlot = session.RoomSlots.FirstOrDefault();
+
                 twitterText = string.Format(
                     twitterText,
                     (session.Name.Length <= avail) ? session.Name : session.Name.Substring(0, avail - 3) + "..."
@@ -55,9 +57,16 @@
                 var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
                         }
                         <a href="#@session.Slug">
-                            <h2>@session.Name</h2>
+                            <h2>
+                                @session.Name<br/>
+                                @if (roomSlot != null)
+                                {
+                                    <small>
+                                        @roomSlot.Room.Name, @roomSlot.Slot.Start.ToString("dddd HH:mm") - @roomSlot.Slot.End.ToString("HH:mm")
+                                    </small>
+                                }
+                            </h2>
                         </a>
-
                         @if (session.VideoPublished && !string.IsNullOrWhiteSpace(session.VideoUrl))
                         {
                             <div class="embed-responsive embed-responsive-16by9">
