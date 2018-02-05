@@ -231,14 +231,19 @@ namespace Swetugg.Web.Controllers
                         Twitter = sp.Twitter,
                         Start = slot.Start,
                         End = slot.End,
-                        Room = roomSlot.Room.Name,
-                        Session = roomSlot.AssignedSession.Name
+                        Room = roomSlot.Room?.Name,
+                        Session = roomSlot.AssignedSession?.Name
                     });
 
                 }
             }
 
-            return new CsvActionResult<SpeakerCsv.Speaker>(list, "Speakers.csv", separator?[0] ?? ',');
+            var sepChar = ',';
+            if (!string.IsNullOrEmpty(separator))
+            {
+                sepChar = separator[0];
+            }
+            return new CsvActionResult<SpeakerCsv.Speaker>(list, "Speakers.csv", sepChar);
         }
 
 
