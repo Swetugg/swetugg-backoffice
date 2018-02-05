@@ -347,6 +347,7 @@
     <Compile Include="Areas\Swetugg2018\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2018\Swetugg2018AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2017\Controllers\ConferenceController.cs" />
+    <Compile Include="Controllers\CsvActionResult.cs" />
     <Compile Include="Controllers\ExportApiController.cs" />
     <Compile Include="Migrations\201709031341596_SessionTypes.cs" />
     <Compile Include="Migrations\201709031341596_SessionTypes.Designer.cs">

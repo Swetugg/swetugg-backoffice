@@ -1,15 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Swetugg.Web.Controllers.Everens;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Controllers
 {
+    namespace SpeakerCsv
+    {
+        public class Speaker
+        {
+            public string Name { get; set; }
+            public string Company { get; set; }
+            public string Twitter { get; set; }
+            public string Session { get; set; }
+            public string Room { get; set; }
+            public DateTime Start { get; set; }
+            public DateTime End { get; set; }
+        }
+    }
 
     namespace Everens
     {
@@ -129,8 +141,8 @@ namespace Swetugg.Web.Controllers
                         title = "Language",
                         children = new []
                         {
-                            new Child() { externalReferenceId = "language_sv", title = "Swedish" }, 
-                            new Child() { externalReferenceId = "language_en", title = "English" }, 
+                            new Everens.Child() { externalReferenceId = "language_sv", title = "Swedish" }, 
+                            new Everens.Child() { externalReferenceId = "language_en", title = "English" }, 
                         }
                     }, 
                     new Everens.Taxonomy()
@@ -196,6 +208,38 @@ namespace Swetugg.Web.Controllers
             return Json(export, JsonRequestBehavior.AllowGet);
         }
 
+        [Route("{conferenceSlug}/export/speaker-csv")]
+        public async Task<ActionResult> SpeakerCsv()
+        {
+            var conferenceId = ConferenceId;
+            var conference = Conference;
+            var speakers = conferenceService.GetSpeakers(conferenceId).ToArray();
+            var slots = conferenceService.GetSlotsAndSessions(conferenceId).ToArray();
+
+            var list = new List<SpeakerCsv.Speaker>();
+            foreach (var sp in speakers)
+            {
+                var spSlots = slots.Where(sl => sl.RoomSlots != null && sl.RoomSlots.Any(rs => rs.AssignedSession != null && rs.AssignedSession.Speakers.Any(asp => asp.SpeakerId == sp.Id))).ToArray();
+
+                foreach (var slot in spSlots)
+                {
+                    var roomSlot = slot.RoomSlots.First(rs => rs.AssignedSession != null && rs.AssignedSession.Speakers.Any(asp => asp.SpeakerId == sp.Id));
+                    list.Add(new SpeakerCsv.Speaker()
+                    {
+                        Name = sp.Name,
+                        Company = sp.Company,
+                        Twitter = sp.Twitter,
+                        Start = conference.ConvertToUtcDateTime(slot.Start),
+                        End = conference.ConvertToUtcDateTime(slot.End),
+                        Room = roomSlot.Room.Name,
+                        Session = roomSlot.AssignedSession.Name
+                    });
+
+                }
+            }
+
+            return new CsvActionResult<SpeakerCsv.Speaker>(list, "Speakers.csv");
+        }
 
 
         protected Conference Conference
