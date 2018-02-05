@@ -209,7 +209,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/export/speaker-csv")]
-        public async Task<ActionResult> SpeakerCsv()
+        public async Task<ActionResult> SpeakerCsv(string separator)
         {
             var conferenceId = ConferenceId;
             var conference = Conference;
@@ -229,8 +229,8 @@ namespace Swetugg.Web.Controllers
                         Name = sp.Name,
                         Company = sp.Company,
                         Twitter = sp.Twitter,
-                        Start = conference.ConvertToUtcDateTime(slot.Start),
-                        End = conference.ConvertToUtcDateTime(slot.End),
+                        Start = slot.Start,
+                        End = slot.End,
                         Room = roomSlot.Room.Name,
                         Session = roomSlot.AssignedSession.Name
                     });
@@ -238,7 +238,7 @@ namespace Swetugg.Web.Controllers
                 }
             }
 
-            return new CsvActionResult<SpeakerCsv.Speaker>(list, "Speakers.csv");
+            return new CsvActionResult<SpeakerCsv.Speaker>(list, "Speakers.csv", separator?[0] ?? ',');
         }
 
 
