@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SendGrid;
+using SendGrid.Helpers.Mail;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web
@@ -29,24 +30,20 @@ namespace Swetugg.Web
         {
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress(
-                                "info@swetugg.se", "Swetugg");
+            myMessage.From = new EmailAddress("info@swetugg.se", "Swetugg");
             myMessage.Subject = message.Subject;
-            myMessage.Text = message.Body;
-            myMessage.Html = message.Body;
+            myMessage.PlainTextContent = message.Body;
+            myMessage.HtmlContent = message.Body;
 
-            var credentials = new NetworkCredential(
-                       ConfigurationManager.AppSettings["SendGrid_Messaging_MailAccount"],
-                       ConfigurationManager.AppSettings["SendGrid_Messaging_MailPassword"]
-                       );
+            var sendgridKey = ConfigurationManager.AppSettings["SendGrid_ApiKey"];
 
             // Create a Web transport for sending email.
-            var transportWeb = new SendGrid.Web(credentials);
+            var transportWeb = new SendGridClient(sendgridKey);
 
             // Send the email.
             try
             {
-                await transportWeb.DeliverAsync(myMessage);
+                await transportWeb.SendEmailAsync(myMessage);
             }
             catch (Exception)
             {
