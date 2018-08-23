@@ -60,10 +60,10 @@ namespace Swetugg.Web.Areas.Swetugg2018.Controllers
             ViewData["Conference"] = conf;
             ViewData["SpeakerImages"] = speakerImages;
 
-            bool ticketSalesOpen;
+            bool ticketSalesOpen = false;
             
             // Do we have forced open/close info for ticket sales?
-            if (!bool.TryParse(ConfigurationManager.AppSettings["Ticket_Sales_Force"], out ticketSalesOpen))
+/*            if (!bool.TryParse(ConfigurationManager.AppSettings["Ticket_Sales_Force"], out ticketSalesOpen))
             {
                 // No forced info. Let's see if we have an open date/time
                 DateTime ticketsOpenDateTime;
@@ -74,7 +74,7 @@ namespace Swetugg.Web.Areas.Swetugg2018.Controllers
                     // Ticket sales should be open if the local conference time is greater than the date/time
                     ticketSalesOpen = conference.CurrentTime() > ticketsOpenDateTime;
                 }
-            }
+            }*/
 
             bool conferenceOngoing = false;
             if (conference.Start.HasValue && conference.End.HasValue)
