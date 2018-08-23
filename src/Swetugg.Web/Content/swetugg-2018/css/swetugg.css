@@ -97,7 +97,41 @@ a:focus {
 .light {
   font-weight: 400;
 }
+#old-conference {
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 50px;
+  line-height: 50px;
+  background-color: #7AD4E5;
+  text-align: center;
+  vertical-align: middle;
+  font-size: larger;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  color: #524149;
+}
+#old-conference a {
+  color: #F2FCFF;
+  text-decoration: underline;
+}
+@media (max-width: 650px) {
+  #old-conference {
+    font-size: 14px;
+  }
+}
+@media (max-width: 450px) {
+  #old-conference {
+    white-space: pre-line;
+    line-height: 25px;
+  }
+  #old-conference .part-two:before {
+    content: '\A';
+  }
+}
 .navbar {
+  top: 50px;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
