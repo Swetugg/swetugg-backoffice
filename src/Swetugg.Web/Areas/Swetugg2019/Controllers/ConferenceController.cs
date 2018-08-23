@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Configuration;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
-namespace Swetugg.Web.Areas.Swetugg2016.Controllers
+namespace Swetugg.Web.Areas.Swetugg2019.Controllers
 {
-    [RouteArea("Swetugg2016", AreaPrefix = "swetugg-2016")]
+    [RouteArea("Swetugg2019", AreaPrefix = "swetugg-2019")]
     public class ConferenceController : Controller
     {
         private readonly IConferenceService conferenceService;
@@ -23,7 +20,7 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
 
         public ConferenceController(ApplicationDbContext dbContext)
         {
-            this.conferenceSlug = "swetugg-2016";
+            this.conferenceSlug = "swetugg-2019";
             this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
             this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
             this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
@@ -60,9 +57,8 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
             ViewData["Conference"] = conf;
             ViewData["SpeakerImages"] = speakerImages;
 
-            bool ticketSalesOpen = false;
+            bool ticketSalesOpen;
             
-            /*
             // Do we have forced open/close info for ticket sales?
             if (!bool.TryParse(ConfigurationManager.AppSettings["Ticket_Sales_Force"], out ticketSalesOpen))
             {
@@ -76,10 +72,35 @@ namespace Swetugg.Web.Areas.Swetugg2016.Controllers
                     ticketSalesOpen = conference.CurrentTime() > ticketsOpenDateTime;
                 }
             }
-            */
+
+            bool conferenceOngoing = false;
+            if (conference.Start.HasValue && conference.End.HasValue)
+            {
+                var currentTime = conference.CurrentTime();
+                conferenceOngoing = currentTime > conference.Start.Value.Date &&
+                                    currentTime < conference.End.Value.Date.AddDays(1);
+            }
+
             ViewData["TicketSalesOpen"] = ticketSalesOpen;
+            ViewData["ConferenceOngoing"] = conferenceOngoing;
             ViewData["TicketUrl"] = ConfigurationManager.AppSettings["Ticket_Url"];
             ViewData["TicketKey"] = ConfigurationManager.AppSettings["Ticket_Key"];
+            ViewData["SponsorTicketKey"] = ConfigurationManager.AppSettings["SponsorTicket_Key"];
+
+            return View();
+        }
+
+        [Route("now")]
+        public ActionResult Now()
+        {
+            var conf = Conference;
+            if (conf == null)
+            {
+                return HttpNotFound();
+            }
+
+            var sponsors = conferenceService.GetSponsors(conf.Id);
+            ViewData["Sponsors"] = sponsors;
 
             return View();
         }

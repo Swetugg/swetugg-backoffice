@@ -344,6 +344,8 @@
     <Compile Include="Areas\Swetugg2018\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2018\Swetugg2018AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2017\Controllers\ConferenceController.cs" />
+    <Compile Include="Areas\Swetugg2019\Controllers\ConferenceController.cs" />
+    <Compile Include="Areas\Swetugg2019\Swetugg2019AreaRegistration.cs" />
     <Compile Include="Controllers\CsvActionResult.cs" />
     <Compile Include="Controllers\ExportApiController.cs" />
     <Compile Include="Migrations\201709031341596_SessionTypes.cs" />
@@ -642,6 +644,66 @@
     <Content Include="Content\swetugg-2016\img\unknown.png" />
     <Content Include="Content\swetugg-2016\img\unknown2.png" />
     <Content Include="Content\swetugg-2016\js\swetugg.js" />
+    <Content Include="Content\swetugg-2019\css\swetugg.css" />
+    <Content Include="Content\swetugg-2019\css\swetugg.min.css">
+      <DependentUpon>swetugg.css</DependentUpon>
+    </Content>
+    <Content Include="Content\swetugg-2019\css\variables.css" />
+    <Content Include="Content\swetugg-2019\img\150_SwetuggOrigamiButterfly.png" />
+    <Content Include="Content\swetugg-2019\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
+    <Content Include="Content\swetugg-2019\img\icon-map.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\activesolution-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\andreas-sund-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\aptitud-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\attentec-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\betsson-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\betssontech-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\biolit-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\camelonta-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\chinsay-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\cloudnine-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\coderox-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\combitech-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\conevo-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\cornerstone-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\decerno-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\dynabyte-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\etimo-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\everens-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\informator-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\internet-broadcast-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\jayway-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\kentor-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\lexicon-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\meridium-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\microsoft-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\nethouse-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\ninetech-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\nordax-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\novatrox-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\offerta-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\ontrax-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\raysearch-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\senterprise-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\sigma-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\snow-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\softhouse-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\squeed-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\tretton37-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\vaxjo-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\veratech-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\ving-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\wcom-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\webstep-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\swenug.png" />
+    <Content Include="Content\swetugg-2019\img\swetugg-rosa-avlang-mini.png" />
+    <Content Include="Content\swetugg-2019\img\swetugg-rosa-kvadrat.png" />
+    <Content Include="Content\swetugg-2019\img\swetugg_flickr.jpg" />
+    <Content Include="Content\swetugg-2019\img\top.jpg" />
+    <Content Include="Content\swetugg-2019\img\unknown.png" />
+    <Content Include="Content\swetugg-2019\img\unknown2.png" />
+    <Content Include="Content\swetugg-2019\js\now.js" />
+    <Content Include="Content\swetugg-2019\js\swetugg.js" />
     <Content Include="Content\swetugg-2018\css\swetugg.css" />
     <Content Include="Content\swetugg-2018\css\swetugg.min.css">
       <DependentUpon>swetugg.css</DependentUpon>
@@ -839,6 +901,14 @@
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CfpSelection\List.cshtml" />
     <Content Include="Areas\Admin\Views\SpeakerLogistics\List.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\Conference\CodeOfConduct.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\Conference\Index.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\Conference\Now.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\Shared\_LayoutNow.cshtml" />
+    <Content Include="Areas\Swetugg2019\Views\web.config" />
+    <Content Include="Areas\Swetugg2019\Views\_ViewStart.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -863,6 +933,9 @@
     <Content Include="Content\swetugg-2018\css\swetugg.css.map" />
     <Content Include="Content\swetugg-2018\css\swetugg.less" />
     <Content Include="Content\swetugg-2018\css\variables.less" />
+    <Content Include="Content\swetugg-2019\css\swetugg.css.map" />
+    <Content Include="Content\swetugg-2019\css\swetugg.less" />
+    <Content Include="Content\swetugg-2019\css\variables.less" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\globalize\currency.js" />
@@ -948,6 +1021,8 @@
     <Folder Include="Areas\Swetugg2016\Models\" />
     <Folder Include="Areas\Swetugg2017\Models\" />
     <Folder Include="Areas\Swetugg2018\Models\" />
+    <Folder Include="Areas\Swetugg2019\Models\" />
+    <Folder Include="Content\swetugg-2019\video\" />
     <Folder Include="Views\Now\" />
   </ItemGroup>
   <ItemGroup>
