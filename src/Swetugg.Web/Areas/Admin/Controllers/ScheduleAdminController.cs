@@ -42,6 +42,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(new ScheduleViewModel() { Conference = Conference, Rooms = allRooms, Slots = slotsWithSessions, UnplacedSessions = unplacedSessions, EditSlot = editSlot, NewSlot = new Slot()});
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Slot(int id, DateTime day, Slot slot)
@@ -75,6 +76,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View("Index", model);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/new", Order = 2)]
         public async Task<ActionResult> Slot(DateTime day, Slot slot)
@@ -106,6 +108,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View("Index", model);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/{id:int}/delete")]
         public async Task<ActionResult> DeleteSlot(int id)
@@ -122,6 +125,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/{slotId:int}/room/{roomId:int}/assign")]
         public async Task<ActionResult> AssignRoomSlot(int slotId, int roomId, RoomSlot roomSlot)
@@ -145,6 +149,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/{slotId:int}/room/{roomId:int}/delete")]
         public async Task<ActionResult> DeleteRoomSlot(int slotId, int roomId)

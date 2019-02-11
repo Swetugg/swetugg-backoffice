@@ -1,7 +1,7 @@
 ﻿@using Swetugg.Web.Helpers
 @using Swetugg.Web.Models
 @model Session
-
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Session";
     Conference conference = ViewBag.Conference;
@@ -68,9 +68,9 @@
                             @foreach (var speaker in Model.Speakers.Select(s => s.Speaker))
                             {
                                 <div class="list-group-item">
-                                    @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new {Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+                                    @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
                                     {
-                                        @Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new {speaker.Id}, null)
+                                        @Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new { speaker.Id }, null)
 
                                         <button type="submit" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         @Html.Hidden("SpeakerId", speaker.Id)
@@ -79,10 +79,10 @@
                             }
                         </div>
                         <div class="panel-footer">
-                            @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new {Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+                            @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
                             {
                                 <div class="form-group">
-                                    @Html.DropDownList("speakerId", ((List<Speaker>) ViewBag.Speakers).Select(s => new SelectListItem() {Text = s.Name, Value = s.Id.ToString()}).Default(" - Select speaker - ", ""), new {@class = "form-control"})
+                                    @Html.DropDownList("speakerId", ((List<Speaker>)ViewBag.Speakers).Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default(" - Select speaker - ", ""), new { @class = "form-control" })
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             }
@@ -98,7 +98,7 @@
                             @foreach (var tag in Model.Tags)
                             {
                                 <div class="list-group-item">
-                                    @using (Html.BeginForm("RemoveTag", "SessionAdmin", new {Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+                                    @using (Html.BeginForm("RemoveTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
                                     {
                                         @tag.Name
 
@@ -109,10 +109,10 @@
                             }
                         </div>
                         <div class="panel-footer">
-                            @using (Html.BeginForm("AddTag", "SessionAdmin", new {Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+                            @using (Html.BeginForm("AddTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
                             {
                                 <div class="form-group">
-                                    @Html.DropDownList("tagId", ((List<Tag>) ViewBag.Tags).Select(s => new SelectListItem() {Text = s.Name, Value = s.Id.ToString()}).Default(" - Select tag - ", ""), new {@class = "form-control"})
+                                    @Html.DropDownList("tagId", ((List<Tag>)ViewBag.Tags).Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default(" - Select tag - ", ""), new { @class = "form-control" })
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             }
@@ -131,7 +131,7 @@
            data-modal-message="This will delete the session."
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
-        @using (Html.BeginForm("Delete", "SessionAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id="deleteSessionForm" }))
+        @using (Html.BeginForm("Delete", "SessionAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSessionForm" }))
         {
         }
     </div>

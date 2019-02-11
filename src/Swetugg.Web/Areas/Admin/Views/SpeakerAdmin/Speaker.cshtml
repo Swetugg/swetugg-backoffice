@@ -3,12 +3,13 @@
 @using Swetugg.Web.Helpers
 @using Swetugg.Web.Models
 @model Speaker
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Speaker";
     Conference conference = ViewBag.Conference;
     var imageTypes = (IEnumerable<ImageType>)ViewBag.ImageTypes;
     var errorMsg = ViewBag.ErrorMessage;
-    
+
 }
 <ol class="breadcrumb">
     <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
@@ -48,7 +49,7 @@
                         @foreach (var session in Model.Sessions.Select(s => s.Session))
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(session.Name, "Session", "SessionAdmin", new {session.Id}, null)
+                                @Html.ActionLink(session.Name, "Session", "SessionAdmin", new { session.Id }, null)
                             </div>
                         }
                     </div>

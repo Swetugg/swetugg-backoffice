@@ -1,5 +1,6 @@
 ﻿@using System.Threading.Tasks
 @using Swetugg.Web.Models
+@Html.AntiForgeryToken()
 @model Room
 @{
     ViewBag.Title = "Room - Edit";
@@ -25,19 +26,19 @@
     <div class="panel-heading">
         <h3>Room</h3>
     </div>
-    @using (Html.BeginForm("Edit", "RoomAdmin", new {id}, FormMethod.Post))
+    @using (Html.BeginForm("Edit", "RoomAdmin", new { id }, FormMethod.Post))
     {
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         @Html.LabelFor(m => m.Name)
-                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Name)
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Description)
-                        @Html.TextAreaFor(m => m.Description, new {@class = "form-control", rows = 10})
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 10 })
                         @Html.ValidationMessageFor(m => m.Description)
                     </div>
                 </div>
@@ -51,12 +52,12 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Slug)
-                                @Html.TextBoxFor(m => m.Slug, new {@class = "form-control"})
+                                @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Slug)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Priority, "Priority")
-                                @Html.TextBoxFor(m => m.Priority, new {@class = "form-control"})
+                                @Html.TextBoxFor(m => m.Priority, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Priority)
                             </div>
                         </div>

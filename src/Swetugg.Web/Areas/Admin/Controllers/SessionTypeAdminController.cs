@@ -34,6 +34,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(sessionType);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/session-types/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, SessionType sessionType)
@@ -62,6 +63,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/session-types/new", Order = 2)]
         public async Task<ActionResult> Edit(SessionType sessionType)

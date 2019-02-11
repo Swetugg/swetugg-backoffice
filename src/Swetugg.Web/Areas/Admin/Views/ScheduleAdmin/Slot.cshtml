@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model Slot
+@Html.AntiForgeryToken()
 @{
     var buttonLabel = "Create";
     var currentDate = (DateTime)ViewData["CurrentDate"];
@@ -15,7 +16,7 @@
 @using (Html.BeginForm("Slot", "ScheduleAdmin", new { id }, FormMethod.Post, new { @class = "" }))
 {
     @Html.Hidden("Day", currentDate.Date)
-    
+
     <div class="form-group">
         @Html.TextBoxFor(m => m.Start, "{0:t}", new { @class = "form-control", placeholder = "Start time" })
     </div>

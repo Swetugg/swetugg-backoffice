@@ -60,6 +60,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(users);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("set-roles")]
         public async Task<ActionResult> SetRoles(string userId, List<string> roles)
@@ -88,6 +89,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("delete")]
         public async Task<ActionResult> Delete(string userId)

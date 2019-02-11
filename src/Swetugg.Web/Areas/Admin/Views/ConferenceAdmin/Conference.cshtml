@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Helpers
 @model Swetugg.Web.Models.Conference
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Conference";
 }
@@ -28,9 +29,9 @@
                     <div class="list-group">
                         @Html.ActionLink("Import", "Import", new { id = Model.Id }, new { @class = "list-group-item" })
                         @Html.ActionLink("Call For Papers", "Index", "CfpReview", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
-	                    @Html.ActionLink("Call For Papers selection", "List", "CfpSelection", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Call For Papers selection", "List", "CfpSelection", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Speakers", "Index", "SpeakerAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
-	                    @Html.ActionLink("Speaker Logistics", "List", "SpeakerLogistics", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Speaker Logistics", "List", "SpeakerLogistics", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Sessions", "Index", "SessionAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Session Types", "Index", "SessionTypeAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Tags", "Index", "TagAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
@@ -47,7 +48,7 @@
                     <div class="panel-body">
                         <dl>
                             <dt>Start</dt>
-                            <dd>@Html.DisplayFor(m =>m.CfpStart)</dd>
+                            <dd>@Html.DisplayFor(m => m.CfpStart)</dd>
 
                             <dt>End</dt>
                             <dd>@Html.DisplayFor(m => m.CfpEnd)</dd>
@@ -56,7 +57,7 @@
                             {
                                 <dt>VIP Invite URL</dt>
                                 <dd>
-                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "Cfp", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)"/>
+                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "Cfp", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)" />
                                 </dd>
                             }
                         </dl>
@@ -74,7 +75,7 @@
            data-modal-message="This will delete the conference and all associated data."
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
-        @using (Html.BeginForm("Delete", "ConferenceAdmin", new {id = Model.Id}, FormMethod.Post, new { @class = "pull-right", id = "deleteConferenceForm"}))
+        @using (Html.BeginForm("Delete", "ConferenceAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteConferenceForm" }))
         {
         }
     </div>

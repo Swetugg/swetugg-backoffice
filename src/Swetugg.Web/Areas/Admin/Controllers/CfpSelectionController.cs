@@ -91,6 +91,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/cfp/update")]
         [HttpPost]
         public ActionResult Update(CfpSessionData data)
