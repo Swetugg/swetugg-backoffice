@@ -1,6 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model Tag
-
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Tag - Edit";
     Conference conference = ViewBag.Conference;
@@ -32,7 +32,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         @Html.LabelFor(m => m.Name)
-                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Name)
                     </div>
                     <div class="form-group">

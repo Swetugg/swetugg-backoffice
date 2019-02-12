@@ -1,6 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model Swetugg.Web.Models.CfpSpeaker
-
+@Html.AntiForgeryToken()
 @{
     Conference conference = ViewBag.Conference;
 
@@ -32,19 +32,19 @@
         <h3>Speaker information</h3>
     </div>
 
-    @using (Html.BeginForm("Speaker", "CallForPapers", new {id = Model.Id}, FormMethod.Post, new {enctype = "multipart/form-data"}))
+    @using (Html.BeginForm("Speaker", "CallForPapers", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         @Html.LabelFor(m => m.Name)
-                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Name)
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Company)
-                        @Html.TextBoxFor(m => m.Company, new {@class = "form-control"})
+                        @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Company)
                     </div>
                     <div class="form-group">
@@ -56,12 +56,12 @@
                     <div class="form-group">
                         @Html.LabelFor(m => m.Bio)
                         @Popover("Biography", "A description of yourself, written in the third person.")
-                        @Html.TextAreaFor(m => m.Bio, new {@class = "form-control", rows = 10})
+                        @Html.TextAreaFor(m => m.Bio, new { @class = "form-control", rows = 10 })
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Comments)
                         @Popover("More information", "Any links to previous talks we could look at?<br/>Any other information that may be useful for the organizers?")
-                        @Html.TextAreaFor(m => m.Comments, new {@class = "form-control", rows = 6})
+                        @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", rows = 6 })
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -72,7 +72,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Email)
-                                @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Email)
                             </div>
                             <div class="form-group">
@@ -82,26 +82,26 @@
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Web)
-                                @Html.TextBoxFor(m => m.Web, new {@class = "form-control"})
+                                @Html.TextBoxFor(m => m.Web, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Web)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Twitter)
                                 <div class="input-group">
                                     <div class="input-group-addon">@@</div>
-                                    @Html.TextBoxFor(m => m.Twitter, new {@class = "form-control"})
+                                    @Html.TextBoxFor(m => m.Twitter, new { @class = "form-control" })
                                 </div>
                                 @Html.ValidationMessageFor(m => m.Twitter)
                             </div>
                             @*
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.GitHub)
-                                <div class="input-group">
-                                    <div class="input-group-addon">github.com/</div>
-                                    @Html.TextBoxFor(m => m.GitHub, new {@class = "form-control"})
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.GitHub)
+                                    <div class="input-group">
+                                        <div class="input-group-addon">github.com/</div>
+                                        @Html.TextBoxFor(m => m.GitHub, new {@class = "form-control"})
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.GitHub)
                                 </div>
-                                @Html.ValidationMessageFor(m => m.GitHub)
-                            </div>
                             *@
                         </div>
                     </div>
@@ -150,7 +150,7 @@
 @section scripts
 {
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
         });
     </script>

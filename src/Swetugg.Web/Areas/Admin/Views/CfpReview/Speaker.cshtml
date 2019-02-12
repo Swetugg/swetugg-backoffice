@@ -2,7 +2,7 @@
 @using Swetugg.Web.Helpers
 @using Swetugg.Web.Models
 @model Swetugg.Web.Models.CfpSpeaker
-
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Call For Papers - Speaker";
 
@@ -34,7 +34,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-2">
-                <img src="@Model.Image" class="img-rounded img-responsive"/>
+                <img src="@Model.Image" class="img-rounded img-responsive" />
             </div>
             <div class="col-sm-6">
                 <p>@Html.Raw(Html.FromMarkdown(Model.Bio))</p>
@@ -59,7 +59,7 @@
                                         }
                                         else if (Model.Speaker != null)
                                         {
-                                            <input type="checkbox" name="SessionIds" value="@session.Id" class="pull-right"/>
+                                            <input type="checkbox" name="SessionIds" value="@session.Id" class="pull-right" />
                                         }
                                         <a href="@Url.Action("Session", "CfpReview", new {id = session.Id})">
                                             @session.Name
@@ -155,7 +155,7 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                @Html.CheckBoxFor(m => m.NeedAccommodation, new { disabled="disabled" })
+                                @Html.CheckBoxFor(m => m.NeedAccommodation, new { disabled = "disabled" })
                                 Accommodation
                             </label>
                         </div>
@@ -175,7 +175,7 @@
         }
         @if (Model.Speaker == null)
         {
-            using (Html.BeginForm("Promote", "CfpReview", new {id = Model.Id}, FormMethod.Post, new {@class = "form-inline"}))
+            using (Html.BeginForm("Promote", "CfpReview", new { id = Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
             {
                 <button type="submit" class="btn btn-default">Promote</button>
             }
@@ -188,7 +188,7 @@
                data-modal-message="This will update all speaker information and linked sessions."
                data-toggle="modal" data-target="#formConfirmationModal">Update</a>
 
-            using (Html.BeginForm("Update", "CfpReview", new {id = Model.Id}, FormMethod.Post, new {@class = "form-inline", id = "updateSubmissionForm"}))
+            using (Html.BeginForm("Update", "CfpReview", new { id = Model.Id }, FormMethod.Post, new { @class = "form-inline", id = "updateSubmissionForm" }))
             {
             }
         }

@@ -1,11 +1,12 @@
 ﻿@using Swetugg.Web.Models
 @model SpeakerImage
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Speaker Image - Edit";
     Conference conference = ViewBag.Conference;
 
-    var speaker = (Speaker) ViewBag.Speaker;
-    
+    var speaker = (Speaker)ViewBag.Speaker;
+
 }
 
 <ol class="breadcrumb">
@@ -38,7 +39,7 @@
                             <dt>Image type</dt>
                             <dd>@Model.ImageType.Name</dd>
                             <dt>Url</dt>
-                            <dd><input type="text" class="form-control" readonly="readonly" value="@Model.ImageUrl"/></dd>
+                            <dd><input type="text" class="form-control" readonly="readonly" value="@Model.ImageUrl" /></dd>
                             @if (Model.ImageType.Width.HasValue)
                             {
                                 <dt>Width</dt>

@@ -116,6 +116,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/promote")]
+        [ValidateAntiForgeryToken]
         public async Task<RedirectToRouteResult> Promote(int id)
         {
             var conferenceId = ConferenceId;
@@ -142,6 +143,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Speaker", new { id });
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/promote-sessions")]
         public async Task<ActionResult> PromoteSessions(int id, List<int> sessionIds)
@@ -180,6 +182,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Speaker", new { id });
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/update")]
         public async Task<ActionResult> Update(int id)

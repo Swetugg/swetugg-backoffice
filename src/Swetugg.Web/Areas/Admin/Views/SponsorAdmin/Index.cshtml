@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model List<Sponsor>
+@Html.AntiForgeryToken()
 @{
     Conference conference = ViewBag.Conference;
     ViewBag.Title = "Sponsors";
@@ -23,4 +24,4 @@
     }
 </div>
 
-@Html.ActionLink("New sponsor", "Edit", new {}, new { @class = "btn btn-primary"})
+@Html.ActionLink("New sponsor", "Edit", new { }, new { @class = "btn btn-primary" })

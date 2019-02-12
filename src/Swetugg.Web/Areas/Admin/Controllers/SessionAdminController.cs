@@ -60,6 +60,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(session);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Session session)
@@ -84,6 +85,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(session);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/addspeaker/{id:int}")]
         public async Task<ActionResult> AddSpeaker(int id, int speakerId)
@@ -95,7 +97,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Session", new { id });
         }
 
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/removespeaker/{id:int}")]
         public async Task<ActionResult> RemoveSpeaker(int id, int speakerId)
@@ -110,6 +112,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Session", new { id });
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/addtag/{id:int}")]
         public async Task<ActionResult> AddTag(int id, int tagId)
@@ -122,7 +125,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Session", new { id });
         }
 
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/removetag/{id:int}")]
         public async Task<ActionResult> RemoveTag(int id, int tagId)
@@ -151,6 +154,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/new", Order = 2)]
         public async Task<ActionResult> Edit(Session session)
@@ -174,6 +178,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(session);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sessions/delete/{id:int}", Order = 1)]
         public async Task<ActionResult> Delete(int id)

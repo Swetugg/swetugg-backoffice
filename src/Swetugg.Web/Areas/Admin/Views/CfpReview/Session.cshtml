@@ -1,7 +1,7 @@
 ﻿@using Swetugg.Web.Helpers
 @using Swetugg.Web.Models
 @model CfpSession
-
+[ValidateAntiForgeryToken]
 @{
     ViewBag.Title = "Call For Papers - Session";
     Conference conference = ViewBag.Conference;

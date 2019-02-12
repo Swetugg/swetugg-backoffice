@@ -33,6 +33,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(imageType);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/image-types/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, ImageType imageType)
@@ -61,6 +62,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/image-types/new", Order = 2)]
         public async Task<ActionResult> Edit(ImageType imageType)

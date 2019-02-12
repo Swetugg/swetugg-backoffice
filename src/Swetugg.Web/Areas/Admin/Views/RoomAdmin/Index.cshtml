@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model System.Collections.Generic.List<Room>
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Rooms";
     Conference conference = ViewBag.Conference;
@@ -16,8 +17,8 @@
 <div class="list-group">
     @foreach (var room in Model)
     {
-        @Html.ActionLink(room.Name, "Edit", new {id = room.Id }, new {@class = "list-group-item"})
+        @Html.ActionLink(room.Name, "Edit", new { id = room.Id }, new { @class = "list-group-item" })
     }
 </div>
 
-@Html.ActionLink("New room", "Edit", new {}, new { @class = "btn btn-primary"})
+@Html.ActionLink("New room", "Edit", new { }, new { @class = "btn btn-primary" })

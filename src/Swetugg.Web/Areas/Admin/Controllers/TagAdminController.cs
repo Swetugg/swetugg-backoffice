@@ -34,6 +34,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(tag);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/tags/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Tag tag)
@@ -62,6 +63,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/tags/new", Order = 2)]
         public async Task<ActionResult> Edit(Tag tag)

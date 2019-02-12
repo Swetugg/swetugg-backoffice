@@ -54,6 +54,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(speaker);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/speakers/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Speaker speaker)
@@ -82,6 +83,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/speakers/new", Order = 2)]
         public async Task<ActionResult> Edit(Speaker speaker)
@@ -103,6 +105,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(speaker);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/delete/{id:int}")]
         public async Task<ActionResult> Delete(int id)
@@ -136,6 +139,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(image);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/{speakerId:int}/image/new")]
         public async Task<ActionResult> NewImage(int speakerId, SpeakerImage speakerImage, HttpPostedFileBase imageFile)
@@ -183,6 +187,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Speaker", new { id = speakerId, errorMsg = errorMessage });
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/{speakerId:int}/image/{id:int}/delete")]
         public async Task<ActionResult> DeleteImage(int id, int speakerId)
