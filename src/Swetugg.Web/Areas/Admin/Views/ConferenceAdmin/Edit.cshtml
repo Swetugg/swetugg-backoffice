@@ -1,5 +1,4 @@
 ﻿@model Swetugg.Web.Models.Conference
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Conference - Edit";
     var buttonLabel = "Create";
@@ -28,6 +27,7 @@
     </div>
     @using (Html.BeginForm("Edit", "ConferenceAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">

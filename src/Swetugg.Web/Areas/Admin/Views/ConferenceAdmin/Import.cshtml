@@ -1,5 +1,4 @@
 ﻿@model Swetugg.Web.Areas.Admin.Controllers.ConferenceImportModel
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Conference - Import data";
     var conference = Model.Conference;
@@ -19,6 +18,7 @@
 <h2>Import</h2>
 @using (Html.BeginForm("Import", "ConferenceAdmin", new { id }, FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.ConnectionString)
 

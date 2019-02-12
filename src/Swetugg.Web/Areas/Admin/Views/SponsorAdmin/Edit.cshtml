@@ -1,6 +1,5 @@
 ﻿@using Swetugg.Web.Models
 @model Sponsor
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Sponsor - Edit";
     Conference conference = ViewBag.Conference;
@@ -31,6 +30,7 @@
     </div>
     @using (Html.BeginForm("Edit", "SponsorAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">

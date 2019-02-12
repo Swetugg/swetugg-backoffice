@@ -1,6 +1,5 @@
 ﻿@using Swetugg.Web.Models
 @model Sponsor
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Sponsor";
     Conference conference = ViewBag.Conference;
@@ -38,6 +37,7 @@
 
         @using (Html.BeginForm("Delete", "SponsorAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSponsorForm" }))
         {
+            @Html.AntiForgeryToken()
         }
     </div>
 </div>

@@ -1,6 +1,5 @@
 ﻿@using Swetugg.Web.Models
 @model SpeakerImage
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Speaker Image - Edit";
     Conference conference = ViewBag.Conference;
@@ -66,6 +65,7 @@
 
         @using (Html.BeginForm("DeleteImage", "SpeakerAdmin", new { id = Model.Id, SpeakerId = speaker.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteImageForm" }))
         {
+            @Html.AntiForgeryToken()
         }
     </div>
 </div>

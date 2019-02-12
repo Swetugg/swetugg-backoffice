@@ -1,6 +1,5 @@
 ﻿@using System.Threading.Tasks
 @using Swetugg.Web.Models
-@Html.AntiForgeryToken()
 @model Room
 @{
     ViewBag.Title = "Room - Edit";
@@ -28,6 +27,7 @@
     </div>
     @using (Html.BeginForm("Edit", "RoomAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">

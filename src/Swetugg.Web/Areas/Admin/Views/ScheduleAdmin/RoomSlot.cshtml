@@ -1,12 +1,12 @@
 ﻿@using System.Threading.Tasks
 @using Swetugg.Web.Models
 @model RoomSlot
-@Html.AntiForgeryToken()
 @{
     var unplacedSessions = (List<Session>)ViewData["UnplacedSessions"];
 }
 @using (Html.BeginForm("AssignRoomSlot", "ScheduleAdmin", new { Model.SlotId, Model.RoomId }, FormMethod.Post, new { @class = "" }))
 {
+    @Html.AntiForgeryToken()
     <div class="input-group">
         @Html.DropDownListFor(
         m => m.AssignedSessionId,

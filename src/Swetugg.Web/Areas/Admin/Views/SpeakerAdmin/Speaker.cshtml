@@ -3,7 +3,6 @@
 @using Swetugg.Web.Helpers
 @using Swetugg.Web.Models
 @model Speaker
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Speaker";
     Conference conference = ViewBag.Conference;
@@ -70,6 +69,7 @@
                     <div class="panel-footer">
                         @using (Html.BeginForm("NewImage", "SpeakerAdmin", new { SpeakerId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
                                 @Html.DropDownList("ImageTypeId",
                                     imageTypes.Select(it => new SelectListItem() { Text = it.Name, Value = it.Id.ToString(CultureInfo.InvariantCulture) }),
@@ -106,6 +106,7 @@
 
         @using (Html.BeginForm("Delete", "SpeakerAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSpeakerForm" }))
         {
+            @Html.AntiForgeryToken()
         }
 
     </div>

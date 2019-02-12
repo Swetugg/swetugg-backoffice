@@ -1,7 +1,6 @@
 ﻿@using System.Globalization
 @using Swetugg.Web.Models
 @model Session
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Session - Edit";
     Conference conference = ViewBag.Conference;
@@ -35,6 +34,7 @@
     </div>
     @using (Html.BeginForm("Edit", "SessionAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
