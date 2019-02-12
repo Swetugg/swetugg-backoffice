@@ -1,6 +1,7 @@
 ﻿@using System.Threading.Tasks
 @using Swetugg.Web.Models
 @model RoomSlot
+@Html.AntiForgeryToken()
 @{
     var unplacedSessions = (List<Session>)ViewData["UnplacedSessions"];
 }

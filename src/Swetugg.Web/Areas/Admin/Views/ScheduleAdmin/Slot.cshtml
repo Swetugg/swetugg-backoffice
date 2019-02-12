@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model Slot
+@Html.AntiForgeryToken()
 @{
     var buttonLabel = "Create";
     var currentDate = (DateTime)ViewData["CurrentDate"];

@@ -1,4 +1,5 @@
 ﻿@model Swetugg.Web.Areas.Admin.Controllers.ConferenceImportModel
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Conference - Import data";
     var conference = Model.Conference;

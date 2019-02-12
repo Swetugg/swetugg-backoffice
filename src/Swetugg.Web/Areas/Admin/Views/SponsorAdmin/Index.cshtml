@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model List<Sponsor>
+@Html.AntiForgeryToken()
 @{
     Conference conference = ViewBag.Conference;
     ViewBag.Title = "Sponsors";

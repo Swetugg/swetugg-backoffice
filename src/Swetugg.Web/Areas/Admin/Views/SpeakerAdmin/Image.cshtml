@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model SpeakerImage
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Speaker Image - Edit";
     Conference conference = ViewBag.Conference;

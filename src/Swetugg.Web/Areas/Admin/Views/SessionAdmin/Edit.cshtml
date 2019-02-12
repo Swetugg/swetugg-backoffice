@@ -1,6 +1,7 @@
 ﻿@using System.Globalization
 @using Swetugg.Web.Models
 @model Session
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Session - Edit";
     Conference conference = ViewBag.Conference;
