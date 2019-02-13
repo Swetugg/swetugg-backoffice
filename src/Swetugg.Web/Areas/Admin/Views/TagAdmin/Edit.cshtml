@@ -1,6 +1,5 @@
 ﻿@using Swetugg.Web.Models
 @model Tag
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Tag - Edit";
     Conference conference = ViewBag.Conference;
@@ -27,6 +26,7 @@
     </div>
     @using (Html.BeginForm("Edit", "TagAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">

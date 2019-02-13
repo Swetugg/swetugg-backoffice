@@ -19,6 +19,7 @@
 <h2>Import</h2>
 @using (Html.BeginForm("Import", "ConferenceAdmin", new { id }, FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.ConnectionString)
 

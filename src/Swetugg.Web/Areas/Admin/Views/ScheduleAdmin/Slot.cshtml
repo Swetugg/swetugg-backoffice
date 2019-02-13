@@ -15,6 +15,7 @@
 
 @using (Html.BeginForm("Slot", "ScheduleAdmin", new { id }, FormMethod.Post, new { @class = "" }))
 {
+    @Html.AntiForgeryToken()
     @Html.Hidden("Day", currentDate.Date)
 
     <div class="form-group">

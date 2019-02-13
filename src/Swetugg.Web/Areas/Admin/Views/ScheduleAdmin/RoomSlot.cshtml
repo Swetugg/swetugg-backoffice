@@ -7,6 +7,7 @@
 }
 @using (Html.BeginForm("AssignRoomSlot", "ScheduleAdmin", new { Model.SlotId, Model.RoomId }, FormMethod.Post, new { @class = "" }))
 {
+    @Html.AntiForgeryToken()
     <div class="input-group">
         @Html.DropDownListFor(
         m => m.AssignedSessionId,

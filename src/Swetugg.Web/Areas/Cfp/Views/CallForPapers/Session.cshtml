@@ -1,7 +1,6 @@
 ﻿@using System.Globalization
 @using Swetugg.Web.Models
 @model Swetugg.Web.Models.CfpSession
-@Html.AntiForgeryToken()
 @{
     Conference conference = ViewBag.Conference;
     CfpSpeaker speaker = ViewBag.Speaker;
@@ -37,6 +36,7 @@
 
     @using (Html.BeginForm(new { id = Model.Id }))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
@@ -111,7 +111,7 @@
 
 @using (Html.BeginForm("DeleteSession", "CallForPapers", new { confernceSlug = conference.Slug, id = Model.Id }, FormMethod.Post, new { id = "deleteForm", @class = "form-inline" }))
 {
-
+    @Html.AntiForgeryToken()
 }
 
 @section scripts

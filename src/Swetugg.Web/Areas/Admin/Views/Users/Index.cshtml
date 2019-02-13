@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity.EntityFramework
 @using Swetugg.Web.Models
 @model List<ApplicationUser>
-@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Users";
     var roles = ((IEnumerable<IdentityRole>)ViewBag.Roles).ToList();
@@ -30,26 +29,28 @@
         <tbody>
             @foreach (var user in Model)
             {
-                <tr>
-                    <td>@user.UserName</td>
+            <tr>
+                <td>@user.UserName</td>
 
-                    @using (Html.BeginForm("SetRoles", "Users", new { userId = user.Id }))
+                @using (Html.BeginForm("SetRoles", "Users", new { userId = user.Id }))
+                {
+                    @Html.AntiForgeryToken()
+                    foreach (var role in roles)
                     {
-                        foreach (var role in roles)
-                        {
-                            <td class="text-center">
-                                <div class="checkbox-inline">
-                                    <input type="checkbox" name="Roles" value="@role.Name" @(user.Roles.Any(r => r.RoleId == role.Id) ? "checked" : "") />
-                                </div>
-                            </td>
-                        }
-                        <td><button type="submit" class="btn btn-info">Update</button></td>
+                        <td class="text-center">
+                            <div class="checkbox-inline">
+                                <input type="checkbox" name="Roles" value="@role.Name" @(user.Roles.Any(r => r.RoleId == role.Id) ? "checked" : "") />
+                            </div>
+                        </td>
                     }
-                    @using (Html.BeginForm("Delete", "Users", new { userId = user.Id }))
-                    {
-                        <td><button type="submit" class="btn btn-danger">Delete</button></td>
-                    }
-                </tr>
+                    <td><button type="submit" class="btn btn-info">Update</button></td>
+                }
+                @using (Html.BeginForm("Delete", "Users", new { userId = user.Id }))
+                {
+                    @Html.AntiForgeryToken()
+                    <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                }
+            </tr>
             }
         </tbody>
     </table>
