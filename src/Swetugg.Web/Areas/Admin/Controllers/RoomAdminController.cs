@@ -33,6 +33,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(room);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/rooms/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Room room)
@@ -61,6 +62,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/rooms/new", Order = 2)]
         public async Task<ActionResult> Edit(Room room)

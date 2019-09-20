@@ -1,6 +1,7 @@
 ﻿@using System.Globalization
 @using Swetugg.Web.Models
 @model Session
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Session - Edit";
     Conference conference = ViewBag.Conference;
@@ -34,17 +35,18 @@
     </div>
     @using (Html.BeginForm("Edit", "SessionAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         @Html.LabelFor(m => m.Name)
-                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Name)
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Description)
-                        @Html.TextAreaFor(m => m.Description, new {@class = "form-control", rows = 10})
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 10 })
                         @Html.ValidationMessageFor(m => m.Description)
                     </div>
                     <div class="form-group">
@@ -56,7 +58,7 @@
                     <div class="form-group">
                         @Html.LabelFor(m => m.VideoUrl)
                         <div class="input-group">
-                            @Html.TextBoxFor(m => m.VideoUrl, new {@class = "form-control"})
+                            @Html.TextBoxFor(m => m.VideoUrl, new { @class = "form-control" })
                             <span class="input-group-addon">
                                 @Html.CheckBoxFor(m => m.VideoPublished)
                             </span>
@@ -88,7 +90,7 @@
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Priority, "Priority")
-                                @Html.TextBoxFor(m => m.Priority, new {@class = "form-control"})
+                                @Html.TextBoxFor(m => m.Priority, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Priority)
                             </div>
                         </div>

@@ -42,6 +42,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(sponsor);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/sponsors/edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Sponsor sponsor)
@@ -70,6 +71,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/sponsors/new", Order = 2)]
         public async Task<ActionResult> Edit(Sponsor sponsor)
@@ -91,6 +93,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(sponsor);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sponsors/delete/{id:int}")]
         public async Task<ActionResult> Delete(int id)

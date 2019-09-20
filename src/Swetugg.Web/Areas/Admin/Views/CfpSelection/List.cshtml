@@ -1,5 +1,4 @@
 ﻿@using Swetugg.Web.Models
-
 @{
     ViewBag.Title = "Call for Papers selection";
     var conference = (Conference)ViewBag.Conference;
@@ -35,6 +34,12 @@
 
 
     <script>
+    function gettoken() {
+        var token = '@Html.AntiForgeryToken()';
+        token = $(token).val();
+        return token;
+   }
+
 		var controller = {
 			loadData: function (filter) {
 				var d = $.Deferred();
@@ -81,7 +86,8 @@
 				var d = $.Deferred();
 
 				$.post({
-					url: "/admin/@conference.Slug/cfp/update",
+                    url: "/admin/@conference.Slug/cfp/update",
+                    __RequestVerificationToken: gettoken(),
 					data: item
 				}).done(function (response) {
 					d.resolve(response);

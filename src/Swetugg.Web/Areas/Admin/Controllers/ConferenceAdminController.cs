@@ -55,6 +55,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(conference);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("edit/{id:int}", Order = 1)]
         public async Task<ActionResult> Edit(int id, Conference conference)
@@ -84,6 +85,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(new ConferenceImportModel() { Conference = conference});
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("import/{id:int}")]
         public async Task<ActionResult> Import(int id, ConferenceImportModel conferenceImportModel)
@@ -240,6 +242,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("new", Order = 2)]
         public async Task<ActionResult> Edit(Conference conference)
@@ -260,6 +263,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(conference);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("delete/{id:int}")]
         public async Task<ActionResult> Delete(int id)

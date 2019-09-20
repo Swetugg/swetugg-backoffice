@@ -143,6 +143,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
             return View(speaker);
         }
 
+        [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/speaker")]
         [HttpPost]
         public ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, HttpPostedFileBase imageFile)
@@ -256,8 +257,8 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
             return View(session);
         }
-        
 
+        [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/session")]
         [HttpPost]
         #pragma warning disable 0108
@@ -313,6 +314,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
             return View(session);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/delete-session")]
         public ActionResult DeleteSession(string conferenceSlug, int id)
@@ -331,6 +333,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
             return RedirectToAction("Conference", new { conferenceSlug });
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/delete-speaker")]
         public ActionResult DeleteSpeaker(string conferenceSlug)

@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model List<SessionType>
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Session types";
     Conference conference = ViewBag.Conference;

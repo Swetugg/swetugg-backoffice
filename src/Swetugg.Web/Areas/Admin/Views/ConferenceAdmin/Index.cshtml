@@ -1,5 +1,4 @@
 ﻿@model System.Collections.Generic.List<Swetugg.Web.Models.Conference>
-
 @{
     ViewBag.Title = "Conferences";
 }
@@ -13,8 +12,8 @@
 <div class="list-group">
     @foreach (var conf in Model)
     {
-        @Html.ActionLink(conf.Name, "Conference", new {id = conf.Id}, new {@class = "list-group-item"})
+        @Html.ActionLink(conf.Name, "Conference", new { id = conf.Id }, new { @class = "list-group-item" })
     }
 </div>
-@Html.ActionLink("New conference", "Edit", new {}, new { @class = "btn btn-primary"})
+@Html.ActionLink("New conference", "Edit", new { }, new { @class = "btn btn-primary" })
 

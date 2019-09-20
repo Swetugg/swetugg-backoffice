@@ -1,5 +1,6 @@
 ﻿@using Swetugg.Web.Models
 @model Speaker
+@Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Speaker - Edit";
     Conference conference = ViewBag.Conference;
@@ -13,13 +14,13 @@
 }
 
 <ol class="breadcrumb">
-    <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
     <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
-    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new {conference.Id}, null)</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
     <li>@Html.ActionLink("Speakers", "Index", "SpeakerAdmin")</li>
     @if (id != null)
     {
-        <li>@Html.ActionLink(Model.Name, "Speaker", "SpeakerAdmin", new {id})</li>
+        <li>@Html.ActionLink(Model.Name, "Speaker", "SpeakerAdmin", new { id })</li>
     }
     <li class="active">@buttonLabel</li>
 </ol>
@@ -32,6 +33,7 @@
     </div>
     @using (Html.BeginForm("Edit", "SpeakerAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
@@ -49,7 +51,7 @@
                         @Html.LabelFor(m => m.Twitter)
                         <div class="input-group">
                             <div class="input-group-addon">@@</div>
-                            @Html.TextBoxFor(m => m.Twitter, new {@class = "form-control"})
+                            @Html.TextBoxFor(m => m.Twitter, new { @class = "form-control" })
                         </div>
                         @Html.ValidationMessageFor(m => m.Twitter)
                     </div>

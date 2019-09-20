@@ -1,14 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity.EntityFramework
 @using Swetugg.Web.Models
 @model List<ApplicationUser>
-
 @{
     ViewBag.Title = "Users";
     var roles = ((IEnumerable<IdentityRole>)ViewBag.Roles).ToList();
 }
 
 <ol class="breadcrumb">
-    <li>@Html.ActionLink("Start", "Start", "Home", new {Area = ""}, null)</li>
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
     <li class="active">Users</li>
 </ol>
 
@@ -18,23 +17,24 @@
     </div>
     <table class="table">
         <thead>
-        <tr>
-            <th>User</th>
-            @foreach (var role in roles)
-            {
-                <th class="text-center">@role.Name</th>
-            }
-            <th colspan="2">Actions</th>
-        </tr>
+            <tr>
+                <th>User</th>
+                @foreach (var role in roles)
+                {
+                    <th class="text-center">@role.Name</th>
+                }
+                <th colspan="2">Actions</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var user in Model)
-        {
+            @foreach (var user in Model)
+            {
             <tr>
                 <td>@user.UserName</td>
 
-                @using (Html.BeginForm("SetRoles", "Users", new {userId = user.Id}))
+                @using (Html.BeginForm("SetRoles", "Users", new { userId = user.Id }))
                 {
+                    @Html.AntiForgeryToken()
                     foreach (var role in roles)
                     {
                         <td class="text-center">
@@ -45,12 +45,13 @@
                     }
                     <td><button type="submit" class="btn btn-info">Update</button></td>
                 }
-                @using (Html.BeginForm("Delete", "Users", new {userId = user.Id}))
+                @using (Html.BeginForm("Delete", "Users", new { userId = user.Id }))
                 {
+                    @Html.AntiForgeryToken()
                     <td><button type="submit" class="btn btn-danger">Delete</button></td>
                 }
             </tr>
-        }
+            }
         </tbody>
     </table>
 </div>

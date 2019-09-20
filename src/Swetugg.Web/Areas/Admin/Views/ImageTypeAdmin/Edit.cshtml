@@ -1,4 +1,5 @@
 ﻿@using Swetugg.Web.Models
+@Html.AntiForgeryToken()
 @model ImageType
 
 @{
@@ -27,12 +28,13 @@
     </div>
     @using (Html.BeginForm("Edit", "ImageTypeAdmin", new { id }, FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         @Html.LabelFor(m => m.Name)
-                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Name)
                     </div>
                     <div class="row">

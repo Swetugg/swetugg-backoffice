@@ -1,40 +1,39 @@
 ﻿@using Swetugg.Web.Models
-
 @{
-	ViewBag.Title = "Speaker Logistics";
-	var conference = (Conference)ViewBag.Conference;
+    ViewBag.Title = "Speaker Logistics";
+    var conference = (Conference)ViewBag.Conference;
 }
 
 
 <ol class="breadcrumb">
-	<li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
-	<li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
-	<li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
-	<li>@Html.ActionLink("Speakers", "Index", "SpeakerAdmin")</li>
-	<li class="active">Selection</li>
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+    <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+    <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+    <li>@Html.ActionLink("Speakers", "Index", "SpeakerAdmin")</li>
+    <li class="active">Selection</li>
 </ol>
 
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<div class="row">
-			<div class="col-md-10">
-				<div class="pull-left">@Html.ActionLink("Speakers", "Index", "SpeakerAdmin")</div>
-				<h3>
-					Speakers
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div id="jsGrid"></div>
-	<span class="badge badge-primary">Count:&nbsp;<span id="session_count"></span></span>
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="pull-left">@Html.ActionLink("Speakers", "Index", "SpeakerAdmin")</div>
+                <h3>
+                    Speakers
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div id="jsGrid"></div>
+    <span class="badge badge-primary">Count:&nbsp;<span id="session_count"></span></span>
 </div>
 
 @section scripts
 {
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 
 
-	<script>
+    <script>
 		var controller = {
 			loadData: function (filter) {
 				var d = $.Deferred();
@@ -186,6 +185,6 @@
 				//{ type: "control", editButton: true, deleteButton: false, clearFilterButton: false, modeSwitchButton: false }
 			]
 		});
-	</script>
+    </script>
 
 }

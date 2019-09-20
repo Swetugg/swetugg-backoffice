@@ -3,7 +3,6 @@
 @using System.Threading.Tasks
 @using Swetugg.Web.Models
 @model Swetugg.Web.Areas.Admin.Controllers.ScheduleViewModel
-
 @{
     ViewBag.Title = "Schedule";
     Conference conference = ViewBag.Conference;
@@ -30,50 +29,51 @@
         </div>
         <table class="table table-bordered table-hover">
             <thead>
-            <tr>
-                <th>Timeslot</th>
-                @foreach (var room in Model.Rooms)
-                {
-                    <th>@Html.ActionLink(room.Name, "Edit", "RoomAdmin", new { id = room.Id }, null)</th>
-                }
-            </tr>
+                <tr>
+                    <th>Timeslot</th>
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <th>@Html.ActionLink(room.Name, "Edit", "RoomAdmin", new { id = room.Id }, null)</th>
+                    }
+                </tr>
             </thead>
             <tbody>
-            @foreach (var slot in Model.Slots.Where(s => s.Start.Date == currentDate).ToArray())
-            {
-                <tr>
-                    <td>
-                        @if (Model.EditSlot != null && Model.EditSlot.Id == slot.Id)
+                @foreach (var slot in Model.Slots.Where(s => s.Start.Date == currentDate).ToArray())
+                {
+                    <tr>
+                        <td>
+                            @if (Model.EditSlot != null && Model.EditSlot.Id == slot.Id)
+                            {
+                                @Html.Partial("Slot", Model.EditSlot, ViewData)
+                            }
+                            else
+                            {
+                                <div class="pull-right">
+                                    <a href="@Url.Action("Index", new {slotId = slot.Id})"><i class="glyphicon glyphicon-edit"></i></a>
+
+                                    <a href="" class="text-danger pull-right"
+                                       data-confirm-form="#@("deleteSlotForm" + slot.Id)"
+                                       data-modal-title="Are you sure?"
+                                       data-modal-message="This will delete the slot."
+                                       data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i></a>
+
+                                    @using (Html.BeginForm("DeleteSlot", "ScheduleAdmin", new { id = slot.Id }, FormMethod.Post, new { @class = "form-inline", id = "deleteSlotForm" + slot.Id }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                    }
+                                </div>
+                                <span class="slot-start">@slot.Start.ToString("t")</span>
+                                <span>-</span>
+                                <span class="slot-start">@slot.End.ToString("t")</span>
+                            }
+
+                        </td>
+                        @if (!string.IsNullOrEmpty(slot.Title))
                         {
-                            @Html.Partial("Slot", Model.EditSlot, ViewData)
+                            <th colspan="@Model.Rooms.Count">@slot.Title</th>
                         }
                         else
                         {
-                            <div class="pull-right">
-                                <a href="@Url.Action("Index", new {slotId = slot.Id})"><i class="glyphicon glyphicon-edit"></i></a>
-
-                                <a href="" class="text-danger pull-right"
-                                   data-confirm-form="#@("deleteSlotForm" + slot.Id)"
-                                   data-modal-title="Are you sure?"
-                                   data-modal-message="This will delete the slot."
-                                   data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i></a>
-                                
-                                @using (Html.BeginForm("DeleteSlot", "ScheduleAdmin", new {id = slot.Id}, FormMethod.Post, new {@class = "form-inline", id = "deleteSlotForm" + slot.Id}))
-                                {
-                                }
-                            </div>
-                            <span class="slot-start">@slot.Start.ToString("t")</span>
-                            <span>-</span>
-                            <span class="slot-start">@slot.End.ToString("t")</span>
-                        }
-
-                    </td>
-                    @if (!string.IsNullOrEmpty(slot.Title))
-                    {
-                        <th colspan="@Model.Rooms.Count">@slot.Title</th>
-                    }
-                    else
-                    {
 
                         foreach (var room in Model.Rooms)
                         {
