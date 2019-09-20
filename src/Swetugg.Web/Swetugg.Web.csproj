@@ -344,6 +344,8 @@
     <Compile Include="Areas\Swetugg2018\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2018\Swetugg2018AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2017\Controllers\ConferenceController.cs" />
+    <Compile Include="Areas\Sthlm2020\Controllers\ConferenceController.cs" />
+    <Compile Include="Areas\Sthlm2020\Sthlm2020AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2019\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2019\Swetugg2019AreaRegistration.cs" />
     <Compile Include="Controllers\CsvActionResult.cs" />
@@ -501,6 +503,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\sthlm-2020\css\variables.min.css">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
     <Content Include="Content\swetugg-2015\css\swetugg.css" />
     <Content Include="Content\swetugg-2015\img\bak1.jpg" />
     <Content Include="Content\swetugg-2015\img\downloads-bg.jpg" />
@@ -644,6 +649,73 @@
     <Content Include="Content\swetugg-2016\img\unknown.png" />
     <Content Include="Content\swetugg-2016\img\unknown2.png" />
     <Content Include="Content\swetugg-2016\js\swetugg.js" />
+    <Content Include="Content\sthlm-2020\css\swetugg.css" />
+    <Content Include="Content\sthlm-2020\css\swetugg.min.css">
+      <DependentUpon>swetugg.css</DependentUpon>
+    </Content>
+    <Content Include="Content\sthlm-2020\css\variables.css" />
+    <Content Include="Content\sthlm-2020\img\150_SwetuggOrigamiButterfly.png" />
+    <Content Include="Content\sthlm-2020\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
+    <Content Include="Content\sthlm-2020\img\icon-map.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\activesolution-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\andreas-sund-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\aptitud-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\attentec-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\b3-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\betsson-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\betssontech-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\biolit-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\camelonta-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\chinsay-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\cloudnine-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\coderox-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\combitech-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\conevo-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\cornerstone-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\decerno-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\dynabyte-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\etimo-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\everens-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\hypnosshow-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\if-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\informator-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\internet-broadcast-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\jayway-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\kentor-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\lexicon-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\meridium-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\microsoft-azure-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\microsoft-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\nethouse-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\ninetech-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\nordax-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\novatrox-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\offerta-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\ontrax-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\raysearch-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\senterprise-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\sigma-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\snow-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\softhouse-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\sopra-steria-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\squeed-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\tretton37-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\vaxjo-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\veratech-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\ving-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\wcom-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\webstep-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\swenug.png" />
+    <Content Include="Content\sthlm-2020\img\swetugg-rosa-avlang-mini.png" />
+    <Content Include="Content\sthlm-2020\img\swetugg-rosa-kvadrat.png" />
+    <Content Include="Content\sthlm-2020\img\swetugg_flickr.jpg" />
+    <Content Include="Content\sthlm-2020\img\swetugg_flickr2018.jpg" />
+    <Content Include="Content\sthlm-2020\img\top.jpg" />
+    <Content Include="Content\sthlm-2020\img\top2020.jpg" />
+    <Content Include="Content\sthlm-2020\img\unknown.png" />
+    <Content Include="Content\sthlm-2020\img\unknown2.png" />
+    <Content Include="Content\sthlm-2020\js\now.js" />
+    <Content Include="Content\sthlm-2020\js\swetugg.js" />
     <Content Include="Content\swetugg-2019\css\swetugg.css" />
     <Content Include="Content\swetugg-2019\css\swetugg.min.css">
       <DependentUpon>swetugg.css</DependentUpon>
@@ -916,6 +988,14 @@
     <Content Include="Areas\Swetugg2019\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Swetugg2019\Views\web.config" />
     <Content Include="Areas\Swetugg2019\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\Conference\CodeOfConduct.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\Conference\Index.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\Conference\Now.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\Shared\_LayoutNow.cshtml" />
+    <Content Include="Areas\Sthlm2020\Views\web.config" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -943,6 +1023,9 @@
     <Content Include="Content\swetugg-2019\css\swetugg.css.map" />
     <Content Include="Content\swetugg-2019\css\swetugg.less" />
     <Content Include="Content\swetugg-2019\css\variables.less" />
+    <Content Include="Content\sthlm-2020\css\swetugg.css.map" />
+    <Content Include="Content\sthlm-2020\css\swetugg.less" />
+    <Content Include="Content\sthlm-2020\css\variables.less" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\globalize\currency.js" />
@@ -1024,11 +1107,13 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Cfp\Models\" />
     <Folder Include="Areas\Cfp\Views\Shared\" />
+    <Folder Include="Areas\Sthlm2020\Models\" />
     <Folder Include="Areas\Swetugg2015\Models\" />
     <Folder Include="Areas\Swetugg2016\Models\" />
     <Folder Include="Areas\Swetugg2017\Models\" />
     <Folder Include="Areas\Swetugg2018\Models\" />
     <Folder Include="Areas\Swetugg2019\Models\" />
+    <Folder Include="Content\sthlm-2020\video\" />
     <Folder Include="Content\swetugg-2019\video\" />
     <Folder Include="Views\Now\" />
   </ItemGroup>

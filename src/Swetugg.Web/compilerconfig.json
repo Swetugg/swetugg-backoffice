@@ -14,5 +14,13 @@
   {
     "outputFile": "Content/swetugg-2019/css/swetugg.css",
     "inputFile": "Content/swetugg-2019/css/swetugg.less"
+  },
+  {
+    "outputFile": "Content/sthlm-2020/css/swetugg.css",
+    "inputFile": "Content/sthlm-2020/css/swetugg.less"
+  },
+  {
+    "outputFile": "Content/sthlm-2020/css/variables.css",
+    "inputFile": "Content/sthlm-2020/css/variables.less"
   }
 ]

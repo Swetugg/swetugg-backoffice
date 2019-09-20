@@ -131,6 +131,7 @@ a:focus {
   }
 }
 .navbar {
+  top: 50px;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
@@ -685,10 +686,10 @@ footer {
   display: block;
 }
 .rwd-table td:first-child {
-  padding-top: .5em;
+  padding-top: 0.5em;
 }
 .rwd-table td:last-child {
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 .rwd-table td[data-th]:before {
   content: attr(data-th) " ";
@@ -715,7 +716,7 @@ footer {
   .rwd-table th,
   .rwd-table td {
     display: table-cell;
-    padding: .25em .5em;
+    padding: 0.25em 0.5em;
   }
 }
 .rwd-table .all-rooms {

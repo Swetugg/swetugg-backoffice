@@ -157,10 +157,10 @@ a:focus {
         }
     }
 }
-
 // Navigation
 
 .navbar {
+    top: 50px;
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,0.3);
     text-transform: uppercase;
@@ -175,9 +175,9 @@ a:focus {
 }
 
 .navbar-brand img {
-    position:relative;
+    position: relative;
     top: -10px;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .navbar-brand > i {
@@ -306,9 +306,9 @@ a:focus {
     .intro {
         height: 70%;
         padding-top: 150px;
-        padding-left:0;
-        padding-bottom:0;
-        padding-right:0;
+        padding-left: 0;
+        padding-bottom: 0;
+        padding-right: 0;
     }
 
     .brand-heading {
@@ -449,12 +449,12 @@ a:focus {
 }
 
 .sponsor-section {
-  width: 100%;
-  padding: 20px inherit;
-  color: #524149;
-  /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-  background-color: #FFFFFF;
-  padding-top: 0px;
+    width: 100%;
+    padding: 20px inherit;
+    color: #524149;
+    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
+    background-color: #FFFFFF;
+    padding-top: 0px;
 }
 
 .content-section > div {
@@ -503,6 +503,7 @@ table.schema {
 .schema td {
     padding: 0 !important;
 }
+
 .schema th {
     text-align: center;
 }
@@ -530,6 +531,7 @@ table.schema {
     font-size: 14px;
     color: #777;
 }
+
 .schema-disclaimer {
     font-size: 14px;
     color: #777;
@@ -760,7 +762,6 @@ footer {
         width: 60px;
         height: 60px;
     }
-
 }
 
 .logo-collection {
@@ -784,7 +785,7 @@ footer {
 
 .logo-collection-now {
     list-style: none;
-	margin: 0 -25px;
+    margin: 0 -25px;
 }
 
 .logo-collection-now li {
@@ -792,7 +793,7 @@ footer {
     width: 100px;
     height: 60px;
     margin-right: 10px;
-	margin-bottom: 10px;
+    margin-bottom: 10px;
     font-size: 14px;
     text-align: center;
 }
@@ -808,70 +809,65 @@ footer {
 // Source: http://codepen.io/geoffyuen/pen/FCBEg
 
 .rwd-table {
-  margin: 1em 0;
-  min-width: 300px; // adjust to your needs
-  border-bottom: 1px solid #ddd;
+    margin: 1em 0;
+    min-width: 300px; // adjust to your needs
+    border-bottom: 1px solid #ddd;
+    background-color: lighten(@highlight, 24%);
 
-  background-color: lighten(@highlight, 24%);
 
-  
-  tr {
-    /*border-top: 1px solid #ddd;
+    tr {
+        /*border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;*/
-  }
-  
-  th {
-    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
-  }
-  
-  td {
-    display: block; 
-    
-    &:first-child {
-      padding-top: .5em;
-    }
-    &:last-child {
-      padding-bottom: .5em;
-    }
-  }
-
-  td[data-th]:before {
-      content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
-      /*font-weight: bold;*/
-
-      text-wrap: none;
-
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 10px;
-      margin-left: 10px;
-      margin-top: 13px;
-
-      // optional stuff to make it look nicer
-      /*width: .51em; // magic number :( adjust according to your own content*/
-      display: inline-block;
-      // end options
-      
-      @media (min-width: @breakpoint-schedule) {
-        display: none;
-      }
-    }
-  
-  th, td {
-    text-align: left;
-    
-    @media (min-width: @breakpoint-schedule) {
-      display: table-cell;
-      padding: .25em .5em;
-      
-      &:first-child {
-      }
-      
-      &:last-child {
-      }
     }
 
-  }
+    th {
+        display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!
+    }
+
+    td {
+        display: block;
+
+        &:first-child {
+            padding-top: .5em;
+        }
+
+        &:last-child {
+            padding-bottom: .5em;
+        }
+    }
+
+    td[data-th]:before {
+        content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
+        /*font-weight: bold;*/
+        text-wrap: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 10px;
+        margin-left: 10px;
+        margin-top: 13px;
+        // optional stuff to make it look nicer
+        /*width: .51em; // magic number :( adjust according to your own content*/
+        display: inline-block;
+        // end options
+        @media (min-width: @breakpoint-schedule) {
+            display: none;
+        }
+    }
+
+    th, td {
+        text-align: left;
+
+        @media (min-width: @breakpoint-schedule) {
+            display: table-cell;
+            padding: .25em .5em;
+
+            &:first-child {
+            }
+
+            &:last-child {
+            }
+        }
+    }
 
     .all-rooms {
         background-color: white;
@@ -880,7 +876,7 @@ footer {
         text-align: center;
         vertical-align: middle;
         text-transform: uppercase;
-    }  
+    }
 
     td.all-rooms {
         letter-spacing: 5px;
@@ -891,7 +887,6 @@ footer {
             padding-left: 10px !important;
         }
     }
-  
 }
 
 .video-wrapper {
@@ -904,7 +899,9 @@ footer {
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
 }
 
 .video-container iframe,
@@ -926,7 +923,7 @@ footer {
 }
 
 .flickr-link {
-   margin: auto;
+    margin: auto;
 }
 
 .blockquote-container {
@@ -944,7 +941,7 @@ footer {
 
 .blockquote-small p {
     font-size: 15px;
-    color: #A30046;    
+    color: #A30046;
 }
 
 .blockquote-small footer {
