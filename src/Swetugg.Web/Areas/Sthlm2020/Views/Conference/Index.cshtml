@@ -240,16 +240,16 @@ else
             else
             {
                 @*
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <p>
-                            We will open up our call for speakers shortly. If you want to be added to our speaker mailing list or have any questions regarding 
-                            speaking at Swetugg, don't hesitate to send us an email at <a href="mailto:speak@swetugg.se">speak@swetugg.se</a>.
-                        </p>
-                    </div>
-                </div>
-                *@
                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <p>
+                                We will open up our call for speakers shortly. If you want to be added to our speaker mailing list or have any questions regarding
+                                speaking at Swetugg, don't hesitate to send us an email at <a href="mailto:speak@swetugg.se">speak@swetugg.se</a>.
+                            </p>
+                        </div>
+                    </div>
+                *@
+                @*<div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <p>
                                 Our Call for Speakers for Swetugg Stockholm 2020 has ended.
@@ -264,159 +264,167 @@ else
                                 We will get back to everyone who entered the open call for speakers before October 20th.
                             </p>
                         </div>
+                    </div>*@
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <p>
+                            We have started to select our speakers and will start publishing them soon.
+                        </p>
                     </div>
+                </div>
             }
         </div>
     </section>
 }
 @*
-    <section id="schedule" class="odd-section content-section">
-        <div class="schedule-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1 class="noSubtitle">Schedule</h1>
+        <section id="schedule" class="odd-section content-section">
+            <div class="schedule-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="noSubtitle">Schedule</h1>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
 
-                        @foreach (var day in slots.GroupBy(s => s.Start.Date))
-                        {
-                            var width = 90 / rooms.Count();
+                            @foreach (var day in slots.GroupBy(s => s.Start.Date))
+                            {
+                                var width = 90 / rooms.Count();
 
-                            <h2>@day.Key.ToString("dddd, yyyy-MM-dd")</h2>
-                            <table class="table schema rwd-table">
-                                <thead>
-                                <tr>
-
-                                    <th style="width: 10%">Time</th>
-
-                                    @foreach (var room in rooms)
-                                    {
-                                        <th style="width: @width%">@room.Name</th>
-                                    }
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach (var slot in day)
-                                {
+                                <h2>@day.Key.ToString("dddd, yyyy-MM-dd")</h2>
+                                <table class="table schema rwd-table">
+                                    <thead>
                                     <tr>
-                                        @if (string.IsNullOrEmpty(slot.Title))
-                                        {
-                                            <th style="display: table-cell; text-align: center; width: 60px;">
-                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
-                                            </th>
 
-                                            foreach (var room in rooms)
-                                            {
-                                                var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id && (rs.AssignedSession == null || rs.AssignedSession.Published));
-                                                bool isChanged = roomSlot != null && roomSlot.IsChanged;
-                                                string changedClass = isChanged ? "changed" : "unchanged";
-                                                var session = roomSlot != null ? roomSlot.AssignedSession : null;
-                                                if (roomSlot != null)
-                                                {
-                                                    <td data-th="@room.Name" class="@changedClass">
-                                                        <div class="schemacell">
-                                                            @if (isChanged)
-                                                            {
-                                                                <span class="pull-right glyphicon glyphicon-info-sign"></span>
-                                                            }
-                                                            @if (session != null)
-                                                            {
-                                                                var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
-                                                                if (sessionSpeakers.Count > 0)
-                                                                {
-                                                                    var firstSpeaker = sessionSpeakers.First();
-                                                                    <div class="schemacell-rad1">
-                                                                        @foreach (var speaker in sessionSpeakers)
-                                                                        {
-                                                                            @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
-                                                                        }
-                                                                    </div>
-                                                                    <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
-                                                                        <div class="schemacell-rad2">
-                                                                            @session.Name
-                                                                        </div>
-                                                                    </a>
-                                                                }
-                                                                var tags = session.Tags;
-                                                                foreach (var tag in tags.Where(t => t.Featured))
-                                                                {
-                                                                    <span class="label label-default" data-toggle="tooltip" data-placement="right" title="@tag.Description">@tag.Name</span>
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                <div class="schemacell-rad2">
-                                                                    (no session)
-                                                                </div>
-                                                            }
-                                                        </div>
-                                                    </td>
-                                                }
-                                                else
-                                                {
-                                                    <td data-th="@room.Name">
-                                                        <div class="schemacell">
-                                                            <div class="schemacell-rad2">
-                                                                Not yet available
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            <th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
-                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
-                                            </th>
+                                        <th style="width: 10%">Time</th>
 
-                                            <td class="all-rooms" colspan="@rooms.Count()">
-                                                <div>@slot.Title</div>
-                                            </td>
+                                        @foreach (var room in rooms)
+                                        {
+                                            <th style="width: @width%">@room.Name</th>
                                         }
                                     </tr>
-                                }
-                                </tbody>
-                            </table>
-                        }
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var slot in day)
+                                    {
+                                        <tr>
+                                            @if (string.IsNullOrEmpty(slot.Title))
+                                            {
+                                                <th style="display: table-cell; text-align: center; width: 60px;">
+                                                    @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                                </th>
 
-                        <p class="schema-disclaimer">
-                            The schedule may be subject to change.
-                            <!--<span class="glyphicon glyphicon-info-sign"></span>
-                            Förändrat sedan schemat trycktes-->
+                                                foreach (var room in rooms)
+                                                {
+                                                    var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id && (rs.AssignedSession == null || rs.AssignedSession.Published));
+                                                    bool isChanged = roomSlot != null && roomSlot.IsChanged;
+                                                    string changedClass = isChanged ? "changed" : "unchanged";
+                                                    var session = roomSlot != null ? roomSlot.AssignedSession : null;
+                                                    if (roomSlot != null)
+                                                    {
+                                                        <td data-th="@room.Name" class="@changedClass">
+                                                            <div class="schemacell">
+                                                                @if (isChanged)
+                                                                {
+                                                                    <span class="pull-right glyphicon glyphicon-info-sign"></span>
+                                                                }
+                                                                @if (session != null)
+                                                                {
+                                                                    var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
+                                                                    if (sessionSpeakers.Count > 0)
+                                                                    {
+                                                                        var firstSpeaker = sessionSpeakers.First();
+                                                                        <div class="schemacell-rad1">
+                                                                            @foreach (var speaker in sessionSpeakers)
+                                                                            {
+                                                                                @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
+                                                                            }
+                                                                        </div>
+                                                                        <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
+                                                                            <div class="schemacell-rad2">
+                                                                                @session.Name
+                                                                            </div>
+                                                                        </a>
+                                                                    }
+                                                                    var tags = session.Tags;
+                                                                    foreach (var tag in tags.Where(t => t.Featured))
+                                                                    {
+                                                                        <span class="label label-default" data-toggle="tooltip" data-placement="right" title="@tag.Description">@tag.Name</span>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="schemacell-rad2">
+                                                                        (no session)
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td data-th="@room.Name">
+                                                            <div class="schemacell">
+                                                                <div class="schemacell-rad2">
+                                                                    Not yet available
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
+                                                    @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                                </th>
 
-                        </p>
+                                                <td class="all-rooms" colspan="@rooms.Count()">
+                                                    <div>@slot.Title</div>
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            }
+
+                            <p class="schema-disclaimer">
+                                The schedule may be subject to change.
+                                <!--<span class="glyphicon glyphicon-info-sign"></span>
+                                Förändrat sedan schemat trycktes-->
+
+                            </p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+    <section id="celebration" class="even-section content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>5 Years Celebration!</h1>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p>
+                        What do you get when you mix classic rock tunes, comedy lyrics about software development and awesome big-screen visuals? We have the answer!
+                    </p>
+                    <p>
+                        We have comedy, we have music, we have beers from Waza brewery!
+                    </p>
+                    <p>
+                        Help us celebrate our 5 year anniversary on Thursday evening.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-<section id="celebration" class="even-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>5 Years Celebration!</h1>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p>
-                    What do you get when you mix classic rock tunes, comedy lyrics about software development and awesome big-screen visuals? We have the answer!
-                </p>
-                <p>
-                    We have comedy, we have music, we have beers from Waza brewery!
-                </p>
-                <p>
-                    Help us celebrate our 5 year anniversary on Thursday evening. 
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        *@
+*@
 
 <section id="sponsor" class="odd-section content-section">
     <div class="container">
@@ -428,7 +436,7 @@ else
         <div class="row text-center">
             <div class="col-lg-8 col-lg-offset-2">
                 <p>
-                    Swetugg Events is a non-profit organization and the conference would not be possible without the help of our sponsors. 
+                    Swetugg Events is a non-profit organization and the conference would not be possible without the help of our sponsors.
                 </p>
                 <p>
                     Would you like to be an exhibitor or supporter@* too*@? Get in touch at <a href="mailto:sponsor@swetugg.se">sponsor@swetugg.se</a>.
@@ -502,28 +510,30 @@ else
                 @if (ticketSalesOpen)
                 {
                     <!-- Ticket Tailor Widget. Paste this in to your website where you want the widget to appear. Do no change the code or the widget may not work properly. -->
-                    <div class="tt-widget"><div class="tt-widget-fallback"><p><a href="https://www.tickettailor.com/checkout/view-event/id/313628/chk/44b5/ref/website_widget/" target="_blank">Click here to buy tickets</a><br /><small><a href="https://www.tickettailor.com?rf=wdg" class="tt-widget-powered">Sell tickets online with Ticket Tailor</a></small></p></div>
-                    <script src="https://media.tickettailor.com/js/widgets/min/tt-widget.js" data-url="https://www.tickettailor.com/checkout/view-event/id/313628/chk/44b5/ref/website_widget/" data-type="inline" data-inline-minimal="false" data-inline-show-logo="true" data-inline-bg-fill="true"></script></div>
+                    <div class="tt-widget">
+                        <div class="tt-widget-fallback"><p><a href="https://www.tickettailor.com/checkout/view-event/id/313628/chk/44b5/ref/website_widget/" target="_blank">Click here to buy tickets</a><br /><small><a href="https://www.tickettailor.com?rf=wdg" class="tt-widget-powered">Sell tickets online with Ticket Tailor</a></small></p></div>
+                        <script src="https://media.tickettailor.com/js/widgets/min/tt-widget.js" data-url="https://www.tickettailor.com/checkout/view-event/id/313628/chk/44b5/ref/website_widget/" data-type="inline" data-inline-minimal="false" data-inline-show-logo="true" data-inline-bg-fill="true"></script>
+                    </div>
                     <!-- End of Ticket Tailor Widget -->
                     @*
-            <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
-                <div class="form-group form-group-lg">
-                    <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
-                        <option value="1" selected="selected">1 ticket - 1500kr</option>
-                        <option value="2">2 tickets - 3000kr</option>
-                        <option value="3">3 tickets - 4500kr</option>
-                        <option value="4">4 tickets - 6000kr</option>
-                        <option value="5">5 tickets - 7500kr</option>
-                    </select>
-                </div>
+                        <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
+                            <div class="form-group form-group-lg">
+                                <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
+                                    <option value="1" selected="selected">1 ticket - 1500kr</option>
+                                    <option value="2">2 tickets - 3000kr</option>
+                                    <option value="3">3 tickets - 4500kr</option>
+                                    <option value="4">4 tickets - 6000kr</option>
+                                    <option value="5">5 tickets - 7500kr</option>
+                                </select>
+                            </div>
 
-                <input name="commit" type="submit" class="btn btn-lg btn-default" value="Buy" />
-            </form>
-            <p>
-                <h3>Want to help out?</h3>
-                We need help on the conference days<br />
-                <a href="https://sv.surveymonkey.com/r/WTSWSGZ" target="_blank">Sign up to volonteer</a>
-            </p>
+                            <input name="commit" type="submit" class="btn btn-lg btn-default" value="Buy" />
+                        </form>
+                        <p>
+                            <h3>Want to help out?</h3>
+                            We need help on the conference days<br />
+                            <a href="https://sv.surveymonkey.com/r/WTSWSGZ" target="_blank">Sign up to volonteer</a>
+                        </p>
                     *@
                     <p>
                         <h3>Invoice?</h3>
@@ -538,12 +548,12 @@ else
                         Would you like a reminder? Add yourself to our mailing list!
                     </p>
                     @*
-                    <p>
-                        Tickets for Swetugg 2020 have sold out. If we are able to open sales again, we will announce it on <a href="https://twitter.com/swetugg">Twitter</a> and <a href="https://facebook.com/swetugg">Facebook</a>, so make sure to follow us there!
-                    </p>
-                    <p>
-                        If you haven't already signed up for our newsletter, do so now and you won't miss the conference next time around!
-                    </p>*@
+                        <p>
+                            Tickets for Swetugg 2020 have sold out. If we are able to open sales again, we will announce it on <a href="https://twitter.com/swetugg">Twitter</a> and <a href="https://facebook.com/swetugg">Facebook</a>, so make sure to follow us there!
+                        </p>
+                        <p>
+                            If you haven't already signed up for our newsletter, do so now and you won't miss the conference next time around!
+                        </p>*@
                     <!-- Begin MailChimp Signup Form -->
                     <div id="mc_embed_signup">
                         <form action="//swetugg.us8.list-manage.com/subscribe/post?u=f8f35c45f37445d5d813b270c&amp;id=5260e75d8e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -666,7 +676,7 @@ else
                             var locationUrl = "https://www.google.se/maps/place/Lustikulla+Konferens+%26+Event/@59.3126667,18.0266579,15z/data=!4m7!3m6!1s0x0:0x6eb3cf96f0cdbe7f!5m1!1s2018-09-23!8m2!3d59.3126667!4d18.0266579";
                         }
                         <strong style="font-size: 24px;">Lustikulla Konferens & Event</strong><br />
-                        Liljeholmsvägen 18<br/>
+                        Liljeholmsvägen 18<br />
                         117 61 Stockholm
                     </p>
                 </div>
