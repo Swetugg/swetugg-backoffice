@@ -1,0 +1,64 @@
+﻿@using Swetugg.Web.Models
+@model SessionizeSync
+@{
+    ViewBag.Title = "Sessionize";
+    Conference conference = ViewBag.Conference;
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null) </li>
+    <li class="active">Import Sessionize</li>
+</ol>
+
+<h2>Data from Sessionize</h2>
+<div class="list-group">
+    @if (Model.Speakers.Any(s => !s.AllreadyInDatabase))
+    {
+
+        <b>Following speakers are not imported:</b>
+
+        using (Html.BeginForm("ImportSpeaker", "Sessionize"))
+        {
+            @Html.AntiForgeryToken()
+            foreach (var speaker in Model.Speakers)
+            {
+                if (!speaker.AllreadyInDatabase)
+                {
+                    <p>@speaker.Name</p>
+                }
+
+            }
+            <button type="submit" class="btn btn-info">Import missing speakers</button>
+        }
+    }
+    else
+    {
+        <p>All speakers are imported</p>
+    }
+</div>
+
+<div class="list-group">
+    @if (Model.Sessions.Any(s => !s.AllreadyInDatabase))
+    {
+
+        <b>Following sessions are not imported:</b>
+
+        using (Html.BeginForm("ImportSession", "Sessionize"))
+        {
+            @Html.AntiForgeryToken()
+            foreach (var session in Model.Sessions)
+            {
+                if (!session.AllreadyInDatabase)
+                {
+                    <p>@session.Title</p>
+                }
+
+            }
+            <button type="submit" class="btn btn-info">Import missing sessions</button>
+        }
+    }
+    else
+    {
+        <p>All sessions are imported</p>
+    }
+</div>
+

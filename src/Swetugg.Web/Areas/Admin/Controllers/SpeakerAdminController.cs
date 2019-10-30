@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -200,6 +202,42 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             await dbContext.SaveChangesAsync();
             return RedirectToAction("Speaker", new { id = speakerId });
+        }
+
+
+        //TODO: fix integration from Sessionize
+        private async Task<List<SpeakerImage>> SaveImageFromSessionize(string url, Speaker speaker)
+        {
+            //speaker.Images = await SaveImage(sessionizeSpeaker.profilePicture, speaker);
+            //await dbContext.SaveChangesAsync();
+
+            var imageTypes = await dbContext.ImageTypes.ToListAsync();
+            var result = new List<SpeakerImage>();
+            foreach (var imageType in imageTypes)
+            {
+                var speakerImage = new SpeakerImage()
+                {
+                    ImageType = imageType,
+                    SpeakerId = speaker.Id,
+                    ImageTypeId = imageType.Id
+                };
+                var request = WebRequest.Create(url);
+                request.Method = WebRequestMethods.Http.Get;
+                using (var response = await request.GetResponseAsync())
+                {
+                    using (var responseStream = response.GetResponseStream())
+                    {
+                        speakerImage.ImageUrl = _imageUploader.UploadToStorage(responseStream, speaker.Slug + "-" + imageType.Slug, _speakerImageContainerName);
+                    }
+                }
+
+                result.Add(speakerImage);
+
+
+
+            }
+            return result;
+
         }
     }
 }

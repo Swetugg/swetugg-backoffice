@@ -324,6 +324,8 @@
     <Compile Include="Areas\Admin\Controllers\CfpReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminControllerBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\Models\Sessionize.cs" />
+    <Compile Include="Areas\Admin\Controllers\SessionizeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SessionTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpeakerLogisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagAdminController.cs" />
@@ -369,6 +371,18 @@
     <Compile Include="Migrations\201710300558507_AddSpeakerLogistic.cs" />
     <Compile Include="Migrations\201710300558507_AddSpeakerLogistic.Designer.cs">
       <DependentUpon>201710300558507_AddSpeakerLogistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910292111287_AddSessionizeSpeakerId.cs" />
+    <Compile Include="Migrations\201910292111287_AddSessionizeSpeakerId.Designer.cs">
+      <DependentUpon>201910292111287_AddSessionizeSpeakerId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301826340_UpdateSpeaker.cs" />
+    <Compile Include="Migrations\201910301826340_UpdateSpeaker.Designer.cs">
+      <DependentUpon>201910301826340_UpdateSpeaker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910302122494_UpdateSession.cs" />
+    <Compile Include="Migrations\201910302122494_UpdateSession.Designer.cs">
+      <DependentUpon>201910302122494_UpdateSession.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
@@ -463,6 +477,7 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomSlot.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\SessionizeSync.cs" />
     <Compile Include="Models\SessionSpeaker.cs" />
     <Compile Include="Models\Slot.cs" />
     <Compile Include="Models\Speaker.cs" />
@@ -996,6 +1011,9 @@
     <Content Include="Areas\Sthlm2020\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Sthlm2020\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Sthlm2020\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Sessionize\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sessionize\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sessionize\Session.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1104,7 +1122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Cfp\Models\" />
     <Folder Include="Areas\Cfp\Views\Shared\" />
     <Folder Include="Areas\Sthlm2020\Models\" />
@@ -1180,6 +1197,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710300558507_AddSpeakerLogistic.resx">
       <DependentUpon>201710300558507_AddSpeakerLogistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910292111287_AddSessionizeSpeakerId.resx">
+      <DependentUpon>201910292111287_AddSessionizeSpeakerId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301826340_UpdateSpeaker.resx">
+      <DependentUpon>201910301826340_UpdateSpeaker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910302122494_UpdateSession.resx">
+      <DependentUpon>201910302122494_UpdateSession.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

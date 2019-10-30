@@ -59,10 +59,12 @@ namespace Swetugg.Web.Services
 
 		public IEnumerable<Speaker> GetSpeakers(int conferenceId)
 		{
+            var random = new System.Random();
 			var allSpeakers = _dbContext.Speakers.
                 Where(s => s.ConferenceId == conferenceId && s.Published).
                 Include(s => s.Images.Select(i => i.ImageType)).
-                OrderBy(s => s.Priority).ToList();
+                OrderBy(s => s.Priority).
+                ThenBy(s => random.Next()).ToList();
 			return allSpeakers;
 		}
 

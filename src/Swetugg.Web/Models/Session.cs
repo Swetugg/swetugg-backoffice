@@ -9,6 +9,8 @@ namespace Swetugg.Web.Models
         public int Id { get; set; }
         public int ConferenceId { get; set; }
 
+        public int? SessionizeId { get; set; }
+
         [Required]
         [StringLength(250)]
         public string Name { get; set; }
@@ -23,7 +25,7 @@ namespace Swetugg.Web.Models
 
         [StringLength(500)]
         public string VideoUrl { get; set; }
-        
+
         public bool VideoPublished { get; set; }
 
         public bool Published { get; set; }

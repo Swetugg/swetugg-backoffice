@@ -28,6 +28,7 @@
                     </div>
                     <div class="list-group">
                         @Html.ActionLink("Import", "Import", new { id = Model.Id }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Import from Sessionize", "Index", "Sessionize", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Call For Papers", "Index", "CfpReview", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Call For Papers selection", "List", "CfpSelection", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
                         @Html.ActionLink("Speakers", "Index", "SpeakerAdmin", new { conferenceSlug = Model.Slug }, new { @class = "list-group-item" })
