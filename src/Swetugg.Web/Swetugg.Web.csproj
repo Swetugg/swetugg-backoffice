@@ -1011,9 +1011,7 @@
     <Content Include="Areas\Sthlm2020\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Sthlm2020\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Sthlm2020\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Sessionize\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Sessionize\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Sessionize\Session.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
