@@ -62,9 +62,9 @@ namespace Swetugg.Web.Services
             var random = new System.Random();
 			var allSpeakers = _dbContext.Speakers.
                 Where(s => s.ConferenceId == conferenceId && s.Published).
-                Include(s => s.Images.Select(i => i.ImageType)).
+                Include(s => s.Images.Select(i => i.ImageType)).ToList().
                 OrderBy(s => s.Priority).
-                ThenBy(s => random.Next()).ToList();
+                ThenBy(s => random.Next());
 			return allSpeakers;
 		}
 
