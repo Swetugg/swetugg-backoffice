@@ -34,6 +34,7 @@
     @using (Html.BeginForm("Edit", "SpeakerAdmin", new { id }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.SessionizeId);
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
