@@ -4,10 +4,12 @@
     ViewBag.Title = "Sessionize";
     Conference conference = ViewBag.Conference;
 }
-<ol class="breadcrumb">
-    <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null) </li>
-    <li class="active">Import Sessionize</li>
-</ol>
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
+        <li>@Html.ActionLink("Conferences", "Index", "ConferenceAdmin")</li>
+        <li>@Html.ActionLink(conference.Name, "Conference", "ConferenceAdmin", new { conference.Id }, null)</li>
+        <li class="active">Import Sessionize</li>
+    </ol>
 
 <h2>Data from Sessionize</h2>
 <div class="list-group">
