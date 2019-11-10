@@ -124,10 +124,15 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             foreach (var sessionizeSpeaker in sessionizeSpeakers)
             {
+                var sessionizeId = Guid.Parse(sessionizeSpeaker.id);
+                var speakerAlreadyExist = dbContext.Speakers.Any(s => s.SessionizeId == sessionizeId);
+                if (speakerAlreadyExist)
+                    continue;
+
                 var speaker = new Speaker()
                 {
                     ConferenceId = ConferenceId,
-                    SessionizeId = Guid.Parse(sessionizeSpeaker.id),
+                    SessionizeId = sessionizeId,
                     FirstName = sessionizeSpeaker.firstName,
                     Name = sessionizeSpeaker.fullName,
                     Company = sessionizeSpeaker.tagLine,
@@ -198,15 +203,19 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             foreach (var sessionizeSessions in sessionizeSessionGroups)
             {
-
                 foreach (var sessionizeSession in sessionizeSessions.sessions)
                 {
+                    var sessionizeId = int.Parse(sessionizeSession.id);
+                    var sessionAlreadyExist = dbContext.Sessions.Any(s => s.SessionizeId == sessionizeId);
+                    if (sessionAlreadyExist)
+                        continue;
+
                     var sessionType = dbContext.SessionTypes.First();
 
                     var session = new Session()
                     {
                         ConferenceId = ConferenceId,
-                        SessionizeId = int.Parse(sessionizeSession.id),
+                        SessionizeId = sessionizeId,
                         Name = sessionizeSession.title,
                         Description = sessionizeSession.description,
                         SessionType = sessionType,
