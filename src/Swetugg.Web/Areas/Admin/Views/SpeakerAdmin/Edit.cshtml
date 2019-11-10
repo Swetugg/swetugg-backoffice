@@ -43,6 +43,11 @@
                         @Html.ValidationMessageFor(m => m.Name)
                     </div>
                     <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+                    <div class="form-group">
                         @Html.LabelFor(m => m.Company)
                         @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Company)
