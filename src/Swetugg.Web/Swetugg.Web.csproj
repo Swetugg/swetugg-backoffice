@@ -741,6 +741,7 @@
     <Content Include="Content\swetugg-2019\img\icon-map.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\activesolution-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\andreas-sund-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\appinthecloud-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\aptitud-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\attentec-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\b3-thumb.png" />
@@ -751,6 +752,7 @@
     <Content Include="Content\swetugg-2019\img\sponsors\chinsay-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\cloudnine-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\coderox-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\coding-after-work-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\combitech-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\conevo-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\cornerstone-thumb.png" />
@@ -758,12 +760,14 @@
     <Content Include="Content\swetugg-2019\img\sponsors\dynabyte-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\etimo-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\everens-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\hiq-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\hypnosshow-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\if-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\informator-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\internet-broadcast-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\jayway-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\kentor-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\kompilator-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\lexicon-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\meridium-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\microsoft-azure-thumb.png" />
@@ -774,6 +778,7 @@
     <Content Include="Content\swetugg-2019\img\sponsors\novatrox-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\offerta-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\ontrax-thumb.png" />
+    <Content Include="Content\swetugg-2019\img\sponsors\progress-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\raysearch-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\senterprise-thumb.png" />
     <Content Include="Content\swetugg-2019\img\sponsors\sigma-thumb.png" />
