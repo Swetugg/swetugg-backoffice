@@ -14,7 +14,7 @@ namespace Swetugg.Web.Services
 		{
 			this._dbContext = dbContext;
 		}
-
+        
 	    public IEnumerable<Conference> GetConferences()
 	    {
 	        var conferences = _dbContext.Conferences.OrderByDescending(c => c.Start).ToList();

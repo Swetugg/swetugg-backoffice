@@ -521,6 +521,11 @@
     <Content Include="Content\sthlm-2020\css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
+    <Content Include="Content\sthlm-2020\img\sponsors\appinthecloud-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\coding-after-work-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\hiq-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\kompilator-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\sponsors\progress-thumb.png" />
     <Content Include="Content\swetugg-2015\css\swetugg.css" />
     <Content Include="Content\swetugg-2015\img\bak1.jpg" />
     <Content Include="Content\swetugg-2015\img\downloads-bg.jpg" />
