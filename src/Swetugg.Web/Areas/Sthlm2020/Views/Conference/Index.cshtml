@@ -447,7 +447,8 @@ else
         </div>
         @{
             var exhibitors = sponsors.Where(s => s.Priority < 100).ToArray();
-            var supportSponsors = sponsors.Where(s => s.Priority >= 100).ToArray();
+            var supportSponsors = sponsors.Where(s => s.Priority >= 100 && s.Priority < 200).ToArray();
+            var podcasts = sponsors.Where(s => s.Priority >= 200).ToArray();
         }
         @if (exhibitors.Any())
         {
@@ -485,6 +486,29 @@ else
                     <ul class="logo-collection">
 
                         @foreach (var sponsor in supportSponsors)
+                        {
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="/Content/sthlm-2020/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+        @if (podcasts.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Podcasts</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in podcasts)
                         {
                             <li>
                                 <a href="@sponsor.Web">
