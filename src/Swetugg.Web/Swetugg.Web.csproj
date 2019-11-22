@@ -384,6 +384,10 @@
     <Compile Include="Migrations\201910302122494_UpdateSession.Designer.cs">
       <DependentUpon>201910302122494_UpdateSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911221019213_TagsOnSpeakers.cs" />
+    <Compile Include="Migrations\201911221019213_TagsOnSpeakers.Designer.cs">
+      <DependentUpon>201911221019213_TagsOnSpeakers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -526,6 +530,11 @@
     <Content Include="Content\sthlm-2020\img\sponsors\hiq-thumb.png" />
     <Content Include="Content\sthlm-2020\img\sponsors\kompilator-thumb.png" />
     <Content Include="Content\sthlm-2020\img\sponsors\progress-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\tags\front-ms-mvp.png" />
+    <Content Include="Content\sthlm-2020\img\tags\speaker-ms-mvp-2.png" />
+    <Content Include="Content\sthlm-2020\img\tags\speaker-ms-mvp-3.png" />
+    <Content Include="Content\sthlm-2020\img\tags\speaker-ms-mvp-4.png" />
+    <Content Include="Content\sthlm-2020\img\tags\speaker-ms-mvp.png" />
     <Content Include="Content\swetugg-2015\css\swetugg.css" />
     <Content Include="Content\swetugg-2015\img\bak1.jpg" />
     <Content Include="Content\swetugg-2015\img\downloads-bg.jpg" />
@@ -1214,6 +1223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910302122494_UpdateSession.resx">
       <DependentUpon>201910302122494_UpdateSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911221019213_TagsOnSpeakers.resx">
+      <DependentUpon>201911221019213_TagsOnSpeakers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

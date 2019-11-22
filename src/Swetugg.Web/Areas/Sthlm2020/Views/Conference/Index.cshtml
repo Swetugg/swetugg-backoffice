@@ -162,6 +162,8 @@
                         <ul class="photo-collection">
                             @foreach (var speaker in @speakers)
                             {
+                                var tagClasses = speaker.Tags.Select(t => "tag-" + t.Slug).ToArray();
+
                                 <li>
                                     <a href="@Url.Action("Speaker", "Conference", new {speakerSlug = speaker.Slug})">
                                         @{
@@ -176,7 +178,13 @@
                                                 }
                                             }
                                         }
-                                        <img class="img-circle" src="@imageUrl" />
+                                        <div class="photo">
+                                            @foreach (var tagClass in tagClasses)
+                                            {
+                                                <span class="@tagClass"></span>
+                                            }
+                                            <img class="img-circle" src="@imageUrl" />
+                                        </div>
                                         <div>
                                             @speaker.Name
                                         </div>

@@ -62,6 +62,7 @@ namespace Swetugg.Web.Services
             var random = new System.Random();
 			var allSpeakers = _dbContext.Speakers.
                 Where(s => s.ConferenceId == conferenceId && s.Published).
+                Include(s => s.Tags).
                 Include(s => s.Images.Select(i => i.ImageType)).ToList().
                 OrderBy(s => s.Priority).
                 ThenBy(s => random.Next());
@@ -79,6 +80,7 @@ namespace Swetugg.Web.Services
 	        var speaker = _dbContext.Speakers.
                 Where(s => s.ConferenceId == conferenceId && s.Slug == slug).
                 Include(s => s.Images.Select(i => i.ImageType)).
+                Include(s => s.Tags).
 	            Include(s => s.Sessions.Select(se => se.Session).Select(se => se.RoomSlots.Select(rs => rs.Room))).
 	            Include(s => s.Sessions.Select(se => se.Session).Select(se => se.RoomSlots.Select(rs => rs.Slot))).SingleOrDefault();
 	        

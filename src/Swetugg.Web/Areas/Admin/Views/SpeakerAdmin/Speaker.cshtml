@@ -73,6 +73,36 @@
                         </dl>
                     </div>
                 </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Tags</div>
+                    </div>
+                    <div class="list-group">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <div class="list-group-item">
+                                @using (Html.BeginForm("RemoveTag", "SpeakerAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @tag.Name
+
+                                    <button type="submit" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    @Html.Hidden("TagId", tag.Id)
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="panel-footer">
+                        @using (Html.BeginForm("AddTag", "SpeakerAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.DropDownList("tagId", ((List<Tag>)ViewBag.Tags).Select(s => new SelectListItem() { Text = s.Name, Value = s.Id.ToString() }).Default(" - Select tag - ", ""), new { @class = "form-control" })
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        }
+                    </div>
+                </div>
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
