@@ -1,21 +1,28 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Swetugg.Web.Models;
+using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
     public class SponsorAdminController : ConferenceAdminControllerBase
     {
+        private readonly IImageUploader _imageUploader;
+        private readonly string _sponsorImageContainerName;
 
-        public SponsorAdminController(ApplicationDbContext dbContext) : base(dbContext)
+        public SponsorAdminController(IImageUploader imageUploader, ApplicationDbContext dbContext) : base(dbContext)
         {
-
+            _imageUploader = imageUploader;
+            _sponsorImageContainerName = ConfigurationManager.AppSettings["Storage.Container.Sponsors.SponsorImages"];
         }
 
-		[Route("{conferenceSlug}/sponsors")]
+        [Route("{conferenceSlug}/sponsors")]
         public async Task<ActionResult> Index()
         {
             var conferenceId = ConferenceId;
@@ -31,7 +38,14 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 		[Route("{conferenceSlug}/sponsors/{id:int}")]
         public async Task<ActionResult> Sponsor(int id)
         {
-            var sponsor = await dbContext.Sponsors.SingleAsync(s => s.Id == id);
+            var conferenceId = ConferenceId;
+            var sponsor = await dbContext.Sponsors
+                .Include(sp => sp.Images.Select(i => i.ImageType))
+                .SingleAsync(s => s.Id == id);
+            
+            var imageTypes = await dbContext.ImageTypes.Where(it => it.ConferenceId == conferenceId).ToListAsync();
+            ViewBag.ImageTypes = imageTypes;
+
             return View(sponsor);
         }
 
@@ -91,6 +105,89 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
             }
             return View(sponsor);
+        }
+
+        [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/{id:int}")]
+        public async Task<ActionResult> Image(int sponsorId, int id)
+        {
+            var conferenceId = ConferenceId;
+            var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
+                .SingleAsync(s => s.Id == sponsorId);
+            var imageTypes = await dbContext.ImageTypes.Where(it => it.ConferenceId == conferenceId).ToListAsync();
+
+            var image = sponsor.Images.FirstOrDefault(i => i.Id == id);
+            ViewBag.Sponsor = sponsor;
+            ViewBag.ImageTypes = imageTypes;
+
+            return View(image);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/new")]
+        public async Task<ActionResult> NewImage(int sponsorId, SponsorImage sponsorImage, HttpPostedFileBase imageFile)
+        {
+            var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
+                .SingleAsync(s => s.Id == sponsorId);
+            var imageType = await dbContext.ImageTypes.FirstOrDefaultAsync(it => it.Id == sponsorImage.ImageTypeId);
+
+            if (imageType == null)
+            {
+                throw new InvalidOperationException("Unknown image type");
+            }
+
+            string errorMessage = null;
+
+            if (imageFile != null && imageFile.ContentLength > 0)
+            {
+                if (imageFile.ContentLength < 10 * 1024 * 1024)
+                {
+                    try
+                    {
+                        string imageUrl;
+                        using (var memStream = new MemoryStream())
+                        {
+                            imageFile.InputStream.CopyTo(memStream);
+                            imageUrl = _imageUploader.UploadToStorage(memStream, sponsor.Slug + "-" + imageType.Slug,
+                                _sponsorImageContainerName);
+                        }
+
+                        sponsorImage.ImageUrl = imageUrl;
+
+                        sponsor.Images.Add(sponsorImage);
+                        await dbContext.SaveChangesAsync();
+                        return RedirectToAction("Sponsor", new { id = sponsorId });
+                    }
+                    catch (ImageUploadException e)
+                    {
+                        errorMessage = e.Message;
+                        ModelState.AddModelError("ImageFile", e.Message);
+                    }
+                }
+                else
+                {
+                    errorMessage = "Max file size of image is ~10MB";
+                    ModelState.AddModelError("ImageFile", "Max file size of image is ~10MB");
+                }
+            }
+
+            return RedirectToAction("Sponsor", new { id = sponsorId, errorMsg = errorMessage });
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/{id:int}/delete")]
+        public async Task<ActionResult> DeleteImage(int id, int sponsorId)
+        {
+            var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
+                .SingleAsync(s => s.Id == sponsorId);
+            var image = sponsor.Images.Single(i => i.Id == id);
+
+            dbContext.Entry(image).State = EntityState.Deleted;
+            _imageUploader.DeleteImage(image.ImageUrl);
+
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction("Sponsor", new { id = sponsorId });
         }
 
         [ValidateAntiForgeryToken]
