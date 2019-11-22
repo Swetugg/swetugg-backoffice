@@ -530,6 +530,7 @@
     <Content Include="Content\sthlm-2020\img\sponsors\hiq-thumb.png" />
     <Content Include="Content\sthlm-2020\img\sponsors\kompilator-thumb.png" />
     <Content Include="Content\sthlm-2020\img\sponsors\progress-thumb.png" />
+    <Content Include="Content\sthlm-2020\img\tags\front-ms-mvp-small.png" />
     <Content Include="Content\sthlm-2020\img\tags\front-ms-mvp.png" />
     <Content Include="Content\sthlm-2020\img\tags\speaker-ms-mvp-2.png" />
     <Content Include="Content\sthlm-2020\img\tags\speaker-ms-mvp-3.png" />
