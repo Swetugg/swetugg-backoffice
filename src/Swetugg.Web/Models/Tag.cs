@@ -30,6 +30,12 @@ namespace Swetugg.Web.Models
 
     }
 
+    public enum TagType
+    {
+        Session,
+        Speaker
+    }
+
     public class Tag
     {
         public int Id { get; set; }
@@ -52,6 +58,11 @@ namespace Swetugg.Web.Models
         public bool Featured { get; set; }
         public int Priority { get; set; }
 
+        [Required]
+        [DefaultValue(TagType.Session)]
+        public TagType Type { get; set; }
+
         public ICollection<Session> Sessions { get; set; }
+        public ICollection<Speaker> Speakers { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 .SingleAsync(s => s.Id == id);
 
             var speakers = await dbContext.Speakers.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Name).ToListAsync();
-            var tags = await dbContext.Tags.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Name).ToListAsync();
+            var tags = await dbContext.Tags.Where(m => m.ConferenceId == conferenceId && m.Type == TagType.Session).OrderBy(s => s.Name).ToListAsync();
 
             ViewBag.Speakers = speakers.Where(s => session.Speakers.All(se => se.SpeakerId != s.Id)).ToList();
             ViewBag.Tags = tags.Where(t => session.Tags.All(st => st.Id != t.Id)).ToList();

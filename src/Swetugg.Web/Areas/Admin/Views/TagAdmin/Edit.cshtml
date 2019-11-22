@@ -1,4 +1,5 @@
-﻿@using Swetugg.Web.Models
+﻿@using System.Globalization
+@using Swetugg.Web.Models
 @model Tag
 @{
     ViewBag.Title = "Tag - Edit";
@@ -10,6 +11,7 @@
     {
         buttonLabel = "Update";
     }
+    var tagTypes = new[] {TagType.Session, TagType.Speaker};
 }
 
 <ol class="breadcrumb">
@@ -64,6 +66,12 @@
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Priority, "Priority")
                                 @Html.TextBoxFor(m => m.Priority, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Type, "Tag type")
+                                @Html.DropDownList("Type",
+                                    tagTypes.Select(tt => new SelectListItem() { Text = tt.ToString(), Value = ((int)tt).ToString(CultureInfo.InvariantCulture) }),
+                                    new { @class = "form-control" })
                             </div>
                         </div>
                     </div>

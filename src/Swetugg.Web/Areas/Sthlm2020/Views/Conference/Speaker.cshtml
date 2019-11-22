@@ -12,19 +12,25 @@
     {
         speakerImageUrl = firstThumb.ImageUrl;
     }
+    var tagClasses = Model.Tags.Select(t => "tag-" + t.Slug).ToArray();
 }
 
 <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
-<section id="info" class="content-section text-center">
-    <!-- Work in progress -->
+<section id="info" class="content-section text-center speaker">
     <div class="program-section">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <img class="img-circle" src="@speakerImageUrl" />
+                    <div class="photo">
+                        @foreach (var tagClass in tagClasses)
+                        {
+                            <span class="@tagClass"></span>
+                        }
+                        <img class="img-circle @string.Join(" ", tagClasses)" src="@speakerImageUrl" />
+                    </div>
                     <h1 style="margin-top: 20px;">@Model.Name</h1>
-                    <h2 >@Model.Company</h2>
+                    <h2>@Model.Company</h2>
                 </div>
             </div>
 
