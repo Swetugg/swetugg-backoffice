@@ -71,7 +71,9 @@ namespace Swetugg.Web.Services
 
 		public IEnumerable<Sponsor> GetSponsors(int conferenceId)
 		{
-			var allSponsors = _dbContext.Sponsors.Where(s => s.ConferenceId == conferenceId && s.Published).OrderBy(s => s.Priority).ToList();
+			var allSponsors = _dbContext.Sponsors
+             .Include(s => s.Images.Select(i => i.ImageType))
+             .Where(s => s.ConferenceId == conferenceId && s.Published).OrderBy(s => s.Priority).ToList();
 			return allSponsors;
 		}
 
