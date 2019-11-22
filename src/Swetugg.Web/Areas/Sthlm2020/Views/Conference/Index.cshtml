@@ -501,9 +501,15 @@ else
 
                         @foreach (var sponsor in supportSponsors)
                         {
+                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
+                            if (imgUrl == null)
+                            {
+                                imgUrl = "/Content/sthlm-2020/img/sponsors/" + sponsor.Slug + "-thumb.png";
+                            }
+
                             <li>
                                 <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="/Content/sthlm-2020/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                    <img class="sponsor-image" src="@imgUrl" />
                                 </a>
                             </li>
                         }
@@ -524,9 +530,15 @@ else
 
                         @foreach (var sponsor in podcasts)
                         {
+                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
+                            if (imgUrl == null)
+                            {
+                                imgUrl = "/Content/sthlm-2020/img/sponsors/" + sponsor.Slug + "-thumb.png";
+                            }
+
                             <li>
                                 <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="/Content/sthlm-2020/img/sponsors/@(sponsor.Slug + "-thumb.png") " />
+                                    <img class="sponsor-image" src="@imgUrl" />
                                 </a>
                             </li>
                         }
