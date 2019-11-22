@@ -1,9 +1,12 @@
-﻿@using Swetugg.Web.Models
+﻿@using System.Globalization
+@using Swetugg.Web.Models
 @model Sponsor
 @Html.AntiForgeryToken()
 @{
     ViewBag.Title = "Sponsor";
     Conference conference = ViewBag.Conference;
+    var imageTypes = (IEnumerable<ImageType>)ViewBag.ImageTypes;
+    var errorMsg = ViewBag.ErrorMessage;
 }
 <ol class="breadcrumb">
     <li>@Html.ActionLink("Start", "Start", "Home", new { Area = "" }, null)</li>
@@ -24,6 +27,45 @@
         <div class="row">
             <div class="col-sm-8">
                 <p>@Model.Description</p>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Images</div>
+                    </div>
+                    <div class="list-group">
+                        @foreach (var image in Model.Images)
+                        {
+                            <div class="list-group-item">
+                                @Html.ActionLink(image.ImageType.Name, "Image", "SponsorAdmin", new { image.Id, SponsorId = Model.Id }, null)
+                            </div>
+                        }
+                    </div>
+                    <div class="panel-footer">
+                        @using (Html.BeginForm("NewImage", "SponsorAdmin", new { SponsorId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.DropDownList("ImageTypeId",
+                                    imageTypes.Select(it => new SelectListItem() { Text = it.Name, Value = it.Id.ToString(CultureInfo.InvariantCulture) }),
+                                    new { @class = "form-control" })
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="btn btn-default" for="imageFileSelector">
+                                            <input id="imageFileSelector" name="ImageFile" type="file" style="display: none;">
+                                            Select image...
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-primary" type="submit">Upload</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>

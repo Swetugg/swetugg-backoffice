@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Swetugg.Web.Models
@@ -29,5 +30,6 @@ namespace Swetugg.Web.Models
         public bool Published { get; set; }
 
         public int Priority { get; set; }
+        public ICollection<SponsorImage> Images { get; set; }
     }
 }

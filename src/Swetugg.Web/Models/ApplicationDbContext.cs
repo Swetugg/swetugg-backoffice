@@ -67,6 +67,9 @@ namespace Swetugg.Web.Models
 
             modelBuilder.Entity<SpeakerImage>().HasRequired(s => s.ImageType).WithMany().WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Sponsor>().HasMany(s => s.Images).WithRequired().WillCascadeOnDelete(false);
+            modelBuilder.Entity<SponsorImage>().HasRequired(s => s.ImageType).WithMany().WillCascadeOnDelete(false);
+
             modelBuilder.Entity<RoomSlot>().HasKey(r => new {r.RoomId, r.SlotId});
 
             modelBuilder.Entity<SessionSpeaker>().HasRequired(s => s.Speaker).WithMany(s => s.Sessions)

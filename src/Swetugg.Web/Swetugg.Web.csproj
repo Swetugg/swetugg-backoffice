@@ -388,6 +388,10 @@
     <Compile Include="Migrations\201911221019213_TagsOnSpeakers.Designer.cs">
       <DependentUpon>201911221019213_TagsOnSpeakers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911221403421_SponsorImages.cs" />
+    <Compile Include="Migrations\201911221403421_SponsorImages.Designer.cs">
+      <DependentUpon>201911221403421_SponsorImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -489,6 +493,7 @@
     <Compile Include="Models\ImageType.cs" />
     <Compile Include="Models\SpeakerLogistics.cs" />
     <Compile Include="Models\Sponsor.cs" />
+    <Compile Include="Models\SponsorImage.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CachedConferenceService.cs" />
@@ -1032,6 +1037,7 @@
     <Content Include="Areas\Sthlm2020\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Sthlm2020\Views\web.config" />
     <Content Include="Areas\Admin\Views\Sessionize\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SponsorAdmin\Image.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1227,6 +1233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911221019213_TagsOnSpeakers.resx">
       <DependentUpon>201911221019213_TagsOnSpeakers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911221403421_SponsorImages.resx">
+      <DependentUpon>201911221403421_SponsorImages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

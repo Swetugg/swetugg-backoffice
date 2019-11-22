@@ -174,8 +174,6 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Speaker", new { id });
         }
 
-
-
         [Route("{conferenceSlug}/speakers/{speakerId:int}/image/{id:int}")]
         public async Task<ActionResult> Image(int speakerId, int id)
         {
