@@ -54,6 +54,25 @@
                         }
                     </div>
                 </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sessionize</div>
+                    </div>
+                    <div class="panel-body">
+                        <dl>
+                            @if (!string.IsNullOrEmpty(Model.SessionizeImageUrl))
+                            {
+                                <dt>Image Url</dt>
+                                <dd><a href="@Model.SessionizeImageUrl"> @Model.SessionizeImageUrl</a></dd>
+                            }
+                            @if (Model.SessionizeId != null) 
+                            { 
+                                <dt>Sessionize ID</dt>
+                                <dd>@Model.SessionizeId</dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
@@ -90,9 +109,6 @@
                                 </div>
                             </div>
                         }
-                    </div>
-                    <div class="panel-footer">
-                        <p>@Model.SessionizeImageUrl</p>
                     </div>
                 </div>
             </div>
