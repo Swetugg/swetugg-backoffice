@@ -56,6 +56,33 @@
                 </div>
                 <div class="panel panel-info">
                     <div class="panel-heading">
+                        <div class="panel-title">Information</div>
+                    </div>
+                    <div class="panel-body">
+                        <dl>
+                            <dt>Slug</dt>
+                            <dd>@Model.Slug</dd>
+                            <dt>Priority</dt>
+                            <dd>@Model.Priority</dd>
+                            <dt>First name</dt>
+                            <dd>@Model.FirstName</dd>
+                            <dt>Company</dt>
+                            <dd>@Model.Company</dd>
+                            @if (!string.IsNullOrEmpty(Model.Twitter))
+                            {
+                                <dt>Twitter</dt>
+                                <dd><a href="https://twitter.com/@Model.Twitter">@("@" + Model.Twitter)</a></dd>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Web))
+                            {
+                                <dt>Web</dt>
+                                <dd><a href="@Model.Web">@Model.Web</a></dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
                         <div class="panel-title">Sessionize</div>
                     </div>
                     <div class="panel-body">
@@ -65,8 +92,8 @@
                                 <dt>Image Url</dt>
                                 <dd><a href="@Model.SessionizeImageUrl"> @Model.SessionizeImageUrl</a></dd>
                             }
-                            @if (Model.SessionizeId != null) 
-                            { 
+                            @if (Model.SessionizeId != null)
+                            {
                                 <dt>Sessionize ID</dt>
                                 <dd>@Model.SessionizeId</dd>
                             }
