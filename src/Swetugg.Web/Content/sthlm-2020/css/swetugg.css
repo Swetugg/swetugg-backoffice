@@ -453,6 +453,14 @@ table.schema {
   font-size: 14px;
   color: #777;
 }
+.schemacell-rad1v2 {
+    font-size: 14px;
+}
+
+.schemacell-rad2v2 {
+    font-size: 18px;
+    color: #777;
+}
 .schema-disclaimer {
   font-size: 14px;
   color: #777;

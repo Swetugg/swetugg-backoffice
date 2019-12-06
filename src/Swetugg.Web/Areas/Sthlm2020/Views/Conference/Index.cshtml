@@ -346,17 +346,17 @@ else
                                                                     if (sessionSpeakers.Count > 0)
                                                                     {
                                                                         var firstSpeaker = sessionSpeakers.First();
-                                                                        <div class="schemacell-rad1">
+                                                                        <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
+                                                                            <div class="schemacell-rad1v2">
+                                                                                @session.Name
+                                                                            </div>
+                                                                        </a>
+                                                                        <div class="schemacell-rad2v2">
                                                                             @foreach (var speaker in sessionSpeakers)
                                                                             {
                                                                                 @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
                                                                             }
                                                                         </div>
-                                                                        <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
-                                                                            <div class="schemacell-rad2">
-                                                                                @session.Name
-                                                                            </div>
-                                                                        </a>
                                                                     }
                                                                     var tags = session.Tags;
                                                                     foreach (var tag in tags.Where(t => t.Featured))
