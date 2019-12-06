@@ -19,10 +19,10 @@
     @Html.Hidden("Day", currentDate.Date)
 
     <div class="form-group">
-        @Html.TextBoxFor(m => m.Start, "{0:t}", new { @class = "form-control", placeholder = "Start time" })
+        @Html.TextBoxFor(m => m.Start, new { @class = "form-control", placeholder = "Start time" })
     </div>
     <div class="form-group">
-        @Html.TextBoxFor(m => m.End, "{0:t}", new { @class = "form-control", placeholder = "End time" })
+        @Html.TextBoxFor(m => m.End, new { @class = "form-control", placeholder = "End time" })
     </div>
     <div class="form-group">
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Title" })

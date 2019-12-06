@@ -75,53 +75,54 @@
                         else
                         {
 
-                        foreach (var room in Model.Rooms)
-                        {
-                            var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
-                            if (roomSlot != null)
+                            foreach (var room in Model.Rooms)
                             {
-                                <td>
-                                    <a href="javascript:document.getElementById('@("deleteRoomSlotForm" + slot.Id + "_" + room.Id)').submit()" class="close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </a>
+                                var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                                if (roomSlot != null)
+                                {
+                                    <td>
+                                        <a href="javascript:document.getElementById('@("deleteRoomSlotForm" + slot.Id + "_" + room.Id)').submit()" class="close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </a>
 
-                                    @using (Html.BeginForm("DeleteRoomSlot", "ScheduleAdmin", new { roomId = room.Id, slotId = slot.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteRoomSlotForm" + slot.Id + "_" + room.Id }))
-                                    { 
-                                    }
-
-                                    @if (roomSlot.AssignedSession != null)
-                                    {
-                                        <div class="session-name">@roomSlot.AssignedSession.Name</div>
-
-                                        if (roomSlot.AssignedSession.Speakers != null)
+                                        @using (Html.BeginForm("DeleteRoomSlot", "ScheduleAdmin", new { roomId = room.Id, slotId = slot.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteRoomSlotForm" + slot.Id + "_" + room.Id }))
                                         {
-                                            foreach (var speaker in roomSlot.AssignedSession.Speakers)
+                                            @Html.AntiForgeryToken()
+                                        }
+
+                                        @if (roomSlot.AssignedSession != null)
+                                        {
+                                            <div class="session-name">@roomSlot.AssignedSession.Name</div>
+
+                                            if (roomSlot.AssignedSession.Speakers != null)
                                             {
-                                                <div class="speaker-name">@speaker.Speaker.Name</div>
+                                                foreach (var speaker in roomSlot.AssignedSession.Speakers)
+                                                {
+                                                    <div class="speaker-name">@speaker.Speaker.Name</div>
+                                                }
                                             }
                                         }
-                                    }
-                                    else
-                                    {
-                                        <div class="session-name">(None)</div>
-                                    }
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    @Html.Partial("RoomSlot", new RoomSlot() {RoomId = room.Id, SlotId = slot.Id}, new ViewDataDictionary(ViewData) {{"UnplacedSessions", Model.UnplacedSessions}})
-                                </td>
+                                        else
+                                        {
+                                            <div class="session-name">(None)</div>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Html.Partial("RoomSlot", new RoomSlot() { RoomId = room.Id, SlotId = slot.Id }, new ViewDataDictionary(ViewData) { { "UnplacedSessions", Model.UnplacedSessions } })
+                                    </td>
+                                }
                             }
                         }
-                    }
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        @Html.Partial("Slot", Model.NewSlot)
+                    </td>
                 </tr>
-            }
-            <tr>
-                <td>
-                    @Html.Partial("Slot", Model.NewSlot)
-                </td>
-            </tr>
             </tbody>
 
         </table>
