@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Swetugg.Web.Models
 {
@@ -12,6 +13,9 @@ namespace Swetugg.Web.Models
 
         public int? AssignedSessionId { get; set; }
         public Session AssignedSession { get; set; }
+
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
 
         public bool IsChanged { get; set; }
     }

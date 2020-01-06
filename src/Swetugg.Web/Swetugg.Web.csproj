@@ -392,6 +392,10 @@
     <Compile Include="Migrations\201911221403421_SponsorImages.Designer.cs">
       <DependentUpon>201911221403421_SponsorImages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001022327555_UpdateSchedule.cs" />
+    <Compile Include="Migrations\202001022327555_UpdateSchedule.Designer.cs">
+      <DependentUpon>202001022327555_UpdateSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NowData.cs" />
     <Compile Include="Areas\Swetugg2017\Swetugg2017AreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1236,6 +1240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911221403421_SponsorImages.resx">
       <DependentUpon>201911221403421_SponsorImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001022327555_UpdateSchedule.resx">
+      <DependentUpon>202001022327555_UpdateSchedule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

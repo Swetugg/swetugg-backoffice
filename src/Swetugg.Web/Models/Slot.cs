@@ -18,6 +18,8 @@ namespace Swetugg.Web.Models
         [Required]
         public DateTime End { get; set; }
 
+        public bool HasSessions { get; set; }
+
         public ICollection<RoomSlot> RoomSlots { get; set; }
     }
 }

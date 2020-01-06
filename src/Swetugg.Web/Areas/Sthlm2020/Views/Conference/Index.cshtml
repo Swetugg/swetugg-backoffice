@@ -288,45 +288,120 @@ else
     </section>
 }
 
-        <section id="schedule" class="odd-section content-section">
-            <div class="schedule-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h1 class="noSubtitle">Schedule</h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
+<section id="schedule" class="odd-section content-section">
+    <div class="schedule-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="noSubtitle">Schedule</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
 
-                            @foreach (var day in slots.GroupBy(s => s.Start.Date))
-                            {
-                                var width = 90 / rooms.Count();
+                    @foreach (var day in slots.GroupBy(s => s.Start.Date))
+                    {
+                        var width = 90 / rooms.Count();
 
-                                <h2>@day.Key.ToString("dddd, yyyy-MM-dd")</h2>
-                                <table class="table schema rwd-table">
-                                    <thead>
-                                    <tr>
+                        <h2>@day.Key.ToString("dddd, yyyy-MM-dd")</h2>
+                        <table class="table schema rwd-table">
+                            <thead>
+                                <tr>
 
-                                        <th style="width: 10%">Time</th>
+                                    <th style="width: 10%">Time</th>
 
-                                        @foreach (var room in rooms)
-                                        {
-                                            <th style="width: @width%">@room.Name</th>
-                                        }
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach (var slot in day)
+                                    @foreach (var room in rooms)
+                                    {
+                                        <th style="width: @width%">@room.Name</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var slot in day)
+                                {
+
+                                    if (string.IsNullOrEmpty(slot.Title))
                                     {
                                         <tr>
-                                            @if (string.IsNullOrEmpty(slot.Title))
+                                            <th style="display: table-cell; text-align: center; width: 60px;">
+                                                @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
+                                            </th>
+
+                                            @foreach (var room in rooms)
                                             {
-                                                <th style="display: table-cell; text-align: center; width: 60px;">
+                                                var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id && (rs.AssignedSession == null || rs.AssignedSession.Published));
+                                                bool isChanged = roomSlot != null && roomSlot.IsChanged;
+                                                string changedClass = isChanged ? "changed" : "unchanged";
+                                                var session = roomSlot != null ? roomSlot.AssignedSession : null;
+                                                if (roomSlot != null)
+                                                {
+                                                    <td data-th="@room.Name" class="@changedClass">
+                                                        <div class="schemacell">
+                                                            @if (isChanged)
+                                                            {
+                                                                <span class="pull-right glyphicon glyphicon-info-sign"></span>
+                                                            }
+                                                            @if (session != null)
+                                                            {
+                                                                var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
+                                                                if (sessionSpeakers.Count > 0)
+                                                                {
+                                                                    var firstSpeaker = sessionSpeakers.First();
+                                                                    <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
+                                                                        <div class="schemacell-rad1v2">
+                                                                            @session.Name
+                                                                        </div>
+                                                                    </a>
+                                                                    <div class="schemacell-rad2v2">
+                                                                        @foreach (var speaker in sessionSpeakers)
+                                                                        {
+                                                                            @Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
+                                                                        }
+                                                                    </div>
+                                                                }
+                                                                var tags = session.Tags;
+                                                                foreach (var tag in tags.Where(t => t.Featured))
+                                                                {
+                                                                    <span class="label label-default" data-toggle="tooltip" data-placement="right" title="@tag.Description">@tag.Name</span>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="schemacell-rad2">
+                                                                    (no session)
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td data-th="@room.Name">
+                                                        <div class="schemacell">
+                                                            <div class="schemacell-rad2">
+                                                                Not yet available
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
+                                            }
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        if (slot.HasSessions)
+                                        {
+                                            <tr>
+                                                <th rowspan=3 class="all-rooms" style="display: table-cell; text-align: center; text-anchor:start; width: 60px;">
                                                     @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
                                                 </th>
 
-                                                foreach (var room in rooms)
+                                                <td class="all-rooms" colspan="@rooms.Count()">
+                                                    <div>@slot.Title</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                @foreach (var room in rooms)
                                                 {
                                                     var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id && (rs.AssignedSession == null || rs.AssignedSession.Published));
                                                     bool isChanged = roomSlot != null && roomSlot.IsChanged;
@@ -345,6 +420,10 @@ else
                                                                     var sessionSpeakers = session.Speakers.Select(s => s.Speaker).ToList();
                                                                     if (sessionSpeakers.Count > 0)
                                                                     {
+                                                                        if (@roomSlot.Start.HasValue)
+                                                                        {
+                                                                            <span class="schemacell-tid">@roomSlot.Start.Value.ToString("HH:mm") - @roomSlot.End.Value.ToString("HH:mm")</span>
+                                                                        }
                                                                         var firstSpeaker = sessionSpeakers.First();
                                                                         <a href="@Url.Action("Speaker", new {speakerSlug = firstSpeaker.Slug})#@session.Slug">
                                                                             <div class="schemacell-rad1v2">
@@ -354,7 +433,7 @@ else
                                                                         <div class="schemacell-rad2v2">
                                                                             @foreach (var speaker in sessionSpeakers)
                                                                             {
-                                                                                @Html.ActionLink(speaker.Name, "Speaker", new {speakerSlug = speaker.Slug})<br/>
+                                                                                @Html.ActionLink(speaker.Name, "Speaker", new { speakerSlug = speaker.Slug })<br />
                                                                             }
                                                                         </div>
                                                                     }
@@ -364,29 +443,21 @@ else
                                                                         <span class="label label-default" data-toggle="tooltip" data-placement="right" title="@tag.Description">@tag.Name</span>
                                                                     }
                                                                 }
-                                                                else
-                                                                {
-                                                                    <div class="schemacell-rad2">
-                                                                        (no session)
-                                                                    </div>
-                                                                }
                                                             </div>
                                                         </td>
                                                     }
-                                                    else
-                                                    {
-                                                        <td data-th="@room.Name">
-                                                            <div class="schemacell">
-                                                                <div class="schemacell-rad2">
-                                                                    Not yet available
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    }
+
                                                 }
-                                            }
-                                            else
-                                            {
+                                            </tr>
+                                            <tr>
+                                                <td class="all-rooms" colspan="@rooms.Count()">
+                                                    <div>@slot.Title</div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
                                                 <th class="all-rooms" style="display: table-cell; text-align: center; width: 60px;">
                                                     @slot.Start.ToString("HH:mm")<br />|<br />@slot.End.ToString("HH:mm")
                                                 </th>
@@ -394,24 +465,26 @@ else
                                                 <td class="all-rooms" colspan="@rooms.Count()">
                                                     <div>@slot.Title</div>
                                                 </td>
-                                            }
-                                        </tr>
+                                            </tr>
+                                        }
                                     }
-                                    </tbody>
-                                </table>
-                            }
 
-                            <p class="schema-disclaimer">
-                                The schedule may be subject to change.
-                                <!--<span class="glyphicon glyphicon-info-sign"></span>
-                                Förändrat sedan schemat trycktes-->
+                                }
+                            </tbody>
+                        </table>
+                    }
 
-                            </p>
-                        </div>
-                    </div>
+                    <p class="schema-disclaimer">
+                        The schedule may be subject to change.
+                        <!--<span class="glyphicon glyphicon-info-sign"></span>
+                        Förändrat sedan schemat trycktes-->
+
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
 
 
@@ -547,24 +620,24 @@ else
                     </div>
                     <!-- End of Ticket Tailor Widget -->
                     @*
-            <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
-                <div class="form-group form-group-lg">
-                    <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
-                        <option value="1" selected="selected">1 ticket - 1500kr</option>
-                        <option value="2">2 tickets - 3000kr</option>
-                        <option value="3">3 tickets - 4500kr</option>
-                        <option value="4">4 tickets - 6000kr</option>
-                        <option value="5">5 tickets - 7500kr</option>
-                    </select>
-                </div>
+                        <form role="form" class="form-inline text-center" action="@ticketUrl" method="post">
+                            <div class="form-group form-group-lg">
+                                <select class="form-control" id="tickets_@ticketKey" name="tickets[@ticketKey]">
+                                    <option value="1" selected="selected">1 ticket - 1500kr</option>
+                                    <option value="2">2 tickets - 3000kr</option>
+                                    <option value="3">3 tickets - 4500kr</option>
+                                    <option value="4">4 tickets - 6000kr</option>
+                                    <option value="5">5 tickets - 7500kr</option>
+                                </select>
+                            </div>
 
-                <input name="commit" type="submit" class="btn btn-lg btn-default" value="Buy" />
-            </form>
-            <p>
-                <h3>Want to help out?</h3>
-                We need help on the conference days<br />
-                <a href="https://sv.surveymonkey.com/r/WTSWSGZ" target="_blank">Sign up to volonteer</a>
-            </p>
+                            <input name="commit" type="submit" class="btn btn-lg btn-default" value="Buy" />
+                        </form>
+                        <p>
+                            <h3>Want to help out?</h3>
+                            We need help on the conference days<br />
+                            <a href="https://sv.surveymonkey.com/r/WTSWSGZ" target="_blank">Sign up to volonteer</a>
+                        </p>
                     *@
                     <p>
                         <h3>Invoice?</h3>
@@ -575,41 +648,41 @@ else
                 else
                 {
                     @*<p>
-                You can can start bying tickets at Monday 28 of October 12:00! (don't miss our early bird special)<br />
-                Would you like a reminder? Add yourself to our mailing list!
-            </p>*@
+                            You can can start bying tickets at Monday 28 of October 12:00! (don't miss our early bird special)<br />
+                            Would you like a reminder? Add yourself to our mailing list!
+                        </p>*@
                     <p>
                         Tickets for Swetugg 2020 have sold out. If we are able to open sales again, we will announce it on <a href="https://twitter.com/swetugg">Twitter</a> and <a href="https://facebook.com/swetugg">Facebook</a>, so make sure to follow us there!
                     </p>
                     @*<p>
-                    If you haven't already signed up for our newsletter, do so now and you won't miss the conference next time around!
-                </p>
-            <!-- Begin MailChimp Signup Form -->
-            <!--div id="mc_embed_signup">
-                <form action="//swetugg.us8.list-manage.com/subscribe/post?u=f8f35c45f37445d5d813b270c&amp;id=5260e75d8e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                    <div id="mc_embed_signup_scroll">
-                        <div class="mc-field-group form-group">
-                            <label for="mce-EMAIL">Email</label>
-                            <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL">
-                        </div>
-                        <div class="mc-field-group form-group">
-                            <label for="mce-FNAME">First name</label>
-                            <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME">
-                        </div>
-                        <div class="mc-field-group form-group">
-                            <label for="mce-LNAME">Last name</label>
-                            <input type="text" value="" name="LNAME" class="form-control" id="mce-LNAME">
-                        </div>
-                        <div id="mce-responses" class="clear">
-                            <div class="response" id="mce-error-response" style="display:none"></div>
-                            <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div /-->
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <!--div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f8f35c45f37445d5d813b270c_5260e75d8e" tabindex="-1" value=""></!--div>
-                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default"></div>
-                    </div>
-                </form>
-            <div /-->*@
+                                If you haven't already signed up for our newsletter, do so now and you won't miss the conference next time around!
+                            </p>
+                        <!-- Begin MailChimp Signup Form -->
+                        <!--div id="mc_embed_signup">
+                            <form action="//swetugg.us8.list-manage.com/subscribe/post?u=f8f35c45f37445d5d813b270c&amp;id=5260e75d8e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll">
+                                    <div class="mc-field-group form-group">
+                                        <label for="mce-EMAIL">Email</label>
+                                        <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL">
+                                    </div>
+                                    <div class="mc-field-group form-group">
+                                        <label for="mce-FNAME">First name</label>
+                                        <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME">
+                                    </div>
+                                    <div class="mc-field-group form-group">
+                                        <label for="mce-LNAME">Last name</label>
+                                        <input type="text" value="" name="LNAME" class="form-control" id="mce-LNAME">
+                                    </div>
+                                    <div id="mce-responses" class="clear">
+                                        <div class="response" id="mce-error-response" style="display:none"></div>
+                                        <div class="response" id="mce-success-response" style="display:none"></div>
+                                    </div /-->
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <!--div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f8f35c45f37445d5d813b270c_5260e75d8e" tabindex="-1" value=""></!--div>
+                                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default"></div>
+                                </div>
+                            </form>
+                        <div /-->*@
 
                 }
             </div>
