@@ -67,8 +67,10 @@
                                 @session.Name<br/>
                                 @if (roomSlot != null)
                                 {
+                                    var start = roomSlot.Start ?? roomSlot.Slot.Start;
+                                    var end = roomSlot.End ?? roomSlot.Slot.End;
                                     <small>
-                                        @roomSlot.Room.Name, @roomSlot.Slot.Start.ToString("dddd HH:mm") - @roomSlot.Slot.End.ToString("HH:mm")
+                                        @roomSlot.Room.Name, @start.ToString("dddd HH:mm") - @end.ToString("HH:mm")
                                     </small>
                                 }
                             </h2>

@@ -26,11 +26,12 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="!currentSlot.Title" ng-repeat="session in currentSlot.Sessions">
+                <div ng-if="currentSlot.Sessions" ng-repeat="session in currentSlot.Sessions">
                     <div ng-if="session.Name" class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
                                 {{ session.Name }}
+                                <small ng-if="session.Start">{{ session.Start | date: 'HH:mm' }} - {{ session.End | date: 'HH:mm' }}</small>
                             </h3>
                         </div>
                         <div class="panel-body">
