@@ -531,6 +531,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\countdown\favicon.ico" />
+    <Content Include="Content\countdown\images\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
+    <Content Include="Content\countdown\images\SwetuggButterflyLogoGreyLarge.png" />
+    <Content Include="Content\countdown\index.html" />
+    <Content Include="Content\countdown\logo192.png" />
+    <Content Include="Content\countdown\logo512.png" />
+    <Content Include="Content\countdown\precache-manifest.6898fb7b1c34f7dd0d7efb0e81ac5474.js" />
+    <Content Include="Content\countdown\robots.txt" />
+    <Content Include="Content\countdown\service-worker.js" />
+    <Content Include="Content\countdown\static\css\2.47e06e2e.chunk.css" />
+    <Content Include="Content\countdown\static\css\main.b1ee6ce9.chunk.css" />
+    <Content Include="Content\countdown\static\js\2.f15cb981.chunk.js" />
+    <Content Include="Content\countdown\static\js\main.16aade0b.chunk.js" />
+    <Content Include="Content\countdown\static\js\runtime-main.09a5ef67.js" />
     <Content Include="Content\sthlm-2020\css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
@@ -1046,6 +1060,14 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\countdown\asset-manifest.json" />
+    <Content Include="Content\countdown\manifest.json" />
+    <Content Include="Content\countdown\static\css\2.47e06e2e.chunk.css.map" />
+    <Content Include="Content\countdown\static\css\main.b1ee6ce9.chunk.css.map" />
+    <Content Include="Content\countdown\static\js\2.f15cb981.chunk.js.LICENSE" />
+    <Content Include="Content\countdown\static\js\2.f15cb981.chunk.js.map" />
+    <Content Include="Content\countdown\static\js\main.16aade0b.chunk.js.map" />
+    <Content Include="Content\countdown\static\js\runtime-main.09a5ef67.js.map" />
     <None Include="Content\swetugg-2016\css\swetugg.less" />
     <Content Include="Content\swetugg-2016\css\variables.less" />
     <Content Include="manifest.json" />
