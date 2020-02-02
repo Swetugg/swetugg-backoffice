@@ -538,7 +538,6 @@
     <Content Include="Content\countdown\logo192.png" />
     <Content Include="Content\countdown\logo512.png" />
     <Content Include="Content\countdown\precache-manifest.6898fb7b1c34f7dd0d7efb0e81ac5474.js" />
-    <Content Include="Content\countdown\robots.txt" />
     <Content Include="Content\countdown\service-worker.js" />
     <Content Include="Content\countdown\static\css\2.47e06e2e.chunk.css" />
     <Content Include="Content\countdown\static\css\main.b1ee6ce9.chunk.css" />
