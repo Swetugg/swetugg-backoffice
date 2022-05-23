@@ -555,6 +555,9 @@ footer,
 .banner-buttons {
   margin-top: 0;
 }
+.banner-buttons > li {
+  margin-bottom: 20px;
+}
 @media (max-width: 1199px) {
   ul.banner-buttons {
     margin-top: 15px;
@@ -563,7 +566,6 @@ footer,
 @media (max-width: 767px) {
   ul.banner-buttons > li {
     display: block;
-    margin-bottom: 20px;
     padding: 0;
   }
   ul.banner-buttons > li:last-child {
