@@ -260,6 +260,7 @@ a:focus {
 // Full Page Image Intro Section
 
 .intro {
+    position: relative;
     display: table;
     width: 100%;
     height: auto;
@@ -269,6 +270,16 @@ a:focus {
     background: url(/Content/gbg-2022/img/top2022.jpg);
     background-color: @dark;
     background-size: cover;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        background: linear-gradient(131deg, fade(@primary, 10%), fade(@primary, 30%));
+    }
 }
 
 #videoBackground {
@@ -552,7 +563,7 @@ table.schema {
 }
 
 .schemacell-rad2v2 a {
-    color: #A30046;
+    color: @primary;
 }
 
 .schemacell-tid {
@@ -669,6 +680,10 @@ footer, .footer-section {
 
 .banner-buttons {
     margin-top: 0;
+
+    > li {
+        margin-bottom: 20px;
+    }
 }
 
 @media(max-width:1199px) {
@@ -680,7 +695,6 @@ footer, .footer-section {
 @media(max-width:767px) {
     ul.banner-buttons > li {
         display: block;
-        margin-bottom: 20px;
         padding: 0;
     }
 
@@ -975,7 +989,7 @@ footer {
 
 .blockquote-small p {
     font-size: 15px;
-    color: #A30046;    
+    color: @primary;
 }
 
 .blockquote-small footer {
