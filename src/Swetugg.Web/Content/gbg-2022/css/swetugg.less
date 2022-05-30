@@ -260,6 +260,7 @@ a:focus {
 // Full Page Image Intro Section
 
 .intro {
+    position: relative;
     display: table;
     width: 100%;
     height: auto;
@@ -269,6 +270,16 @@ a:focus {
     background: url(/Content/gbg-2022/img/top2022.jpg);
     background-color: @dark;
     background-size: cover;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        background: linear-gradient(131deg, fade(@primary, 10%), fade(@primary, 30%));
+    }
 }
 
 #videoBackground {

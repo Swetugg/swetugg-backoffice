@@ -210,6 +210,7 @@ a:focus {
   }
 }
 .intro {
+  position: relative;
   display: table;
   width: 100%;
   height: auto;
@@ -219,6 +220,15 @@ a:focus {
   background: url(/Content/gbg-2022/img/top2022.jpg);
   background-color: #524149;
   background-size: cover;
+}
+.intro:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  background: linear-gradient(131deg, rgba(0, 130, 102, 0.1), rgba(0, 130, 102, 0.3));
 }
 #videoBackground {
   position: fixed;
