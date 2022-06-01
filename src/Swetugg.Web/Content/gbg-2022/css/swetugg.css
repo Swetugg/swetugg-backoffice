@@ -4,7 +4,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #524149;
-  background-color: #F2FCFF;
+  background-color: #FFF;
 }
 html {
   width: 100%;
@@ -32,7 +32,7 @@ h1 {
   position: relative;
   letter-spacing: 0.1em;
   margin-bottom: 17px;
-  color: #A30046;
+  color: #008266;
 }
 h1.noSubtitle {
   margin-bottom: 50px;
@@ -83,7 +83,7 @@ p {
   }
 }
 a {
-  color: #A30046;
+  color: #008266;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -92,7 +92,7 @@ a {
 a:hover,
 a:focus {
   text-decoration: none;
-  color: #3d001a;
+  color: #001c16;
 }
 .light {
   font-weight: 400;
@@ -113,7 +113,7 @@ a:focus {
   color: #524149;
 }
 #old-conference a {
-  color: #F2FCFF;
+  color: #FFF;
   text-decoration: underline;
 }
 @media (max-width: 650px) {
@@ -136,7 +136,7 @@ a:focus {
   text-transform: uppercase;
   font-family: 'Montserrat';
   font-size: 14px;
-  background-color: #A30046;
+  background-color: #008266;
 }
 .navbar-brand {
   font-family: 'Rock Salt';
@@ -161,7 +161,7 @@ a:focus {
   padding-right: 10px;
 }
 .navbar-custom a {
-  color: #F2FCFF;
+  color: #FFF;
 }
 .navbar-custom .nav li a {
   -webkit-transition: background 0.3s ease-in-out;
@@ -178,7 +178,7 @@ a:focus {
 .navbar-toggle {
   padding: 4px 6px;
   font-size: 16px;
-  color: #F2FCFF;
+  color: #FFF;
 }
 .navbar-toggle:focus,
 .navbar-toggle:active {
@@ -200,7 +200,7 @@ a:focus {
     }*/
   .top-nav-collapse {
     padding: 0;
-    background-color: #A30046;
+    background-color: #008266;
   }
   /*.top-nav-collapse .navbar-brand {
         opacity: 1;
@@ -210,15 +210,25 @@ a:focus {
   }
 }
 .intro {
+  position: relative;
   display: table;
   width: 100%;
   height: auto;
   padding: 100px 0;
   text-align: center;
-  color: #F2FCFF;
+  color: #FFF;
   background: url(/Content/gbg-2022/img/top2022.jpg);
   background-color: #524149;
   background-size: cover;
+}
+.intro:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  background: linear-gradient(131deg, rgba(0, 130, 102, 0.1), rgba(0, 130, 102, 0.3));
 }
 #videoBackground {
   position: fixed;
@@ -239,12 +249,12 @@ a:focus {
 }
 .brand-heading {
   font-size: 40px;
-  color: #F2FCFF;
+  color: #FFF;
   padding-bottom: 30px;
   font-family: 'Rock Salt';
 }
 .brand-heading small {
-  color: #F2FCFF;
+  color: #FFF;
   position: relative;
   font-size: 40%;
 }
@@ -279,10 +289,10 @@ a:focus {
   height: 70px;
   margin-top: 15px;
   padding: 7px 16px;
-  border: 2px solid #F2FCFF;
+  border: 2px solid #FFF;
   border-radius: 35px;
   font-size: 40px;
-  color: #F2FCFF;
+  color: #FFF;
   background: transparent;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
@@ -292,7 +302,7 @@ a:focus {
 .btn-circle:hover,
 .btn-circle:focus {
   outline: none;
-  color: #F2FCFF;
+  color: #FFF;
   background: rgba(255, 255, 255, 0.1);
 }
 .page-scroll .btn-circle i.animated {
@@ -382,7 +392,7 @@ a:focus {
   padding: 50px inherit;
   color: #524149;
   /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-  background-color: #F2FCFF;
+  background-color: #FFF;
   background-size: cover;
   text-align: left;
   padding-top: 0px;
@@ -461,7 +471,7 @@ table.schema {
   font-size: 18px;
 }
 .schemacell-rad2v2 a {
-  color: #A30046;
+  color: #008266;
 }
 .schemacell-tid {
   font-size: 14px;
@@ -489,11 +499,11 @@ table.schema {
 }
 footer,
 .footer-section {
-  background-color: #F2FCFF;
+  background-color: #FFF;
 }
 .footer-rights-section {
   background-color: #524149;
-  color: #F2FCFF;
+  color: #FFF;
 }
 .footer-rights-section a {
   color: #FFF7FA;
@@ -525,28 +535,28 @@ footer,
   transition: all 0.3s ease-in-out;
 }
 .btn-default {
-  border: 1px solid #A30046;
-  color: #A30046;
+  border: 1px solid #008266;
+  color: #008266;
   background-color: transparent;
 }
 .btn-default:hover,
 .btn-default:focus {
-  border: 1px solid #A30046;
+  border: 1px solid #008266;
   outline: none;
-  color: #F2FCFF;
-  background-color: #A30046;
+  color: #FFF;
+  background-color: #008266;
 }
 .intro-body .btn-default {
-  border: 1px solid #F2FCFF;
-  color: #F2FCFF;
+  border: 1px solid #FFF;
+  color: #FFF;
   background-color: transparent;
 }
 .intro-body .btn-default:hover,
 .intro-body .btn-default:focus {
-  border: 1px solid #F2FCFF;
+  border: 1px solid #FFF;
   outline: none;
-  color: #A30046;
-  background-color: #F2FCFF;
+  color: #008266;
+  background-color: #FFF;
 }
 .btn-huge {
   padding: 25px;
@@ -554,6 +564,9 @@ footer,
 }
 .banner-buttons {
   margin-top: 0;
+}
+.banner-buttons > li {
+  margin-bottom: 20px;
 }
 @media (max-width: 1199px) {
   ul.banner-buttons {
@@ -563,7 +576,6 @@ footer,
 @media (max-width: 767px) {
   ul.banner-buttons > li {
     display: block;
-    margin-bottom: 20px;
     padding: 0;
   }
   ul.banner-buttons > li:last-child {
@@ -805,7 +817,7 @@ footer {
 }
 .blockquote-small p {
   font-size: 15px;
-  color: #A30046;
+  color: #008266;
 }
 .blockquote-small footer {
   padding: 0;

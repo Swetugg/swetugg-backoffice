@@ -111,7 +111,7 @@
             </div> *@
         </div>
         <div class="row text-center">
-            <div class="col-lg-10">
+            <div class="col-lg-8 col-lg-offset-2">
                 <p>
                     Looking for information or sessions from previous years? All material is archived here:
                 </p>
@@ -273,7 +273,7 @@ else
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <p>
+                        <p class="text-center">
                             We have started to select our speakers and will start publishing them soon.
                         </p>
                     </div>
@@ -610,10 +610,10 @@ else
             <div class="col-lg-6 col-lg-offset-3">
                 @if (ticketSalesOpen)
                 {
-                    <!-- Ticket Tailor Widget. Paste this in to your website where you want the widget to appear. Do no change the code or the widget may not work properly. -->
+                    <!-- Ticket Tailor Widget. Paste this into your website where you want the widget to appear. Do not change the code or the widget may not work properly. -->
                     <div class="tt-widget">
-                        <div class="tt-widget-fallback"><p><a href="https://www.tickettailor.com/checkout/view-event/id/313628/chk/44b5/ref/website_widget/" target="_blank">Click here to buy tickets</a><br /><small><a href="https://www.tickettailor.com?rf=wdg" class="tt-widget-powered">Sell tickets online with Ticket Tailor</a></small></p></div>
-                        <script src="https://media.tickettailor.com/js/widgets/min/tt-widget.js" data-url="https://www.tickettailor.com/checkout/view-event/id/313628/chk/44b5/ref/website_widget/" data-type="inline" data-inline-minimal="false" data-inline-show-logo="true" data-inline-bg-fill="true"></script>
+                        <div class="tt-widget-fallback"><p><a href="https://www.tickettailor.com/checkout/new-session/id/1428811/chk/6aa5/?ref=first-party" target="_blank">Click here to buy tickets</a><br /><small><a href="https://www.tickettailor.com?rf=wdg_55384" class="tt-widget-powered">Sell tickets online with Ticket Tailor</a></small></p></div>
+                        <script src="https://cdn.tickettailor.com/js/widgets/min/widget.js" data-url="https://www.tickettailor.com/checkout/new-session/id/1428811/chk/6aa5/" data-type="inline" data-inline-minimal="true" data-inline-show-logo="false" data-inline-bg-fill="false" data-inline-inherit-ref-from-url-param="" data-inline-ref="first-party"></script>
                     </div>
                     <!-- End of Ticket Tailor Widget -->
                     @*
@@ -638,14 +638,15 @@ else
                     *@
                     <p>
                         <h3>Invoice?</h3>
-                        Do you wish to buy more than five tickets and/or prefer an invoice? Contact us at <a href="mailto:economy@swetugg.se">economy@swetugg.se</a>. For 5 tickets or less
-                        we charge an extra fee of 100kr for invoices.
+                        Do you wish to buy more than five tickets and/or prefer an invoice?
+                        Use the form above and select the option <strong>Pay using invoice (more than 5 tickets)</strong> when completing your order. 
+                        For 5 tickets or less we charge an extra fee of 100kr for invoices.
                     </p>
                 }
                 else
                 {
                     <p>
-                        You can can start bying tickets at Wednesday 1 of June 12:00! (don't miss our early bird special)<br />
+                        You can can start buying tickets at Wednesday 1 of June 12:00! (don't miss our early bird special)<br />
                         Would you like a reminder? Add yourself to our mailing list!
                     </p>
 
@@ -799,24 +800,9 @@ else
                 </div>
 
                 <div class="member">
-                    <div class="member-name">Johanna Månsson Grahn</div>
-                    <div class="member-twitter">
-                        <a href="https://twitter.com/mittistormen">@@mittistormen</a>
-
-                    </div>
-                </div>
-
-                <div class="member">
                     <div class="member-name">Ulrika Bladh</div>
                     <div class="member-twitter">
                         <a href="https://twitter.com/mubladh">@@mubladh</a>
-                    </div>
-                </div>
-
-                <div class="member">
-                    <div class="member-name">Lena Pejgan Nyström Wiberg</div>
-                    <div class="member-twitter">
-                        <a href="https://twitter.com/LenaPejgan">@@LenaPejgan</a>
                     </div>
                 </div>
 
@@ -838,6 +824,20 @@ else
                     <div class="member-name">Rickard Öh</div>
                     <div class="member-twitter">
                         <a href="https://twitter.com/kalasp">@@kalasp</a>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="member-name">Johanna Månsson Grahn</div>
+                    <div class="member-twitter">
+                        <a href="https://twitter.com/mittistormen">@@mittistormen</a>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="member-name">Lena Pejgan Nyström Wiberg</div>
+                    <div class="member-twitter">
+                        <a href="https://twitter.com/LenaPejgan">@@LenaPejgan</a>
                     </div>
                 </div>
 
@@ -871,13 +871,10 @@ else
                     </p>
                 </div>
                 <div class="col-sm-8">
-                    @*<h4>Subway/bus stop</h4>
-        <p>Liljeholmen</p>
-        <h4>Coordinates</h4>
-        <p>
-            <a href="@locationUrl" target="_blank">59.3126, 18.0266</a>
-        </p>
-                    *@
+                    <h4>Coordinates</h4>
+                    <p>
+                        <a href="@locationUrl" target="_blank">57.6984445, 11.9761437</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -890,12 +887,12 @@ else
         });
     </script>
     @*<script>
-            initializeMap();
-        </script>
-    *@
+        initializeMap();
+    </script>*@
+    
 }
 
 @section meta {
-    <meta property="og:image" content="https://swetugg.se/content/gbg-2022/img/swetugg-rosa-kvadrat.png" />
+    <meta property="og:image" content="@Request.Url.GetLeftPart(UriPartial.Authority)/content/gbg-2022/img/swetugg-gron-kvadrat.png" />
     <meta property="og:description" content="Swetugg is coming to Göteborg! Join for the first time on the west coast. September 19:th 2022" />
 }

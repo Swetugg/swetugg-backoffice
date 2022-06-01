@@ -576,6 +576,24 @@
     <Content Include="Content\countdown\static\js\2.f15cb981.chunk.js" />
     <Content Include="Content\countdown\static\js\main.16aade0b.chunk.js" />
     <Content Include="Content\countdown\static\js\runtime-main.09a5ef67.js" />
+    <Content Include="Content\gbg-2022\android-icon-144x144.png" />
+    <Content Include="Content\gbg-2022\android-icon-192x192.png" />
+    <Content Include="Content\gbg-2022\android-icon-36x36.png" />
+    <Content Include="Content\gbg-2022\android-icon-48x48.png" />
+    <Content Include="Content\gbg-2022\android-icon-72x72.png" />
+    <Content Include="Content\gbg-2022\android-icon-96x96.png" />
+    <Content Include="Content\gbg-2022\apple-icon-114x114.png" />
+    <Content Include="Content\gbg-2022\apple-icon-120x120.png" />
+    <Content Include="Content\gbg-2022\apple-icon-144x144.png" />
+    <Content Include="Content\gbg-2022\apple-icon-152x152.png" />
+    <Content Include="Content\gbg-2022\apple-icon-180x180.png" />
+    <Content Include="Content\gbg-2022\apple-icon-57x57.png" />
+    <Content Include="Content\gbg-2022\apple-icon-60x60.png" />
+    <Content Include="Content\gbg-2022\apple-icon-72x72.png" />
+    <Content Include="Content\gbg-2022\apple-icon-76x76.png" />
+    <Content Include="Content\gbg-2022\apple-icon-precomposed.png" />
+    <Content Include="Content\gbg-2022\apple-icon.png" />
+    <Content Include="Content\gbg-2022\browserconfig.xml" />
     <Content Include="Content\gbg-2022\css\swetugg.css" />
     <Content Include="Content\gbg-2022\css\swetugg.min.css">
       <DependentUpon>swetugg.css</DependentUpon>
@@ -584,6 +602,10 @@
     <Content Include="Content\gbg-2022\css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
+    <Content Include="Content\gbg-2022\favicon-16x16.png" />
+    <Content Include="Content\gbg-2022\favicon-32x32.png" />
+    <Content Include="Content\gbg-2022\favicon-96x96.png" />
+    <Content Include="Content\gbg-2022\favicon.ico" />
     <Content Include="Content\gbg-2022\img\150_SwetuggOrigamiButterfly.png" />
     <Content Include="Content\gbg-2022\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
     <Content Include="Content\gbg-2022\img\icon-map.png" />
@@ -641,6 +663,7 @@
     <Content Include="Content\gbg-2022\img\sponsors\wcom-thumb.png" />
     <Content Include="Content\gbg-2022\img\sponsors\webstep-thumb.png" />
     <Content Include="Content\gbg-2022\img\swenug.png" />
+    <Content Include="Content\gbg-2022\img\swetugg-gron-kvadrat.png" />
     <Content Include="Content\gbg-2022\img\swetugg-rosa-avlang-mini.png" />
     <Content Include="Content\gbg-2022\img\swetugg-rosa-kvadrat.png" />
     <Content Include="Content\gbg-2022\img\swetugg_flickr.jpg" />
@@ -658,6 +681,10 @@
     <Content Include="Content\gbg-2022\img\unknown2.png" />
     <Content Include="Content\gbg-2022\js\now.js" />
     <Content Include="Content\gbg-2022\js\swetugg.js" />
+    <Content Include="Content\gbg-2022\ms-icon-144x144.png" />
+    <Content Include="Content\gbg-2022\ms-icon-150x150.png" />
+    <Content Include="Content\gbg-2022\ms-icon-310x310.png" />
+    <Content Include="Content\gbg-2022\ms-icon-70x70.png" />
     <Content Include="Content\sthlm-2020\css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
@@ -1192,6 +1219,7 @@
     <Content Include="Content\gbg-2022\css\swetugg.css.map" />
     <Content Include="Content\gbg-2022\css\swetugg.less" />
     <Content Include="Content\gbg-2022\css\variables.less" />
+    <Content Include="Content\gbg-2022\manifest.json" />
     <None Include="Content\swetugg-2016\css\swetugg.less" />
     <Content Include="Content\swetugg-2016\css\variables.less" />
     <Content Include="manifest.json" />
