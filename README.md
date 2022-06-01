@@ -7,7 +7,7 @@ A possibly working sample of this is published to http://swetuggpreview.azureweb
 
 Getting started
 ---------------
-You should be able to start up an empty version of the swetugg site simply by hitting F5 in Visual Studio. This will create a local database using Entity Framework Code First Migrations. However, since the database will be empty you won't be able to actually browse to the frontpage. The first thing you should do is to make sure the database is seeded with a default admin account:
+You should be able to start up an empty version of the swetugg site simply by hitting F5 in Visual Studio. This will create a local database using Entity Framework Code First Migrations, if this fails with the error message "failed with the operating system error 2(The system cannot find the file specified.).", then try removing your `App_Data` folder and recreate it from Visual Studio. However, since the database will be empty you won't be able to actually browse to the frontpage. The first thing you should do is to make sure the database is seeded with a default admin account:
 
 ### Seed the database
 In Visual Studio, open up the Package Manager Console and run:
