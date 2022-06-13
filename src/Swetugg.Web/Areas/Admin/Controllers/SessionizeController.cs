@@ -230,7 +230,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     foreach (var sessionizeSpeaker in sessionizeSession.speakers)
                     {
                         var id = Guid.Parse(sessionizeSpeaker.id);
-                        var speaker = await dbContext.Speakers.SingleOrDefaultAsync(s => s.SessionizeId.HasValue ? s.SessionizeId == id : false);
+                        var speaker = await dbContext.Speakers.SingleOrDefaultAsync(s => s.SessionizeId.HasValue && s.ConferenceId == ConferenceId ? s.SessionizeId == id : false);
                         if (speaker != null)
                         {
                             var ss = new SessionSpeaker
