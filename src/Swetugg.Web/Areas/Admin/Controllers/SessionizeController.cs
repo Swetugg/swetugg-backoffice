@@ -38,7 +38,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             var Speakers = await GetSpeakerFromSessionize();
 
             var speakersAllreadyInDatabase = dbContext.Speakers
-                .Where(s => s.SessionizeId.HasValue)
+                .Where(s => s.SessionizeId.HasValue && s.ConferenceId == ConferenceId)
                 .Select(s => s.SessionizeId.Value);
 
             m.Speakers = Speakers.Select(s => new SpeakerSync
@@ -125,7 +125,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             foreach (var sessionizeSpeaker in sessionizeSpeakers)
             {
                 var sessionizeId = Guid.Parse(sessionizeSpeaker.id);
-                var speakerAlreadyExist = dbContext.Speakers.Any(s => s.SessionizeId == sessionizeId);
+                var speakerAlreadyExist = dbContext.Speakers.Any(s => s.SessionizeId == sessionizeId && s.ConferenceId == ConferenceId);
                 if (speakerAlreadyExist)
                     continue;
 
