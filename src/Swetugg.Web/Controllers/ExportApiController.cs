@@ -109,7 +109,7 @@ namespace Swetugg.Web.Controllers
 
     }
 
-    public class ExportApiController : Controller
+    public class ExportApiController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IConferenceService conferenceService;
 
@@ -125,7 +125,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/export/everens")]
-        public async Task<ActionResult> Everens()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Everens()
         {
             var conferenceId = ConferenceId;
 
@@ -222,7 +222,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/export/speaker-csv")]
-        public async Task<ActionResult> SpeakerCsv(string separator)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> SpeakerCsv(string separator)
         {
             var conferenceId = ConferenceId;
             var conference = Conference;
@@ -261,7 +261,7 @@ namespace Swetugg.Web.Controllers
 
         [Route("{conferenceSlug}/export/cfp-speaker-csv")]
         [Authorize(Roles = "ConferenceManager")]
-        public async Task<ActionResult> CfpSpeakerCsv(string separator)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> CfpSpeakerCsv(string separator)
         {
             var conferenceId = ConferenceId;
             var speakersQuery = dbContext.CfpSpeakers

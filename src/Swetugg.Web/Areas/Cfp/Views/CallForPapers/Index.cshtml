@@ -1,4 +1,5 @@
-﻿@using Swetugg.Web.Models
+@using Microsoft.AspNetCore.Mvc.Razor
+@using Swetugg.Web.Models
 @using Swetugg.Web.Helpers
 @model IEnumerable<Swetugg.Web.Models.Conference>
 
@@ -12,40 +13,41 @@
     <li class="active">Call For Papers</li>
 </ol>
 
-@helper CfpConference(Conference conference)
-{
-    var today = conference.CurrentTime().Date;
-    <div class="media">
-        <div class="media-left">
-            <img class="media-object" src="" />
-        </div>
-        <div class="media-body">
-            <h4 class="media-heading">
-                @conference.Name
-                @if (conference.Start.HasValue && conference.End.HasValue)
-                {
-                    <small>@conference.Start.Value.ToString("yyyy-MM-dd") - @conference.End.Value.ToString("yyyy-MM-dd")</small>
-                }
-            </h4>
-            <p>
-                @Html.Raw(Html.FromMarkdown(conference.Description))
-            </p>
-
-            @if (conference.CfpStart.HasValue && conference.CfpStart > today)
-            {
-                <small>Call For Paper opens on @conference.CfpStart.Value.ToString("yyyy-MM-dd")</small><br/>
-            }
-            @if (conference.CfpEnd.HasValue && conference.CfpEnd >= today)
-            {
-                <small>Call For Paper closes on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
-            }
-            @if (conference.CfpEnd.HasValue && conference.CfpEnd < today)
-            {
-                <small>Call For Paper closed on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
-            }
-        </div>
-    </div>
-}
+@{ HelperResult CfpConference(Conference conference)
+	{
+	    var today = conference.CurrentTime().Date;
+	    <div class="media">
+	        <div class="media-left">
+	            <img class="media-object" src="" />
+	        </div>
+	        <div class="media-body">
+	            <h4 class="media-heading">
+	                @conference.Name
+	                @if (conference.Start.HasValue && conference.End.HasValue)
+	                {
+	                    <small>@conference.Start.Value.ToString("yyyy-MM-dd") - @conference.End.Value.ToString("yyyy-MM-dd")</small>
+	                }
+	            </h4>
+	            <p>
+	                @Html.Raw(Html.FromMarkdown(conference.Description))
+	            </p>
+	
+	            @if (conference.CfpStart.HasValue && conference.CfpStart > today)
+	            {
+	                <small>Call For Paper opens on @conference.CfpStart.Value.ToString("yyyy-MM-dd")</small><br/>
+	            }
+	            @if (conference.CfpEnd.HasValue && conference.CfpEnd >= today)
+	            {
+	                <small>Call For Paper closes on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
+	            }
+	            @if (conference.CfpEnd.HasValue && conference.CfpEnd < today)
+	            {
+	                <small>Call For Paper closed on @conference.CfpEnd.Value.ToString("yyyy-MM-dd")</small><br/>
+	            }
+	        </div>
+	    </div>
+		return new HelperResult(w => Task.CompletedTask);
+} }
 
 <h2>Call For Papers</h2>
 <p>

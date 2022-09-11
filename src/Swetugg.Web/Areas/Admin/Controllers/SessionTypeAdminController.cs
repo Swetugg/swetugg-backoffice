@@ -15,7 +15,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/session-types")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferenceId = ConferenceId;
             var sessionTypes = from s in dbContext.SessionTypes
@@ -28,7 +28,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/session-types/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var sessionType = await dbContext.SessionTypes.SingleAsync(s => s.Id == id);
             return View(sessionType);
@@ -37,7 +37,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/session-types/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, SessionType sessionType)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, SessionType sessionType)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/session-types/new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -66,7 +66,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/session-types/new", Order = 2)]
-        public async Task<ActionResult> Edit(SessionType sessionType)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(SessionType sessionType)
         {
             if (ModelState.IsValid)
             {

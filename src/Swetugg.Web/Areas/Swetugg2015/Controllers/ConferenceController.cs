@@ -9,7 +9,7 @@ using Swetugg.Web.Services;
 namespace Swetugg.Web.Areas.Swetugg2015.Controllers
 {
     [RouteArea("Swetugg2015", AreaPrefix = "swetugg-2015")]
-    public class ConferenceController : Controller
+    public class ConferenceController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IConferenceService conferenceService;
 
@@ -27,7 +27,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
             this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
         }
 
-        protected override void OnResultExecuting(ResultExecutingContext filterContext)
+        protected override void OnResultExecuting(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext filterContext)
         {
             ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
             ViewData["FacebookAppId"] = facebookAppId;
@@ -35,7 +35,7 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         }
 
         [Route("")]
-        public ActionResult Index()
+        public Microsoft.AspNetCore.Mvc.ActionResult Index()
         {
             var conf = Conference;
 
@@ -58,20 +58,20 @@ namespace Swetugg.Web.Areas.Swetugg2015.Controllers
         }
 
         [Route("code-of-conduct")]
-        public ActionResult CodeOfConduct()
+        public Microsoft.AspNetCore.Mvc.ActionResult CodeOfConduct()
         {
             ViewData["Conference"] = Conference;
             return View();
         }
 
         [Route("speakers/{speakerSlug}")]
-        public ActionResult Speaker(string speakerSlug)
+        public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string speakerSlug)
         {
             var speaker = conferenceService.GetSpeakerBySlug(ConferenceId, speakerSlug);
             return View(speaker);
         }
 
-        protected override void OnActionExecuted(ActionExecutedContext context)
+        protected override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
         {
             ViewBag.Conference = Conference;
             base.OnActionExecuted(context);

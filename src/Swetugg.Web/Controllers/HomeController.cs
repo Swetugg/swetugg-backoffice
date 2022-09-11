@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace Swetugg.Web.Controllers
 {
-    public class HomeController : Controller
-	{
-		public ActionResult Index()
+    public class HomeController : Microsoft.AspNetCore.Mvc.Controller
+    {
+		public Microsoft.AspNetCore.Mvc.ActionResult Index()
 		{
 			return RedirectToAction("Index", "Conference", new { Area = "gbg2022"});
 		}
 
 	    [Route("techdays")]
-	    public ActionResult TechDays()
+	    public Microsoft.AspNetCore.Mvc.ActionResult TechDays()
 	    {
 	        var ticketUrl = ConfigurationManager.AppSettings["Ticket_Url_Full"];
 
@@ -22,19 +22,19 @@ namespace Swetugg.Web.Controllers
 	    }
 
         [Route("now")]
-        public ActionResult Now()
+        public Microsoft.AspNetCore.Mvc.ActionResult Now()
         {
             return RedirectToAction("Now", "Conference", new { Area = "gbg2022" });
         }
 
         [Route("code-of-conduct")]
-        public ActionResult CodeOfConduct()
+        public Microsoft.AspNetCore.Mvc.ActionResult CodeOfConduct()
         {
             return RedirectToAction("CodeOfConduct", "Conference", new { Area = "gbg2022" });
         }
 
         [Route("start")]
-	    public ActionResult Start()
+	    public Microsoft.AspNetCore.Mvc.ActionResult Start()
         {
             return View();
         }

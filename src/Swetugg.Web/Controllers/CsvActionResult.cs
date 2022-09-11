@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Swetugg.Web.Controllers
 {
-    public class CsvActionResult<T> : FileResult
+    public class CsvActionResult<T> : Microsoft.AspNetCore.Mvc.FileResult
     {
         private readonly IList<T> _list;
         private readonly char _separator;

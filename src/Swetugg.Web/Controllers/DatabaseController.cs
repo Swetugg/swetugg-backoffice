@@ -8,17 +8,17 @@ namespace Swetugg.Web.Controllers
 {
     [Authorize(Roles = "Administrator")]
     [RequireHttps]
-    public class DatabaseController : Controller
+    public class DatabaseController : Microsoft.AspNetCore.Mvc.Controller
     {
 
         [Route("backups")]
-        public async Task<ActionResult> Backups()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Backups()
         {
             return View();
         }
 
         [Route("migration")]
-        public ActionResult Migrations(string errorMsg)
+        public Microsoft.AspNetCore.Mvc.ActionResult Migrations(string errorMsg)
         {
             var configuration = new Configuration();
             var migrator = new DbMigrator(configuration);
@@ -30,7 +30,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("migration/run")]
-        public ActionResult RunMigrations()
+        public Microsoft.AspNetCore.Mvc.ActionResult RunMigrations()
         {
             var configuration = new Configuration();
             var migrator = new DbMigrator(configuration);

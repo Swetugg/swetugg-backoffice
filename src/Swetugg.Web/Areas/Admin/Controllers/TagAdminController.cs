@@ -15,7 +15,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/tags")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferenceId = ConferenceId;
             var tags = from s in dbContext.Tags
@@ -28,7 +28,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/tags/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var tag = await dbContext.Tags.SingleAsync(s => s.Id == id);
             return View(tag);
@@ -37,7 +37,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/tags/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, Tag tag)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, Tag tag)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/tags/new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -66,7 +66,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/tags/new", Order = 2)]
-        public async Task<ActionResult> Edit(Tag tag)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(Tag tag)
         {
             if (ModelState.IsValid)
             {

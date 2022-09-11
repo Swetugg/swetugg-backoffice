@@ -30,7 +30,7 @@ namespace Swetugg.Web.Controllers
         public string Description { get; set; }
     }
 
-    public class ScheduleApiController : Controller
+    public class ScheduleApiController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IConferenceService conferenceService;
 
@@ -47,7 +47,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/schedule-feed")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var sessions = await GetSessions();
             var roomSlug = Request.QueryString["room"];
@@ -87,7 +87,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/slots-feed")]
-        public ActionResult GetSlots()
+        public Microsoft.AspNetCore.Mvc.ActionResult GetSlots()
         {
             var slots = this.conferenceService.GetSlotsAndSessions(this.ConferenceId);
             var rooms = this.conferenceService.GetRooms(this.ConferenceId);

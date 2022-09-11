@@ -29,7 +29,7 @@ namespace Swetugg.Web.DependencyResolution {
         #region Public Methods and Operators
 
         public void Process(Type type, Registry registry) {
-            if (type.CanBeCastTo<Controller>() && !type.IsAbstract) {
+            if (type.CanBeCastTo<Microsoft.AspNetCore.Mvc.Controller>() && !type.IsAbstract) {
                 registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
             }
         }
@@ -39,7 +39,7 @@ namespace Swetugg.Web.DependencyResolution {
             var typeList = types.AllTypes();
             foreach (var type in typeList)
             {
-                if (type.CanBeCastTo<Controller>() && !type.IsAbstract)
+                if (type.CanBeCastTo<Microsoft.AspNetCore.Mvc.Controller>() && !type.IsAbstract)
                 {
                     registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
                 }

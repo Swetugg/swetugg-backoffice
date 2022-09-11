@@ -5,7 +5,7 @@ using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Controllers
 {
-    public class LegacyRedirectController : Controller
+    public class LegacyRedirectController : Microsoft.AspNetCore.Mvc.Controller
     {
         private ApplicationDbContext _dbContext;
 
@@ -15,7 +15,7 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("Speakers/Details/{id}")]
-        public ActionResult SpeakerDetails(int id)
+        public Microsoft.AspNetCore.Mvc.ActionResult SpeakerDetails(int id)
         {
             // Quick hack to get ID:s correct from imported data.
             if (id > 3)

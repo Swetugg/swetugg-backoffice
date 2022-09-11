@@ -1,4 +1,5 @@
-﻿@using Swetugg.Web.Models
+@using Microsoft.AspNetCore.Mvc.Razor
+@using Swetugg.Web.Models
 @model Swetugg.Web.Models.CfpSpeaker
 @{
     Conference conference = ViewBag.Conference;
@@ -14,18 +15,19 @@
 
 @Html.ValidationSummary()
 
-@helper Popover(string title, string content)
-{
-    <a class=""
-       href=""
-       onclick="return false"
-       data-toggle="popover"
-       data-placement="top"
-       data-trigger="hover"
-       title="@title"
-       data-html="true"
-       data-content="@content"><i class="glyphicon glyphicon-info-sign"></i></a>
-}
+@{ HelperResult Popover(string title, string content)
+	{
+	    <a class=""
+	       href=""
+	       onclick="return false"
+	       data-toggle="popover"
+	       data-placement="top"
+	       data-trigger="hover"
+	       title="@title"
+	       data-html="true"
+	       data-content="@content"><i class="glyphicon glyphicon-info-sign"></i></a>
+		return new HelperResult(w => Task.CompletedTask);
+} }
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3>Speaker information</h3>

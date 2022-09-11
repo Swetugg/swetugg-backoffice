@@ -17,7 +17,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
     [RequireHttps]
     [RouteArea("Cfp", AreaPrefix = "cfp")]
     [Authorize()]
-    public class CallForPapersController : Controller
+    public class CallForPapersController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IConferenceService _conferenceService;
         private readonly IImageUploader _imageUploader;
@@ -61,7 +61,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
         [Route("")]
         [OverrideAuthorization]
-        public ActionResult Index()
+        public Microsoft.AspNetCore.Mvc.ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
             var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End >= ConferenceInfoExtensions.CurrentTime(c).Date);
@@ -74,7 +74,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
 
         [Route("{conferenceSlug}/vip-invite/{code}")]
-        public async Task<ActionResult> Invite(string conferenceSlug, string code)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Invite(string conferenceSlug, string code)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
 
@@ -97,7 +97,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         }
 
         [Route("{conferenceSlug}")]
-        public ActionResult Conference(string conferenceSlug)
+        public Microsoft.AspNetCore.Mvc.ActionResult Conference(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
@@ -119,7 +119,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         }
 
         [Route("{conferenceSlug}/speaker")]
-        public ActionResult Speaker(string conferenceSlug)
+        public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
@@ -146,7 +146,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/speaker")]
         [HttpPost]
-        public ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, HttpPostedFileBase imageFile)
+        public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, HttpPostedFileBase imageFile)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
@@ -227,7 +227,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
         [Route("{conferenceSlug}/session")]
         #pragma warning disable 0108
-        public ActionResult Session(string conferenceSlug, int? id)
+        public Microsoft.AspNetCore.Mvc.ActionResult Session(string conferenceSlug, int? id)
         #pragma warning restore 0108
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
@@ -262,7 +262,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         [Route("{conferenceSlug}/session")]
         [HttpPost]
         #pragma warning disable 0108
-        public ActionResult Session(string conferenceSlug, int? id, CfpSession session)
+        public Microsoft.AspNetCore.Mvc.ActionResult Session(string conferenceSlug, int? id, CfpSession session)
         #pragma warning restore 0108
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
@@ -317,7 +317,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/delete-session")]
-        public ActionResult DeleteSession(string conferenceSlug, int id)
+        public Microsoft.AspNetCore.Mvc.ActionResult DeleteSession(string conferenceSlug, int id)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();
@@ -336,7 +336,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/delete-speaker")]
-        public ActionResult DeleteSpeaker(string conferenceSlug)
+        public Microsoft.AspNetCore.Mvc.ActionResult DeleteSpeaker(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
             var userId = User.Identity.GetUserId();

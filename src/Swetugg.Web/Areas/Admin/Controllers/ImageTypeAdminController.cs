@@ -15,7 +15,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/image-types")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferenceId = ConferenceId;
             var imageTypes = from s in dbContext.ImageTypes
@@ -27,7 +27,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/image-types/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var imageType = await dbContext.ImageTypes.SingleAsync(s => s.Id == id);
             return View(imageType);
@@ -36,7 +36,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/image-types/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, ImageType imageType)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, ImageType imageType)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/image-types/new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -65,7 +65,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/image-types/new", Order = 2)]
-        public async Task<ActionResult> Edit(ImageType imageType)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(ImageType imageType)
         {
             if (ModelState.IsValid)
             {

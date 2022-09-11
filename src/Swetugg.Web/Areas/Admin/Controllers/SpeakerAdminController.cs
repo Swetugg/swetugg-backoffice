@@ -25,7 +25,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/speakers")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferenceId = ConferenceId;
             var speakers = from s in dbContext.Speakers
@@ -38,7 +38,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/speakers/{id:int}")]
-        public async Task<ActionResult> Speaker(int id, string errorMsg)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Speaker(int id, string errorMsg)
         {
             var conferenceId = ConferenceId;
             var speaker = await dbContext.Speakers
@@ -59,7 +59,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/speakers/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var speaker = await dbContext.Speakers.SingleAsync(s => s.Id == id);
             return View(speaker);
@@ -68,7 +68,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, Speaker speaker)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, Speaker speaker)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/speakers/new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -98,7 +98,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/new", Order = 2)]
-        public async Task<ActionResult> Edit(Speaker speaker)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(Speaker speaker)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/delete/{id:int}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Delete(int id)
         {
             var speaker = await dbContext.Speakers.Include(sp => sp.Sessions).Include(sp => sp.CfpSpeakers)
                 .SingleAsync(s => s.Id == id);
@@ -143,7 +143,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/addtag/{id:int}")]
-        public async Task<ActionResult> AddTag(int id, int tagId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> AddTag(int id, int tagId)
         {
             var speaker = await dbContext.Speakers.Include(m => m.Tags).SingleAsync(s => s.Id == id);
             var tag = await dbContext.Tags.FirstAsync(t => t.Id == tagId);
@@ -156,7 +156,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/removetag/{id:int}")]
-        public async Task<ActionResult> RemoveTag(int id, int tagId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> RemoveTag(int id, int tagId)
         {
             var speaker = await dbContext.Speakers.Include(m => m.Tags).Where(s => s.Id == id).SingleAsync();
 
@@ -175,7 +175,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/speakers/{speakerId:int}/image/{id:int}")]
-        public async Task<ActionResult> Image(int speakerId, int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Image(int speakerId, int id)
         {
             var conferenceId = ConferenceId;
             var speaker = await dbContext.Speakers.Include(sp => sp.Images.Select(i => i.ImageType))
@@ -192,7 +192,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/{speakerId:int}/image/new")]
-        public async Task<ActionResult> NewImage(int speakerId, SpeakerImage speakerImage, HttpPostedFileBase imageFile)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> NewImage(int speakerId, SpeakerImage speakerImage, HttpPostedFileBase imageFile)
         {
             var speaker = await dbContext.Speakers.Include(sp => sp.Images.Select(i => i.ImageType))
                 .SingleAsync(s => s.Id == speakerId);
@@ -244,7 +244,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/speakers/{speakerId:int}/image/{id:int}/delete")]
-        public async Task<ActionResult> DeleteImage(int id, int speakerId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> DeleteImage(int id, int speakerId)
         {
             var speaker = await dbContext.Speakers.Include(sp => sp.Images.Select(i => i.ImageType))
                 .SingleAsync(s => s.Id == speakerId);

@@ -31,7 +31,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
 
         [Route("{conferenceSlug}/Sessionize")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var m = new SessionizeSync();
 
@@ -118,7 +118,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/Sessionize/ImportSpeaker")]
-        public async Task<ActionResult> ImportSpeaker()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> ImportSpeaker()
         {
             var sessionizeSpeakers = await GetSpeakerFromSessionize();
 
@@ -197,7 +197,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/Sessionize/ImportSession")]
-        public async Task<ActionResult> ImportSession()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> ImportSession()
         {
             var sessionizeSessionGroups = await GetSessionsFromSessionize();
 

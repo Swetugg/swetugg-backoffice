@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Caching;
 using Swetugg.Web.Models;
+using Swetugg.Web;
 
 namespace Swetugg.Web.Services
 {
@@ -31,7 +32,7 @@ namespace Swetugg.Web.Services
         private T FromCache<T>(string key, Func<T> fetch)
             where T: class
         {
-            var httpCache = HttpContext.Current.Cache;
+            var httpCache = HttpContextHelper.Current.Cache;
             var cached = (T)httpCache.Get(key);
             if (cached == null)
             {

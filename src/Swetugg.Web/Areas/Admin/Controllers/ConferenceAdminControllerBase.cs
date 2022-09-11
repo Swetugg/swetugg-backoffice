@@ -7,7 +7,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     [RequireHttps]
     [Authorize(Roles = "ConferenceManager")]
     [RouteArea("Admin", AreaPrefix = "admin")]
-    public class ConferenceAdminControllerBase : Controller
+    public class ConferenceAdminControllerBase : Microsoft.AspNetCore.Mvc.Controller
     {
         protected ApplicationDbContext dbContext;
 
@@ -20,7 +20,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             this.dbContext = dbContext;
         }
 
-        protected override void OnActionExecuted(ActionExecutedContext context)
+        protected override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
         {
             ViewBag.Conference = Conference;
             base.OnActionExecuted(context);

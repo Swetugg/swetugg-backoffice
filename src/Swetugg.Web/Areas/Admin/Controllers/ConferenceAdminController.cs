@@ -21,7 +21,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     [Authorize(Roles = "ConferenceManager")]
     [RouteArea("Admin", AreaPrefix = "admin")]
     [RoutePrefix("conferences")]
-    public class ConferenceAdminController : Controller
+    public class ConferenceAdminController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -33,7 +33,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [OverrideAuthorization()]
         [Authorize()]
         [Route("")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferences = await _dbContext.Conferences.OrderByDescending(c => c.Start).ToListAsync();
             return View(conferences);
@@ -42,14 +42,14 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [OverrideAuthorization()]
         [Authorize()]
         [Route("{id:int}")]
-        public async Task<ActionResult> Conference(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Conference(int id)
         {
             var conferences = await _dbContext.Conferences.SingleAsync(c => c.Id == id);
             return View(conferences);
         }
 
         [Route("edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var conference = await _dbContext.Conferences.SingleAsync(c => c.Id == id);
             return View(conference);
@@ -58,7 +58,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, Conference conference)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, Conference conference)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
         [HttpGet]
         [Route("import/{id:int}")]
-        public async Task<ActionResult> Import(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Import(int id)
         {
             var conference = await _dbContext.Conferences.SingleAsync(c => c.Id == id);
             return View(new ConferenceImportModel() { Conference = conference});
@@ -88,7 +88,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("import/{id:int}")]
-        public async Task<ActionResult> Import(int id, ConferenceImportModel conferenceImportModel)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Import(int id, ConferenceImportModel conferenceImportModel)
         {
             using (var oldSwetugg = new SqlConnection(conferenceImportModel.ConnectionString))
             {
@@ -237,7 +237,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -245,7 +245,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("new", Order = 2)]
-        public async Task<ActionResult> Edit(Conference conference)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(Conference conference)
         {
             if (ModelState.IsValid)
             {
@@ -266,7 +266,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("delete/{id:int}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Delete(int id)
         {
             var conf = await _dbContext.Conferences.SingleOrDefaultAsync(c => c.Id == id);
 

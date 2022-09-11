@@ -28,7 +28,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
 		[Route("{conferenceSlug}/schedule")]
-        public async Task<ActionResult> Index(int? slotId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index(int? slotId)
         {
             var allRooms = await GetAllRooms();
             var unplacedSessions = await GetUnplacedSessions();
@@ -45,7 +45,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Slot(int id, DateTime day, Slot slot)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Slot(int id, DateTime day, Slot slot)
         {
             slot.Start = day.Date + slot.Start.TimeOfDay;
             slot.End = day.Date + slot.End.TimeOfDay;
@@ -79,7 +79,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/new", Order = 2)]
-        public async Task<ActionResult> Slot(DateTime day, Slot slot)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Slot(DateTime day, Slot slot)
         {
             slot.Start = day.Date + slot.Start.TimeOfDay;
             slot.End = day.Date + slot.End.TimeOfDay;
@@ -111,7 +111,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/{id:int}/delete")]
-        public async Task<ActionResult> DeleteSlot(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> DeleteSlot(int id)
         {
             var slot = await dbContext.Slots.Include(s => s.RoomSlots).SingleAsync(s => s.Id == id);
             foreach (var roomSlot in slot.RoomSlots)
@@ -128,7 +128,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/{slotId:int}/room/{roomId:int}/assign")]
-        public async Task<ActionResult> AssignRoomSlot(int slotId, int roomId, RoomSlot roomSlot)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> AssignRoomSlot(int slotId, int roomId, RoomSlot roomSlot)
         {
             if (ModelState.IsValid)
             {
@@ -152,7 +152,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/schedule/slot/{slotId:int}/room/{roomId:int}/delete")]
-        public async Task<ActionResult> DeleteRoomSlot(int slotId, int roomId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> DeleteRoomSlot(int slotId, int roomId)
         {
             var roomSlot =
                 await dbContext.RoomSlots.SingleOrDefaultAsync(rs => rs.RoomId == roomId && rs.SlotId == slotId);

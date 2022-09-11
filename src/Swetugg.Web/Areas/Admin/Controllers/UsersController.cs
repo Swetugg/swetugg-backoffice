@@ -10,7 +10,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     [Authorize(Roles = "Administrator")]
     [RouteArea("Admin", AreaPrefix = "admin")]
     [RoutePrefix("users")]
-    public class UsersController : Controller
+    public class UsersController : Microsoft.AspNetCore.Mvc.Controller
     {
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
@@ -50,7 +50,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var users = await UserManager.Users.ToListAsync();
             var roles = await RoleManager.Roles.ToListAsync();
@@ -63,7 +63,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("set-roles")]
-        public async Task<ActionResult> SetRoles(string userId, List<string> roles)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> SetRoles(string userId, List<string> roles)
         {
             var currentRoles = await UserManager.GetRolesAsync(userId);
             roles = roles ?? new List<string>();
@@ -92,7 +92,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("delete")]
-        public async Task<ActionResult> Delete(string userId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Delete(string userId)
         {
             var user = await UserManager.Users.FirstAsync(u => u.Id == userId);
             var result = await UserManager.DeleteAsync(user);

@@ -8,12 +8,12 @@ using System.Web.Mvc;
 
 namespace Swetugg.Web.Controllers
 {
-    public class NowController : Controller
+    public class NowController : Microsoft.AspNetCore.Mvc.Controller
     {
         // GET: Now
         [Route("{conferenceSlug}/now-feed")]
         [HttpGet]
-        public async Task<ActionResult> GetNowFeed()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> GetNowFeed()
         {
             await Task.Yield();
 

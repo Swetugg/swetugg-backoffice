@@ -14,7 +14,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/rooms")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferenceId = ConferenceId;
             var rooms = from r in dbContext.Rooms
@@ -27,7 +27,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
 		[Route("{conferenceSlug}/rooms/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var room = await dbContext.Rooms.SingleAsync(s => s.Id == id);
             return View(room);
@@ -36,7 +36,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/rooms/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, Room room)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, Room room)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
 		[Route("{conferenceSlug}/rooms/new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -65,7 +65,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/rooms/new", Order = 2)]
-        public async Task<ActionResult> Edit(Room room)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(Room room)
         {
             if (ModelState.IsValid)
             {

@@ -30,7 +30,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp/api/sessions")]
-        public ActionResult Sessions()
+        public Microsoft.AspNetCore.Mvc.ActionResult Sessions()
         {
             var l = GetSessions().ToList();
             l.ForEach(s => { if (string.IsNullOrWhiteSpace(s.Status)) s.Status = "-"; });
@@ -39,7 +39,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp/api/sessions-csv")]
-        public ActionResult SessionsCsv()
+        public Microsoft.AspNetCore.Mvc.ActionResult SessionsCsv()
         {
             var sessions = GetSessions();
 
@@ -85,7 +85,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp/list")]
-        public ActionResult List()
+        public Microsoft.AspNetCore.Mvc.ActionResult List()
         {
             ViewBag.Conference = Conference;
             return View();
@@ -94,7 +94,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/cfp/update")]
         [HttpPost]
-        public ActionResult Update(CfpSessionData data)
+        public Microsoft.AspNetCore.Mvc.ActionResult Update(CfpSessionData data)
         {
             var sessionToUpdate = dbContext.CfpSessions
                 .Include(s => s.Speaker)

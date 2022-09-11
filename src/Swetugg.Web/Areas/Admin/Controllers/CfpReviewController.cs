@@ -38,7 +38,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp")]
-        public async Task<ActionResult> Index(string orderBy, bool? descending)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index(string orderBy, bool? descending)
         {
             var conferenceId = ConferenceId;
             var speakersQuery = dbContext.CfpSpeakers
@@ -85,7 +85,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/cfp/speaker/{id:int}")]
-        public async Task<ViewResult> Speaker(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ViewResult> Speaker(int id)
         {
             var conferenceId = ConferenceId;
             var speaker = await dbContext.CfpSpeakers
@@ -99,7 +99,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
         [Route("{conferenceSlug}/cfp/session/{id:int}")]
         #pragma warning disable 0108
-        public async Task<ViewResult> Session(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ViewResult> Session(int id)
         #pragma warning restore 0108
         {
             var conferenceId = ConferenceId;
@@ -146,7 +146,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/promote-sessions")]
-        public async Task<ActionResult> PromoteSessions(int id, List<int> sessionIds)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> PromoteSessions(int id, List<int> sessionIds)
         {
             var conferenceId = ConferenceId;
 
@@ -185,7 +185,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/update")]
-        public async Task<ActionResult> Update(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Update(int id)
         {
             var conferenceId = ConferenceId;
 

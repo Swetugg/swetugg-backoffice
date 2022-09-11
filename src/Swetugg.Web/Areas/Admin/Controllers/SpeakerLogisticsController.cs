@@ -27,14 +27,14 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 		}
 
 		[Route("{conferenceSlug}/speaker-logistics/list")]
-		public ActionResult List()
+		public Microsoft.AspNetCore.Mvc.ActionResult List()
 		{
 			ViewBag.Conference = Conference;
 			return View();
 		}
 
 		[Route("{conferenceSlug}/api/speaker-logistics")]
-		public ActionResult Speakers()
+		public Microsoft.AspNetCore.Mvc.ActionResult Speakers()
 		{
 			var speakers = dbContext.Speakers
 				.Include("CfpSpeakers")

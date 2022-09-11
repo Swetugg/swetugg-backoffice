@@ -23,7 +23,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/sponsors")]
-        public async Task<ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
             var conferenceId = ConferenceId;
             var sponsors = from s in dbContext.Sponsors
@@ -36,7 +36,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
 		[Route("{conferenceSlug}/sponsors/{id:int}")]
-        public async Task<ActionResult> Sponsor(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Sponsor(int id)
         {
             var conferenceId = ConferenceId;
             var sponsor = await dbContext.Sponsors
@@ -50,7 +50,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
 		[Route("{conferenceSlug}/sponsors/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id)
         {
             var sponsor = await dbContext.Sponsors.SingleAsync(s => s.Id == id);
             return View(sponsor);
@@ -59,7 +59,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/sponsors/edit/{id:int}", Order = 1)]
-        public async Task<ActionResult> Edit(int id, Sponsor sponsor)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(int id, Sponsor sponsor)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
 		[Route("{conferenceSlug}/sponsors/new", Order = 2)]
-        public ActionResult Edit()
+        public Microsoft.AspNetCore.Mvc.ActionResult Edit()
         {
             return View();
         }
@@ -88,7 +88,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
 		[Route("{conferenceSlug}/sponsors/new", Order = 2)]
-        public async Task<ActionResult> Edit(Sponsor sponsor)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Edit(Sponsor sponsor)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         }
 
         [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/{id:int}")]
-        public async Task<ActionResult> Image(int sponsorId, int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Image(int sponsorId, int id)
         {
             var conferenceId = ConferenceId;
             var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
@@ -125,7 +125,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/new")]
-        public async Task<ActionResult> NewImage(int sponsorId, SponsorImage sponsorImage, HttpPostedFileBase imageFile)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> NewImage(int sponsorId, SponsorImage sponsorImage, HttpPostedFileBase imageFile)
         {
             var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
                 .SingleAsync(s => s.Id == sponsorId);
@@ -177,7 +177,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/{id:int}/delete")]
-        public async Task<ActionResult> DeleteImage(int id, int sponsorId)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> DeleteImage(int id, int sponsorId)
         {
             var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
                 .SingleAsync(s => s.Id == sponsorId);
@@ -193,7 +193,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sponsors/delete/{id:int}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Delete(int id)
         {
             var sponsor = await dbContext.Sponsors.SingleAsync(sp => sp.Id == id);
 
