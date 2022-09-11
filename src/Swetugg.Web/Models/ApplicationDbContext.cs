@@ -1,16 +1,12 @@
-﻿using System.Configuration;
-using System.Data.Entity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 using Configuration = Swetugg.Web.Migrations.Configuration;
 
 namespace Swetugg.Web.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
 
         public DbSet<Conference> Conferences { get; set; }
 
@@ -53,7 +49,7 @@ namespace Swetugg.Web.Models
             return new ApplicationDbContext();
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<RoomSlot>().HasRequired(rs => rs.Room).WithMany(r => r.RoomSlots)

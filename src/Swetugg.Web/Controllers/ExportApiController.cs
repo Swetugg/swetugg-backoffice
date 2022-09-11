@@ -4,7 +4,8 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
@@ -218,7 +219,7 @@ namespace Swetugg.Web.Controllers
                 }).ToArray()
             };
             
-            return Json(export, JsonRequestBehavior.AllowGet);
+            return Json(export);
         }
 
         [Route("{conferenceSlug}/export/speaker-csv")]
@@ -292,7 +293,7 @@ namespace Swetugg.Web.Controllers
             {
                 if (conference != null)
                     return conference;
-                return conference = dbContext.Conferences.Single(c => c.Slug == ConferenceSlug);
+                return conference = dbContext.Conferences.SingleAsync(c => c.Slug == ConferenceSlug);
             }
 
         }

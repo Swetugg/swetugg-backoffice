@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace Swetugg.Web.Controllers
 {
@@ -18,7 +18,7 @@ namespace Swetugg.Web.Controllers
             await Task.Yield();
 
             var data = new NowData() { Data = "Hello" };
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(data);
         }
 
         private string conferenceSlug;

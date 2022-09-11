@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Configuration;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
@@ -15,7 +15,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 {
 
     [RequireHttps]
-    [RouteArea("Cfp", AreaPrefix = "cfp")]
+    [Area("Cfp")]
     [Authorize()]
     public class CallForPapersController : Microsoft.AspNetCore.Mvc.Controller
     {
@@ -60,10 +60,10 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
 
         [Route("")]
-        [OverrideAuthorization]
+        //[OverrideAuthorization]
         public Microsoft.AspNetCore.Mvc.ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End >= ConferenceInfoExtensions.CurrentTime(c).Date);
             var cfpAlreadyCreatedFor = _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArray();
 
@@ -80,10 +80,9 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
             if (conference.CfpVipCode.Equals(code, StringComparison.InvariantCultureIgnoreCase))
             {
-                var userId = User.Identity.GetUserId();
-                var user = UserManager.FindById(userId);
+                var user = await UserManager.GetUserAsync(User);
                 
-                await UserManager.AddToRoleAsync(userId, "VipSpeaker");
+                await UserManager.AddToRoleAsync(user, "VipSpeaker");
                 await SignInManager.SignInAsync(user, false, false); // Sign in again
                 ViewBag.Success = true;
             }
@@ -100,7 +99,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult Conference(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
@@ -122,7 +121,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
@@ -146,10 +145,10 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/speaker")]
         [HttpPost]
-        public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, HttpPostedFileBase imageFile)
+        public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, IFormFile imageFile)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             
             if (ModelState.IsValid)
             {
@@ -184,15 +183,15 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                     dbSpeaker.NeedAccommodation = speaker.NeedAccommodation;
                     dbSpeaker.LastUpdate = DateTime.UtcNow;
 
-                    if (imageFile != null && imageFile.ContentLength > 0)
+                    if (imageFile != null && imageFile.Length > 0)
                     {
-                        if (imageFile.ContentLength < 10*1024*1024)
+                        if (imageFile.Length < 10*1024*1024)
                         {
                             try
                             {
                                 using (var memStream = new MemoryStream())
                                 {
-                                    imageFile.InputStream.CopyTo(memStream);
+                                    imageFile.OpenReadStream().CopyTo(memStream);
                                     var imageUrl = _imageUploader.UploadToStorage(memStream, dbSpeaker.Email, _cfpSpeakerImageContainerName);
                                     dbSpeaker.Image = imageUrl;
                                 }
@@ -217,7 +216,8 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Saving", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Saving", ex);
                 }
             }
 
@@ -231,7 +231,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         #pragma warning restore 0108
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers
                 .Include(sp => sp.Sessions.Select(se => se.SessionType))
                 .SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
@@ -266,7 +266,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         #pragma warning restore 0108
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers
                 .Include(sp => sp.Sessions.Select(se => se.SessionType))
                 .SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
@@ -304,7 +304,8 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Saving", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Saving", ex);
                 }
             }
 
@@ -320,7 +321,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult DeleteSession(string conferenceSlug, int id)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             var session = speaker.Sessions.SingleOrDefault(s => s.Id == id);
@@ -339,7 +340,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult DeleteSpeaker(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = User.Identity.GetUserId();
+            var userId = UserManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             if (speaker != null)

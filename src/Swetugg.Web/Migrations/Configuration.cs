@@ -1,10 +1,10 @@
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Migrations
 {
-    using System;
+	using Microsoft.AspNetCore.Identity;
+	using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+	using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -37,7 +37,7 @@ namespace Swetugg.Web.Migrations
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole { Name = "Administrator" };
 
-                manager.Create(role);
+                manager.CreateAsync(role).Wait();
             }
 
             if (!context.Roles.Any(r => r.Name == "ConferenceManager"))
@@ -46,7 +46,7 @@ namespace Swetugg.Web.Migrations
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole { Name = "ConferenceManager" };
 
-                manager.Create(role);
+                manager.CreateAsync(role).Wait();
             }
 
             if (!context.Roles.Any(r => r.Name == "VipSpeaker"))
@@ -55,7 +55,7 @@ namespace Swetugg.Web.Migrations
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole { Name = "VipSpeaker" };
 
-                manager.Create(role);
+                manager.CreateAsync(role).Wait();
             }
 
             if (!context.Roles.Any(r => r.Name == "User"))
@@ -64,7 +64,7 @@ namespace Swetugg.Web.Migrations
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole { Name = "User" };
 
-                manager.Create(role);
+                manager.CreateAsync(role).Wait();
             }
 
             if (!context.Users.Any())
@@ -74,8 +74,8 @@ namespace Swetugg.Web.Migrations
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser { UserName = "info@swetugg.se", Email = "info@swetugg.se"};
 
-                manager.Create(user, "ChangeMe.123");
-                manager.AddToRoles(user.Id, "Administrator", "ConferenceManager", "User");
+                manager.CreateAsync(user, "ChangeMe.123").Wait();
+                manager.AddToRolesAsync(user, new string[] { "Administrator", "ConferenceManager", "User" }).Wait();
             }
         }
     }

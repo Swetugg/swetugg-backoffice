@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Caching;
 using Swetugg.Web.Models;
 using Swetugg.Web;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Swetugg.Web.Services
 {
     public class CachedConferenceService : IConferenceService
     {
         private readonly IConferenceService _conferenceService;
-        private static readonly int MinutesToCache;
+		private readonly IMemoryCache _cache;
+		private static readonly int MinutesToCache;
 
         static CachedConferenceService()
         {
@@ -24,26 +23,25 @@ namespace Swetugg.Web.Services
             }
         }
 
-        public CachedConferenceService(IConferenceService conferenceService)
+        public CachedConferenceService(IConferenceService conferenceService, IMemoryCache memoryCache)
         {
             _conferenceService = conferenceService;
+            _cache = memoryCache;
         }
 
         private T FromCache<T>(string key, Func<T> fetch)
             where T: class
         {
-            var httpCache = HttpContextHelper.Current.Cache;
-            var cached = (T)httpCache.Get(key);
+            var cached = (T)_cache.Get(key);
             if (cached == null)
             {
                 cached = fetch();
                 if (cached != null)
                 {
-                    httpCache.Add(key, cached,
-                        null,
-                        DateTime.Now.AddMinutes(MinutesToCache),
-                        Cache.NoSlidingExpiration,
-                        CacheItemPriority.Default, null);
+                    _cache.Set(
+                        key,
+                        cached,
+                        new MemoryCacheEntryOptions { AbsoluteExpiration = DateTime.Now.AddMinutes(MinutesToCache), Priority = CacheItemPriority.Normal});
                 }
             }
             return cached;

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Dapper;
 using Swetugg.Web.Controllers;
 using Swetugg.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
@@ -19,8 +20,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
     [RequireHttps]
     [Authorize(Roles = "ConferenceManager")]
-    [RouteArea("Admin", AreaPrefix = "admin")]
-    [RoutePrefix("conferences")]
+    [Area("Admin")]
+    [Route("conferences")]
     public class ConferenceAdminController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -30,7 +31,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             this._dbContext = dbContext;
         }
 
-        [OverrideAuthorization()]
+        //[OverrideAuthorization()]
         [Authorize()]
         [Route("")]
         public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
@@ -39,7 +40,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return View(conferences);
         }
 
-        [OverrideAuthorization()]
+        //[OverrideAuthorization()]
         [Authorize()]
         [Route("{id:int}")]
         public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Conference(int id)

@@ -10,7 +10,7 @@ using Swetugg.Web.Models;
 
 namespace Swetugg.Web
 {
-    public partial class Startup
+    public partial class StartupAuth
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)

@@ -4,8 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Security.Principal;
-using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Swetugg.Web.Models
 {

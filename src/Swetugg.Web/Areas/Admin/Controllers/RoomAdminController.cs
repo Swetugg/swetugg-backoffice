@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
@@ -60,7 +60,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 									   TravelDone = logistics.TravelDone
 								   };
 
-			return Json(speakerLogistics, JsonRequestBehavior.AllowGet);
+			return Json(speakerLogistics);
 		}
 	}
 }

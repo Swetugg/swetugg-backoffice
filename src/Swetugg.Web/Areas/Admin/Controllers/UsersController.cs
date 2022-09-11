@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Administrator")]
-    [RouteArea("Admin", AreaPrefix = "admin")]
-    [RoutePrefix("users")]
+    [Area("Admin")]
+    [Route("users")]
     public class UsersController : Microsoft.AspNetCore.Mvc.Controller
     {
         private ApplicationUserManager _userManager;

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
@@ -47,23 +47,16 @@ namespace Swetugg.Web.Controllers
         }
 
         [Route("{conferenceSlug}/schedule-feed")]
-        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index([FromQuery] string room, [FromQuery] DateTime date)
         {
             var sessions = await GetSessions();
-            var roomSlug = Request.QueryString["room"];
-            var dateParam = Request.QueryString["date"];
-            DateTime date = DateTime.MinValue;
-            if (dateParam != null)
-            {
-                DateTime.TryParse(dateParam, out date);
-            }
             var cultureInfo = CultureInfo.GetCultureInfo("sv-SE");
 
             var sessionsView = from s in sessions
                 where s.RoomSlots.Any()
                 let roomSlot = s.RoomSlots.First()
                                where 
-                                (roomSlug == null || roomSlot.Room.Slug == roomSlug) &&
+                                (room == null || roomSlot.Room.Slug == room) &&
                                 (date == DateTime.MinValue || roomSlot.Slot.Start.Date == date)
                                orderby roomSlot.Slot.Start, roomSlot.Room.Name
                 select new SessionView()
@@ -83,7 +76,7 @@ namespace Swetugg.Web.Controllers
                     EndTime = roomSlot.Slot.End.ToString(cultureInfo),
                     Room = roomSlot.Room.Name
                 };
-            return Json(sessionsView, JsonRequestBehavior.AllowGet);
+            return Json(sessionsView);
         }
 
         [Route("{conferenceSlug}/slots-feed")]
@@ -122,7 +115,7 @@ namespace Swetugg.Web.Controllers
                           }
                       };
 
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res);
         }
 
         private async Task<List<Session>> GetSessions()
@@ -142,7 +135,7 @@ namespace Swetugg.Web.Controllers
             {
                 if (conference != null)
                     return conference;
-                return conference = dbContext.Conferences.Single(c => c.Slug == ConferenceSlug);
+                return conference = dbContext.Conferences.SingleAsync(c => c.Slug == ConferenceSlug);
             }
 
         }

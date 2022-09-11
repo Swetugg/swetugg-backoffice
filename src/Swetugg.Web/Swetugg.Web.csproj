@@ -54,9 +54,6 @@
     <Compile Update="Migrations\202001022327555_UpdateSchedule.Designer.cs">
       <DependentUpon>202001022327555_UpdateSchedule.cs</DependentUpon>
     </Compile>
-    <Compile Update="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Update="Migrations\201504091913478_SwetuggDb.Designer.cs">
       <DependentUpon>201504091913478_SwetuggDb.cs</DependentUpon>
     </Compile>
@@ -137,6 +134,8 @@
     <Folder Include="Views\Now\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
     <PackageReference Include="System.Management" Version="6.0.0" />
@@ -236,22 +235,16 @@
     <PackageReference Include="jquery-globalize" Version="1.1.2" />
     <PackageReference Include="jQuery.Validation" Version="1.16.0" />
     <PackageReference Include="jQuery.Validation.Globalize" Version="1.1.0" />
-    <PackageReference Include="MarkdownDeep.NET" Version="1.5" />
+    <!--<PackageReference Include="MarkdownDeep.NET" Version="1.5" />-->
     <PackageReference Include="Microsoft.ApplicationInsights.PerformanceCollector" Version="0.14.0-build20632" />
     <PackageReference Include="Microsoft.ApplicationInsights.RuntimeTelemetry" Version="0.14.0-build20632" />
     <PackageReference Include="Microsoft.ApplicationInsights.Web" Version="2.20.0" />
-    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.8" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.8" />
     <PackageReference Include="Microsoft.Azure.Common" Version="2.2.1" />
     <PackageReference Include="Microsoft.Azure.Common.Dependencies" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="3.0.5" />
     <PackageReference Include="Microsoft.Data.Services.Client" Version="5.8.5" />
     <PackageReference Include="Microsoft.Diagnostics.Tracing.EventSource.Redist" Version="6.0.0" />
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.12" />
-    <PackageReference Include="Microsoft.Owin.Security.Facebook" Version="4.2.1" />
-    <PackageReference Include="Microsoft.Owin.Security.Google" Version="4.2.1" />
-    <PackageReference Include="Microsoft.Owin.Security.MicrosoftAccount" Version="4.2.1" />
-    <PackageReference Include="Microsoft.Owin.Security.Twitter" Version="4.2.1" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.24" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19" />
     <PackageReference Include="Microsoft.WindowsAzure.Management.Sql" Version="5.2.0" />
@@ -260,8 +253,6 @@
     <PackageReference Include="SendGrid" Version="9.27.0" />
     <PackageReference Include="SendGrid.CSharp.HTTP.Client" Version="3.4.12" />
     <PackageReference Include="SendGrid.SmtpApi" Version="1.4.5" />
-    <PackageReference Include="StructureMap" Version="4.7.1" />
-    <PackageReference Include="StructureMap.MVC5.Update" Version="4.1.1" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />

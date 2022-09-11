@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Configuration;
 using System.Globalization;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Areas.Sthlm2023.Controllers
 {
-    [RouteArea("Sthlm2023", AreaPrefix = "sthlm-2023")]
+    [Area("Sthlm2023")]
     public class ConferenceController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IConferenceService conferenceService;
@@ -18,20 +19,21 @@ namespace Swetugg.Web.Areas.Sthlm2023.Controllers
         private string appInsightsInstrumentationKey;
         private string facebookAppId;
 
-        public ConferenceController(ApplicationDbContext dbContext)
+        public ConferenceController(ApplicationDbContext dbContext, IMemoryCache memoryCache)
         {
             this.conferenceSlug = "sthlm-2023";
-            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
+            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext), memoryCache);
             this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
             this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
         }
 
-        protected override void OnResultExecuting(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext filterContext)
-        {
-            ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
-            ViewData["FacebookAppId"] = facebookAppId;
-            base.OnResultExecuting(filterContext);
-        }
+        // TODO: Inject app insights and facebook ids to view
+        //protected override void OnResultExecuting(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext filterContext)
+        //{
+        //    ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
+        //    ViewData["FacebookAppId"] = facebookAppId;
+        //    base.OnResultExecuting(filterContext);
+        //}
 
         [Route("")]
         public Microsoft.AspNetCore.Mvc.ActionResult Index()
@@ -39,7 +41,7 @@ namespace Swetugg.Web.Areas.Sthlm2023.Controllers
             var conf = Conference;
             if (conf == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             var speakers = conferenceService.GetSpeakers(conf.Id);
@@ -96,7 +98,7 @@ namespace Swetugg.Web.Areas.Sthlm2023.Controllers
             var conf = Conference;
             if (conf == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             var sponsors = conferenceService.GetSponsors(conf.Id);
@@ -118,13 +120,13 @@ namespace Swetugg.Web.Areas.Sthlm2023.Controllers
             var speaker = conferenceService.GetSpeakerBySlug(ConferenceId, speakerSlug);
             if (speaker == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             return View(speaker);
         }
 
-        protected override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
+        public override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
         {
             ViewBag.Conference = Conference;
             base.OnActionExecuted(context);

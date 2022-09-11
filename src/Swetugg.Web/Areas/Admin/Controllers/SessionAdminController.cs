@@ -2,7 +2,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
@@ -56,7 +56,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             var session = await dbContext.Sessions
                 .Include(s => s.SessionType)
                 .SingleAsync(s => s.Id == id);
-            ViewBag.SessionTypes = dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToList();
+            ViewBag.SessionTypes = dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToListAsync();
             return View(session);
         }
 

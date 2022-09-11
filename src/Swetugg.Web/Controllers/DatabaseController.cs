@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Migrations;
 
 namespace Swetugg.Web.Controllers

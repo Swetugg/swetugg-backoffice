@@ -1,5 +1,5 @@
 using System.Linq;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 

@@ -3,14 +3,14 @@ using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
 namespace Swetugg.Web.Areas.Swetugg2017.Controllers
 {
-    [RouteArea("Swetugg2017", AreaPrefix = "swetugg-2017")]
+    [Area("Swetugg2017")]
     public class ConferenceController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IConferenceService conferenceService;
@@ -21,10 +21,10 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
         private string appInsightsInstrumentationKey;
         private string facebookAppId;
 
-        public ConferenceController(ApplicationDbContext dbContext)
+        public ConferenceController(ApplicationDbContext dbContext, IMemoryCache memoryCache)
         {
             this.conferenceSlug = "swetugg-2017";
-            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
+            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext), memoryCache);
             this.appInsightsInstrumentationKey = ConfigurationManager.AppSettings["ApplicationInsights.InstrumentationKey"];
             this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
         }
@@ -42,7 +42,7 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
             var conf = Conference;
             if (conf == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             var speakers = conferenceService.GetSpeakers(conf.Id);
@@ -99,7 +99,7 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
             var conf = Conference;
             if (conf == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             var sponsors = conferenceService.GetSponsors(conf.Id);
@@ -121,13 +121,13 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
             var speaker = conferenceService.GetSpeakerBySlug(ConferenceId, speakerSlug);
             if (speaker == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             return View(speaker);
         }
 
-        protected override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
+        public override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
         {
             ViewBag.Conference = Conference;
             base.OnActionExecuted(context);

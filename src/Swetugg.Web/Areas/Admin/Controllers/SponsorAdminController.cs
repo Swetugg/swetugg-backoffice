@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Configuration;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
@@ -73,7 +73,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             return View(sponsor);
@@ -101,7 +102,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             return View(sponsor);
@@ -125,7 +127,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/sponsors/{sponsorId:int}/image/new")]
-        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> NewImage(int sponsorId, SponsorImage sponsorImage, HttpPostedFileBase imageFile)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> NewImage(int sponsorId, SponsorImage sponsorImage, IFormFile imageFile)
         {
             var sponsor = await dbContext.Sponsors.Include(sp => sp.Images.Select(i => i.ImageType))
                 .SingleAsync(s => s.Id == sponsorId);
@@ -138,16 +140,16 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             string errorMessage = null;
 
-            if (imageFile != null && imageFile.ContentLength > 0)
+            if (imageFile != null && imageFile.Length > 0)
             {
-                if (imageFile.ContentLength < 10 * 1024 * 1024)
+                if (imageFile.Length < 10 * 1024 * 1024)
                 {
                     try
                     {
                         string imageUrl;
                         using (var memStream = new MemoryStream())
                         {
-                            imageFile.InputStream.CopyTo(memStream);
+                            imageFile.OpenReadStream().CopyTo(memStream);
                             imageUrl = _imageUploader.UploadToStorage(memStream, sponsor.Slug + "-" + imageType.Slug,
                                 _sponsorImageContainerName);
                         }

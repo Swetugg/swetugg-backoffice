@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
@@ -34,7 +34,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             var l = GetSessions().ToList();
             l.ForEach(s => { if (string.IsNullOrWhiteSpace(s.Status)) s.Status = "-"; });
-            return Json(l, JsonRequestBehavior.AllowGet);
+            return Json(l);
 
         }
 
@@ -60,7 +60,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
         private IEnumerable<CfpSessionData> GetSessions()
         {
-            var conferenceId = dbContext.Conferences.Single(c => c.Slug == ConferenceSlug).Id;
+            var conferenceId = dbContext.Conferences.SingleAsync(c => c.Slug == ConferenceSlug).Id;
 
             var sessions = dbContext.CfpSpeakers
                 .Where(s => s.ConferenceId == conferenceId)
@@ -102,7 +102,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             if (sessionToUpdate == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             var sessionType = dbContext.SessionTypes.SingleOrDefault(st => st.Slug == data.SessionType);

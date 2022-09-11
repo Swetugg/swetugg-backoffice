@@ -4,11 +4,10 @@ using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Controllers
@@ -200,11 +199,12 @@ namespace Swetugg.Web.Controllers
             {
                 return View("Error");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            var user = await UserManager.GetUserAsync(User);
+            var result = await UserManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
             {
                 // Add user to User role once email is confirmed
-                await UserManager.AddToRoleAsync(userId, "User");
+                await UserManager.AddToRoleAsync(user, "User");
             }
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -227,7 +227,7 @@ namespace Swetugg.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user)))
                 {
                     //Notify unknown user that password reset attempt was made
                     if (_useSendGrid)
@@ -314,7 +314,7 @@ Unfortunately we can’t find any user with that address in our database. If you
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            var result = await UserManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -438,7 +438,7 @@ Unfortunately we can’t find any user with that address in our database. If you
 
                         if (_useSendGrid)
                         {
-                            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user);
                             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                                 new { userId = user.Id, code = code },
                                 protocol: Request.Url.Scheme);

@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Swetugg.Web.Areas.Admin.Controllers.Models;
 using Swetugg.Web.Models;

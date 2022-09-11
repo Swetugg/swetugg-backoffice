@@ -1,12 +1,13 @@
 ﻿using System.Linq;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
     [RequireHttps]
     [Authorize(Roles = "ConferenceManager")]
-    [RouteArea("Admin", AreaPrefix = "admin")]
+    [Area("Admin")]
     public class ConferenceAdminControllerBase : Microsoft.AspNetCore.Mvc.Controller
     {
         protected ApplicationDbContext dbContext;
@@ -20,7 +21,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             this.dbContext = dbContext;
         }
 
-        protected override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
+        public override void OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext context)
         {
             ViewBag.Conference = Conference;
             base.OnActionExecuted(context);
