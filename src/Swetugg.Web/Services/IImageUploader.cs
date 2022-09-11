@@ -1,11 +1,11 @@
 ﻿using System.IO;
-
+using System.Threading.Tasks;
 
 namespace Swetugg.Web.Services
 {
     public interface IImageUploader
     {
-        string UploadToStorage(Stream imageStream, string fileName, string containerName);
-        void DeleteImage(string imageUrl);
+        Task<string> UploadToStorage(Stream imageStream, string fileName, string containerName);
+        Task DeleteImage(string imageUrl);
     }
 }

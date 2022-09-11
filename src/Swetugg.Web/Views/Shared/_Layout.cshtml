@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,14 +21,15 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="accept-language" content="@Culture" />
+    <meta name="accept-language" content="@CultureInfo.CurrentCulture" />
 	<title>Swetugg - @ViewBag.Title</title>
 
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 	
-	@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/site.css" />
+    @*@Scripts.Render("~/bundles/modernizr")*@
 
 </head>
 <body>
@@ -95,11 +97,13 @@
     </div>
 
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/globalize")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/app")*@
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

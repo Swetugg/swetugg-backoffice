@@ -72,7 +72,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             return View(conference);
@@ -258,7 +259,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             return View(conference);

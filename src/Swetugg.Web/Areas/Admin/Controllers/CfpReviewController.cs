@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -52,19 +52,19 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             switch (orderBy)
             {
                 case "Name":
-                    speakersQuery = speakersQuery.OrderByDynamic(s => s.Name, descending.GetValueOrDefault());
+                    speakersQuery = (Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<CfpSpeaker, ICollection<CfpSession>>)speakersQuery.OrderByDynamic(s => s.Name, descending.GetValueOrDefault());
                     break;
                 case "LastUpdateSpeaker":
-                    speakersQuery = speakersQuery.OrderByDynamic(s => s.LastUpdate, descending.GetValueOrDefault());
+                    speakersQuery = (Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<CfpSpeaker, ICollection<CfpSession>>)speakersQuery.OrderByDynamic(s => s.LastUpdate, descending.GetValueOrDefault());
                     break;
                 case "LastUpdateSession":
                     if (descending.GetValueOrDefault())
                     {
-                        speakersQuery = speakersQuery.OrderByDescending(s => s.Sessions.Max(se => se.LastUpdate));
+                        speakersQuery = (Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<CfpSpeaker, ICollection<CfpSession>>)speakersQuery.OrderByDescending(s => s.Sessions.Max(se => se.LastUpdate));
                     }
                     else
                     {
-                        speakersQuery = speakersQuery.OrderBy(s => s.Sessions.Min(se => se.LastUpdate));
+                        speakersQuery = (Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<CfpSpeaker, ICollection<CfpSession>>)speakersQuery.OrderBy(s => s.Sessions.Min(se => se.LastUpdate));
                     }
                     break;
             }
@@ -117,7 +117,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [HttpPost]
         [Route("{conferenceSlug}/cfp/speaker/{id:int}/promote")]
         [ValidateAntiForgeryToken]
-        public async Task<RedirectToRouteResult> Promote(int id)
+        public async Task<RedirectToActionResult> Promote(int id)
         {
             var conferenceId = ConferenceId;
             var cfpSpeaker = await dbContext.CfpSpeakers

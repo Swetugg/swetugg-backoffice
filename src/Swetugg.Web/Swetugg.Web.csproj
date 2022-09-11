@@ -5,12 +5,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <LangVersion>6</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -19,101 +20,6 @@
   <ItemGroup>
     <Reference Include="System.Net" />
     <Reference Include="System.Security" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Migrations\201709031341596_SessionTypes.Designer.cs">
-      <DependentUpon>201709031341596_SessionTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201709031912150_CountryOfResidence.Designer.cs">
-      <DependentUpon>201709031912150_CountryOfResidence.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201709281210258_CfpSessionNotes.Designer.cs">
-      <DependentUpon>201709281210258_CfpSessionNotes.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201710101914219_CfpSessionCategory.Designer.cs">
-      <DependentUpon>201710101914219_CfpSessionCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201710300558507_AddSpeakerLogistic.Designer.cs">
-      <DependentUpon>201710300558507_AddSpeakerLogistic.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201910292111287_AddSessionizeSpeakerId.Designer.cs">
-      <DependentUpon>201910292111287_AddSessionizeSpeakerId.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201910301826340_UpdateSpeaker.Designer.cs">
-      <DependentUpon>201910301826340_UpdateSpeaker.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201910302122494_UpdateSession.Designer.cs">
-      <DependentUpon>201910302122494_UpdateSession.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201911221019213_TagsOnSpeakers.Designer.cs">
-      <DependentUpon>201911221019213_TagsOnSpeakers.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201911221403421_SponsorImages.Designer.cs">
-      <DependentUpon>201911221403421_SponsorImages.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\202001022327555_UpdateSchedule.Designer.cs">
-      <DependentUpon>202001022327555_UpdateSchedule.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201504091913478_SwetuggDb.Designer.cs">
-      <DependentUpon>201504091913478_SwetuggDb.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201504102110059_ImageFieldToCfpSpeaker.Designer.cs">
-      <DependentUpon>201504102110059_ImageFieldToCfpSpeaker.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201504110829473_MoreRequiredFields.Designer.cs">
-      <DependentUpon>201504110829473_MoreRequiredFields.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201504121921565_LinkCfpsToSpeakerAndSession.Designer.cs">
-      <DependentUpon>201504121921565_LinkCfpsToSpeakerAndSession.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201505021721031_OpenCloseCfp.Designer.cs">
-      <DependentUpon>201505021721031_OpenCloseCfp.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201505311134043_SpeakerImages.Designer.cs">
-      <DependentUpon>201505311134043_SpeakerImages.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201508271136334_AdditionalSpeakerInfo.Designer.cs">
-      <DependentUpon>201508271136334_AdditionalSpeakerInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201508271342404_TravelAndAccommodation.Designer.cs">
-      <DependentUpon>201508271342404_TravelAndAccommodation.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201510051845590_CfpVipCode.Designer.cs">
-      <DependentUpon>201510051845590_CfpVipCode.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201608291705559_CfpPhoneNumber.Designer.cs">
-      <DependentUpon>201608291705559_CfpPhoneNumber.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201610020804533_LastUpdateOnCfp.Designer.cs">
-      <DependentUpon>201610020804533_LastUpdateOnCfp.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201610290957547_MinNumberOfSpeakers.Designer.cs">
-      <DependentUpon>201610290957547_MinNumberOfSpeakers.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201701081032489_SessionTags.Designer.cs">
-      <DependentUpon>201701081032489_SessionTags.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201701081323374_FeaturedTags.Designer.cs">
-      <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Migrations\201701220812500_TagDescriptions.Designer.cs">
-      <DependentUpon>201701220812500_TagDescriptions.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
-    <None Update="compilerconfig.json.defaults">
-      <DependentUpon>compilerconfig.json</DependentUpon>
-    </None>
-    <Content Update="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Update="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Update="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -127,15 +33,18 @@
     <Folder Include="Areas\Swetugg2017\Models\" />
     <Folder Include="Areas\Swetugg2018\Models\" />
     <Folder Include="Areas\Swetugg2019\Models\" />
-    <Folder Include="Content\gbg-2022\video\" />
-    <Folder Include="Content\sthlm-2020\video\" />
-    <Folder Include="Content\sthlm-2023\video\" />
-    <Folder Include="Content\swetugg-2019\video\" />
+    <Folder Include="wwwroot\Content\gbg-2022\video\" />
+    <Folder Include="wwwroot\Content\sthlm-2020\video\" />
+    <Folder Include="wwwroot\Content\sthlm-2023\video\" />
+    <Folder Include="wwwroot\Content\swetugg-2019\video\" />
     <Folder Include="Views\Now\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
     <PackageReference Include="System.Management" Version="6.0.0" />
@@ -143,88 +52,7 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.336902">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Antlr4" Version="4.6.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.8" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Migrations\201504091913478_SwetuggDb.resx">
-      <DependentUpon>201504091913478_SwetuggDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201504102110059_ImageFieldToCfpSpeaker.resx">
-      <DependentUpon>201504102110059_ImageFieldToCfpSpeaker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201504110829473_MoreRequiredFields.resx">
-      <DependentUpon>201504110829473_MoreRequiredFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201504121921565_LinkCfpsToSpeakerAndSession.resx">
-      <DependentUpon>201504121921565_LinkCfpsToSpeakerAndSession.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201505021721031_OpenCloseCfp.resx">
-      <DependentUpon>201505021721031_OpenCloseCfp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201505311134043_SpeakerImages.resx">
-      <DependentUpon>201505311134043_SpeakerImages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201508271136334_AdditionalSpeakerInfo.resx">
-      <DependentUpon>201508271136334_AdditionalSpeakerInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201508271342404_TravelAndAccommodation.resx">
-      <DependentUpon>201508271342404_TravelAndAccommodation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201510051845590_CfpVipCode.resx">
-      <DependentUpon>201510051845590_CfpVipCode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201608291705559_CfpPhoneNumber.resx">
-      <DependentUpon>201608291705559_CfpPhoneNumber.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201610020804533_LastUpdateOnCfp.resx">
-      <DependentUpon>201610020804533_LastUpdateOnCfp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201610290957547_MinNumberOfSpeakers.resx">
-      <DependentUpon>201610290957547_MinNumberOfSpeakers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201701081032489_SessionTags.resx">
-      <DependentUpon>201701081032489_SessionTags.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201701081323374_FeaturedTags.resx">
-      <DependentUpon>201701081323374_FeaturedTags.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201701220812500_TagDescriptions.resx">
-      <DependentUpon>201701220812500_TagDescriptions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201709031341596_SessionTypes.resx">
-      <DependentUpon>201709031341596_SessionTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201709031912150_CountryOfResidence.resx">
-      <DependentUpon>201709031912150_CountryOfResidence.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201709281210258_CfpSessionNotes.resx">
-      <DependentUpon>201709281210258_CfpSessionNotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201710101914219_CfpSessionCategory.resx">
-      <DependentUpon>201710101914219_CfpSessionCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201710300558507_AddSpeakerLogistic.resx">
-      <DependentUpon>201710300558507_AddSpeakerLogistic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201910292111287_AddSessionizeSpeakerId.resx">
-      <DependentUpon>201910292111287_AddSessionizeSpeakerId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201910301826340_UpdateSpeaker.resx">
-      <DependentUpon>201910301826340_UpdateSpeaker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201910302122494_UpdateSession.resx">
-      <DependentUpon>201910302122494_UpdateSession.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201911221019213_TagsOnSpeakers.resx">
-      <DependentUpon>201911221019213_TagsOnSpeakers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\201911221403421_SponsorImages.resx">
-      <DependentUpon>201911221403421_SponsorImages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Migrations\202001022327555_UpdateSchedule.resx">
-      <DependentUpon>202001022327555_UpdateSchedule.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="3.3.4" />

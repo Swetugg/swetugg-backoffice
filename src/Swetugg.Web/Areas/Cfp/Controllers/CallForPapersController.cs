@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Swetugg.Web.Models;
@@ -21,49 +22,31 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
     {
         private readonly IConferenceService _conferenceService;
         private readonly IImageUploader _imageUploader;
-        private ApplicationUserManager _userManager;
-        private ApplicationSignInManager _signInManager;
-        private readonly ApplicationDbContext _dbContext;
+        private readonly UserManager<ApplicationUser> _userManager;
+		private readonly SignInManager<ApplicationUser> _signInManager;
+		private readonly ApplicationDbContext _dbContext;
         private readonly string _cfpSpeakerImageContainerName;
 
-        public CallForPapersController(IConferenceService conferenceService, IImageUploader imageUploader, ApplicationDbContext dbContext)
+        public CallForPapersController(
+            IConferenceService conferenceService,
+            IImageUploader imageUploader,
+            ApplicationDbContext dbContext,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _conferenceService = conferenceService;
             _imageUploader = imageUploader;
             _dbContext = dbContext;
             _cfpSpeakerImageContainerName = ConfigurationManager.AppSettings["Storage.Container.CallForPaper.SpeakerImages"];
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
-
 
         [Route("")]
         //[OverrideAuthorization]
         public Microsoft.AspNetCore.Mvc.ActionResult Index()
         {
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var conferences = _conferenceService.GetConferences().Where(c => c.End == null || c.End >= ConferenceInfoExtensions.CurrentTime(c).Date);
             var cfpAlreadyCreatedFor = _dbContext.CfpSpeakers.Where(sp => sp.UserId == userId).Select(sp=>sp.ConferenceId).ToArray();
 
@@ -80,10 +63,10 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
 
             if (conference.CfpVipCode.Equals(code, StringComparison.InvariantCultureIgnoreCase))
             {
-                var user = await UserManager.GetUserAsync(User);
+                var user = await _userManager.GetUserAsync(User);
                 
-                await UserManager.AddToRoleAsync(user, "VipSpeaker");
-                await SignInManager.SignInAsync(user, false, false); // Sign in again
+                await _userManager.AddToRoleAsync(user, "VipSpeaker");
+                await _signInManager.SignInAsync(user, false); // Sign in again
                 ViewBag.Success = true;
             }
             else
@@ -99,7 +82,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult Conference(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
@@ -121,7 +104,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
             if (speaker == null)
             {
@@ -145,10 +128,10 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         [ValidateAntiForgeryToken]
         [Route("{conferenceSlug}/speaker")]
         [HttpPost]
-        public Microsoft.AspNetCore.Mvc.ActionResult Speaker(string conferenceSlug, CfpSpeaker speaker, IFormFile imageFile)
+        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Speaker(string conferenceSlug, CfpSpeaker speaker, IFormFile imageFile)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             
             if (ModelState.IsValid)
             {
@@ -192,7 +175,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
                                 using (var memStream = new MemoryStream())
                                 {
                                     imageFile.OpenReadStream().CopyTo(memStream);
-                                    var imageUrl = _imageUploader.UploadToStorage(memStream, dbSpeaker.Email, _cfpSpeakerImageContainerName);
+                                    var imageUrl = await _imageUploader.UploadToStorage(memStream, dbSpeaker.Email, _cfpSpeakerImageContainerName);
                                     dbSpeaker.Image = imageUrl;
                                 }
                             }
@@ -231,7 +214,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         #pragma warning restore 0108
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers
                 .Include(sp => sp.Sessions.Select(se => se.SessionType))
                 .SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
@@ -266,7 +249,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         #pragma warning restore 0108
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers
                 .Include(sp => sp.Sessions.Select(se => se.SessionType))
                 .SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
@@ -321,7 +304,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult DeleteSession(string conferenceSlug, int id)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             var session = speaker.Sessions.SingleOrDefault(s => s.Id == id);
@@ -340,7 +323,7 @@ namespace Swetugg.Web.Areas.Cfp.Controllers
         public Microsoft.AspNetCore.Mvc.ActionResult DeleteSpeaker(string conferenceSlug)
         {
             var conference = _conferenceService.GetConferenceBySlug(conferenceSlug);
-            var userId = UserManager.GetUserId(User);
+            var userId = _userManager.GetUserId(User);
             var speaker = _dbContext.CfpSpeakers.Include(sp => sp.Sessions).SingleOrDefault(sp => sp.UserId == userId && sp.ConferenceId == conference.Id);
 
             if (speaker != null)

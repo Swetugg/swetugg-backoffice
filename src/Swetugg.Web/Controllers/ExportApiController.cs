@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Swetugg.Web.Controllers
 {
@@ -119,10 +120,10 @@ namespace Swetugg.Web.Controllers
         private string conferenceSlug;
         private Conference conference;
 
-        public ExportApiController(ApplicationDbContext dbContext)
+        public ExportApiController(ApplicationDbContext dbContext, IMemoryCache memoryCache)
         {
             this.dbContext = dbContext;
-            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext));
+            this.conferenceService = new CachedConferenceService(new ConferenceService(dbContext), memoryCache);
         }
 
         [Route("{conferenceSlug}/export/everens")]
@@ -293,7 +294,7 @@ namespace Swetugg.Web.Controllers
             {
                 if (conference != null)
                     return conference;
-                return conference = dbContext.Conferences.SingleAsync(c => c.Slug == ConferenceSlug);
+                return conference = dbContext.Conferences.Single(c => c.Slug == ConferenceSlug);
             }
 
         }

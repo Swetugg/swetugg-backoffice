@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Swetugg.Web.Models;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -62,7 +62,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             var model = new ScheduleViewModel()
@@ -94,7 +95,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             var model = new ScheduleViewModel()

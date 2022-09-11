@@ -1,8 +1,8 @@
 using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
@@ -78,7 +78,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
                 ViewBag.SessionTypes = dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToList();
             }
@@ -171,7 +172,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
                 ViewBag.SessionTypes = await dbContext.SessionTypes.Where(m => m.ConferenceId == conferenceId).OrderBy(s => s.Priority).ToListAsync();
             }

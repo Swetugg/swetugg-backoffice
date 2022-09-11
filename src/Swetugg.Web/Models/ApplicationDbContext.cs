@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
-using Configuration = Swetugg.Web.Migrations.Configuration;
 
 namespace Swetugg.Web.Models
 {
@@ -23,77 +22,51 @@ namespace Swetugg.Web.Models
         public DbSet<CfpSpeaker> CfpSpeakers { get; set; }
         public DbSet<CfpSession> CfpSessions { get; set; }
 
-        public static ApplicationDbContext Create()
-        {
-            IDatabaseInitializer<ApplicationDbContext> strategy;
-            switch (ConfigurationManager.AppSettings["Database_Initialize_Strategy"])
-            {
-                case "CreateDatabaseIfNotExists":
-                    strategy = new CreateDatabaseIfNotExists<ApplicationDbContext>();
-                    break;
-                case "DropCreateDatabaseAlways":
-                    strategy = new DropCreateDatabaseAlways<ApplicationDbContext>();
-                    break;
-                case "DropCreateDatabaseIfModelChanges":
-                    strategy = new DropCreateDatabaseIfModelChanges<ApplicationDbContext>();
-                    break;
-                case "MigrateDatabaseToLatestVersion":
-                    strategy = new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>();
-                    break;
-                default:
-                    strategy = new NullDatabaseInitializer<ApplicationDbContext>();
-                    break;
-            }
-
-            Database.SetInitializer(strategy);
-            return new ApplicationDbContext();
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<RoomSlot>().HasRequired(rs => rs.Room).WithMany(r => r.RoomSlots)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<RoomSlot>().HasRequired(rs => rs.Slot).WithMany(s => s.RoomSlots)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<RoomSlot>().HasOptional(rs => rs.AssignedSession).WithMany(s => s.RoomSlots);
+            modelBuilder.Entity<RoomSlot>().HasOne(rs => rs.Room).WithMany(r => r.RoomSlots)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<RoomSlot>().HasOne(rs => rs.Slot).WithMany(s => s.RoomSlots)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<RoomSlot>().HasOne(rs => rs.AssignedSession).WithMany(s => s.RoomSlots).IsRequired(false);
 
-            modelBuilder.Entity<Speaker>().HasMany(s => s.Images).WithRequired().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Speaker>().HasMany(s => s.Images).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
             modelBuilder.Entity<Speaker>().HasMany(s => s.Tags).WithMany(t => t.Speakers);
 
-            modelBuilder.Entity<SpeakerImage>().HasRequired(s => s.ImageType).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<SpeakerImage>().HasOne(s => s.ImageType).WithMany().OnDelete(DeleteBehavior.Restrict).IsRequired();
 
-            modelBuilder.Entity<Sponsor>().HasMany(s => s.Images).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<SponsorImage>().HasRequired(s => s.ImageType).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Sponsor>().HasMany(s => s.Images).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<SponsorImage>().HasOne(s => s.ImageType).WithMany().OnDelete(DeleteBehavior.Restrict).IsRequired();
 
             modelBuilder.Entity<RoomSlot>().HasKey(r => new {r.RoomId, r.SlotId});
 
-            modelBuilder.Entity<SessionSpeaker>().HasRequired(s => s.Speaker).WithMany(s => s.Sessions)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<SessionSpeaker>().HasRequired(s => s.Session).WithMany(s => s.Speakers)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<SessionSpeaker>().HasOne(s => s.Speaker).WithMany(s => s.Sessions)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<SessionSpeaker>().HasOne(s => s.Session).WithMany(s => s.Speakers)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired();
             modelBuilder.Entity<SessionSpeaker>().HasKey(s => new {s.SessionId, s.SpeakerId});
 
             modelBuilder.Entity<Session>().HasMany(s => s.Tags).WithMany(t => t.Sessions);
-            modelBuilder.Entity<Session>().HasOptional(c => c.SessionType).WithMany(se => se.Sessions)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Session>().HasOne(c => c.SessionType).WithMany(se => se.Sessions)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired(false);
 
-            modelBuilder.Entity<Conference>().HasMany(c => c.Rooms).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<Conference>().HasMany(c => c.Sessions).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<Conference>().HasMany(c => c.Speakers).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<Conference>().HasMany(c => c.Slots).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<Conference>().HasMany(c => c.Sponsors).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<Conference>().HasMany(c => c.ImageTypes).WithRequired().WillCascadeOnDelete(false);
-            modelBuilder.Entity<Conference>().HasMany(c => c.SessionTypes).WithRequired().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Conference>().HasMany(c => c.Rooms).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<Conference>().HasMany(c => c.Sessions).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<Conference>().HasMany(c => c.Speakers).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<Conference>().HasMany(c => c.Slots).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<Conference>().HasMany(c => c.Sponsors).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<Conference>().HasMany(c => c.ImageTypes).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<Conference>().HasMany(c => c.SessionTypes).WithOne().OnDelete(DeleteBehavior.Restrict).IsRequired();
 
-            modelBuilder.Entity<CfpSpeaker>().HasMany(c => c.Sessions).WithRequired(c => c.Speaker)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<CfpSpeaker>().HasOptional(c => c.Speaker).WithMany(sp => sp.CfpSpeakers)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<CfpSession>().HasOptional(c => c.Session).WithMany(se => se.CfpSessions)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<CfpSession>().HasOptional(c => c.SessionType).WithMany(se => se.CfpSessions)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<CfpSpeaker>().HasMany(c => c.Sessions).WithOne(c => c.Speaker)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired();
+            modelBuilder.Entity<CfpSpeaker>().HasOne(c => c.Speaker).WithMany(sp => sp.CfpSpeakers)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            modelBuilder.Entity<CfpSession>().HasOne(c => c.Session).WithMany(se => se.CfpSessions)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            modelBuilder.Entity<CfpSession>().HasOne(c => c.SessionType).WithMany(se => se.CfpSessions)
+                .OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

@@ -1,5 +1,5 @@
 using System;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -51,7 +51,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             return View(tag);
@@ -79,7 +80,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("Updating", ex);
+                    // TODO: Add model error
+                    //ModelState.AddModelError("Updating", ex);
                 }
             }
             return View(tag);

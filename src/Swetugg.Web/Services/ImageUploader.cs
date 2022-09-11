@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Swetugg.Web.Controllers;
@@ -28,7 +29,7 @@ namespace Swetugg.Web.Services
             }
         }
 
-        public string UploadToStorage(Stream imageStream, string fileName, string containerName)
+        public async Task<string> UploadToStorage(Stream imageStream, string fileName, string containerName)
         {
             Image parsedImage;
             try
@@ -54,7 +55,7 @@ namespace Swetugg.Web.Services
                 CloudBlobClient blobClient = _storageAccount.CreateCloudBlobClient();
                 CloudBlobContainer container =
                     blobClient.GetContainerReference(containerName);
-                container.CreateIfNotExists(BlobContainerPublicAccessType.Blob);
+                await container.CreateIfNotExistsAsync(BlobContainerPublicAccessType.Blob, null, null);
 
                 var speakerFileName = fileName + "-" + Guid.NewGuid();
 
@@ -62,7 +63,7 @@ namespace Swetugg.Web.Services
                 blockBlob.Properties.ContentType = parsedImage.RawFormat.GetMimeType();
                 blockBlob.Properties.CacheControl = "max-age=31536000, public";
                 imageStream.Seek(0, SeekOrigin.Begin);
-                blockBlob.UploadFromStream(imageStream);
+                await blockBlob.UploadFromStreamAsync(imageStream);
 
                 return blockBlob.Uri.ToString();
             }
@@ -72,14 +73,14 @@ namespace Swetugg.Web.Services
             }
         }
 
-        public void DeleteImage(string imageUrl)
+        public async Task DeleteImage(string imageUrl)
         {
             try
             {
                 CloudBlobClient blobClient = _storageAccount.CreateCloudBlobClient();
 
-                var blob = blobClient.GetBlobReferenceFromServer(new Uri(imageUrl));
-                blob.Delete();
+                var blob = await blobClient.GetBlobReferenceFromServerAsync(new Uri(imageUrl));
+                await blob.DeleteAsync();
             }
             catch (Exception e)
             {

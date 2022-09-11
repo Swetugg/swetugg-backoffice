@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
-
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Swetugg.Web.Controllers
@@ -23,14 +24,18 @@ namespace Swetugg.Web.Controllers
             _separator = separator;
         }
 
-        protected override void WriteFile(HttpResponseBase response)
+        public override Task ExecuteResultAsync(ActionContext context)
         {
-            var outputStream = response.OutputStream;
+            var response = context.HttpContext.Response;
+            context.HttpContext.Response.Headers.Add("Content-Disposition", new[] { "attachment; filename=" + FileDownloadName });
+            var outputStream = response.Body;
             using (var memoryStream = new MemoryStream())
             {
                 WriteList(memoryStream);
                 outputStream.Write(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
             }
+
+            return Task.CompletedTask;
         }
 
         private void WriteList(Stream stream)

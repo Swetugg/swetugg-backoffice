@@ -150,7 +150,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         using (var memStream = new MemoryStream())
                         {
                             imageFile.OpenReadStream().CopyTo(memStream);
-                            imageUrl = _imageUploader.UploadToStorage(memStream, sponsor.Slug + "-" + imageType.Slug,
+                            imageUrl = await _imageUploader.UploadToStorage(memStream, sponsor.Slug + "-" + imageType.Slug,
                                 _sponsorImageContainerName);
                         }
 

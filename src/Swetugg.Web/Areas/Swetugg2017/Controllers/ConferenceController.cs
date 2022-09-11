@@ -29,12 +29,13 @@ namespace Swetugg.Web.Areas.Swetugg2017.Controllers
             this.facebookAppId = ConfigurationManager.AppSettings["Facebook_Api_AppId"];
         }
 
-        protected override void OnResultExecuting(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext filterContext)
-        {
-            ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
-            ViewData["FacebookAppId"] = facebookAppId;
-            base.OnResultExecuting(filterContext);
-        }
+        // TODO: Inject app insights and facebook ids to view
+        //protected override void OnResultExecuting(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext filterContext)
+        //{
+        //    ViewData["InstrumentationKey"] = appInsightsInstrumentationKey;
+        //    ViewData["FacebookAppId"] = facebookAppId;
+        //    base.OnResultExecuting(filterContext);
+        //}
 
         [Route("")]
         public Microsoft.AspNetCore.Mvc.ActionResult Index()

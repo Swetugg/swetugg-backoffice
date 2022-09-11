@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Swetugg.Web.Models;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
@@ -11,48 +13,25 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     [Route("users")]
     public class UsersController : Microsoft.AspNetCore.Mvc.Controller
     {
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
+        private UserManager<ApplicationUser> _userManager;
+        private RoleManager<ApplicationUser> _roleManager;
 
         public UsersController()
         {
         }
 
-        /*public UsersController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-        }*/
+		public UsersController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationUser> roleManager)
+		{
+			_userManager = userManager;
+            _roleManager = roleManager;
 
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-
-        public ApplicationRoleManager RoleManager
-        {
-            get
-            {
-                return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-            }
-            private set
-            {
-                _roleManager = value;
-            }
-        }
+		}
 
         [Route("")]
         public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Index()
         {
-            var users = await UserManager.Users.ToListAsync();
-            var roles = await RoleManager.Roles.ToListAsync();
+            var users = await _userManager.Users.ToListAsync();
+            var roles = await _roleManager.Roles.ToListAsync();
             
             ViewBag.Roles = roles;
             
@@ -64,7 +43,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("set-roles")]
         public async Task<Microsoft.AspNetCore.Mvc.ActionResult> SetRoles(string userId, List<string> roles)
         {
-            var currentRoles = await UserManager.GetRolesAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId);
+            var currentRoles = await _userManager.GetRolesAsync(user);
             roles = roles ?? new List<string>();
             if (currentRoles != null)
             {
@@ -78,12 +58,12 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     else
                     {
                         // User should no longer be in this role
-                        await UserManager.RemoveFromRoleAsync(userId, currentRole);
+                        await _userManager.RemoveFromRoleAsync(user, currentRole);
 
                     }
                 }
             }
-            var result = await UserManager.AddToRolesAsync(userId, roles.ToArray());
+            var result = await _userManager.AddToRolesAsync(user, roles.ToArray());
 
             return RedirectToAction("Index");
         }
@@ -93,8 +73,8 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("delete")]
         public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Delete(string userId)
         {
-            var user = await UserManager.Users.FirstAsync(u => u.Id == userId);
-            var result = await UserManager.DeleteAsync(user);
+            var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
+            var result = await _userManager.DeleteAsync(user);
 
             return RedirectToAction("Index");
         }

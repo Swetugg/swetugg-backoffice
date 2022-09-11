@@ -1,52 +1,52 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Swetugg.Web.Migrations;
+﻿//using System;
+//using Microsoft.EntityFrameworkCore.Migrations;
+//using System.Threading.Tasks;
+//using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Mvc;
+//using Swetugg.Web.Migrations;
 
-namespace Swetugg.Web.Controllers
-{
-    [Authorize(Roles = "Administrator")]
-    [RequireHttps]
-    public class DatabaseController : Microsoft.AspNetCore.Mvc.Controller
-    {
+//namespace Swetugg.Web.Controllers
+//{
+//    [Authorize(Roles = "Administrator")]
+//    [RequireHttps]
+//    public class DatabaseController : Microsoft.AspNetCore.Mvc.Controller
+//    {
 
-        [Route("backups")]
-        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Backups()
-        {
-            return View();
-        }
+//        [Route("backups")]
+//        public async Task<Microsoft.AspNetCore.Mvc.ActionResult> Backups()
+//        {
+//            return View();
+//        }
 
-        [Route("migration")]
-        public Microsoft.AspNetCore.Mvc.ActionResult Migrations(string errorMsg)
-        {
-            var configuration = new Configuration();
-            var migrator = new DbMigrator(configuration);
-            ViewBag.AppliedMigrations = migrator.GetDatabaseMigrations();
-            ViewBag.PendingMigrations = migrator.GetPendingMigrations();
-            ViewBag.ErrorMessage = errorMsg;
+//        [Route("migration")]
+//        public Microsoft.AspNetCore.Mvc.ActionResult Migrations(string errorMsg)
+//        {
+//            var configuration = new Configuration();
+//            var migrator = new DbMigrator(configuration);
+//            ViewBag.AppliedMigrations = migrator.GetDatabaseMigrations();
+//            ViewBag.PendingMigrations = migrator.GetPendingMigrations();
+//            ViewBag.ErrorMessage = errorMsg;
 
-            return View();
-        }
+//            return View();
+//        }
 
-        [Route("migration/run")]
-        public Microsoft.AspNetCore.Mvc.ActionResult RunMigrations()
-        {
-            var configuration = new Configuration();
-            var migrator = new DbMigrator(configuration);
+//        [Route("migration/run")]
+//        public Microsoft.AspNetCore.Mvc.ActionResult RunMigrations()
+//        {
+//            var configuration = new Configuration();
+//            var migrator = new DbMigrator(configuration);
 
-            try
-            {
-                migrator.Update();
-            }
-            catch (Exception ex)
-            {
-                return RedirectToAction("Migrations", new { errorMsg = ex.Message });
-            }
+//            try
+//            {
+//                migrator.Update();
+//            }
+//            catch (Exception ex)
+//            {
+//                return RedirectToAction("Migrations", new { errorMsg = ex.Message });
+//            }
 
-            return RedirectToAction("Migrations");
-        }
+//            return RedirectToAction("Migrations");
+//        }
 
-    }
-}
+//    }
+//}

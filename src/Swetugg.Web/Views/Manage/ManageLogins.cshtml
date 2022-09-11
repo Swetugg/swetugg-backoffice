@@ -1,4 +1,4 @@
-﻿@model Swetugg.Web.Models.ManageLoginsViewModel
+﻿@*@model Swetugg.Web.Models.ManageLoginsViewModel
 @using Microsoft.Owin.Security
 @{
     ViewBag.Title = "Manage your external logins";
@@ -51,20 +51,21 @@
                 </tbody>
             </table>
         }
-        if (Model.OtherLogins.Count > 0)
-        {
-            using (Html.BeginForm("LinkLogin", "Manage"))
-            {
-                @Html.AntiForgeryToken()
-                <div id="socialLoginList">
-                <p>
-                    @foreach (AuthenticationDescription p in Model.OtherLogins)
-                    {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
-                    }
-                </p>
-                </div>
-            }
-        }
+        //if (Model.OtherLogins.Count > 0)
+        //{
+        //    using (Html.BeginForm("LinkLogin", "Manage"))
+        //    {
+        //        @Html.AntiForgeryToken()
+        //        <div id="socialLoginList">
+        //        <p>
+        //            //@foreach (AuthenticationDescription p in Model.OtherLogins)
+        //            //{
+        //            //    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+        //            //}
+        //        </p>
+        //        </div>
+        //    }
+        //}
     }
 }
+*@

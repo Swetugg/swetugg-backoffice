@@ -217,7 +217,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         using (var memStream = new MemoryStream())
                         {
                             imageFile.OpenReadStream().CopyTo(memStream);
-                            imageUrl = _imageUploader.UploadToStorage(memStream, speaker.Slug + "-" + imageType.Slug,
+                            imageUrl = await _imageUploader.UploadToStorage(memStream, speaker.Slug + "-" + imageType.Slug,
                                 _speakerImageContainerName);
                         }
 
@@ -282,7 +282,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 {
                     using (var responseStream = response.GetResponseStream())
                     {
-                        speakerImage.ImageUrl = _imageUploader.UploadToStorage(responseStream,
+                        speakerImage.ImageUrl = await _imageUploader.UploadToStorage(responseStream,
                             speaker.Slug + "-" + imageType.Slug, _speakerImageContainerName);
                     }
                 }
