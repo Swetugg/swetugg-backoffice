@@ -60,7 +60,7 @@
         </p>
         @if (Model.TwoFactor)
             {
-                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, true, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     <text>Enabled
@@ -70,7 +70,7 @@
             }
             else
             {
-                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, true, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     <text>Disabled

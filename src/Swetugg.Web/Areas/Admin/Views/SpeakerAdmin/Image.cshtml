@@ -64,7 +64,7 @@
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
 
-        @using (Html.BeginForm("DeleteImage", "SpeakerAdmin", new { id = Model.Id, SpeakerId = speaker.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteImageForm" }))
+        @using (Html.BeginForm("DeleteImage", "SpeakerAdmin", new { id = Model.Id, SpeakerId = speaker.Id }, FormMethod.Post, true, new { @class = "pull-right", id = "deleteImageForm" }))
         {
             @Html.AntiForgeryToken()
         }

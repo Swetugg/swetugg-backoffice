@@ -22,6 +22,7 @@
     <Reference Include="System.Security" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Cfp\Models\" />
     <Folder Include="Areas\Cfp\Views\Shared\" />
@@ -40,6 +41,7 @@
     <Folder Include="Views\Now\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.30.3" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />

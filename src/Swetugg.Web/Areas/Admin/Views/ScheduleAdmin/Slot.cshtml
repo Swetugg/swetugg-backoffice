@@ -13,7 +13,7 @@
     }
 }
 
-@using (Html.BeginForm("Slot", "ScheduleAdmin", new { id }, FormMethod.Post, new { @class = "" }))
+@using (Html.BeginForm("Slot", "ScheduleAdmin", new { id }, FormMethod.Post, true, new { @class = "" }))
 {
     @Html.AntiForgeryToken()
     @Html.Hidden("Day", currentDate.Date)

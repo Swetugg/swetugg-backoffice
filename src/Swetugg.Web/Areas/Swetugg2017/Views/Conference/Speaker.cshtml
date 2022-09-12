@@ -47,7 +47,7 @@
                     nameText = nameText + " med @" + Model.Twitter;
                 }
                 var twitterText = nameText + " på @Swetugg 2017!";
-                var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
+                var linkUrl = Url.Action("Speaker", "Conference", null, Context.Request.Scheme) + "#" + session.Slug;
                         }
                         <a href="#@session.Slug">
                             <h2>@session.Name</h2>
@@ -76,7 +76,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>@Model.Name</h2>
                     <p>
-                        @Html.Raw(Html.FromMarkdown(Model.Bio))
+                        @Html.Raw(@Html.FromMarkdown(Model.Bio))
                     </p>
                 </div>
             </div>
@@ -89,7 +89,7 @@
 @section meta {
     @{
         var session = Model.Sessions.Select(s => s.Session).FirstOrDefault();
-        var speakerUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme);
+        var speakerUrl = Url.Action("Speaker", "Conference", null, Context.Request.Scheme);
     }
 
     @if (session != null)

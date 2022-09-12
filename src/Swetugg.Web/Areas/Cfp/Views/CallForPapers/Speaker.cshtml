@@ -33,7 +33,7 @@
             <h3>Speaker information</h3>
         </div>
 
-        @using (Html.BeginForm("Speaker", "CallForPapers", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Speaker", "CallForPapers", new { id = Model.Id }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             <div class="panel-body">

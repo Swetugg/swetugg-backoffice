@@ -111,7 +111,7 @@
 
 </div>
 
-@using (Html.BeginForm("DeleteSession", "CallForPapers", new { confernceSlug = conference.Slug, id = Model.Id }, FormMethod.Post, new { id = "deleteForm", @class = "form-inline" }))
+@using (Html.BeginForm("DeleteSession", "CallForPapers", new { confernceSlug = conference.Slug, id = Model.Id }, FormMethod.Post, true, new { id = "deleteForm", @class = "form-inline" }))
 {
     @Html.AntiForgeryToken()
 }

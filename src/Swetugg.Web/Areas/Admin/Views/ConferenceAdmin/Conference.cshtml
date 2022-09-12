@@ -58,7 +58,7 @@
                             {
                                 <dt>VIP Invite URL</dt>
                                 <dd>
-                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "Cfp", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Request.Url.Scheme)" />
+                                    <input type="text" class="form-control" readonly value="@Url.Action("Invite", "CallForPapers", new {Area = "Cfp", conferenceSlug = Model.Slug, code = Model.CfpVipCode}, Context.Request.Scheme)" />
                                 </dd>
                             }
                         </dl>
@@ -76,7 +76,7 @@
            data-modal-message="This will delete the conference and all associated data."
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
-        @using (Html.BeginForm("Delete", "ConferenceAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteConferenceForm" }))
+        @using (Html.BeginForm("Delete", "ConferenceAdmin", new { id = Model.Id }, FormMethod.Post, true, new { @class = "pull-right", id = "deleteConferenceForm" }))
         {
             @Html.AntiForgeryToken()
         }

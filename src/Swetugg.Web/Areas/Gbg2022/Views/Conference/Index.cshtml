@@ -893,6 +893,7 @@ else
 }
 
 @section meta {
-    <meta property="og:image" content="@Request.Url.GetLeftPart(UriPartial.Authority)/content/gbg-2022/img/swetugg-gron-kvadrat.png" />
+    @*// TODO: Does this generate a valid uri?*@
+    <meta property="og:image" content="@Context.Request.Scheme@Context.Request.Host/content/gbg-2022/img/swetugg-gron-kvadrat.png" />
     <meta property="og:description" content="Swetugg is coming to Göteborg! Join for the first time on the west coast. September 19:th 2022" />
 }

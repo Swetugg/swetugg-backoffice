@@ -16,7 +16,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3>
-            @Common.GetPublished(Model.Published)
+            @await Html.PartialAsync("_PublishedIcon", Model.Published)
             @Model.Name
         </h3>
     </div>
@@ -30,7 +30,7 @@
                 {
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            @Common.GetPublished(Model.VideoPublished)
+                            @await Html.PartialAsync("_PublishedIcon", Model.VideoPublished)
                             Video
                         </div>
                         <div class="panel-body">
@@ -67,7 +67,7 @@
                             @foreach (var speaker in Model.Speakers.Select(s => s.Speaker))
                             {
                             <div class="list-group-item">
-                                @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                                @using (Html.BeginForm("RemoveSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, true, new { @class = "form-inline" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     @Html.ActionLink(speaker.Name, "Speaker", "SpeakerAdmin", new { speaker.Id }, null)
@@ -79,7 +79,7 @@
                             }
                         </div>
                         <div class="panel-footer">
-                            @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                            @using (Html.BeginForm("AddSpeaker", "SessionAdmin", new { Model.Id }, FormMethod.Post, true, new { @class = "form-inline" }))
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
@@ -99,7 +99,7 @@
                             @foreach (var tag in Model.Tags)
                             {
                             <div class="list-group-item">
-                                @using (Html.BeginForm("RemoveTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                                @using (Html.BeginForm("RemoveTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, true, new { @class = "form-inline" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     @tag.Name
@@ -111,7 +111,7 @@
                             }
                         </div>
                         <div class="panel-footer">
-                            @using (Html.BeginForm("AddTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                            @using (Html.BeginForm("AddTag", "SessionAdmin", new { Model.Id }, FormMethod.Post, true, new { @class = "form-inline" }))
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
@@ -134,7 +134,7 @@
            data-modal-message="This will delete the session."
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
-        @using (Html.BeginForm("Delete", "SessionAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSessionForm" }))
+        @using (Html.BeginForm("Delete", "SessionAdmin", new { id = Model.Id }, FormMethod.Post, true, new { @class = "pull-right", id = "deleteSessionForm" }))
         {
             @Html.AntiForgeryToken()
         }

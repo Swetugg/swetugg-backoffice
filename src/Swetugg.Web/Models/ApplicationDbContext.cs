@@ -6,7 +6,10 @@ namespace Swetugg.Web.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+		{
 
+		}
         public DbSet<Conference> Conferences { get; set; }
 
         public DbSet<Speaker> Speakers { get; set; }

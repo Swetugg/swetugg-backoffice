@@ -32,7 +32,7 @@
         @foreach (var session in Model)
         {
             <a href="@Url.Action("Session", new {id = session.Id})" class="list-group-item">
-                @Common.GetPublished(session.Published)
+                @await Html.PartialAsync("_PublishedIcon", session.Published)
                 @session.Name
             </a>
         }

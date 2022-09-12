@@ -127,7 +127,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("DeleteSpeaker", "CallForPapers", new { conferenceSlug = conference.Slug }, FormMethod.Post, new { id = "deleteForm", @class = "form-inline" }))
+@using (Html.BeginForm("DeleteSpeaker", "CallForPapers", new { conferenceSlug = conference.Slug }, FormMethod.Post, true, new { id = "deleteForm", @class = "form-inline" }))
 {
     @Html.AntiForgeryToken()
 }

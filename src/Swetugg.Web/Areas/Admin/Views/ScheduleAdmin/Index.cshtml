@@ -57,7 +57,7 @@
                                        data-modal-message="This will delete the slot."
                                        data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i></a>
 
-                                    @using (Html.BeginForm("DeleteSlot", "ScheduleAdmin", new { id = slot.Id }, FormMethod.Post, new { @class = "form-inline", id = "deleteSlotForm" + slot.Id }))
+                                    @using (Html.BeginForm("DeleteSlot", "ScheduleAdmin", new { id = slot.Id }, FormMethod.Post, true, new { @class = "form-inline", id = "deleteSlotForm" + slot.Id }))
                                     {
                                         @Html.AntiForgeryToken()
                                     }
@@ -85,7 +85,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </a>
 
-                                        @using (Html.BeginForm("DeleteRoomSlot", "ScheduleAdmin", new { roomId = room.Id, slotId = slot.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteRoomSlotForm" + slot.Id + "_" + room.Id }))
+                                        @using (Html.BeginForm("DeleteRoomSlot", "ScheduleAdmin", new { roomId = room.Id, slotId = slot.Id }, FormMethod.Post, true, new { @class = "pull-right", id = "deleteRoomSlotForm" + slot.Id + "_" + room.Id }))
                                         {
                                             @Html.AntiForgeryToken()
                                         }

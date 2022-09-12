@@ -5,7 +5,7 @@
 @{
     var unplacedSessions = (List<Session>)ViewData["UnplacedSessions"];
 }
-@using (Html.BeginForm("AssignRoomSlot", "ScheduleAdmin", new { Model.SlotId, Model.RoomId }, FormMethod.Post, new { @class = "" }))
+@using (Html.BeginForm("AssignRoomSlot", "ScheduleAdmin", new { Model.SlotId, Model.RoomId }, FormMethod.Post, true, new { @class = "" }))
 {
     @Html.AntiForgeryToken()
     <div class="input-group">

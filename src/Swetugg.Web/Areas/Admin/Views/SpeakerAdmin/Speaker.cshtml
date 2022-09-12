@@ -31,7 +31,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3>
-            @Common.GetPublished(Model.Published)
+            @await Html.PartialAsync("_PublishedIcon", Model.Published)
             @Model.Name
         </h3>
     </div>
@@ -108,7 +108,7 @@
                         @foreach (var tag in Model.Tags)
                         {
                             <div class="list-group-item">
-                                @using (Html.BeginForm("RemoveTag", "SpeakerAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                                @using (Html.BeginForm("RemoveTag", "SpeakerAdmin", new { Model.Id }, FormMethod.Post, true, new { @class = "form-inline" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     @tag.Name
@@ -120,7 +120,7 @@
                         }
                     </div>
                     <div class="panel-footer">
-                        @using (Html.BeginForm("AddTag", "SpeakerAdmin", new { Model.Id }, FormMethod.Post, new { @class = "form-inline" }))
+                        @using (Html.BeginForm("AddTag", "SpeakerAdmin", new { Model.Id }, FormMethod.Post, true, new { @class = "form-inline" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-group">
@@ -144,7 +144,7 @@
                         }
                     </div>
                     <div class="panel-footer">
-                        @using (Html.BeginForm("NewImage", "SpeakerAdmin", new { SpeakerId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("NewImage", "SpeakerAdmin", new { SpeakerId = Model.Id }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-group">
@@ -181,7 +181,7 @@
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
 
-        @using (Html.BeginForm("Delete", "SpeakerAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSpeakerForm" }))
+        @using (Html.BeginForm("Delete", "SpeakerAdmin", new { id = Model.Id }, FormMethod.Post, true, new { @class = "pull-right", id = "deleteSpeakerForm" }))
         {
             @Html.AntiForgeryToken()
         }

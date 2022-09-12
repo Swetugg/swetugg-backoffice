@@ -54,7 +54,7 @@
                     twitterText,
                     (session.Name.Length <= avail) ? session.Name : session.Name.Substring(0, avail - 3) + "..."
                     );
-                var linkUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme) + "#" + session.Slug;
+                var linkUrl = Url.Action("Speaker", "Conference", null, Context.Request.Scheme) + "#" + session.Slug;
                         }
                         <a href="#@session.Slug">
                             <h2>
@@ -103,7 +103,7 @@
 @section meta {
     @{
         var session = Model.Sessions.Select(s => s.Session).FirstOrDefault();
-        var speakerUrl = Url.Action("Speaker", "Conference", null, Request.Url.Scheme);
+        var speakerUrl = Url.Action("Speaker", "Conference", null, Context.Request.Scheme);
     }
 
     @if (session != null)

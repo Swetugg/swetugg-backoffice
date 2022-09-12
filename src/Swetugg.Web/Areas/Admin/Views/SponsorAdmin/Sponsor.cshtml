@@ -19,7 +19,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3>
-            @Common.GetPublished(Model.Published)
+            @await Html.PartialAsync("_PublishedIcon", Model.Published)
             @Model.Name
         </h3>
     </div>
@@ -42,7 +42,7 @@
                         }
                     </div>
                     <div class="panel-footer">
-                        @using (Html.BeginForm("NewImage", "SponsorAdmin", new { SponsorId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("NewImage", "SponsorAdmin", new { SponsorId = Model.Id }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-group">
@@ -78,7 +78,7 @@
            data-modal-message="This will delete the sponsor."
            data-toggle="modal" data-target="#formConfirmationModal"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
 
-        @using (Html.BeginForm("Delete", "SponsorAdmin", new { id = Model.Id }, FormMethod.Post, new { @class = "pull-right", id = "deleteSponsorForm" }))
+        @using (Html.BeginForm("Delete", "SponsorAdmin", new { id = Model.Id }, FormMethod.Post, true, new { @class = "pull-right", id = "deleteSponsorForm" }))
         {
             @Html.AntiForgeryToken()
         }

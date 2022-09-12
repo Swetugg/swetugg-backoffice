@@ -33,7 +33,7 @@
         @foreach (var speaker in Model)
         {
             <a href="@Url.Action("Speaker", new {id = speaker.Id })" class="list-group-item">
-                @Common.GetPublished(speaker.Published)
+                @await Html.PartialAsync("_PublishedIcon", speaker.Published)
                 @speaker.Name
             </a>
         }
