@@ -48,14 +48,14 @@ $(function() {
 
 function initializeMap(id) {
     "use strict";
-    var image = '/Content/swetugg-2019/img/icon-map.png';
+    var image = '/Content/sthlm-2023/img/icon-map.png';
 
-    var overlayTitle = 'Swetugg 2019';
+    var overlayTitle = 'Swetugg 2023';
 
     var locations = [
         //point number 1 
         // ['Swetugg 2019', 'Stockholm', '59.326142', '17.9875455'],
-        ['Swetugg 2019', 'Stockholm', 59.2910932, 18.0836 ]
+        ['Swetugg 2023', 'Stockholm', 59.3126667, 18.0266579]
     ];
 
     id = (id === undefined) ? 'map' : id;
