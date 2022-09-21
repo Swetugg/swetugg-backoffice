@@ -10,7 +10,7 @@ namespace Swetugg.Web.Controllers
 	{
 		public ActionResult Index()
 		{
-			return RedirectToAction("Index", "Conference", new { Area = "gbg2022"});
+			return RedirectToAction("Index", "Conference", new { Area = "sthlm2023"});
 		}
 
 	    [Route("techdays")]
@@ -24,13 +24,13 @@ namespace Swetugg.Web.Controllers
         [Route("now")]
         public ActionResult Now()
         {
-            return RedirectToAction("Now", "Conference", new { Area = "gbg2022" });
+            return RedirectToAction("Now", "Conference", new { Area = "sthlm2023" });
         }
 
         [Route("code-of-conduct")]
         public ActionResult CodeOfConduct()
         {
-            return RedirectToAction("CodeOfConduct", "Conference", new { Area = "gbg2022" });
+            return RedirectToAction("CodeOfConduct", "Conference", new { Area = "sthlm2023" });
         }
 
         [Route("start")]
