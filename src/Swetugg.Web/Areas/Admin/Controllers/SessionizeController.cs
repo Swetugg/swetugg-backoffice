@@ -20,7 +20,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     {
         private readonly IImageUploader _imageUploader;
         private readonly string _speakerImageContainerName;
-        private static string baseurl = "api/v2/ckitpijn/view"; //TODO: move to conference (new field)
+        private static string baseurl = "api/v2/ful893fy/view"; //TODO: move to conference (new field)
 
         public SessionizeController(IImageUploader imageUploader, Web.Models.ApplicationDbContext dbContext) : base(dbContext)
         {
