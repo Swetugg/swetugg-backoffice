@@ -22,11 +22,6 @@ The first thing you need to do is to create a conference. You do this by selecti
 
 Once the conference is created, you'll end up on the main admin page for it. This is where you'll find links to manage speakers and sessions as well as setting up rooms and finally the schedule.
 
-### Call For Papers
-Anyone can create an account on the conference site and get access to the Call For Papers (found at `/cfp`). There they can add a bio, contact information and any number of sessions.
-
-### Reviewing CFP
-A conference manager can (via the main conference admin page) review all submissions to the CFP and promote any speaker and sessions to the conference. Promoting a speaker/session creates a link between the CFP entry and the conference entry. If the CFP entry is changed, the conference entry can be updated by hitting the Update button.
 
 Configuring
 -----------
