@@ -160,123 +160,6 @@
     </div>
 </section>
 
-<section id="sponsor" class="odd-section content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>Sponsors</h1>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p>
-                    Swetugg Events is a non-profit organization. This means the conference would not be possible without the help of our amazing sponsors.
-                </p>
-                <p>
-                    <a href="code-of-conduct" class="btn btn-default btn-lg">Read more about our sponsor offers</a>
-                </p>
-                <p>
-                    Would you like to become a sponsor? We offer a range of different sponsor packages for you to choose from. Get in touch at <a href="mailto:sponsors@swetugg.se">sponsors@swetugg.se</a>.
-                </p>
-            </div>
-        </div>
-        @{
-            var exhibitors = sponsors.Where(s => s.Priority < 100).ToArray();
-            var supportSponsors = sponsors.Where(s => s.Priority >= 100 && s.Priority < 200).ToArray();
-            var podcasts = sponsors.Where(s => s.Priority >= 200).ToArray();
-        }
-        @if (exhibitors.Any())
-        {
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2 class="subTitle">Exhibitors</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <ul class="logo-collection">
-
-                        @foreach (var sponsor in exhibitors)
-                        {
-                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
-                            if (imgUrl == null)
-                            {
-                                imgUrl = "/Content/gbg-2022/img/sponsors/" + sponsor.Slug + "-thumb.png";
-                            }
-
-                            <li>
-                                <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="@imgUrl" />
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        }
-
-        @if (supportSponsors.Any())
-        {
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2 class="subTitle">Supporters</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <ul class="logo-collection">
-
-                        @foreach (var sponsor in supportSponsors)
-                        {
-                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
-                            if (imgUrl == null)
-                            {
-                                imgUrl = "/Content/gbg-2022/img/sponsors/" + sponsor.Slug + "-thumb.png";
-                            }
-
-                            <li>
-                                <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="@imgUrl" />
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        }
-        @if (podcasts.Any())
-        {
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2 class="subTitle">Podcasts</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <ul class="logo-collection">
-
-                        @foreach (var sponsor in podcasts)
-                        {
-                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
-                            if (imgUrl == null)
-                            {
-                                imgUrl = "/Content/gbg-2022/img/sponsors/" + sponsor.Slug + "-thumb.png";
-                            }
-
-                            <li>
-                                <a href="@sponsor.Web">
-                                    <img class="sponsor-image" src="@imgUrl" />
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        }
-    </div>
-</section>
-
-
 @if (speakers.Any())
 {
     <section id="speakers" class="even-section content-section text-center">
@@ -598,6 +481,123 @@ else
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+
+<section id="sponsor" class="odd-section content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Sponsors</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>
+                    Swetugg Events is a non-profit organization. This means the conference would not be possible without the help of our amazing sponsors.
+                </p>
+                <p>
+                    <a href="code-of-conduct" class="btn btn-default btn-lg">Read more about our sponsor offers</a>
+                </p>
+                <p>
+                    Would you like to become a sponsor? We offer a range of different sponsor packages for you to choose from. Get in touch at <a href="mailto:sponsors@swetugg.se">sponsors@swetugg.se</a>.
+                </p>
+            </div>
+        </div>
+        @{
+            var exhibitors = sponsors.Where(s => s.Priority < 100).ToArray();
+            var supportSponsors = sponsors.Where(s => s.Priority >= 100 && s.Priority < 200).ToArray();
+            var podcasts = sponsors.Where(s => s.Priority >= 200).ToArray();
+        }
+        @if (exhibitors.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Exhibitors</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in exhibitors)
+                        {
+                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
+                            if (imgUrl == null)
+                            {
+                                imgUrl = "/Content/gbg-2022/img/sponsors/" + sponsor.Slug + "-thumb.png";
+                            }
+
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="@imgUrl" />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+
+        @if (supportSponsors.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Supporters</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in supportSponsors)
+                        {
+                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
+                            if (imgUrl == null)
+                            {
+                                imgUrl = "/Content/gbg-2022/img/sponsors/" + sponsor.Slug + "-thumb.png";
+                            }
+
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="@imgUrl" />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+        @if (podcasts.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="subTitle">Podcasts</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="logo-collection">
+
+                        @foreach (var sponsor in podcasts)
+                        {
+                            var imgUrl = sponsor.Images.FirstOrDefault(i => i.ImageType.Slug == "sponsor-thumb")?.ImageUrl;
+                            if (imgUrl == null)
+                            {
+                                imgUrl = "/Content/gbg-2022/img/sponsors/" + sponsor.Slug + "-thumb.png";
+                            }
+
+                            <li>
+                                <a href="@sponsor.Web">
+                                    <img class="sponsor-image" src="@imgUrl" />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
     </div>
 </section>
 
