@@ -1291,7 +1291,7 @@
     <Content Include="Areas\Sthlm2023\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Sthlm2023\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Sthlm2023\Views\web.config" />
-    <Content Include="Areas\Sthlm2023\Views\Conference\SponsorOffer.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Sponsorship.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
