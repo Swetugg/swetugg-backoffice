@@ -663,6 +663,47 @@ footer {
     right: 10px;
   }
 }
+/* Sessions section */
+.sessions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-column-gap: 4rem;
+  grid-row-gap: 2rem;
+  padding-left: 0;
+  list-style: none;
+}
+.sessions a {
+  display: inline-block;
+  font-size: 1.75rem;
+  margin-bottom: 0.25em;
+}
+.sessions li {
+  margin: 0;
+}
+.sessions-speakers {
+  display: inline;
+  padding: 0;
+}
+.sessions-speakers li {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+}
+.sessions-speakers a {
+  margin: 0;
+  font-size: 1.4rem;
+  display: inline;
+  vertical-align: bottom;
+  color: #333;
+}
+.sessions-speakers a:hover {
+  color: #A30046;
+}
+.sessions img {
+  width: 2rem;
+  margin-right: 0.75rem;
+  height: 2rem;
+}
 .logo-collection li {
   float: left;
   width: 200px;
