@@ -753,53 +753,53 @@ footer {
 
 .photo-collection {
     list-style: none;
-    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    grid-column-gap: 3rem;
+    grid-row-gap: 2rem;
+    padding-left: 0;
 
-    @media (max-width: 320px) {
-        padding-left: 25px;
+    @media (min-width: @breakpoint-small) {
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    }
+    @media (min-width: @breakpoint-medium) {
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        grid-column-gap: 4rem;
     }
 }
 
 .photo-collection li {
-    float: left;
-    width: 130px;
-    height: 130px;
-    margin: 20px 20px 40px 20px;
     font-size: 14px;
     text-align: center;
-
-    @media (max-width: @breakpoint-alpha) {
-        width: 80px;
-        height: 80px;
-        margin: 10px 10px 60px 10px;
-    }
-
-    @media (max-width: 320px) {
-        width: 60px;
-        height: 60px;
-    }
+    margin: 0;
 }
 
 .photo-collection li img {
-    width: 130px;
-    height: 130px;
+    width: 100%;
     margin-bottom: 10px;
-
-    @media (max-width: @breakpoint-alpha) {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 0;
-    }
-
-    @media (max-width: 320px) {
-        width: 60px;
-        height: 60px;
-    }
-
 }
 
 .logo-collection {
     list-style: none;
+}
+
+.photo-collection {
+    div.photo {
+        position: relative;
+        display: inline-block;
+    }
+
+    span.tag-ms-mvp {
+        background-image: url("/Content/sthlm-2023/img/tags/front-ms-mvp-small.png");
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        bottom: 10px;
+        right: 0;
+        @media (min-width: @breakpoint-medium) {
+            right: 10px;
+        }
+    }
 }
 
 .logo-collection li {
@@ -987,29 +987,6 @@ footer {
     background: inherit;
 }
 
-.photo-collection {
-    div.photo {
-        position: relative;
-        display: inline-block;
-    }
-
-    span.tag-ms-mvp {
-        background-image: url("/Content/sthlm-2023/img/tags/front-ms-mvp-small.png");
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-    }
-
-    /*    span.tag-ms-mvp {
-        content: url('../img/tags/front-ms-mvp-small.png');
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-    }*/
-}
-
 // Speaker page
 .speaker {
     div.photo {
@@ -1029,11 +1006,4 @@ footer {
         bottom: 0px;
         right: -50px;
     }
-
-/*    span.tag-ms-mvp {
-        content: url('../img/tags/speaker-ms-mvp.png');
-        position: absolute;
-        bottom: 0px;
-        right: -50px;
-    }*/
 }
