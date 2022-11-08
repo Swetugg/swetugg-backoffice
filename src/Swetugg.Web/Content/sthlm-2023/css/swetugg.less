@@ -71,7 +71,8 @@ h2.subTitle {
     text-align: center;
 }
 
-h2.subTitle:after, h1.noSubtitle:after {
+h2.subTitle:after,
+h1.noSubtitle:after {
     display: block;
     height: 1px;
     width: 100px;
@@ -82,7 +83,8 @@ h2.subTitle:after, h1.noSubtitle:after {
     left: 50%;
 }
 
-h3, h4 {
+h3,
+h4 {
     margin: 0 0 6px;
 }
 
@@ -162,7 +164,7 @@ a:focus {
 
 .navbar {
     margin-bottom: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     text-transform: uppercase;
     font-family: @navbar-font-family;
     font-size: 14px;
@@ -175,12 +177,12 @@ a:focus {
 }
 
 .navbar-brand img {
-    position:relative;
+    position: relative;
     top: -10px;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
-.navbar-brand > i {
+.navbar-brand>i {
     font-size: 28px;
     line-height: 0.5;
     position: relative;
@@ -191,7 +193,7 @@ a:focus {
     outline: none;
 }
 
-.navbar-nav > li > a {
+.navbar-nav>li>a {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -211,7 +213,7 @@ a:focus {
 .navbar-custom .nav li a:focus,
 .navbar-custom .nav li.active {
     outline: none;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .navbar-toggle {
@@ -231,10 +233,10 @@ a:focus {
         border-bottom: none;
         letter-spacing: 1px;
         background: transparent;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -o-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        -o-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        transition: background .5s ease-in-out, padding .5s ease-in-out;
     }
 
     // If we want to hide the logo when at the top of start page
@@ -253,7 +255,7 @@ a:focus {
     }*/
 
     .navbar-custom.top-nav-collapse {
-        border-bottom: 1px solid rgba(255,255,255,0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -317,9 +319,9 @@ a:focus {
     .intro {
         height: 70%;
         padding-top: 150px;
-        padding-left:0;
-        padding-bottom:0;
-        padding-right:0;
+        padding-left: 0;
+        padding-bottom: 0;
+        padding-right: 0;
     }
 
     .brand-heading {
@@ -352,7 +354,7 @@ a:focus {
 .btn-circle:focus {
     outline: none;
     color: @light;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .page-scroll .btn-circle i.animated {
@@ -460,26 +462,26 @@ a:focus {
 }
 
 .sponsor-section {
-  width: 100%;
-  padding: 20px inherit;
-  color: #524149;
-  /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
-  background-color: #FFFFFF;
-  padding-top: 0px;
+    width: 100%;
+    padding: 20px inherit;
+    color: #524149;
+    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
+    background-color: #FFFFFF;
+    padding-top: 0px;
 }
 
-.content-section > div {
+.content-section>div {
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.content-section > .container {
+.content-section>.container {
     padding-left: 15px;
     padding-right: 15px;
 }
 
 
-.now-section > .container {
+.now-section>.container {
     padding-top: 20px;
     padding-bottom: 50px;
     margin-left: 15px;
@@ -487,7 +489,7 @@ a:focus {
 }
 
 @media(min-width:767px) {
-    .now-section > .container {
+    .now-section>.container {
         margin-left: auto;
         margin-right: auto;
         padding-left: 100px;
@@ -514,6 +516,7 @@ table.schema {
 .schema td {
     padding: 0 !important;
 }
+
 .schema th {
     text-align: center;
 }
@@ -587,7 +590,8 @@ table.schema {
 }
 
 
-footer, .footer-section {
+footer,
+.footer-section {
     background-color: @light;
 }
 
@@ -608,7 +612,7 @@ footer, .footer-section {
 }
 
 @media(min-width:767px) {
-    .content-section > div {
+    .content-section>div {
         padding: 75px 0 75px 0;
     }
 
@@ -625,7 +629,7 @@ footer, .footer-section {
 
 .btn {
     text-transform: uppercase;
-    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -670,7 +674,7 @@ footer, .footer-section {
 .banner-buttons {
     margin-top: 0;
 
-    > li {
+    >li {
         margin-bottom: 20px;
     }
 }
@@ -682,13 +686,13 @@ footer, .footer-section {
 }
 
 @media(max-width:767px) {
-    ul.banner-buttons > li {
+    ul.banner-buttons>li {
         display: block;
         margin-bottom: 20px;
         padding: 0;
     }
 
-    ul.banner-buttons > li:last-child {
+    ul.banner-buttons>li:last-child {
         margin-bottom: 0;
     }
 }
@@ -698,13 +702,13 @@ footer, .footer-section {
 ::-moz-selection {
     text-shadow: none;
     background: #fcfcfc;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 ::selection {
     text-shadow: none;
     background: #fcfcfc;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 img::selection {
@@ -716,7 +720,7 @@ img::-moz-selection {
 }
 
 body {
-    -webkit-tap-highlight-color: rgba(255,255,255,0.2);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
 
 ul.socialNetwork {
@@ -753,53 +757,103 @@ footer {
 
 .photo-collection {
     list-style: none;
-    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    grid-column-gap: 3rem;
+    grid-row-gap: 2rem;
+    padding-left: 0;
 
-    @media (max-width: 320px) {
-        padding-left: 25px;
+    @media (min-width: @breakpoint-small) {
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    }
+
+    @media (min-width: @breakpoint-medium) {
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        grid-column-gap: 4rem;
     }
 }
 
 .photo-collection li {
-    float: left;
-    width: 130px;
-    height: 130px;
-    margin: 20px 20px 40px 20px;
     font-size: 14px;
     text-align: center;
-
-    @media (max-width: @breakpoint-alpha) {
-        width: 80px;
-        height: 80px;
-        margin: 10px 10px 60px 10px;
-    }
-
-    @media (max-width: 320px) {
-        width: 60px;
-        height: 60px;
-    }
+    margin: 0;
 }
 
 .photo-collection li img {
-    width: 130px;
-    height: 130px;
+    width: 100%;
     margin-bottom: 10px;
-
-    @media (max-width: @breakpoint-alpha) {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 0;
-    }
-
-    @media (max-width: 320px) {
-        width: 60px;
-        height: 60px;
-    }
-
 }
 
 .logo-collection {
     list-style: none;
+}
+
+.photo-collection {
+    div.photo {
+        position: relative;
+        display: inline-block;
+    }
+
+    span.tag-ms-mvp {
+        background-image: url("/Content/sthlm-2023/img/tags/front-ms-mvp-small.png");
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        bottom: 10px;
+        right: 0;
+
+        @media (min-width: @breakpoint-medium) {
+            right: 10px;
+        }
+    }
+}
+
+/* Sessions section */
+.sessions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-column-gap: 4rem;
+    grid-row-gap: 2rem;
+    padding-left: 0;
+    list-style: none;
+
+    a {
+        display: inline-block;
+        font-size: 1.75rem;
+        margin-bottom: 0.25em;
+    }
+
+    li {
+        margin: 0;
+    }
+
+    &-speakers {
+        display: inline;
+        padding: 0;
+
+        li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        a {
+            margin: 0;
+            font-size: 1.4rem;
+            display: inline;
+            vertical-align: bottom;
+            color: #333;
+            &:hover {
+                color: @primary;
+            }
+        }
+    }
+
+    img {
+        width: 2rem;
+        margin-right: 0.75rem;
+        height: 2rem;
+    }
 }
 
 .logo-collection li {
@@ -819,7 +873,7 @@ footer {
 
 .logo-collection-now {
     list-style: none;
-	margin: 0 -25px;
+    margin: 0 -25px;
 }
 
 .logo-collection-now li {
@@ -827,7 +881,7 @@ footer {
     width: 100px;
     height: 60px;
     margin-right: 10px;
-	margin-bottom: 10px;
+    margin-bottom: 10px;
     font-size: 14px;
     text-align: center;
 }
@@ -843,70 +897,70 @@ footer {
 // Source: http://codepen.io/geoffyuen/pen/FCBEg
 
 .rwd-table {
-  margin: 1em 0;
-  min-width: 300px; // adjust to your needs
-  border-bottom: 1px solid #ddd;
+    margin: 1em 0;
+    min-width: 300px; // adjust to your needs
+    border-bottom: 1px solid #ddd;
 
-  background-color: lighten(@highlight, 24%);
+    background-color: lighten(@highlight, 24%);
 
-  
-  tr {
-    /*border-top: 1px solid #ddd;
+
+    tr {
+        /*border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;*/
-  }
-  
-  th {
-    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
-  }
-  
-  td {
-    display: block; 
-    
-    &:first-child {
-      padding-top: .5em;
-    }
-    &:last-child {
-      padding-bottom: .5em;
-    }
-  }
-
-  td[data-th]:before {
-      content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
-      /*font-weight: bold;*/
-
-      text-wrap: none;
-
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 10px;
-      margin-left: 10px;
-      margin-top: 13px;
-
-      // optional stuff to make it look nicer
-      /*width: .51em; // magic number :( adjust according to your own content*/
-      display: inline-block;
-      // end options
-      
-      @media (min-width: @breakpoint-schedule) {
-        display: none;
-      }
-    }
-  
-  th, td {
-    text-align: left;
-    
-    @media (min-width: @breakpoint-schedule) {
-      display: table-cell;
-      padding: .25em .5em;
-      
-      &:first-child {
-      }
-      
-      &:last-child {
-      }
     }
 
-  }
+    th {
+        display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
+    }
+
+    td {
+        display: block;
+
+        &:first-child {
+            padding-top: .5em;
+        }
+
+        &:last-child {
+            padding-bottom: .5em;
+        }
+    }
+
+    td[data-th]:before {
+        content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
+        /*font-weight: bold;*/
+
+        text-wrap: none;
+
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 10px;
+        margin-left: 10px;
+        margin-top: 13px;
+
+        // optional stuff to make it look nicer
+        /*width: .51em; // magic number :( adjust according to your own content*/
+        display: inline-block;
+        // end options
+
+        @media (min-width: @breakpoint-schedule) {
+            display: none;
+        }
+    }
+
+    th,
+    td {
+        text-align: left;
+
+        @media (min-width: @breakpoint-schedule) {
+            display: table-cell;
+            padding: .25em .5em;
+
+            &:first-child {}
+
+            &:last-child {}
+        }
+
+    }
 
     .all-rooms {
         background-color: white;
@@ -915,7 +969,7 @@ footer {
         text-align: center;
         vertical-align: middle;
         text-transform: uppercase;
-    }  
+    }
 
     td.all-rooms {
         letter-spacing: 5px;
@@ -926,7 +980,7 @@ footer {
             padding-left: 10px !important;
         }
     }
-  
+
 }
 
 .video-wrapper {
@@ -939,7 +993,9 @@ footer {
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
 }
 
 .video-container iframe,
@@ -961,7 +1017,7 @@ footer {
 }
 
 .flickr-link {
-   margin: auto;
+    margin: auto;
 }
 
 .blockquote-container {
@@ -979,35 +1035,12 @@ footer {
 
 .blockquote-small p {
     font-size: 15px;
-    color: #A30046;    
+    color: #A30046;
 }
 
 .blockquote-small footer {
     padding: 0;
     background: inherit;
-}
-
-.photo-collection {
-    div.photo {
-        position: relative;
-        display: inline-block;
-    }
-
-    span.tag-ms-mvp {
-        background-image: url("/Content/sthlm-2023/img/tags/front-ms-mvp-small.png");
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-    }
-
-    /*    span.tag-ms-mvp {
-        content: url('../img/tags/front-ms-mvp-small.png');
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-    }*/
 }
 
 // Speaker page
@@ -1029,11 +1062,4 @@ footer {
         bottom: 0px;
         right: -50px;
     }
-
-/*    span.tag-ms-mvp {
-        content: url('../img/tags/speaker-ms-mvp.png');
-        position: absolute;
-        bottom: 0px;
-        right: -50px;
-    }*/
 }
