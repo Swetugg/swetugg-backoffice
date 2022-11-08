@@ -411,10 +411,11 @@ else
                         <ul class="sessions">
                             @foreach (var session in sessions.Where(s => s.Published))
                             {
+                                var sessionSpeakers = session.Speakers.Select(s => s.Speaker);
                                 <li>
-                                    <a href="@Url.Action("Speaker", new {speakerSlug = session.Speakers.First().Slug})#@session.Slug">@session.Name</a>
+                                    <a href="@Url.Action("Speaker", new {speakerSlug = sessionSpeakers.First().Slug})#@session.Slug">@session.Name</a>
                                     <ul class="sessions-speakers">
-                                        @foreach (var speaker in session.Speakers)
+                                        @foreach (var speaker in sessionSpeakers)
                                         {
                                             string imageUrl = "/Content/sthlm-2023/SpeakerPictures/" + speaker.Slug + ".png";
                                             IDictionary<string, SpeakerImage> imgLookup;
