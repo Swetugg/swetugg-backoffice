@@ -855,9 +855,12 @@ footer {
 .speaker div.photo {
   position: relative;
   display: inline-block;
+  width: 500px;
+  max-width: 100%;
 }
 .speaker div.photo img {
   width: 400px;
+  max-width: 100%;
 }
 .speaker span.tag-ms-mvp {
   background-image: url("/Content/sthlm-2023/img/tags/speaker-ms-mvp.png");
@@ -865,5 +868,5 @@ footer {
   height: 74px;
   position: absolute;
   bottom: 0px;
-  right: -50px;
+  right: 0;
 }
