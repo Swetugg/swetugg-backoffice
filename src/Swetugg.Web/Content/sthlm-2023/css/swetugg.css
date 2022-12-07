@@ -857,6 +857,7 @@ footer {
   display: inline-block;
   width: 500px;
   max-width: 100%;
+  padding-top: 15px;
 }
 .speaker div.photo img {
   width: 400px;
