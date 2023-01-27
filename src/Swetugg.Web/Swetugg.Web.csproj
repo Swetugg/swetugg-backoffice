@@ -696,6 +696,12 @@
     <Content Include="Content\sthlm-2023\img\150_SwetuggOrigamiButterfly.png" />
     <Content Include="Content\sthlm-2023\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
     <Content Include="Content\sthlm-2023\img\icon-map.png" />
+    <Content Include="Content\sthlm-2023\img\logos\GrayButterfly.png" />
+    <Content Include="Content\sthlm-2023\img\logos\GrayForDarkBackground.png" />
+    <Content Include="Content\sthlm-2023\img\logos\GrayForLightBackground.png" />
+    <Content Include="Content\sthlm-2023\img\logos\PinkButterbly.png" />
+    <Content Include="Content\sthlm-2023\img\logos\PinkForDarkBackground.png" />
+    <Content Include="Content\sthlm-2023\img\logos\PinkForLightBackground.png" />
     <Content Include="Content\sthlm-2023\img\sponsors\activesolution-thumb.png" />
     <Content Include="Content\sthlm-2023\img\sponsors\andreas-sund-thumb.png" />
     <Content Include="Content\sthlm-2023\img\sponsors\appinthecloud-thumb.png" />
@@ -1292,6 +1298,7 @@
     <Content Include="Areas\Sthlm2023\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Sthlm2023\Views\web.config" />
     <Content Include="Areas\Sthlm2023\Views\Conference\Sponsorship.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Graphics.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
