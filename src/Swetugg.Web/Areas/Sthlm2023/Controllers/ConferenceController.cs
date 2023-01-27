@@ -118,6 +118,13 @@ namespace Swetugg.Web.Areas.Sthlm2023.Controllers
             ViewData["Conference"] = Conference;
             return View();
         }
+        
+        [Route("logos")]
+        public ActionResult Graphics()
+        {
+            ViewData["Conference"] = Conference;
+            return View();
+        }
 
         [Route("speakers/{speakerSlug}")]
         public ActionResult Speaker(string speakerSlug)
