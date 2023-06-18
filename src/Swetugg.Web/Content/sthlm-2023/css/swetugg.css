@@ -131,6 +131,7 @@ a:focus {
   }
 }
 .navbar {
+  top: 50px;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
