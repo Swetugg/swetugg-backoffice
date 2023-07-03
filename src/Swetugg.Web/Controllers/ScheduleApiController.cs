@@ -95,8 +95,8 @@ namespace Swetugg.Web.Controllers
             var res = from s in slots
                       select new
                       {
-                          Start = s.Start.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+02:00"),
-                          End = s.End.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+02:00"),
+                          Start = s.Start.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+01:00"),
+                          End = s.End.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+01:00"),
                           s.Title,
                           Sessions = from r in s.RoomSlots.Where(rs => rs.AssignedSession != null && rs.AssignedSession.Published)
                           select new
@@ -104,8 +104,8 @@ namespace Swetugg.Web.Controllers
                               Room = rooms.Where(room => room.Id == r.RoomId).FirstOrDefault().Name,
                               Name = r.AssignedSession == null ? null : r.AssignedSession.Name,
                               Description = r.AssignedSession == null ? null : r.AssignedSession.Description,
-                              Start = r.Start?.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+02:00"),
-                              End = r.End?.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+02:00"),
+                              Start = r.Start?.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+01:00"),
+                              End = r.End?.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffff+01:00"),
                               Speakers = r.AssignedSession == null ? null :
                                 from speaker in r.AssignedSession.Speakers
                                          select new
