@@ -77,7 +77,6 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <div id="old-conference"><span class="part-one">This pages is about Swetugg Göteborg 2022. </span><span class="part-two">Go to <a href="/gbg-2023">Swetugg Göteborg 2023.</a></span></div>
         <nav class="navbar navbar-custom navbar-fixed-top @(transformNavBar ? "transform": "top-nav-collapse" )" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -101,9 +100,9 @@
                         <li class="page-scroll">
                             <a href="@Url.Action("Index", "Conference")#speakers" data-target="#speakers">Speakers</a>
                         </li>
-                         <li class="page-scroll">
+                         @*<li class="page-scroll">
                             <a href="@Url.Action("Index", "Conference")#schedule" data-target="#schedule">Schedule</a>
-                        </li> 
+                        </li>*@ 
                             
                         <li class="page-scroll">
                             <a href="@Url.Action("Index", "Conference")#sponsor" data-target="#sponsor">Sponsors</a>
