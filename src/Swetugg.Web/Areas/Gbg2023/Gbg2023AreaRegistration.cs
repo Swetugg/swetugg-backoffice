@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Swetugg.Web.Areas.Gbg2022
+namespace Swetugg.Web.Areas.Gbg2023
 {
     public class Gbg2023AreaRegistration : AreaRegistration 
     {

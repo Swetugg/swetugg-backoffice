@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Swetugg.Web.Models;
 using Swetugg.Web.Services;
 
-namespace Swetugg.Web.Areas.Gbg2022.Controllers
+namespace Swetugg.Web.Areas.Gbg2023.Controllers
 {
     [RouteArea("Gbg2023", AreaPrefix = "gbg-2023")]
     public class ConferenceController : Controller
