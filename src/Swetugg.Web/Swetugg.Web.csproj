@@ -367,8 +367,10 @@
     <Compile Include="Areas\Admin\Controllers\SponsorAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CfpSelectionController.cs" />
+    <Compile Include="Areas\Gbg2023\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Gbg2022AreaRegistration.cs" />
+    <Compile Include="Areas\Gbg2023\Gbg2023AreaRegistration.cs" />
     <Compile Include="Areas\Sthlm2023\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Sthlm2023\Sthlm2023AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2015\Controllers\ConferenceController.cs" />
@@ -1299,6 +1301,10 @@
     <Content Include="Areas\Sthlm2023\Views\web.config" />
     <Content Include="Areas\Sthlm2023\Views\Conference\Sponsorship.cshtml" />
     <Content Include="Areas\Sthlm2023\Views\Conference\Graphics.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\web.config" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1418,6 +1424,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Gbg2022\Models\" />
+    <Folder Include="Areas\Gbg2023\Models\" />
     <Folder Include="Areas\Sthlm2020\Models\" />
     <Folder Include="Areas\Sthlm2023\Models\" />
     <Folder Include="Areas\Swetugg2015\Models\" />
