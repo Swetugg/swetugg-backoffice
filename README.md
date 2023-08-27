@@ -7,7 +7,7 @@ A possibly working sample of this is published to http://swetuggpreview.azureweb
 
 Getting started
 ---------------
-You should be able to start up an empty version of the swetugg site simply by hitting F5 in Visual Studio. This will create a local database using Entity Framework Code First Migrations. However, since the database will be empty you won't be able to actually browse to the frontpage. The first thing you should do is to make sure the database is seeded with a default admin account:
+You should be able to start up an empty version of the swetugg site simply by hitting F5 in Visual Studio. This will create a local database using Entity Framework Code First Migrations, if this fails with the error message "failed with the operating system error 2(The system cannot find the file specified.).", then try removing your `App_Data` folder and recreate it from Visual Studio. If this fails with the exception `SqlException: Cannot attach the file 'C:\projects\swetugg-web\src\Swetugg.Web\App_Data\aspnet-Swetugg.Web-20150406030259.mdf' as database 'aspnet-Swetugg.Web-20150406030259'.` then you may create it by opening `TOOLS > Connect o Database` and navigate to `{project location}\src\Swetugg.Web\App_Data\aspnet-Swetugg.Web-20150406030259.mdf` and click `yes` when it asks if you want to create the file. However, since the database will be empty you won't be able to actually browse to the frontpage. The first thing you should do is to make sure the database is seeded with a default admin account:
 
 ### Seed the database
 In Visual Studio, open up the Package Manager Console and run:
@@ -22,11 +22,6 @@ The first thing you need to do is to create a conference. You do this by selecti
 
 Once the conference is created, you'll end up on the main admin page for it. This is where you'll find links to manage speakers and sessions as well as setting up rooms and finally the schedule.
 
-### Call For Papers
-Anyone can create an account on the conference site and get access to the Call For Papers (found at `/cfp`). There they can add a bio, contact information and any number of sessions.
-
-### Reviewing CFP
-A conference manager can (via the main conference admin page) review all submissions to the CFP and promote any speaker and sessions to the conference. Promoting a speaker/session creates a link between the CFP entry and the conference entry. If the CFP entry is changed, the conference entry can be updated by hitting the Update button.
 
 Configuring
 -----------

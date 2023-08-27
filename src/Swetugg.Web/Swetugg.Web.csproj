@@ -136,23 +136,23 @@
     <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.6.0.0\lib\net461\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.4.2.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.4.2.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.2\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.2.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
@@ -363,9 +363,13 @@
     <Compile Include="Areas\Admin\Controllers\SessionAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpeakerAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SponsorAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Gbg2023\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Gbg2022AreaRegistration.cs" />
+    <Compile Include="Areas\Sthlm2023\Sthlm2023AreaRegistration.cs" />
+    <Compile Include="Areas\Gbg2023\Gbg2023AreaRegistration.cs" />
+    <Compile Include="Areas\Sthlm2023\Controllers\ConferenceController.cs" />
+    <Compile Include="Areas\Sthlm2023\Sthlm2023AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2015\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Swetugg2015\Swetugg2015AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2016\Controllers\ConferenceController.cs" />
@@ -568,6 +572,24 @@
     <Content Include="Content\countdown\static\js\2.f15cb981.chunk.js" />
     <Content Include="Content\countdown\static\js\main.16aade0b.chunk.js" />
     <Content Include="Content\countdown\static\js\runtime-main.09a5ef67.js" />
+    <Content Include="Content\gbg-2022\android-icon-144x144.png" />
+    <Content Include="Content\gbg-2022\android-icon-192x192.png" />
+    <Content Include="Content\gbg-2022\android-icon-36x36.png" />
+    <Content Include="Content\gbg-2022\android-icon-48x48.png" />
+    <Content Include="Content\gbg-2022\android-icon-72x72.png" />
+    <Content Include="Content\gbg-2022\android-icon-96x96.png" />
+    <Content Include="Content\gbg-2022\apple-icon-114x114.png" />
+    <Content Include="Content\gbg-2022\apple-icon-120x120.png" />
+    <Content Include="Content\gbg-2022\apple-icon-144x144.png" />
+    <Content Include="Content\gbg-2022\apple-icon-152x152.png" />
+    <Content Include="Content\gbg-2022\apple-icon-180x180.png" />
+    <Content Include="Content\gbg-2022\apple-icon-57x57.png" />
+    <Content Include="Content\gbg-2022\apple-icon-60x60.png" />
+    <Content Include="Content\gbg-2022\apple-icon-72x72.png" />
+    <Content Include="Content\gbg-2022\apple-icon-76x76.png" />
+    <Content Include="Content\gbg-2022\apple-icon-precomposed.png" />
+    <Content Include="Content\gbg-2022\apple-icon.png" />
+    <Content Include="Content\gbg-2022\browserconfig.xml" />
     <Content Include="Content\gbg-2022\css\swetugg.css" />
     <Content Include="Content\gbg-2022\css\swetugg.min.css">
       <DependentUpon>swetugg.css</DependentUpon>
@@ -576,6 +598,10 @@
     <Content Include="Content\gbg-2022\css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
+    <Content Include="Content\gbg-2022\favicon-16x16.png" />
+    <Content Include="Content\gbg-2022\favicon-32x32.png" />
+    <Content Include="Content\gbg-2022\favicon-96x96.png" />
+    <Content Include="Content\gbg-2022\favicon.ico" />
     <Content Include="Content\gbg-2022\img\150_SwetuggOrigamiButterfly.png" />
     <Content Include="Content\gbg-2022\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
     <Content Include="Content\gbg-2022\img\icon-map.png" />
@@ -633,6 +659,7 @@
     <Content Include="Content\gbg-2022\img\sponsors\wcom-thumb.png" />
     <Content Include="Content\gbg-2022\img\sponsors\webstep-thumb.png" />
     <Content Include="Content\gbg-2022\img\swenug.png" />
+    <Content Include="Content\gbg-2022\img\swetugg-gron-kvadrat.png" />
     <Content Include="Content\gbg-2022\img\swetugg-rosa-avlang-mini.png" />
     <Content Include="Content\gbg-2022\img\swetugg-rosa-kvadrat.png" />
     <Content Include="Content\gbg-2022\img\swetugg_flickr.jpg" />
@@ -645,10 +672,102 @@
     <Content Include="Content\gbg-2022\img\tags\speaker-ms-mvp.png" />
     <Content Include="Content\gbg-2022\img\top.jpg" />
     <Content Include="Content\gbg-2022\img\top2020.jpg" />
+    <Content Include="Content\gbg-2022\img\top2022.jpg" />
     <Content Include="Content\gbg-2022\img\unknown.png" />
     <Content Include="Content\gbg-2022\img\unknown2.png" />
     <Content Include="Content\gbg-2022\js\now.js" />
     <Content Include="Content\gbg-2022\js\swetugg.js" />
+    <Content Include="Content\gbg-2022\ms-icon-144x144.png" />
+    <Content Include="Content\gbg-2022\ms-icon-150x150.png" />
+    <Content Include="Content\gbg-2022\ms-icon-310x310.png" />
+    <Content Include="Content\gbg-2022\ms-icon-70x70.png" />
+    <Content Include="Content\sthlm-2023\css\swetugg.css" />
+    <Content Include="Content\sthlm-2023\css\swetugg.min.css">
+      <DependentUpon>swetugg.css</DependentUpon>
+    </Content>
+    <Content Include="Content\sthlm-2023\css\variables.css" />
+    <Content Include="Content\sthlm-2023\css\variables.min.css">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
+    <Content Include="Content\sthlm-2023\img\150_SwetuggOrigamiButterfly.png" />
+    <Content Include="Content\sthlm-2023\img\40_WhiteBG_GraySwetuggOrigamiButterfly.png" />
+    <Content Include="Content\sthlm-2023\img\icon-map.png" />
+    <Content Include="Content\sthlm-2023\img\logos\GrayButterfly.png" />
+    <Content Include="Content\sthlm-2023\img\logos\GrayForDarkBackground.png" />
+    <Content Include="Content\sthlm-2023\img\logos\GrayForLightBackground.png" />
+    <Content Include="Content\sthlm-2023\img\logos\PinkButterbly.png" />
+    <Content Include="Content\sthlm-2023\img\logos\PinkForDarkBackground.png" />
+    <Content Include="Content\sthlm-2023\img\logos\PinkForLightBackground.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\activesolution-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\andreas-sund-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\appinthecloud-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\aptitud-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\attentec-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\b3-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\betsson-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\betssontech-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\biolit-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\camelonta-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\chinsay-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\cloudnine-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\coderox-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\coding-after-work-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\combitech-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\conevo-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\cornerstone-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\decerno-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\dynabyte-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\etimo-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\everens-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\hiq-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\hypnosshow-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\if-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\informator-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\internet-broadcast-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\jayway-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\kentor-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\kompilator-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\lexicon-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\meridium-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\microsoft-azure-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\microsoft-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\nethouse-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\ninetech-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\nordax-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\novatrox-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\offerta-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\ontrax-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\progress-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\raysearch-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\senterprise-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\sigma-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\snow-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\softhouse-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\sopra-steria-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\squeed-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\tretton37-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\vaxjo-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\veratech-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\ving-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\wcom-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\sponsors\webstep-thumb.png" />
+    <Content Include="Content\sthlm-2023\img\swenug.png" />
+    <Content Include="Content\sthlm-2023\img\swetugg-rosa-avlang-mini.png" />
+    <Content Include="Content\sthlm-2023\img\swetugg-rosa-kvadrat.png" />
+    <Content Include="Content\sthlm-2023\img\swetugg_flickr.jpg" />
+    <Content Include="Content\sthlm-2023\img\swetugg_flickr2018.jpg" />
+    <Content Include="Content\sthlm-2023\img\tags\front-ms-mvp-small.png" />
+    <Content Include="Content\sthlm-2023\img\tags\front-ms-mvp.png" />
+    <Content Include="Content\sthlm-2023\img\tags\speaker-ms-mvp-2.png" />
+    <Content Include="Content\sthlm-2023\img\tags\speaker-ms-mvp-3.png" />
+    <Content Include="Content\sthlm-2023\img\tags\speaker-ms-mvp-4.png" />
+    <Content Include="Content\sthlm-2023\img\tags\speaker-ms-mvp.png" />
+    <Content Include="Content\sthlm-2023\img\top.jpg" />
+    <Content Include="Content\sthlm-2023\img\top2020.jpg" />
+    <Content Include="Content\sthlm-2023\img\unknown.png" />
+    <Content Include="Content\sthlm-2023\img\unknown2.png" />
+    <Content Include="Content\sthlm-2023\js\now.js" />
+    <Content Include="Content\sthlm-2023\js\swetugg.js" />
     <Content Include="Content\sthlm-2020\css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
@@ -1161,6 +1280,20 @@
     <Content Include="Areas\Gbg2022\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Gbg2022\Views\Shared\_LayoutNow.cshtml" />
     <Content Include="Areas\Gbg2022\Views\web.config" />
+    <Content Include="Areas\Sthlm2023\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\CodeOfConduct.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Index.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Now.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Shared\_LayoutNow.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\web.config" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Sponsorship.cshtml" />
+    <Content Include="Areas\Sthlm2023\Views\Conference\Graphics.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\Conference\Speaker.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Gbg2023\Views\web.config" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1176,6 +1309,10 @@
     <Content Include="Content\gbg-2022\css\swetugg.css.map" />
     <Content Include="Content\gbg-2022\css\swetugg.less" />
     <Content Include="Content\gbg-2022\css\variables.less" />
+    <Content Include="Content\gbg-2022\manifest.json" />
+    <Content Include="Content\sthlm-2023\css\swetugg.css.map" />
+    <Content Include="Content\sthlm-2023\css\swetugg.less" />
+    <Content Include="Content\sthlm-2023\css\variables.less" />
     <None Include="Content\swetugg-2016\css\swetugg.less" />
     <Content Include="Content\swetugg-2016\css\variables.less" />
     <Content Include="manifest.json" />
@@ -1276,7 +1413,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Gbg2022\Models\" />
+    <Folder Include="Areas\Gbg2023\Models\" />
     <Folder Include="Areas\Sthlm2020\Models\" />
+    <Folder Include="Areas\Sthlm2023\Models\" />
     <Folder Include="Areas\Swetugg2015\Models\" />
     <Folder Include="Areas\Swetugg2016\Models\" />
     <Folder Include="Areas\Swetugg2017\Models\" />
@@ -1284,6 +1423,7 @@
     <Folder Include="Areas\Swetugg2019\Models\" />
     <Folder Include="Content\gbg-2022\video\" />
     <Folder Include="Content\sthlm-2020\video\" />
+    <Folder Include="Content\sthlm-2023\video\" />
     <Folder Include="Content\swetugg-2019\video\" />
     <Folder Include="Views\Now\" />
   </ItemGroup>

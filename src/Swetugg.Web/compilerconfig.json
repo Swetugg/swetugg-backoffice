@@ -22,5 +22,13 @@
   {
     "outputFile": "Content/sthlm-2020/css/variables.css",
     "inputFile": "Content/sthlm-2020/css/variables.less"
+  },
+  {
+    "outputFile": "Content/gbg-2022/css/swetugg.css",
+    "inputFile": "Content/gbg-2022/css/swetugg.less"
+  },
+  {
+    "outputFile": "Content/sthlm-2023/css/swetugg.css",
+    "inputFile": "Content/sthlm-2023/css/swetugg.less"
   }
 ]

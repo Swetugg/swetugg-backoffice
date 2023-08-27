@@ -161,6 +161,7 @@ a:focus {
 // Navigation
 
 .navbar {
+    top: 50px;
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,0.3);
     text-transform: uppercase;
@@ -260,15 +261,26 @@ a:focus {
 // Full Page Image Intro Section
 
 .intro {
+    position: relative;
     display: table;
     width: 100%;
     height: auto;
     padding: 100px 0;
     text-align: center;
     color: @light;
-    background: url(/Content/sthlm-2020/img/top2020.jpg);
+    background: url(/Content/gbg-2022/img/top2022.jpg);
     background-color: @dark;
     background-size: cover;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        background: linear-gradient(131deg, fade(@primary, 10%), fade(@primary, 30%));
+    }
 }
 
 #videoBackground {
@@ -280,7 +292,7 @@ a:focus {
     width: auto;
     height: auto;
     z-index: -100;
-    background: url(/Content/sthlm-2020/img/top2020.jpg);
+    background: url(/Content/gbg-2022/img/top2022.jpg);
     background-color: @dark;
     background-size: cover;
 }
@@ -552,7 +564,7 @@ table.schema {
 }
 
 .schemacell-rad2v2 a {
-    color: #A30046;
+    color: @primary;
 }
 
 .schemacell-tid {
@@ -669,6 +681,10 @@ footer, .footer-section {
 
 .banner-buttons {
     margin-top: 0;
+
+    > li {
+        margin-bottom: 20px;
+    }
 }
 
 @media(max-width:1199px) {
@@ -680,7 +696,6 @@ footer, .footer-section {
 @media(max-width:767px) {
     ul.banner-buttons > li {
         display: block;
-        margin-bottom: 20px;
         padding: 0;
     }
 
@@ -975,7 +990,7 @@ footer {
 
 .blockquote-small p {
     font-size: 15px;
-    color: #A30046;    
+    color: @primary;
 }
 
 .blockquote-small footer {

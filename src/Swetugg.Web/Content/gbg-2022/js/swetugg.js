@@ -50,12 +50,12 @@ function initializeMap(id) {
     "use strict";
     var image = '/Content/swetugg-2019/img/icon-map.png';
 
-    var overlayTitle = 'Swetugg 2019';
+    var overlayTitle = 'Swetugg Göteborg 2022';
 
     var locations = [
         //point number 1 
         // ['Swetugg 2019', 'Stockholm', '59.326142', '17.9875455'],
-        ['Swetugg 2019', 'Stockholm', 59.2910932, 18.0836 ]
+        ['Swetugg 2022', 'Göteborg', 57.6984445, 11.9761437 ]
     ];
 
     id = (id === undefined) ? 'map' : id;

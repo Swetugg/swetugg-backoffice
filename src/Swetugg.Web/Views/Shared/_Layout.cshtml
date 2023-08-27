@@ -43,8 +43,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Call For Papers", "Index", "CallForPapers", new { Area = "Cfp" }, null)</li>
-
                     @if (User.IsInRole("Administrator") || User.IsInRole("ConferenceManager"))
                     {
                         <li class="dropdown">

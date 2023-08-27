@@ -20,7 +20,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     {
         private readonly IImageUploader _imageUploader;
         private readonly string _speakerImageContainerName;
-        private static string baseurl = "api/v2/3lfyesce/view"; //TODO: move to conference (new field)
+        private static string baseurl = "api/v2/nzq8vely/view"; //TODO: move to conference (new field)
 
         public SessionizeController(IImageUploader imageUploader, Web.Models.ApplicationDbContext dbContext) : base(dbContext)
         {
@@ -38,7 +38,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             var Speakers = await GetSpeakerFromSessionize();
 
             var speakersAllreadyInDatabase = dbContext.Speakers
-                .Where(s => s.SessionizeId.HasValue)
+                .Where(s => s.SessionizeId.HasValue && s.ConferenceId == ConferenceId)
                 .Select(s => s.SessionizeId.Value);
 
             m.Speakers = Speakers.Select(s => new SpeakerSync
@@ -125,7 +125,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             foreach (var sessionizeSpeaker in sessionizeSpeakers)
             {
                 var sessionizeId = Guid.Parse(sessionizeSpeaker.id);
-                var speakerAlreadyExist = dbContext.Speakers.Any(s => s.SessionizeId == sessionizeId);
+                var speakerAlreadyExist = dbContext.Speakers.Any(s => s.SessionizeId == sessionizeId && s.ConferenceId == ConferenceId);
                 if (speakerAlreadyExist)
                     continue;
 
@@ -230,7 +230,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     foreach (var sessionizeSpeaker in sessionizeSession.speakers)
                     {
                         var id = Guid.Parse(sessionizeSpeaker.id);
-                        var speaker = await dbContext.Speakers.SingleOrDefaultAsync(s => s.SessionizeId.HasValue ? s.SessionizeId == id : false);
+                        var speaker = await dbContext.Speakers.SingleOrDefaultAsync(s => s.SessionizeId.HasValue && s.ConferenceId == ConferenceId ? s.SessionizeId == id : false);
                         if (speaker != null)
                         {
                             var ss = new SessionSpeaker
