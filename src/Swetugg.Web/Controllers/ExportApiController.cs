@@ -24,18 +24,6 @@ namespace Swetugg.Web.Controllers
         }
     }
 
-    namespace CfpSpeakerCsv
-    {
-        public class Speaker
-        {
-            public string Name { get; set; }
-            public string Company { get; set; }
-            public string Twitter { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; }
-        }
-    }
-
     namespace Everens
     {
         public class Export
@@ -257,32 +245,6 @@ namespace Swetugg.Web.Controllers
                 sepChar = separator[0];
             }
             return new CsvActionResult<SpeakerCsv.Speaker>(list, "Speakers.csv", sepChar);
-        }
-
-        [Route("{conferenceSlug}/export/cfp-speaker-csv")]
-        [Authorize(Roles = "ConferenceManager")]
-        public async Task<ActionResult> CfpSpeakerCsv(string separator)
-        {
-            var conferenceId = ConferenceId;
-            var speakersQuery = dbContext.CfpSpeakers
-                .Where(s => s.ConferenceId == conferenceId);
-
-            var speakerList = await speakersQuery.Select(sp => new CfpSpeakerCsv.Speaker()
-            {
-                Name = sp.Name,
-                Company = sp.Company,
-                Email = sp.Email,
-                Twitter = sp.Twitter,
-                Phone = sp.Phone
-            }).ToListAsync();
-
-            var sepChar = ',';
-            if (!string.IsNullOrEmpty(separator))
-            {
-                sepChar = separator[0];
-            }
-
-            return new CsvActionResult<CfpSpeakerCsv.Speaker>(speakerList, "CfpSpeakers.csv", sepChar);
         }
 
 

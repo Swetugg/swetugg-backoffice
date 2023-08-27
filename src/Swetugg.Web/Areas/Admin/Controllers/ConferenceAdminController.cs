@@ -326,17 +326,6 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 _dbContext.Entry(sponsor).State = EntityState.Deleted;
             }
 
-            // Delete Cfp
-            var cfpSpeakers = await _dbContext.CfpSpeakers.Where(s => s.ConferenceId == id).Include(s => s.Sessions).ToListAsync();
-            foreach (var speaker in cfpSpeakers)
-            {
-                foreach (var session in speaker.Sessions.ToArray())
-                {
-                    _dbContext.Entry(session).State = EntityState.Deleted;
-                }
-                _dbContext.Entry(speaker).State = EntityState.Deleted;
-            }
-
             _dbContext.Entry(conf).State = EntityState.Deleted;
 
             await _dbContext.SaveChangesAsync();

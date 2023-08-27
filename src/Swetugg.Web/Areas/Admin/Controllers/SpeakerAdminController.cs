@@ -123,15 +123,13 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/speakers/delete/{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var speaker = await dbContext.Speakers.Include(sp => sp.Sessions).Include(sp => sp.CfpSpeakers)
+            var speaker = await dbContext.Speakers.Include(sp => sp.Sessions)
                 .SingleAsync(s => s.Id == id);
 
             foreach (var session in speaker.Sessions.ToArray())
             {
                 dbContext.Entry(session).State = EntityState.Deleted;
             }
-
-            speaker.CfpSpeakers.Clear();
 
             dbContext.Entry(speaker).State = EntityState.Deleted;
 

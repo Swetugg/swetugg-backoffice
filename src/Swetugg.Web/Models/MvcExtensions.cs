@@ -53,25 +53,10 @@ namespace Swetugg.Web.Models
 
         public static bool IsCfpOpen(this Conference conference)
         {
-            var today = conference.CurrentTime().Date;
-            return conference.CfpStart.HasValue && conference.CfpStart <= today &&
-                   (!conference.CfpEnd.HasValue || conference.CfpEnd >= today);
-        }
-    }
-
-    public static class PrincipalExtensions
-    {
-        public static bool IsAllowedToCreateCfp(this IPrincipal user, Conference conference)
-        {
-            if (conference.IsCfpOpen())
-                return true;
-
-            // TODO Only allow for certain conferences.
-            if (user != null && user.IsInRole("VipSpeaker"))
-            {
-                return true;
-            }
-            return false;
+            return false; //new logic will be added to 
+            //var today = conference.CurrentTime().Date;
+            //return conference.CfpStart.HasValue && conference.CfpStart <= today &&
+            //       (!conference.CfpEnd.HasValue || conference.CfpEnd >= today);
         }
     }
 

@@ -38,7 +38,6 @@ namespace Swetugg.Web.Models
         public ICollection<SessionSpeaker> Speakers { get; set; }
 
         public ICollection<RoomSlot> RoomSlots { get; set; }
-        public ICollection<CfpSession> CfpSessions { get; set; }
         public ICollection<Tag> Tags { get; set; }
     }
 }

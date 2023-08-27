@@ -24,9 +24,6 @@ namespace Swetugg.Web.Models
         public DbSet<Tag> Tags { get; set; }
         public DbSet<SessionType> SessionTypes { get; set; }
 
-        public DbSet<CfpSpeaker> CfpSpeakers { get; set; }
-        public DbSet<CfpSession> CfpSessions { get; set; }
-
         public static ApplicationDbContext Create()
         {
             IDatabaseInitializer<ApplicationDbContext> strategy;
@@ -90,14 +87,6 @@ namespace Swetugg.Web.Models
             modelBuilder.Entity<Conference>().HasMany(c => c.ImageTypes).WithRequired().WillCascadeOnDelete(false);
             modelBuilder.Entity<Conference>().HasMany(c => c.SessionTypes).WithRequired().WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CfpSpeaker>().HasMany(c => c.Sessions).WithRequired(c => c.Speaker)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<CfpSpeaker>().HasOptional(c => c.Speaker).WithMany(sp => sp.CfpSpeakers)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<CfpSession>().HasOptional(c => c.Session).WithMany(se => se.CfpSessions)
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<CfpSession>().HasOptional(c => c.SessionType).WithMany(se => se.CfpSessions)
-                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -26,8 +26,6 @@ namespace Swetugg.Web.Models
 
         public ICollection<Session> Sessions { get; set; }
 
-        public ICollection<CfpSession> CfpSessions { get; set; }
-
     }
 
     public enum TagType

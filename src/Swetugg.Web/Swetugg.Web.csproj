@@ -351,13 +351,11 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CfpReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferenceAdminControllerBase.cs" />
     <Compile Include="Areas\Admin\Controllers\Models\Sessionize.cs" />
     <Compile Include="Areas\Admin\Controllers\SessionizeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SessionTypeAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SpeakerLogisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageTypeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomAdminController.cs" />
@@ -366,9 +364,6 @@
     <Compile Include="Areas\Admin\Controllers\SpeakerAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SponsorAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
-    <Compile Include="Areas\Cfp\CfpAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CfpSelectionController.cs" />
-    <Compile Include="Areas\Cfp\Controllers\CallForPapersController.cs" />
     <Compile Include="Areas\Gbg2022\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Gbg2022AreaRegistration.cs" />
     <Compile Include="Areas\Swetugg2015\Controllers\ConferenceController.cs" />
@@ -512,8 +507,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\CfpSession.cs" />
-    <Compile Include="Models\CfpSpeaker.cs" />
     <Compile Include="Models\Conference.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -527,7 +520,6 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\SpeakerImage.cs" />
     <Compile Include="Models\ImageType.cs" />
-    <Compile Include="Models\SpeakerLogistics.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\SponsorImage.cs" />
     <Compile Include="Models\Tag.cs" />
@@ -1110,9 +1102,6 @@
     <Content Include="Areas\Swetugg2015\Views\_ViewStart.cshtml" />
     <Content Include="App_Code\Common.cshtml" />
     <Content Include="Areas\Swetugg2015\Views\Conference\Speaker.cshtml" />
-    <Content Include="Areas\Admin\Views\CfpReview\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CfpReview\Speaker.cshtml" />
-    <Content Include="Areas\Admin\Views\CfpReview\Session.cshtml" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1126,8 +1115,6 @@
     <Content Include="Content\swetugg-2016\css\swetugg.css.map" />
     <Content Include="Areas\Swetugg2016\Views\Conference\CodeOfConduct.cshtml" />
     <Content Include="Areas\Swetugg2016\Views\Conference\Speaker.cshtml" />
-    <Content Include="Areas\Cfp\Views\web.config" />
-    <Content Include="Areas\Cfp\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Swetugg2017\Views\web.config" />
     <Content Include="Areas\Swetugg2017\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Swetugg2017\Views\Shared\_Layout.cshtml" />
@@ -1148,8 +1135,6 @@
     <Content Include="Areas\Swetugg2018\Views\web.config" />
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SessionTypeAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CfpSelection\List.cshtml" />
-    <Content Include="Areas\Admin\Views\SpeakerLogistics\List.cshtml" />
     <Content Include="Areas\Swetugg2019\Views\Conference\CodeOfConduct.cshtml" />
     <Content Include="Areas\Swetugg2019\Views\Conference\Index.cshtml" />
     <Content Include="Areas\Swetugg2019\Views\Conference\Now.cshtml" />
@@ -1282,21 +1267,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
-    <Content Include="Areas\Cfp\Views\CallForPapers\Index.cshtml" />
     <Content Include="Views\Home\Start.cshtml" />
-    <Content Include="Areas\Cfp\Views\CallForPapers\Conference.cshtml" />
-    <Content Include="Areas\Cfp\Views\CallForPapers\Speaker.cshtml" />
-    <Content Include="Areas\Cfp\Views\CallForPapers\Session.cshtml" />
     <Content Include="Views\Database\Migrations.cshtml" />
-    <Content Include="Areas\Cfp\Views\CallForPapers\Invite.cshtml" />
     <Content Include="Views\Database\Backups.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Cfp\Models\" />
-    <Folder Include="Areas\Cfp\Views\Shared\" />
     <Folder Include="Areas\Gbg2022\Models\" />
     <Folder Include="Areas\Sthlm2020\Models\" />
     <Folder Include="Areas\Swetugg2015\Models\" />

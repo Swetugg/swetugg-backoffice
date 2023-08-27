@@ -183,7 +183,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         [Route("{conferenceSlug}/sessions/delete/{id:int}", Order = 1)]
         public async Task<ActionResult> Delete(int id)
         {
-            var session = await dbContext.Sessions.Include(s => s.Speakers).Include(s => s.RoomSlots).Include(s => s.CfpSessions).SingleAsync(s => s.Id == id);
+            var session = await dbContext.Sessions.Include(s => s.Speakers).Include(s => s.RoomSlots).SingleAsync(s => s.Id == id);
             
             foreach (var speaker in session.Speakers.ToArray())
             {
@@ -194,7 +194,6 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             {
                 dbContext.Entry(roomSlot).State = EntityState.Deleted;
             }
-            session.CfpSessions.Clear();
 
             dbContext.Entry(session).State = EntityState.Deleted;
 

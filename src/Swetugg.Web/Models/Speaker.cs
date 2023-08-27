@@ -53,9 +53,7 @@ namespace Swetugg.Web.Models
 
         public ICollection<SpeakerImage> Images { get; set; }
 
-        public ICollection<CfpSpeaker> CfpSpeakers { get; set; }
         public ICollection<Tag> Tags { get; set; }
 
-        public ICollection<SpeakerLogistics> SpeakerLogistics { get; set; }
     }
 }

@@ -30,18 +30,6 @@ namespace Swetugg.Web.Models
                ApplyFormatInEditMode = true)]
         public DateTime? End { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
-               ApplyFormatInEditMode = true)]
-        public DateTime? CfpStart { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
-               ApplyFormatInEditMode = true)]
-        public DateTime? CfpEnd { get; set; }
-
-        [StringLength(50)]
-        [Display(Name = "VIP invite code")]
-        public string CfpVipCode { get; set; }
-
         [Display(Name = "Min speakers on front page")]
         public int MinNumberOfSpeakers { get; set; }
 
