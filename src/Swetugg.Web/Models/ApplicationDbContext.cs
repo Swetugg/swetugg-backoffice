@@ -52,6 +52,7 @@ namespace Swetugg.Web.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<ApplicationDbContext>(null);
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<RoomSlot>().HasRequired(rs => rs.Room).WithMany(r => r.RoomSlots)
                 .WillCascadeOnDelete(false);

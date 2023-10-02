@@ -363,6 +363,7 @@
     <Compile Include="Areas\Admin\Controllers\SessionAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpeakerAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SponsorAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Gbg2023\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Controllers\ConferenceController.cs" />
     <Compile Include="Areas\Gbg2022\Gbg2022AreaRegistration.cs" />
