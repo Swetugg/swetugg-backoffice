@@ -18,6 +18,8 @@ namespace Swetugg.Web.Controllers
         public string Web { get; set; }
         public string GitHub { get; set; }
         public string Bio { get; set; }
+        public string LinkedIn { get; set; }
+        public string Blog { get; set; }
     }
 
     public class SessionView
@@ -77,7 +79,8 @@ namespace Swetugg.Web.Controllers
                         Bio = sp.Speaker.Bio,
                         Twitter = sp.Speaker.Twitter != null ? "@" + sp.Speaker.Twitter .Replace("@", string.Empty) : null,
                         Web = sp.Speaker.Web,
-                        GitHub = sp.Speaker.GitHub
+                        LinkedIn = sp.Speaker.LinkedIn,
+                        Blog = sp.Speaker.Blog
                     }).ToArray(),
                     StartTime = roomSlot.Slot.Start.ToString(cultureInfo),
                     EndTime = roomSlot.Slot.End.ToString(cultureInfo),

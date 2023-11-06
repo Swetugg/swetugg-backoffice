@@ -67,6 +67,16 @@
                         @Html.TextBoxFor(m => m.Web, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Web)
                     </div>
+                    <div>
+                        @Html.LabelFor(m => m.LinkedIn)
+                        @Html.TextBoxFor(m => m.LinkedIn, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.LinkedIn)
+                    </div>
+                    <div>
+                        @Html.LabelFor(m => m.Blog)
+                        @Html.TextBoxFor(m => m.Blog, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Blog)
+                    </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Bio)
                         @Html.TextAreaFor(m => m.Bio, new { @class = "form-control", rows = 10 })

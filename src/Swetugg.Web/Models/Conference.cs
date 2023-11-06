@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,8 +29,14 @@ namespace Swetugg.Web.Models
                ApplyFormatInEditMode = true)]
         public DateTime? End { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
+                ApplyFormatInEditMode = true)]
+        public DateTime? CfpEnd { get; set; }
+
         [Display(Name = "Min speakers on front page")]
         public int MinNumberOfSpeakers { get; set; }
+        [Display(Name = "Sessionize API code")]
+        public string SessionizeAPICode { get; set; }
 
         public ICollection<Speaker> Speakers { get; set; }
         public ICollection<Session> Sessions { get; set; }
@@ -40,6 +45,7 @@ namespace Swetugg.Web.Models
         public ICollection<Room> Rooms { get; set; }
         public ICollection<ImageType> ImageTypes { get; set; }
         public ICollection<SessionType> SessionTypes { get; set; }
+
 
     }
 }

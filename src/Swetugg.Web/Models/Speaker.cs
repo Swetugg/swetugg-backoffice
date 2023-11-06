@@ -40,7 +40,10 @@ namespace Swetugg.Web.Models
         public string Twitter { get; set; }
 
         [StringLength(250)]
-        public string GitHub { get; set; }
+        public string LinkedIn { get; set; }
+
+        [StringLength(250)]
+        public string Blog { get; set; }
 
         public bool Published { get; set; }
 

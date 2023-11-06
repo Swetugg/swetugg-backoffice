@@ -20,6 +20,15 @@
         <div class="row">
             <div class="col-sm-8">
                 <p>@Html.Raw(Html.FromMarkdown(Model.Description))</p>
+
+                <p>Slug: @Model.Slug</p>
+                <p>Start Date: @Model.Start</p>
+                <p>End Date: @Model.End</p>
+                <p>Cfp End Date: @Model.CfpEnd</p>
+                <p>Show number of speakers: @Model.MinNumberOfSpeakers</p>
+                <p>Sessionize api code: @Model.SessionizeAPICode</p>
+
+
             </div>
             <div class="col-sm-4">
                 <div class="panel panel-info">

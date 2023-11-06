@@ -12,6 +12,7 @@ using Swetugg.Web.Models;
 using Swetugg.Web.Controllers;
 using Swetugg.Web.Services;
 using System.Configuration;
+using Microsoft.Ajax.Utilities;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
@@ -20,19 +21,19 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     {
         private readonly IImageUploader _imageUploader;
         private readonly string _speakerImageContainerName;
-        private static string baseurl = "api/v2/nzq8vely/view"; //TODO: move to conference (new field)
+        private static string baseurl;
 
         public SessionizeController(IImageUploader imageUploader, Web.Models.ApplicationDbContext dbContext) : base(dbContext)
         {
             _imageUploader = imageUploader;
             _speakerImageContainerName = ConfigurationManager.AppSettings["Storage.Container.Speakers.SpeakerImages"];
-
         }
 
 
         [Route("{conferenceSlug}/Sessionize")]
         public async Task<ActionResult> Index()
         {
+            baseurl = $"api/v2/{this.Conference.SessionizeAPICode}/view";
             var m = new SessionizeSync();
 
             var Speakers = await GetSpeakerFromSessionize();
@@ -142,45 +143,24 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     SessionizeImageUrl = sessionizeSpeaker.profilePicture,
                 };
 
-                var twitter = sessionizeSpeaker.links.FirstOrDefault(l => l.title == "Twitter");
-                if (twitter != null)
-                {
-                    var charPosition = twitter.url.LastIndexOf("/");
-                    speaker.Twitter = twitter.url.Remove(0, charPosition + 1);
-                }
-
-                var blog = sessionizeSpeaker.links.FirstOrDefault(l => l.title == "Blog");
-                var podcast = sessionizeSpeaker.links.FirstOrDefault(l => l.title == "Podcast");
-                var company = sessionizeSpeaker.links.FirstOrDefault(l => l.title == "Company Website");
-                //Github
-                if (blog != null)
-                {
-                    speaker.Web = blog.url;
-
-                }
-                else if (podcast != null)
-                {
-                    speaker.Web = podcast.url;
-                }
-                else if (company != null)
-                {
-                    speaker.Web = company.url;
-                }
-
-
                 foreach (var link in sessionizeSpeaker.links)
                 {
                     switch (link.title)
                     {
                         case "Twitter":
+                            speaker.Twitter = link.url;
+                            break;
                         case "Company Website":
+                            speaker.Web = link.url;
+                            break;
                         case "Blog":
-                        case "Podcast":
+                            speaker.Blog = link.url;
+                            break;
+                        case "LinkedIn":
+                            speaker.LinkedIn = link.url;
                             break;
                         default:
                             break;
-                            //Github
-
                     }
                 }
 
