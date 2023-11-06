@@ -68,16 +68,14 @@
                             <dd>@Model.FirstName</dd>
                             <dt>Company</dt>
                             <dd>@Model.Company</dd>
-                            @if (!string.IsNullOrEmpty(Model.Twitter))
-                            {
-                                <dt>Twitter</dt>
-                                <dd><a href="https://twitter.com/@Model.Twitter">@("@" + Model.Twitter)</a></dd>
-                            }
-                            @if (!string.IsNullOrEmpty(Model.Web))
-                            {
-                                <dt>Web</dt>
-                                <dd><a href="@Model.Web">@Model.Web</a></dd>
-                            }
+                            <dt>Web</dt>
+                            <dd>@Model.Web</dd>
+                            <dt>Twitter</dt>
+                            <dd>@Model.Twitter</dd>
+                            <dt>LinkedIn</dt>
+                            <dd>@Model.LinkedIn</dd>
+                            <dt>Blog</dt>
+                            <dd>@Model.Blog</dd>
                         </dl>
                     </div>
                 </div>
