@@ -77,47 +77,50 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-        <div id="old-conference"><span class="part-one">This pages is about Swetugg Stockholm 2020. </span><span class="part-two">Go to <a href="/gbg-2023">Swetugg Göteborg 2023.</a></span></div>
-        <nav class="navbar navbar-custom navbar-fixed-top @(transformNavBar ? "transform": "top-nav-collapse" )" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="@Url.Action("Index", "Conference")#page-top" data-target="#page-top">
-                        <img src="/Content/sthlm-2020/img/40_WhiteBG_GraySwetuggOrigamiButterfly.png" width="50" height="41" class="pull-left"/>
-                        Swetugg
-                    </a>
-                </div>
+    <div id="old-conference"><span class="part-one">This pages is about Swetugg Stockholm 2020. </span><span
+            class="part-two">Go to <a href="/sthlm-2024">Swetugg Stockholm 2024.</a></span></div>
+    <nav class="navbar navbar-custom navbar-fixed-top @(transformNavBar ? "transform": "top-nav-collapse" )"
+        role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Conference")#page-top" data-target="#page-top">
+                    <img src="/Content/sthlm-2020/img/40_WhiteBG_GraySwetuggOrigamiButterfly.png" width="50" height="41"
+                        class="pull-left" />
+                    Swetugg
+                </a>
+            </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                    <ul class="nav navbar-nav">
-                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
 
-                        <li class="page-scroll">
-                            <a href="@Url.Action("Index", "Conference")#speakers" data-target="#speakers">Speakers</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="@Url.Action("Index", "Conference")#schedule" data-target="#schedule">Schedule</a>
-                        </li>
-                            
-                        <li class="page-scroll">
-                            <a href="@Url.Action("Index", "Conference")#sponsor" data-target="#sponsor">Sponsors</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="@Url.Action("Index", "Conference")#tickets" data-target="#tickets">Tickets</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="@Url.Action("CodeOfConduct", "Conference")">Code of Conduct</a>
-                        </li>
-                        @*<li class="page-scroll">
-                            <a href="@Url.Action("Index", "Conference")#contact" data-target="#contact">Contact us</a>
-                        </li>*@
-                    </ul>
+                    <li class="page-scroll">
+                        <a href="@Url.Action("Index", "Conference")#speakers" data-target="#speakers">Speakers</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="@Url.Action("Index", "Conference")#schedule" data-target="#schedule">Schedule</a>
+                    </li>
+
+                    <li class="page-scroll">
+                        <a href="@Url.Action("Index", "Conference")#sponsor" data-target="#sponsor">Sponsors</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="@Url.Action("Index", "Conference")#tickets" data-target="#tickets">Tickets</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="@Url.Action("CodeOfConduct", "Conference")">Code of Conduct</a>
+                    </li>
+                    @*<li class="page-scroll">
+                    <a href="@Url.Action("Index", "Conference")#contact" data-target="#contact">Contact us</a>
+                    </li>*@
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -135,9 +138,14 @@
                 </div>
                 <div class="col-sm-4">
                     <ul class="socialNetwork pull-right">
-                        <li><a title="" class="tips" href="https://www.facebook.com/Swetugg" data-original-title="follow us on Facebook"><i class="icon-facebook-1 iconRounded"></i></a></li>
-                        <li><a title="" class="tips" href="https://twitter.com/swetugg" target="_blank" data-original-title="follow us on Twitter"><i class="icon-twitter-bird iconRounded"></i></a></li>
-                        <li><a title="" class="tips" href="#" data-original-title="follow us on Google+"><i class="icon-gplus-1 iconRounded"></i></a></li>
+                        <li><a title="" class="tips" href="https://www.facebook.com/Swetugg"
+                                data-original-title="follow us on Facebook"><i
+                                    class="icon-facebook-1 iconRounded"></i></a></li>
+                        <li><a title="" class="tips" href="https://twitter.com/swetugg" target="_blank"
+                                data-original-title="follow us on Twitter"><i
+                                    class="icon-twitter-bird iconRounded"></i></a></li>
+                        <li><a title="" class="tips" href="#" data-original-title="follow us on Google+"><i
+                                    class="icon-gplus-1 iconRounded"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -149,7 +157,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Google Maps - TODO: Get our own API key -->
-    @*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>*@
+    @*<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>*@
 
     <script src="/Content/sthlm-2020/js/swetugg.js?v=1"></script>
 
@@ -159,7 +168,7 @@
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-51956274-1', 'swetugg.se');
