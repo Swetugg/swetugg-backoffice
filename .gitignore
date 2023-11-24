@@ -222,3 +222,4 @@ build.cake
 
 #Custom
 Web.config
+/src/Swetugg.Web/Web.config
