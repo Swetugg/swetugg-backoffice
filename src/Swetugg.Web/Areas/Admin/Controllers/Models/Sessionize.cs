@@ -72,4 +72,42 @@ namespace Swetugg.Web.Areas.Admin.Controllers.Models
         public string linkType { get; set; }
     }
 
+    public class SezzionizeSchedule
+    {
+        public string Date { get; set; }
+        public bool IsDefault { get; set; }
+        public List<SezzionizeScheduleRoom> Rooms { get; set; }
+    }
+
+    public class SezzionizeScheduleRoom
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<SezzionizeScheduleSession> Sessions { get; set; }
+    }
+
+    public class SezzionizeScheduleSpeaker
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class SezzionizeScheduleSession
+    {
+        public string Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string StartsAt { get; set; }
+        public string EndsAt { get; set; }
+        public bool IsServiceSession { get; set; } //Lunch, Rest, Etc
+        public bool IsPlenumSession { get; set; } //Alla salar (men ligger på bara en)
+        public List<SezzionizeScheduleSpeaker> Speakers { get; set; }
+        public List<object> Categories { get; set; }
+        public int RoomId { get; set; }
+        public string Room { get; set; }
+        public string LiveUrl { get; set; }
+        public string RecordingUrl { get; set; }
+        public string Status { get; set; }
+    }
+
 }

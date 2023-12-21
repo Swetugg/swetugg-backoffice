@@ -21,7 +21,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
     {
         private readonly IImageUploader _imageUploader;
         private readonly string _speakerImageContainerName;
-        private static string baseurl;
+        public static string baseurl;
 
         public SessionizeController(IImageUploader imageUploader, Web.Models.ApplicationDbContext dbContext) : base(dbContext)
         {
@@ -116,6 +116,37 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return SessionGroups;
         }
 
+        public static async Task<List<SezzionizeSchedule>> GetScheduleFromSessionize()
+        {
+            List<SezzionizeSchedule> schedule;
+            try
+            {
+
+            var request = WebRequest.Create($"https://sessionize.com/" + baseurl + "/GridSmart");
+            request.Method = WebRequestMethods.Http.Get;
+            request.ContentType = "application/json; charset=utf-8";
+            using (var response = await request.GetResponseAsync())
+            {
+                using (var responseStream = response.GetResponseStream())
+                {
+                    using (var streamReader = new StreamReader(responseStream))
+                    {
+                        var text = streamReader.ReadToEnd();
+                        schedule = JsonConvert.DeserializeObject<List<SezzionizeSchedule>>(text);
+                    }
+                }
+            }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return schedule;
+        }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Route("{conferenceSlug}/Sessionize/ImportSpeaker")]
@@ -171,6 +202,49 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [Route("{conferenceSlug}/Sessionize/ImportSchedule")]
+        public async Task<ActionResult> ImportSchedule()
+        {
+            try
+            {
+
+            var sessionizeSchedule = await GetScheduleFromSessionize();
+            //var room = List < Room > rooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId).ToList();
+
+            var rooms = sessionizeSchedule.SelectMany(s => s.Rooms).DistinctBy(r => r.Id).Select(r => new
+            {
+                SessionizeId = r.Id,
+                //ConferenceId = ConferenceId,
+                r.Name,
+                Slug = r.Name.Slugify(),
+                Priority = 100
+            }).ToList();
+
+            var slots = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { se.StartsAt, se.EndsAt }))).Distinct().Select(s2 => s2);
+
+                //foreach (var scheduleDay in sessionizeSchedule)
+                //{
+
+                //    var day = scheduleDay.Date;
+                //    foreach (var room in scheduleDay)
+                //    {
+
+                //    }
+
+                //}
+                var i = 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+            return RedirectToAction("Index");
         }
 
 
@@ -232,6 +306,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
+        
 
     }
 }

@@ -1,0 +1,2764 @@
+[
+    {
+      "date": "2023-02-08T00:00:00",
+      "isDefault": false,
+      "rooms": [
+        {
+          "id": 28553,
+          "name": "Liljeholmssalen",
+          "sessions": [
+            {
+              "id": "393681",
+              "title": "ASP.NET Basics for Experts",
+              "description": "People love to stay in their comfort zone and do what they've always done. But what if you could take your web applications to the next level just by getting the fundamentals right?\r\n\r\nIn this .NET 6 demo-rich session, I will show you how to make your applications more testable, maintainable and resilient. \r\nWhether you are working with a monolith or a vast distributed application, the areas we'll cover will be applicable. \r\nJoin me and learn about the following topics and more!\r\n\r\n- Minimal APIs, top-level statements and good design practise\r\n- Dependency injection and inversion of control\r\n- HTTP clients and policies\r\n- Resiliency and circuit breakers with Polly\r\n- Discovery clients with Steeltoe OSS\r\n",
+              "startsAt": "2023-02-08T09:00:00",
+              "endsAt": "2023-02-08T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "ac105033-2b20-4b45-8d47-5647d8accf84",
+                  "name": "Layla Porter"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391989",
+              "title": "Introduction to .NET MAUI",
+              "description": ".NET multi-platform app UI (MAUI) is the best way to build cross platform mobile and desktop apps with .NET and C#. Join Maddy Montaquila, .NET MAUI Product Manager, to learn more about .NET's cross-platform stack for native developers, how to get started, the roadmap, and how to bring your existing web app to desktop using .NET MAUI!",
+              "startsAt": "2023-02-08T10:10:00",
+              "endsAt": "2023-02-08T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "a0dc3822-2379-40ff-8ba4-08f28269c4c5",
+                  "name": "Maddy Montaquila"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "386210",
+              "title": "REST, GraphQL and gRPC : A Comparison",
+              "description": "Be it any industry, applications need to talk to each other. So, developers often build bridges – Application Programming Interfaces (API) – to allow one system to communicate to another. \r\n\r\nOver time, different API architectural styles have been released. Each of them has its own characteristics, patterns of data exchange, pros, and cons. REST, GraphQL and gRPC are three main options when it comes to API development and implementation In my session  I will cover what REST, GraphQL, and gRPC are, all from a .NET perspective and give you a comprehensive comparison between them.\r\n",
+              "startsAt": "2023-02-08T11:10:00",
+              "endsAt": "2023-02-08T12:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "d9a9dde1-cb0c-4b98-913f-9caccf5181bd",
+                  "name": "Poornima Nayar"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "386919",
+              "title": "Designing and implementing ref fields",
+              "description": "What all goes into designing a C# language feature? Why does it take so long for even simple additions to the language to go from idea to reality?\r\n\r\nIn this session a member of the C# language design team is going to take you on the journey of designing a language feature. We'll explore how ref fields were added to C# 11 and go through the journey from idea to shipping product and all the challenges that it faced along the way.",
+              "startsAt": "2023-02-08T12:50:00",
+              "endsAt": "2023-02-08T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "8f894b44-ad9e-4c38-bda2-3ed4de9f159c",
+                  "name": "Jared Parsons"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "400898",
+              "title": "Building a .NET Rocks! Podcast Client with MAUI Blazor",
+              "description": "Watch Carl Franklin build a podcast client app using MAUI Blazor.",
+              "startsAt": "2023-02-08T13:55:00",
+              "endsAt": "2023-02-08T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "6d1065d2-3494-48a6-a6bb-7efde3d8de40",
+                  "name": "Carl Franklin"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391798",
+              "title": "Fun with Algorithms",
+              "description": "Algorithms and data structures are the base of all computing, from CRUD APIs to highly optimized data processing.\r\n\r\nMost of us probably have forgotten more than we remember about them though from college (or maybe never learned them in the first place) because we don't necessarily use them on a daily. But just like math, good knowledge about data structures and algorithms lay the foundation for how to think about difficult problems, and how to understand where and what to optimize.\r\n\r\nThis session is a programming language agnostic journey through problem solving - graph algorithms, dynamic programming, greedy algorithms, representations and data structures. How to build solutions from first principles and combine algos to build up from easy to medium to hard leet code or advent of code style problems.\r\n\r\nI'll also share how algorithm puzzles and competitive programming brought the fun back into programming for me, and how I use these skills in my day job.",
+              "startsAt": "2023-02-08T15:15:00",
+              "endsAt": "2023-02-08T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "cb70e0f2-0f0b-4b8f-b3f4-a9326309a1b2",
+                  "name": "Tess Ferrandez-Norlander"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "f4e6608d-7b34-45b8-bbcc-b33a132dca82",
+              "title": ".NET Rocks",
+              "description": null,
+              "startsAt": "2023-02-08T16:20:00",
+              "endsAt": "2023-02-08T17:10:00",
+              "isServiceSession": true,
+              "isPlenumSession": false,
+              "speakers": [],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": null,
+              "isInformed": false,
+              "isConfirmed": false
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        },
+        {
+          "id": 28554,
+          "name": "Katrinebergssalen",
+          "sessions": [
+            {
+              "id": "388589",
+              "title": "Finding Bigfoot with Redis + RediSearch",
+              "description": "Bigfoot has been a staple of American folklore since the 19th century. Many are convinced that Bigfoot is real. Others suggest he’s merely a cultural phenomenon. And some just want to believe. There is even a group, the Bigfoot Field Researchers Organization, that tracks Bigfoot sightings and makes the reports available online. And they have thousands of reports.\r\n\r\nI want to explore this delightful data but, unfortunately, it’s been made for the convenience of humans and not computers. While this makes it easy for me to read, searching for reports can be a bit of a challenge. Some of the data is tidy and computer friendly—like the latitude and longitude. Other bits are really for us humans—like the eyewitness accounts. So, how can I find the Bigfoot sightings that interest me most with data structured like this?\r\n\r\nWell, I’ll show you! In this talk, I’ll load these Bigfoot sightings into Redis and use RediSearch to index them, making it easy to query both the computer friendly bits and the human friendly bits. I’ll also show you how to search on fields, find keywords within text, find nearby Bigfoot sightings using geolocation data, and run queries that aggregate these searches.\r\n\r\nWhen we’re done, you’ll know how to quickly search, query, and aggregate data in Redis using RediSearch. You can use this newfound power for boring old corporate data, but I’m going to use it to find Bigfoot!",
+              "startsAt": "2023-02-08T09:00:00",
+              "endsAt": "2023-02-08T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "520bf4ca-b2d3-47c3-8475-c25bb2b257f7",
+                  "name": "Guy Royse"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "388584",
+              "title": "A Match Made in The Cloud: Container Apps + Dapr",
+              "description": "It couldn't be a more suitable time to be in the cloud business! Using today's bleeding edge innovations and tech, writing, and running distributed applications which truly scale and handle high load should no longer difficult.\r\nYet despite the ease of development, running distributed apps must be just as easy if we want to make a real software revolution. Introducing: Azure Container Apps. \r\n\r\nThroughout this session, we will talk about the future of app development and deployment. Specifically, I will showcase Dapr as well as Container Apps. Dapr is an event-driven, portable runtime for microservices development on cloud and edge which aims to solve all the challenges above and make the development of worry-free microservices-based applications a breeze. Azure Container Apps is a serverless platform that enables developers to run their containerized workloads. Container Apps are ideal for developers who want to run their applications as if they were running them on Kubernetes, but don't want to manage the operations of the cluster. This simplifies the process of developing and deploying our containers to Azure.\r\n\r\nJoin me for a pragmatic take on cloud native application development and deployment!\r\n",
+              "startsAt": "2023-02-08T10:10:00",
+              "endsAt": "2023-02-08T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "9e31597d-c731-4669-8de8-ed749c82dcc4",
+                  "name": "Alex Mang"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "388326",
+              "title": "A11y Test Driven Razor Components",
+              "description": "In this Blazor session we'll look at techniques you can use to unit test components for accessibility. Using bUnit tests we can ensure our components are screen reader friendly and keyboard navigable. Learn to create tests that focus on a11y specific features at the very start of the SDLC.",
+              "startsAt": "2023-02-08T11:50:00",
+              "endsAt": "2023-02-08T12:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "3fd9cade-10ef-43df-b124-944015042549",
+                  "name": "Ed Charbeneau"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "388796",
+              "title": "Azure Well Architected Framework in Action",
+              "description": "Cloud Architects make a lot of decisions. When designing solutions on top of such powerful platform like Azure, it's best to have a framework that serves as a compass to guide you which way to go. In this session, let's take a look at how the Azure Well Architected Framework can help us build great solutions on the cloud & get ready to put it in action",
+              "startsAt": "2023-02-08T12:50:00",
+              "endsAt": "2023-02-08T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "a71b0605-fee7-4530-8de5-c4cf8b22e8e2",
+                  "name": "Marilag Dimatulac Svennevig"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "388324",
+              "title": "CSS Techniques for Blazor Developers",
+              "description": "Does your CSS code remind you of an episode of Hoarders? In this session we’ll explore a variety of CSS related architecture decisions that Blazor developers face. Attendees will learn how and when to use plain CSS, Sass or CSS Isolation with Blazor. Modern CSS techniques like custom CSS properties will be discussed. We’ll explore techniques to build modular and intelligent CSS by leveraging CSS principals and incorporating helper libraries. This session aims to break the dependency on CSS systems like Bootstrap and Tailwind.",
+              "startsAt": "2023-02-08T13:55:00",
+              "endsAt": "2023-02-08T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "3fd9cade-10ef-43df-b124-944015042549",
+                  "name": "Ed Charbeneau"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "389254",
+              "title": "Exploring Source Generators",
+              "description": "Meta-programming is now easily available to all of us in C#! Roslyn’s “Source Generator” feature is a handy tool for making day-to-day work quicker and automating tedious coding tasks or build processes with direct compiler integration.\r\nWhile this compiler feature was introduced in C# 9 already, new features in .NET 6 and 7 now make use of it to help you with tasks like JSON serialization and logging.\r\nIn this session, we will look into what source generates can or could be used for, explore the new source generator based .NET 6 and 7 features and implement a custom source generator.",
+              "startsAt": "2023-02-08T15:15:00",
+              "endsAt": "2023-02-08T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "3e016c7b-3341-46d0-b2cf-46efe4b029e8",
+                  "name": "Martin Ullrich"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "434848",
+              "title": "What the .NET community can learn from the Log4Shell exploit",
+              "description": "In December 2021, the Java community was hit by the Log4Shell exploit that showed the vulnerability in one of the most common Java frameworks used on the Internet. Obviously .NET isn't vulnerable to this particular attack, but we think there are important insights that apply to .NET equally well. \r\n\r\nIn this session, we will drive our analysis using Secure by Design to understand why it is important to consider architecture and design around logging – as it is often overlooked and become a potential attack surface.",
+              "startsAt": "2023-02-08T16:20:00",
+              "endsAt": "2023-02-08T17:10:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "721348f4-e922-42c2-b063-61117a96eb5c",
+                  "name": "Daniel Deogun"
+                },
+                {
+                  "id": "dc49d9cd-0579-4650-8d7f-0c2bf1b88110",
+                  "name": "Dan Bergh Johnsson"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        },
+        {
+          "id": 28555,
+          "name": "Trekanten",
+          "sessions": [
+            {
+              "id": "383977",
+              "title": ".NET on AWS - Choose your own adventure",
+              "description": "Who doesn't like options? When we build .NET applications, we have a ton of options to how we build, what dependencies we leverage, and finally where we put those applications. We need to think about what app component model we use, like MVC, Blazor or Web API, and depending on that choice, it may dictate what platform we look to host our apps on. \r\n\r\nWhether you are building apps hosted on IIS or Kestrel (if you are fancy), leveraging containers, building serverless event-driven applications, to microservices, there are just tons of options out there. AWS provides services that provide options for all these modalities. Whether you are or are not familiar with AWS, this session will provide insight into how AWS is a great option for hosting all types of .NET Apps.",
+              "startsAt": "2023-02-08T10:10:00",
+              "endsAt": "2023-02-08T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "e8681f45-d491-4821-82bd-8857593ece05",
+                  "name": "Isaac Levin"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "390695",
+              "title": "10 things about UX and design that every developer should know",
+              "description": "In this session I’ll share 10 UX and design tips, with an emphasis on why they are important and how to apply them.\r\n\r\nDisclaimer: My intention is not to encourage a developer to do design work, just like I wouldn’t suggest a designer to do a developer’s job. What I do encourage is for everyone to learn more about each other’s domain and skillset. By utilizing our different strengths and expertise we can together build product and services that people will enjoy using. I hope this session will give you 10 reasons and ways of connecting with the designers in your team to level up the developer-designer collaboration.",
+              "startsAt": "2023-02-08T11:10:00",
+              "endsAt": "2023-02-08T12:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "e2149780-7343-4d9c-826f-3c905ec38a85",
+                  "name": "Danwei Tran Luciani"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "392174",
+              "title": "Azure IoT Cloud Development",
+              "description": "There are different variations of IoT devices that Microsoft Azure supports, one of them is Azure IoT Dev Kit which is an IoT development device intended for developers who are interested in cloud development with Azure IoT solutions.\r\n\r\nIn this session, you will learn about the Azure IoT Dev Kit that enables you to get started with cloud IoT development without any soldering tools needed. \r\n\r\n",
+              "startsAt": "2023-02-08T12:50:00",
+              "endsAt": "2023-02-08T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "5c5fa629-7932-4154-8171-dbfa338761c0",
+                  "name": "Jonah Andersson"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "390817",
+              "title": "Building beautiful console applications",
+              "description": "With the rise of .NET Core and cross-platform .NET, we're spending more and more at a terminal, and while there are a myriad UI technologies for .NET, the terminal experience has never got the same love and attention. Spectre.Console - a .NET library that makes it easy to create expressive, easy-to-use, and beautiful console applications - is trying to change that.\r\n\r\nThis talk will cover the fundamentals of console-based applications, how they work, and how you can use Spectre.Console to give you superpowers.",
+              "startsAt": "2023-02-08T13:55:00",
+              "endsAt": "2023-02-08T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "a6ca83a7-44e7-4455-b370-3566caa6a0a3",
+                  "name": "Patrik Svensson"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391969",
+              "title": "Building cloud-scale applications with Orleans",
+              "description": "You have probably heard about Orleans, the cross-platform framework for building robust, scalable distributed applications without worrying about complex programming patterns. Now, take the next step and learn how to use Orleans effectively in your own applications.\r\n\r\nIn this session we will learn about the key concepts of Orleans and how to get started with it. We will also cover some of the more advanced concepts of Orleans and how to deploy your Orleans applications to Azure. After attending this session, you will have knowledge about Orleans that will help you build robust, scalable distributed applications without the need to learn and apply complex concurrency or other scaling patterns.\r\n\r\nThis session is intended for developers who are curious about Orleans. Whether you’re a seasoned developer or just starting out, building cloud-scale applications does not have to be complicated.\r\n",
+              "startsAt": "2023-02-08T15:15:00",
+              "endsAt": "2023-02-08T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "25977085-1854-44bf-b7ee-b2a992216b67",
+                  "name": "Martin Björkström"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "389066",
+              "title": "Standardizing microservice-to-AKS workflow with dotnet custom templates and Azure DevOps",
+              "description": "If a developer needs to create a microservice in a modern, cloud native world there are quite a few areas that he/she may be expected to understand and have good skills in:\r\n\t- Remember about and comply with tens or even hundreds of coding guidelines; \r\n\t- Know how to create build and deployment pipelines; \r\n\t- Know how to implement automated security and quality checks; \r\n\t- Know how to containerize application and configure it's application container; \r\n\t- Know how to create a deployment configuration to securely and sustainably deploy the microservice to Kubernetes; \r\n\t- Know how to create an actual deployment workflow to get that microservice up and running in Kubernetes;\r\n\r\n...and the list may go on....All in all, as a developer, you may suddenly need to gain a lot of new knowledge and competence, from software development to DevOps or even DevSecOps, in order to deliver a new microservice.\r\n\r\nSo, how can we help reduce cognitive load on developers so that they can purely focus on bringing value to the application? At the same time, how can we ensure that development and deployment of microservices is done in the same, standardized way by different developers - and established policies, coding and security guidelines are being followed?\r\n \r\nIn this session I would like to show how dotnet custom templates can help you with that. We'll take a look at what dotnet custom templates are, how you can create a dotnet custom template collection, what you can include in this kind of templates and how developers can use it to their advantage.\r\n\r\nBy making it more practical I'll put myself in the shoes of a developer that needs to create a new .NET microservice and deploy it to AKS. I will use dotnet custom templates, Azure DevOps Environments and multi-staged Azure Pipelines for this purpose. The whole flow will be demonstrated: from the point we install a dotnet custom template until the microservice is up and running in AKS. During the demo we'll also take a look at how microservice blueprints that were created with dotnet custom templates can be extended to include automatic security and quality controls to ensure that new code or configuration doesn't introduce breaking changes or security vulnerabilities.",
+              "startsAt": "2023-02-08T16:20:00",
+              "endsAt": "2023-02-08T17:10:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "f22c8ab0-373c-4041-9e86-8d6aaab547c9",
+                  "name": "Kristina Devochko"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        },
+        {
+          "id": 30753,
+          "name": "Telerummet",
+          "sessions": [
+            {
+              "id": "388570",
+              "title": "Chalk up! Time for some advanced Bicep training!",
+              "description": "So, you've learned the basic Bicep syntax by now? Converted your ARM templates to Bicep? Your ARM deployments game is getting stronger but it's time to shape your Bicep(s) in order to do some real heavy lifting and go full on Infrastructure as Code. In this demo packed session we will explore some of the advanced features of Bicep and push the limits of what's possible to do with template deployments.",
+              "startsAt": "2023-02-08T09:00:00",
+              "endsAt": "2023-02-08T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "68155a9a-b739-48cd-aa4b-a02741810d30",
+                  "name": "Stefan Ivemo"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "390444",
+              "title": "A bouquet of good and bad advice for young developers",
+              "description": "These are the things I wish someone had told me earlier so I could ignore it:\r\n\r\nWhat to look for in an employer\r\nWhat to think about in a job interview\r\nWhere do you see yourself in 5 years\r\nExpert or generalist\r\nFinding your mentor\r\nMotivating yourself \r\nWorking efficiently\r\nClean code cheat sheet\r\nShortcuts and quick wins",
+              "startsAt": "2023-02-08T10:10:00",
+              "endsAt": "2023-02-08T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "a5453f13-cd2d-4f1f-959b-b138efb3f389",
+                  "name": "Elin Brusberg"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "386654",
+              "title": "CQRS is simpler than you think with C#11 and .NET 7!",
+              "description": "CQRS is often perceived as an over complex pattern with a lot of redundancy and ceremony. Too often it's explained as pushing towards multiple databases, eventual consistency, DDD, and Event Sourcing. In this talk, I will show that it's the opposite.\r\n\r\nDuring live coding, I will show how CQRS can help in tackling the layered architecture complexity. I'll build a simple but real WebAPI. Then I'll spice all of that with all the goodies from C#11 and .NET 7 to help achieve that. Records, Nullable Reference Types, Endpoints etc. The main focus will be on CQRS and pure .NET, not Event Sourcing, or DDD.",
+              "startsAt": "2023-02-08T11:50:00",
+              "endsAt": "2023-02-08T12:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "0a9f7bbc-da7b-42a6-ac4d-e6b3300b54e9",
+                  "name": "Oskar Dudycz"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "392823",
+              "title": "Forget about 10x developers - why you should look for a 10x team",
+              "description": "We’ve all heard about 10x developers or “unicorns” but is hiring a bunch of them really the best way to build great software? \r\nThe myth of the '10x developer' has led companies to waste millions hiring people who don't fit their culture, when all they need is a balanced mix of skills that complement each other. \r\nIn this talk you will learn how to build your team by overcoming the enticement of silver bullet hires, and making sure that you get the right people on board who contribute to being an efficient and happy team.",
+              "startsAt": "2023-02-08T12:50:00",
+              "endsAt": "2023-02-08T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "883c875b-19f1-4219-bf1c-76d6508dfb61",
+                  "name": "Madeleine Schönemann"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "390426",
+              "title": "PowerShell - C# for the terminal",
+              "description": "Do you need some pipeline logic? Write some integration tests? Deployment logic? Or even build complex cross platform tools?\r\n\r\nPowerShell is a language based on .NET. Even if it can't compete with the execution speed of C#, it harnesses the full power of .NET and is designed to be easy to learn. In this high paced and demo packed primer, Simon will share some examples of where PowerShell could come in handy for developers and demonstrate some of the lesser known features.",
+              "startsAt": "2023-02-08T13:55:00",
+              "endsAt": "2023-02-08T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "960279de-0627-4cfb-b04c-77309abee9fa",
+                  "name": "Simon Wåhlin"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "388484",
+              "title": "Simple DevSecOps with GitHub Advanced Security",
+              "description": "The goal of the session is to go through GHAS with its features and show how teams can significantly secure their application by utilizing out of the box functionality. ",
+              "startsAt": "2023-02-08T15:15:00",
+              "endsAt": "2023-02-08T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "675c7785-eb45-471d-a7c2-8f93fe43b77e",
+                  "name": "Sanjin Medic"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "383435",
+              "title": ".NET supply chain beneath the surface",
+              "description": "How much thought have you given your project's dependencies lately? For many, the answer seems to be either not much and we'll get to that later or incident-driven fighting \"fires\" made it a priority.\r\nIn this session, we'll go through tools and processes for continuously analyzing, reporting, and dealing with your .NET DevOps supply chain. So you with confidence know what your dependencies are, the state of them, where you are acquiring them from, and the know-how to methodically act and respond when they're compromised.",
+              "startsAt": "2023-02-08T16:20:00",
+              "endsAt": "2023-02-08T17:10:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "94bb2a0c-aa81-4039-84a0-7196d4bbbb41",
+                  "name": "Mattias Karlsson"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        }
+      ],
+      "timeSlots": [
+        {
+          "slotStart": "09:00:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "393681",
+                "title": "ASP.NET Basics for Experts",
+                "description": "People love to stay in their comfort zone and do what they've always done. But what if you could take your web applications to the next level just by getting the fundamentals right?\r\n\r\nIn this .NET 6 demo-rich session, I will show you how to make your applications more testable, maintainable and resilient. \r\nWhether you are working with a monolith or a vast distributed application, the areas we'll cover will be applicable. \r\nJoin me and learn about the following topics and more!\r\n\r\n- Minimal APIs, top-level statements and good design practise\r\n- Dependency injection and inversion of control\r\n- HTTP clients and policies\r\n- Resiliency and circuit breakers with Polly\r\n- Discovery clients with Steeltoe OSS\r\n",
+                "startsAt": "2023-02-08T09:00:00",
+                "endsAt": "2023-02-08T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "ac105033-2b20-4b45-8d47-5647d8accf84",
+                    "name": "Layla Porter"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "388589",
+                "title": "Finding Bigfoot with Redis + RediSearch",
+                "description": "Bigfoot has been a staple of American folklore since the 19th century. Many are convinced that Bigfoot is real. Others suggest he’s merely a cultural phenomenon. And some just want to believe. There is even a group, the Bigfoot Field Researchers Organization, that tracks Bigfoot sightings and makes the reports available online. And they have thousands of reports.\r\n\r\nI want to explore this delightful data but, unfortunately, it’s been made for the convenience of humans and not computers. While this makes it easy for me to read, searching for reports can be a bit of a challenge. Some of the data is tidy and computer friendly—like the latitude and longitude. Other bits are really for us humans—like the eyewitness accounts. So, how can I find the Bigfoot sightings that interest me most with data structured like this?\r\n\r\nWell, I’ll show you! In this talk, I’ll load these Bigfoot sightings into Redis and use RediSearch to index them, making it easy to query both the computer friendly bits and the human friendly bits. I’ll also show you how to search on fields, find keywords within text, find nearby Bigfoot sightings using geolocation data, and run queries that aggregate these searches.\r\n\r\nWhen we’re done, you’ll know how to quickly search, query, and aggregate data in Redis using RediSearch. You can use this newfound power for boring old corporate data, but I’m going to use it to find Bigfoot!",
+                "startsAt": "2023-02-08T09:00:00",
+                "endsAt": "2023-02-08T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "520bf4ca-b2d3-47c3-8475-c25bb2b257f7",
+                    "name": "Guy Royse"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "388570",
+                "title": "Chalk up! Time for some advanced Bicep training!",
+                "description": "So, you've learned the basic Bicep syntax by now? Converted your ARM templates to Bicep? Your ARM deployments game is getting stronger but it's time to shape your Bicep(s) in order to do some real heavy lifting and go full on Infrastructure as Code. In this demo packed session we will explore some of the advanced features of Bicep and push the limits of what's possible to do with template deployments.",
+                "startsAt": "2023-02-08T09:00:00",
+                "endsAt": "2023-02-08T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "68155a9a-b739-48cd-aa4b-a02741810d30",
+                    "name": "Stefan Ivemo"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "10:10:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "391989",
+                "title": "Introduction to .NET MAUI",
+                "description": ".NET multi-platform app UI (MAUI) is the best way to build cross platform mobile and desktop apps with .NET and C#. Join Maddy Montaquila, .NET MAUI Product Manager, to learn more about .NET's cross-platform stack for native developers, how to get started, the roadmap, and how to bring your existing web app to desktop using .NET MAUI!",
+                "startsAt": "2023-02-08T10:10:00",
+                "endsAt": "2023-02-08T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "a0dc3822-2379-40ff-8ba4-08f28269c4c5",
+                    "name": "Maddy Montaquila"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "388584",
+                "title": "A Match Made in The Cloud: Container Apps + Dapr",
+                "description": "It couldn't be a more suitable time to be in the cloud business! Using today's bleeding edge innovations and tech, writing, and running distributed applications which truly scale and handle high load should no longer difficult.\r\nYet despite the ease of development, running distributed apps must be just as easy if we want to make a real software revolution. Introducing: Azure Container Apps. \r\n\r\nThroughout this session, we will talk about the future of app development and deployment. Specifically, I will showcase Dapr as well as Container Apps. Dapr is an event-driven, portable runtime for microservices development on cloud and edge which aims to solve all the challenges above and make the development of worry-free microservices-based applications a breeze. Azure Container Apps is a serverless platform that enables developers to run their containerized workloads. Container Apps are ideal for developers who want to run their applications as if they were running them on Kubernetes, but don't want to manage the operations of the cluster. This simplifies the process of developing and deploying our containers to Azure.\r\n\r\nJoin me for a pragmatic take on cloud native application development and deployment!\r\n",
+                "startsAt": "2023-02-08T10:10:00",
+                "endsAt": "2023-02-08T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "9e31597d-c731-4669-8de8-ed749c82dcc4",
+                    "name": "Alex Mang"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "383977",
+                "title": ".NET on AWS - Choose your own adventure",
+                "description": "Who doesn't like options? When we build .NET applications, we have a ton of options to how we build, what dependencies we leverage, and finally where we put those applications. We need to think about what app component model we use, like MVC, Blazor or Web API, and depending on that choice, it may dictate what platform we look to host our apps on. \r\n\r\nWhether you are building apps hosted on IIS or Kestrel (if you are fancy), leveraging containers, building serverless event-driven applications, to microservices, there are just tons of options out there. AWS provides services that provide options for all these modalities. Whether you are or are not familiar with AWS, this session will provide insight into how AWS is a great option for hosting all types of .NET Apps.",
+                "startsAt": "2023-02-08T10:10:00",
+                "endsAt": "2023-02-08T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "e8681f45-d491-4821-82bd-8857593ece05",
+                    "name": "Isaac Levin"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "390444",
+                "title": "A bouquet of good and bad advice for young developers",
+                "description": "These are the things I wish someone had told me earlier so I could ignore it:\r\n\r\nWhat to look for in an employer\r\nWhat to think about in a job interview\r\nWhere do you see yourself in 5 years\r\nExpert or generalist\r\nFinding your mentor\r\nMotivating yourself \r\nWorking efficiently\r\nClean code cheat sheet\r\nShortcuts and quick wins",
+                "startsAt": "2023-02-08T10:10:00",
+                "endsAt": "2023-02-08T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "a5453f13-cd2d-4f1f-959b-b138efb3f389",
+                    "name": "Elin Brusberg"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "11:10:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "386210",
+                "title": "REST, GraphQL and gRPC : A Comparison",
+                "description": "Be it any industry, applications need to talk to each other. So, developers often build bridges – Application Programming Interfaces (API) – to allow one system to communicate to another. \r\n\r\nOver time, different API architectural styles have been released. Each of them has its own characteristics, patterns of data exchange, pros, and cons. REST, GraphQL and gRPC are three main options when it comes to API development and implementation In my session  I will cover what REST, GraphQL, and gRPC are, all from a .NET perspective and give you a comprehensive comparison between them.\r\n",
+                "startsAt": "2023-02-08T11:10:00",
+                "endsAt": "2023-02-08T12:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "d9a9dde1-cb0c-4b98-913f-9caccf5181bd",
+                    "name": "Poornima Nayar"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "390695",
+                "title": "10 things about UX and design that every developer should know",
+                "description": "In this session I’ll share 10 UX and design tips, with an emphasis on why they are important and how to apply them.\r\n\r\nDisclaimer: My intention is not to encourage a developer to do design work, just like I wouldn’t suggest a designer to do a developer’s job. What I do encourage is for everyone to learn more about each other’s domain and skillset. By utilizing our different strengths and expertise we can together build product and services that people will enjoy using. I hope this session will give you 10 reasons and ways of connecting with the designers in your team to level up the developer-designer collaboration.",
+                "startsAt": "2023-02-08T11:10:00",
+                "endsAt": "2023-02-08T12:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "e2149780-7343-4d9c-826f-3c905ec38a85",
+                    "name": "Danwei Tran Luciani"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            }
+          ]
+        },
+        {
+          "slotStart": "11:50:00",
+          "rooms": [
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "388326",
+                "title": "A11y Test Driven Razor Components",
+                "description": "In this Blazor session we'll look at techniques you can use to unit test components for accessibility. Using bUnit tests we can ensure our components are screen reader friendly and keyboard navigable. Learn to create tests that focus on a11y specific features at the very start of the SDLC.",
+                "startsAt": "2023-02-08T11:50:00",
+                "endsAt": "2023-02-08T12:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "3fd9cade-10ef-43df-b124-944015042549",
+                    "name": "Ed Charbeneau"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "386654",
+                "title": "CQRS is simpler than you think with C#11 and .NET 7!",
+                "description": "CQRS is often perceived as an over complex pattern with a lot of redundancy and ceremony. Too often it's explained as pushing towards multiple databases, eventual consistency, DDD, and Event Sourcing. In this talk, I will show that it's the opposite.\r\n\r\nDuring live coding, I will show how CQRS can help in tackling the layered architecture complexity. I'll build a simple but real WebAPI. Then I'll spice all of that with all the goodies from C#11 and .NET 7 to help achieve that. Records, Nullable Reference Types, Endpoints etc. The main focus will be on CQRS and pure .NET, not Event Sourcing, or DDD.",
+                "startsAt": "2023-02-08T11:50:00",
+                "endsAt": "2023-02-08T12:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "0a9f7bbc-da7b-42a6-ac4d-e6b3300b54e9",
+                    "name": "Oskar Dudycz"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "12:50:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "386919",
+                "title": "Designing and implementing ref fields",
+                "description": "What all goes into designing a C# language feature? Why does it take so long for even simple additions to the language to go from idea to reality?\r\n\r\nIn this session a member of the C# language design team is going to take you on the journey of designing a language feature. We'll explore how ref fields were added to C# 11 and go through the journey from idea to shipping product and all the challenges that it faced along the way.",
+                "startsAt": "2023-02-08T12:50:00",
+                "endsAt": "2023-02-08T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "8f894b44-ad9e-4c38-bda2-3ed4de9f159c",
+                    "name": "Jared Parsons"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "388796",
+                "title": "Azure Well Architected Framework in Action",
+                "description": "Cloud Architects make a lot of decisions. When designing solutions on top of such powerful platform like Azure, it's best to have a framework that serves as a compass to guide you which way to go. In this session, let's take a look at how the Azure Well Architected Framework can help us build great solutions on the cloud & get ready to put it in action",
+                "startsAt": "2023-02-08T12:50:00",
+                "endsAt": "2023-02-08T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "a71b0605-fee7-4530-8de5-c4cf8b22e8e2",
+                    "name": "Marilag Dimatulac Svennevig"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "392174",
+                "title": "Azure IoT Cloud Development",
+                "description": "There are different variations of IoT devices that Microsoft Azure supports, one of them is Azure IoT Dev Kit which is an IoT development device intended for developers who are interested in cloud development with Azure IoT solutions.\r\n\r\nIn this session, you will learn about the Azure IoT Dev Kit that enables you to get started with cloud IoT development without any soldering tools needed. \r\n\r\n",
+                "startsAt": "2023-02-08T12:50:00",
+                "endsAt": "2023-02-08T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "5c5fa629-7932-4154-8171-dbfa338761c0",
+                    "name": "Jonah Andersson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "392823",
+                "title": "Forget about 10x developers - why you should look for a 10x team",
+                "description": "We’ve all heard about 10x developers or “unicorns” but is hiring a bunch of them really the best way to build great software? \r\nThe myth of the '10x developer' has led companies to waste millions hiring people who don't fit their culture, when all they need is a balanced mix of skills that complement each other. \r\nIn this talk you will learn how to build your team by overcoming the enticement of silver bullet hires, and making sure that you get the right people on board who contribute to being an efficient and happy team.",
+                "startsAt": "2023-02-08T12:50:00",
+                "endsAt": "2023-02-08T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "883c875b-19f1-4219-bf1c-76d6508dfb61",
+                    "name": "Madeleine Schönemann"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "13:55:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "400898",
+                "title": "Building a .NET Rocks! Podcast Client with MAUI Blazor",
+                "description": "Watch Carl Franklin build a podcast client app using MAUI Blazor.",
+                "startsAt": "2023-02-08T13:55:00",
+                "endsAt": "2023-02-08T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "6d1065d2-3494-48a6-a6bb-7efde3d8de40",
+                    "name": "Carl Franklin"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "388324",
+                "title": "CSS Techniques for Blazor Developers",
+                "description": "Does your CSS code remind you of an episode of Hoarders? In this session we’ll explore a variety of CSS related architecture decisions that Blazor developers face. Attendees will learn how and when to use plain CSS, Sass or CSS Isolation with Blazor. Modern CSS techniques like custom CSS properties will be discussed. We’ll explore techniques to build modular and intelligent CSS by leveraging CSS principals and incorporating helper libraries. This session aims to break the dependency on CSS systems like Bootstrap and Tailwind.",
+                "startsAt": "2023-02-08T13:55:00",
+                "endsAt": "2023-02-08T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "3fd9cade-10ef-43df-b124-944015042549",
+                    "name": "Ed Charbeneau"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "390817",
+                "title": "Building beautiful console applications",
+                "description": "With the rise of .NET Core and cross-platform .NET, we're spending more and more at a terminal, and while there are a myriad UI technologies for .NET, the terminal experience has never got the same love and attention. Spectre.Console - a .NET library that makes it easy to create expressive, easy-to-use, and beautiful console applications - is trying to change that.\r\n\r\nThis talk will cover the fundamentals of console-based applications, how they work, and how you can use Spectre.Console to give you superpowers.",
+                "startsAt": "2023-02-08T13:55:00",
+                "endsAt": "2023-02-08T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "a6ca83a7-44e7-4455-b370-3566caa6a0a3",
+                    "name": "Patrik Svensson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "390426",
+                "title": "PowerShell - C# for the terminal",
+                "description": "Do you need some pipeline logic? Write some integration tests? Deployment logic? Or even build complex cross platform tools?\r\n\r\nPowerShell is a language based on .NET. Even if it can't compete with the execution speed of C#, it harnesses the full power of .NET and is designed to be easy to learn. In this high paced and demo packed primer, Simon will share some examples of where PowerShell could come in handy for developers and demonstrate some of the lesser known features.",
+                "startsAt": "2023-02-08T13:55:00",
+                "endsAt": "2023-02-08T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "960279de-0627-4cfb-b04c-77309abee9fa",
+                    "name": "Simon Wåhlin"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "15:15:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "391798",
+                "title": "Fun with Algorithms",
+                "description": "Algorithms and data structures are the base of all computing, from CRUD APIs to highly optimized data processing.\r\n\r\nMost of us probably have forgotten more than we remember about them though from college (or maybe never learned them in the first place) because we don't necessarily use them on a daily. But just like math, good knowledge about data structures and algorithms lay the foundation for how to think about difficult problems, and how to understand where and what to optimize.\r\n\r\nThis session is a programming language agnostic journey through problem solving - graph algorithms, dynamic programming, greedy algorithms, representations and data structures. How to build solutions from first principles and combine algos to build up from easy to medium to hard leet code or advent of code style problems.\r\n\r\nI'll also share how algorithm puzzles and competitive programming brought the fun back into programming for me, and how I use these skills in my day job.",
+                "startsAt": "2023-02-08T15:15:00",
+                "endsAt": "2023-02-08T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "cb70e0f2-0f0b-4b8f-b3f4-a9326309a1b2",
+                    "name": "Tess Ferrandez-Norlander"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "389254",
+                "title": "Exploring Source Generators",
+                "description": "Meta-programming is now easily available to all of us in C#! Roslyn’s “Source Generator” feature is a handy tool for making day-to-day work quicker and automating tedious coding tasks or build processes with direct compiler integration.\r\nWhile this compiler feature was introduced in C# 9 already, new features in .NET 6 and 7 now make use of it to help you with tasks like JSON serialization and logging.\r\nIn this session, we will look into what source generates can or could be used for, explore the new source generator based .NET 6 and 7 features and implement a custom source generator.",
+                "startsAt": "2023-02-08T15:15:00",
+                "endsAt": "2023-02-08T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "3e016c7b-3341-46d0-b2cf-46efe4b029e8",
+                    "name": "Martin Ullrich"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "391969",
+                "title": "Building cloud-scale applications with Orleans",
+                "description": "You have probably heard about Orleans, the cross-platform framework for building robust, scalable distributed applications without worrying about complex programming patterns. Now, take the next step and learn how to use Orleans effectively in your own applications.\r\n\r\nIn this session we will learn about the key concepts of Orleans and how to get started with it. We will also cover some of the more advanced concepts of Orleans and how to deploy your Orleans applications to Azure. After attending this session, you will have knowledge about Orleans that will help you build robust, scalable distributed applications without the need to learn and apply complex concurrency or other scaling patterns.\r\n\r\nThis session is intended for developers who are curious about Orleans. Whether you’re a seasoned developer or just starting out, building cloud-scale applications does not have to be complicated.\r\n",
+                "startsAt": "2023-02-08T15:15:00",
+                "endsAt": "2023-02-08T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "25977085-1854-44bf-b7ee-b2a992216b67",
+                    "name": "Martin Björkström"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "388484",
+                "title": "Simple DevSecOps with GitHub Advanced Security",
+                "description": "The goal of the session is to go through GHAS with its features and show how teams can significantly secure their application by utilizing out of the box functionality. ",
+                "startsAt": "2023-02-08T15:15:00",
+                "endsAt": "2023-02-08T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "675c7785-eb45-471d-a7c2-8f93fe43b77e",
+                    "name": "Sanjin Medic"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "16:20:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "f4e6608d-7b34-45b8-bbcc-b33a132dca82",
+                "title": ".NET Rocks",
+                "description": null,
+                "startsAt": "2023-02-08T16:20:00",
+                "endsAt": "2023-02-08T17:10:00",
+                "isServiceSession": true,
+                "isPlenumSession": false,
+                "speakers": [],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": null,
+                "isInformed": false,
+                "isConfirmed": false
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "434848",
+                "title": "What the .NET community can learn from the Log4Shell exploit",
+                "description": "In December 2021, the Java community was hit by the Log4Shell exploit that showed the vulnerability in one of the most common Java frameworks used on the Internet. Obviously .NET isn't vulnerable to this particular attack, but we think there are important insights that apply to .NET equally well. \r\n\r\nIn this session, we will drive our analysis using Secure by Design to understand why it is important to consider architecture and design around logging – as it is often overlooked and become a potential attack surface.",
+                "startsAt": "2023-02-08T16:20:00",
+                "endsAt": "2023-02-08T17:10:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "721348f4-e922-42c2-b063-61117a96eb5c",
+                    "name": "Daniel Deogun"
+                  },
+                  {
+                    "id": "dc49d9cd-0579-4650-8d7f-0c2bf1b88110",
+                    "name": "Dan Bergh Johnsson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "389066",
+                "title": "Standardizing microservice-to-AKS workflow with dotnet custom templates and Azure DevOps",
+                "description": "If a developer needs to create a microservice in a modern, cloud native world there are quite a few areas that he/she may be expected to understand and have good skills in:\r\n\t- Remember about and comply with tens or even hundreds of coding guidelines; \r\n\t- Know how to create build and deployment pipelines; \r\n\t- Know how to implement automated security and quality checks; \r\n\t- Know how to containerize application and configure it's application container; \r\n\t- Know how to create a deployment configuration to securely and sustainably deploy the microservice to Kubernetes; \r\n\t- Know how to create an actual deployment workflow to get that microservice up and running in Kubernetes;\r\n\r\n...and the list may go on....All in all, as a developer, you may suddenly need to gain a lot of new knowledge and competence, from software development to DevOps or even DevSecOps, in order to deliver a new microservice.\r\n\r\nSo, how can we help reduce cognitive load on developers so that they can purely focus on bringing value to the application? At the same time, how can we ensure that development and deployment of microservices is done in the same, standardized way by different developers - and established policies, coding and security guidelines are being followed?\r\n \r\nIn this session I would like to show how dotnet custom templates can help you with that. We'll take a look at what dotnet custom templates are, how you can create a dotnet custom template collection, what you can include in this kind of templates and how developers can use it to their advantage.\r\n\r\nBy making it more practical I'll put myself in the shoes of a developer that needs to create a new .NET microservice and deploy it to AKS. I will use dotnet custom templates, Azure DevOps Environments and multi-staged Azure Pipelines for this purpose. The whole flow will be demonstrated: from the point we install a dotnet custom template until the microservice is up and running in AKS. During the demo we'll also take a look at how microservice blueprints that were created with dotnet custom templates can be extended to include automatic security and quality controls to ensure that new code or configuration doesn't introduce breaking changes or security vulnerabilities.",
+                "startsAt": "2023-02-08T16:20:00",
+                "endsAt": "2023-02-08T17:10:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "f22c8ab0-373c-4041-9e86-8d6aaab547c9",
+                    "name": "Kristina Devochko"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "383435",
+                "title": ".NET supply chain beneath the surface",
+                "description": "How much thought have you given your project's dependencies lately? For many, the answer seems to be either not much and we'll get to that later or incident-driven fighting \"fires\" made it a priority.\r\nIn this session, we'll go through tools and processes for continuously analyzing, reporting, and dealing with your .NET DevOps supply chain. So you with confidence know what your dependencies are, the state of them, where you are acquiring them from, and the know-how to methodically act and respond when they're compromised.",
+                "startsAt": "2023-02-08T16:20:00",
+                "endsAt": "2023-02-08T17:10:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "94bb2a0c-aa81-4039-84a0-7196d4bbbb41",
+                    "name": "Mattias Karlsson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2023-02-09T00:00:00",
+      "isDefault": false,
+      "rooms": [
+        {
+          "id": 28553,
+          "name": "Liljeholmssalen",
+          "sessions": [
+            {
+              "id": "391302",
+              "title": "The History of .NET",
+              "description": ".NET continues to evolve - but how did it get here? Join Richard Campbell on a tour of the history of .NET, Visual Studio and the related tools that have been helping developers produce millions of applications. So many forces shape how development tools are created, and Richard ties together the story of the hardware, software, market and political forces that have brought .NET to be an open-source, cross-platform development platform. The winding path of .NET has been influenced by many things along the way, and the future looks bright!",
+              "startsAt": "2023-02-09T09:00:00",
+              "endsAt": "2023-02-09T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "d4d7850a-526e-4959-aab1-36460081fcf5",
+                  "name": "Richard Campbell"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "383469",
+              "title": "Real-Time Connected Apps with .NET MAUI, Blazor and SignalR",
+              "description": "In today's world apps are expected to update instantly and your users demand to collaborate and play games in real-time. One way to do that is by using SignalR.\r\n\r\nDuring this session Gerald will teach you what SignalR is, how to use it in different ways and blow you away with a couple of cool demos showing real-time connections between native mobile apps with .NET MAUI and web apps built with ASP.NET and Blazor.",
+              "startsAt": "2023-02-09T10:10:00",
+              "endsAt": "2023-02-09T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "b5f674c8-199a-444d-bfaf-e8f8cd8a6248",
+                  "name": "Gerald Versluis"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "392287",
+              "title": "Git Hidden Gems",
+              "description": "There is more to Git than meets the eye. On the surface, it's a version control system. Underneath, it's a virtual file system built to track your files. And right in between is a wealth of productivity features very few people know about.\r\n\r\nAs a Git enthusiast, I feel it's my duty to spread the knowledge about these hidden Git gems. From automating common daily tasks, to better handling of merge conflicts, these features are the quality of life improvements you always wished you knew about.\r\n\r\nSo don't waste your time wondering what Git can do for you; come to this session and be ready to take your workflow to the next level with these hidden gems.",
+              "startsAt": "2023-02-09T11:10:00",
+              "endsAt": "2023-02-09T12:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "63b2c908-a6f0-41b6-ace8-46a3f5482c54",
+                  "name": "Enrico Campidoglio"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "383510",
+              "title": "Awesome UI with .NET MAUI",
+              "description": "Whether building an app for consumers or enterprises, for games or line-of-business apps, you can do it all with .NET MAUI. In this session, I'll share my pro tips from 25 years of developing beautiful UIs for desktop, mobile, and web applications. Going cross-platform doesn't mean you need to sacrifice amazing design. Making UI beautiful doesn't mean you need to sacrifice usability and accessibility. ",
+              "startsAt": "2023-02-09T12:50:00",
+              "endsAt": "2023-02-09T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "9fd10a46-6e2a-4eae-9b6d-9cf8ff0ecf15",
+                  "name": "David Ortinau"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391494",
+              "title": "Failure is Always an Option",
+              "description": "Software runs the world. We use software to manage our calendars, talk to our friends, run our businesses - and, as our societies inevitably try to replace people and paperwork with apps and algorithms, we find ourselves facing some vital questions about the reliability of that software. If you take the time to actually read the terms and conditions, you’ll find that just about every system we rely on comes with no warranties and no safeguards - you use it at your own risk, and if it doesn’t work, that’s your problem.\r\n\r\nBut there’s more to building reliable systems than just writing good code. Reliability isn’t just about software engineering, it’s about systems engineering; about taking a holistic view of services that includes software, hardware, networks, and people. Join Dylan Beattie for an insightful look at the history of systems engineering, at some of the strategies and design patterns that we can use to build reliability into our systems, and at what happens when the software that runs the world has a bad day.",
+              "startsAt": "2023-02-09T13:55:00",
+              "endsAt": "2023-02-09T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "1d7dcbfc-1de6-4228-8bd6-04f4ba1c4267",
+                  "name": "Dylan Beattie"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "385396",
+              "title": "What is new in .NET 7 and C# 11",
+              "description": "November 2022 marked the release of .NET 7 and C# 11. In this session, I will talk about what is new in the latest version of .NET and what the future will bring for the .NET platform in general. You will be able to vote for the features you want to hear about during the session. Expect an extensive number of new .NET 7 and C# 11 features and examples of those features.",
+              "startsAt": "2023-02-09T15:15:00",
+              "endsAt": "2023-02-09T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "20eb7c88-ec9a-4a26-95a4-8ab436350067",
+                  "name": "Johnny Hooyberghs"
+                }
+              ],
+              "categories": [],
+              "roomId": 28553,
+              "room": "Liljeholmssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        },
+        {
+          "id": 28554,
+          "name": "Katrinebergssalen",
+          "sessions": [
+            {
+              "id": "391754",
+              "title": "A lap around GitHub",
+              "description": "GitHub is not just for your code! \r\n\r\nIt offers features for the whole software lifecycle, such as planning your work with GitHub Issues, building and shipping apps with GitHub Actions and state of the art security tools that will keep your code secure. \r\n\r\nAdd the ability to code in the cloud using GitHub Codespaces and you have an innovative and powerful collaboration platform for both individuals and teams\r\n\r\nJoin me in this session for a lap around all of the major features of GitHub",
+              "startsAt": "2023-02-09T09:00:00",
+              "endsAt": "2023-02-09T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "54973c7d-2fe5-4a49-9a1c-a52afed4d6a4",
+                  "name": "Jakob Ehn"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "388583",
+              "title": "User Experience Pitfalls",
+              "description": "User Experience has become a buzzword in the tech industry. Project managers and business partners are clamoring to improve the experience. You understand UX is a business necessity, but you aren't quite sure what it means to you or where to begin. This session discusses some common pitfalls of user interface design and simple techniques to inject UX into your applications from the start. These are the basic UX design principles you need to start adding UX to your project today.",
+              "startsAt": "2023-02-09T10:10:00",
+              "endsAt": "2023-02-09T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "49d109f0-32cf-4187-aedc-dcfcf234a92e",
+                  "name": "Ash Banaszek"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "384788",
+              "title": "How I built a ZX Spectrum emulator from scratch using C# and Blazor",
+              "description": "This session starts in 1985 when I was 7 years old.\r\nI got my first computer, a Sinclair ZX Spectrum.\r\nI still remember that the first thing I did was to sit down and write:\r\n10 PRINT \"Jimmy\"\r\n20 GOTO 10\r\nThis was my code, I made the machine do things!\r\nThis was the moment when I decided that I wanted to become a developer.\r\nMany different computers followed, ZX Spectrum+, Commodore 64, and Commodore Amiga 500, but the ZX Spectrum still has a very special place in my heart.\r\n\r\nOnce I became a developer I thought, -\"would it be possible to build an emulator?\" so I set out to build an emulator.\r\n\r\nIn this session, I will share that journey.\r\nWe will touch base on, registers, memory management, sound, handling input, and output.\r\nAll of this is in a Blazor WebAssembly application.",
+              "startsAt": "2023-02-09T11:50:00",
+              "endsAt": "2023-02-09T12:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "887b6c2e-49a1-4fda-94cf-7ec421f61c3c",
+                  "name": "Jimmy Engström"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391760",
+              "title": "I'm just trying to keep my head above water",
+              "description": "I'm a lucky guy, and I know it! I'm a middle-aged white male with a good job, a great wife, and all of that. Life is pretty good! Or at least it should be...\r\n\r\nThe other side of the story is that I have spent most of my career struggling mentally. I've not only questioned myself professionally since day one, but I have also had to take time off work because I couldn't even get out of bed in the morning. Still, most people around me don't have a clue about my situation. When they find out, they generally go \"What? You? I would never have thought that\"... A response that probably indicates how well I manage to hide it from the world. But I am more and more certain that that is not the right way to handle it...\r\n\r\nI have spent a LOT of time trying to find ways to cope with the struggles in my life. Trying to balance my private life and work. Something that is much harder than it sounds in our industry. And I think we need to talk about it.\r\n\r\nI want to talk about some of the things I have experienced, and some of the things I have done to try and make my life…well…a life for me. I also want to explain how getting a book about living with ADHD from my parents when I was 40 became a life altering experience. Not to mention what I think we as an industry could do to make life better for the people in it.\r\n",
+              "startsAt": "2023-02-09T12:50:00",
+              "endsAt": "2023-02-09T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "239cf374-ad4d-4877-a5e5-951cb4cd9291",
+                  "name": "Chris Klug"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "389413",
+              "title": "The latest and greatest from Azure Service Bus",
+              "description": "As the program manager of Azure Service Bus, it is always amazing to share the latest developments of our service. It allows us get direct feedback from the community, and ensures that we are building the right product for your scenarios.\r\n\r\nIn this session we will have a look at recently delivered features, and what we are currently working on. You will get a chance to hear all about these latest developments, how we are building them, and why we made certain choices.\r\n\r\nAnd who knows, we might even have a look at what is coming up on the roadmap! This will be your chance to see what is coming in the next months, and give your feedback which will help us give shape to these features.",
+              "startsAt": "2023-02-09T13:55:00",
+              "endsAt": "2023-02-09T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "11a684d4-ace1-49e8-be4b-c4e5ff215a7c",
+                  "name": "Eldert Grootenboer"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "384309",
+              "title": "From Panic Attacks to Public Speaking and Beyond - My Journey",
+              "description": "Techorama came to the Netherlands for the first time in 2018. The biggest .Net conference in the Netherlands with a host of amazing speakers!\r\n\r\nSuffering from severe anxiety it was going to be a tough couple of days, but still, I wanted to go!\r\n\r\nThis is a story about how a panic attack on day one of the conference, followed by a couple of chance meetings lead me to overcome my fear of flying, fear of travelling and fear of people in order to speak at my first conference.",
+              "startsAt": "2023-02-09T15:15:00",
+              "endsAt": "2023-02-09T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "64877cf3-2b61-4987-966a-b4e025128d3a",
+                  "name": "Stacy Cashmore"
+                }
+              ],
+              "categories": [],
+              "roomId": 28554,
+              "room": "Katrinebergssalen",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        },
+        {
+          "id": 28555,
+          "name": "Trekanten",
+          "sessions": [
+            {
+              "id": "385695",
+              "title": "Microsoft",
+              "description": "From Microsoft Sweden: Learn more on the status for the Microsoft Cloud region in Sweden, the architecture and what is currently available. Also, what is the latest on digital sovereignty and Microsoft cloud for Sovereignty?",
+              "startsAt": "2023-02-09T09:00:00",
+              "endsAt": "2023-02-09T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "ee7a09c5-8262-41f1-97fc-31af4bb491d8",
+                  "name": "Daniel Akenine"
+                },
+                {
+                  "id": "4c36872d-ebee-4864-a18e-c24218ae4275",
+                  "name": "Asbjörn Ejsing"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "396147",
+              "title": "How does software contribute to climate change and what can you do about it?",
+              "description": "You might have heard about how cryptocurrency is responsible for a huge amount of the world's carbon emissions.\r\nBut did you make the connection that the software we build also has a significant carbon footprint? In fact, the carbon footprint of our industry is the same size as the entire world's aviation industry. \r\n\r\nIn this talk, you will learn about the environmental impact of software services and products and how you can use your skills (accessibility, caching, cloud regions and load-shifting) to reduce the carbon footprint. ",
+              "startsAt": "2023-02-09T10:10:00",
+              "endsAt": "2023-02-09T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "1cb9e529-6471-40f4-9990-e8377474b5aa",
+                  "name": "Sofia Larsson"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "392807",
+              "title": "Implementera BankID som inloggning i ASP.NET på en timme",
+              "description": "Svenska BankID har över 8 miljoner användare och sannolikheten att du är en av dem är ganska stor. Bland svenskar i åldern 41-50 har imponerande 100% ett BankID och övriga ålderskategorier är inte långt därefter. Frågan många ställer sig är - hur komplext är det att använda BankID som inloggningsmetod i mina tjänster och hur gör jag det på ett säkert sätt?\r\nI den här sessionen kommer vi att berätta om hur du som .NET-utvecklare kan använda BankID som inloggningsmetod i dina webbapplikationer. Tack vare open source-komponenten Active Login går det att gå från nytt projekt till fungerande inloggning på under en timme. I den här sessionen får du lära dig mer om hur BankID fungerar. Hur de senaste säkerhetsfunktionerna i BankID ökar säkerheten samt hur du som utvecklare kan komma igång med BankID i din verksamhets applikationer.",
+              "startsAt": "2023-02-09T11:10:00",
+              "endsAt": "2023-02-09T12:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "6289b73f-e6a0-4d1d-804d-ca1062dc93f3",
+                  "name": "Elin Fokine"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "437846",
+              "title": "Applied Codespaces",
+              "description": "How easy is it to get a new development environment up and running? How quickly can you get to first commit when starting working on a new project? Codespaces is a cloud service from GitHub aimed to remove the friction we often have in managing our development environments. Wouldn't it be great to have an environment available for every version of the products you support?\r\n\r\nIn this session we want to share how we have adopted  this exciting technology. Of course as tech-savvy individuals we always want to use new, shiny things. Some we find interesting but not so useful, others are gems you want to spend time using. Codespaces have that special quality and we're seeing lots of opportunities in Codespaces to always have a new development environment that is always up to date. \r\n\r\nIn this practical session we'll go through what and then cover how we've adopted Codespace, including:\r\n\r\n• Enabling Codespace \r\n• Configuring your project for Codespaces\r\n• Developing with Codespaces\r\n• Customize your development environment \r\n",
+              "startsAt": "2023-02-09T12:50:00",
+              "endsAt": "2023-02-09T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "3d5839b1-6a69-43cc-9786-9ce721e0dfd2",
+                  "name": "Magnus Timner"
+                },
+                {
+                  "id": "c342bb28-62ab-40bf-824c-b9ecf6209b0c",
+                  "name": "Mathias Olausson"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "392386",
+              "title": "Lessons Learnt from 10 years of Developer Advocacy",
+              "description": "Technical developer advocacy is no longer a role that you have to explain – it is critical to the success of most software product companies. And the craft has evolved over the past few years – come learn the many nuances to be successful. Take away well-accepted tricks of the trade applicable to most audiences – with real world developer advocacy examples and resources. How do you tell stories & weave your products in? How do you stay humble while making a name for yourself? How do you create a niche, write well, speak well and move the needle? How do you scale? How do you create value? And how do you inspire? Come be awesome!",
+              "startsAt": "2023-02-09T13:55:00",
+              "endsAt": "2023-02-09T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "fc1d0cd3-9675-4188-aa98-e0088069f1a4",
+                  "name": "Sam Basu"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "392046",
+              "title": "From Bricks to Bytes",
+              "description": "Our world of digital crafting has many similarities with building physical structures. We spend so many hours on our computers, phones, and other screens, that we can speak of an entire digital world. A world where we do our work, perform daily tasks, talk to friends, go shopping and even find the perfect date. Just like we would have done before by visiting different physical buildings in a city. Digital interfaces are our new houses and through the years our personal devices have become our own private safe space. \r\nGraduated in engineering-architecture, I was struck many times by the similarities between both worlds. I want to highlight the important touch points between physical and digital architecture. The ones where we can learn from architects and builders and how it can help us build better digital experiences.",
+              "startsAt": "2023-02-09T15:15:00",
+              "endsAt": "2023-02-09T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "2ead3802-cbdf-462f-acd8-40a1ebf5da6c",
+                  "name": "Evelyne Wauters"
+                }
+              ],
+              "categories": [],
+              "roomId": 28555,
+              "room": "Trekanten",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        },
+        {
+          "id": 30753,
+          "name": "Telerummet",
+          "sessions": [
+            {
+              "id": "392567",
+              "title": "Hacking the Juice Shop",
+              "description": "Capture The Flag is both fun and educational at the same time, and a great tool to raise security awareness. You can do it by yourself, together in a team, or in competition mode against others. \r\nThe OWASP Juice Shop is a site that you can set up and use for this. It has a great Tutorial mode for beginners and a lot of challenges at all different levels as well as a scoreboard where you can track your progress. You can also set up a scoring-server for competitions, like getting the highest score or doing it jeopardy-style. \r\nIn this session, you will learn how to set it up, and how it works, and get a kickstart on the hacking. After this session, you will have the knowledge to host your own CFT event.",
+              "startsAt": "2023-02-09T09:00:00",
+              "endsAt": "2023-02-09T09:55:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "a91cd283-f5c2-40d2-8da1-f9dceebeec6f",
+                  "name": "Cecilia Wirén"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391804",
+              "title": "Power BI for .NET developers",
+              "description": "This session will give you an overview of Power BI as a tool to enrich your .NET web application with interactive reports visualizing your business critical data. You will learn how to embed reports into your web application, how to refresh data sets, create new reports from templates and customize existing reports using Power BI REST API, how to assign user permissions and ensure secure access to your data, and finally how to orchestrate everything using CI/CD pipelines.",
+              "startsAt": "2023-02-09T10:10:00",
+              "endsAt": "2023-02-09T11:00:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "6d0c13d5-01ad-4dff-97c6-b736276cc91c",
+                  "name": "Irina Dragunova"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "385069",
+              "title": "Introducing the Windows App SDK",
+              "description": "The Windows App SDK is a new library of developer tools and components that provide a unified experience in developing Windows apps. It builds on existing frameworks like WPF and WinForms instead of trying to be the next framework.\r\n\r\nIn this session I will take you through the Windows App SDK, from installation to usage in a new project and how to shoehorn it into an existing project. The session is aimed at people developing Desktop applications for Windows who want to modernize their applications, or start a new application from scratch.\r\n",
+              "startsAt": "2023-02-09T11:50:00",
+              "endsAt": "2023-02-09T12:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "23da6a18-7d00-4d39-8b8a-86abd5bd66e7",
+                  "name": "Nico Vermeir"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "389493",
+              "title": "Free security resources that your competitors use!",
+              "description": "There are tons of resources available for someone who wants to become better at writing secure code, and lots of them are free. OWASP naturally comes to mind, and there are several active projects which should be recognized as bag of tricks in the discipline of secure development. And there are others as well! In this session we will give you some of our personal recommendations that will help both individuals, teams and organizations.",
+              "startsAt": "2023-02-09T12:50:00",
+              "endsAt": "2023-02-09T13:40:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "886c0123-7466-4ca5-b27f-875d815fec7e",
+                  "name": "Johan Lindfors"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "385180",
+              "title": "The intersection point of Low-code vs Pro-Code projects with regards to return on investment",
+              "description": "Low code and pro code seem to get into a fight whenever they are brought together.  But is it fair to assume that a project done in a pro code environment is always better?\r\n\r\nFor distinguishing the turn-over point between the two approaches, a lot of information has to be put into account. Complexity, availability of resources, licenses and much more is all to be considered.\r\n\r\nDuring this session, a look into what makes a low code candidate a good candidate will be provided as well as information on when not to go for low-code. An honoust overview of the complexity on low-code will be provided to show that sometimes a pro-code approach can indeed be more beneficial. \r\n\r\nWill this be a session for team pro-code? No, damage will be dealt towards pro-code to show the benefits of having low-code in your battlepack!\r\n\r\nLow-code vs Pro-code decided once and for all? Find out during this informative session between the titans ;-)",
+              "startsAt": "2023-02-09T13:55:00",
+              "endsAt": "2023-02-09T14:45:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "7242e99e-99e5-4ac4-b976-b69ab70407ee",
+                  "name": "Iona Varga"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            },
+            {
+              "id": "391342",
+              "title": "Pre-flight checks for the Cloud",
+              "description": "So, your company is going to the Azure Cloud. Wonderful! How will you do it? There’s more to it than most know, and most are not really equipped for the flight to the Azure Cloud when it is time to taxi onto the runway.\r\nFuel for your journey are the business goals, which you must use to navigate when it begins to get cloudy. Your teams of ground staff, tower operators, flight crew and pilots must be organized in a purposeful way so that everyone is ready for great time in the skies. Pre-flight check is your tactical planning that gives you a practical mapping between strategy, organization, and cloud.\r\n\r\nIn this session I will discuss the exceptionally important steps of Strategy, Organization and Planning to get Ready for the Cloud. I will add my own experience as an Azure MVP, Lead Cloud Architect, and as owner of Loftysoft AB a consultancy for Azure expertise. Reality is that cloud is complex, and everyone can take even better care of the services and opportunities in the cloud platforms. It is my job to take on the cloud of my customers and “just” make it more cost optimized, faster to deliver, and easier to work with – better! \r\n\r\nWelcome to the key advice for your better cloud now!\r\n",
+              "startsAt": "2023-02-09T15:15:00",
+              "endsAt": "2023-02-09T16:05:00",
+              "isServiceSession": false,
+              "isPlenumSession": false,
+              "speakers": [
+                {
+                  "id": "c173d7ee-e503-46dc-9392-d016ca0c39f8",
+                  "name": "Magnus Mårtensson"
+                }
+              ],
+              "categories": [],
+              "roomId": 30753,
+              "room": "Telerummet",
+              "liveUrl": null,
+              "recordingUrl": null,
+              "status": "Accepted",
+              "isInformed": true,
+              "isConfirmed": true
+            }
+          ],
+          "hasOnlyPlenumSessions": false
+        }
+      ],
+      "timeSlots": [
+        {
+          "slotStart": "09:00:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "391302",
+                "title": "The History of .NET",
+                "description": ".NET continues to evolve - but how did it get here? Join Richard Campbell on a tour of the history of .NET, Visual Studio and the related tools that have been helping developers produce millions of applications. So many forces shape how development tools are created, and Richard ties together the story of the hardware, software, market and political forces that have brought .NET to be an open-source, cross-platform development platform. The winding path of .NET has been influenced by many things along the way, and the future looks bright!",
+                "startsAt": "2023-02-09T09:00:00",
+                "endsAt": "2023-02-09T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "d4d7850a-526e-4959-aab1-36460081fcf5",
+                    "name": "Richard Campbell"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "391754",
+                "title": "A lap around GitHub",
+                "description": "GitHub is not just for your code! \r\n\r\nIt offers features for the whole software lifecycle, such as planning your work with GitHub Issues, building and shipping apps with GitHub Actions and state of the art security tools that will keep your code secure. \r\n\r\nAdd the ability to code in the cloud using GitHub Codespaces and you have an innovative and powerful collaboration platform for both individuals and teams\r\n\r\nJoin me in this session for a lap around all of the major features of GitHub",
+                "startsAt": "2023-02-09T09:00:00",
+                "endsAt": "2023-02-09T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "54973c7d-2fe5-4a49-9a1c-a52afed4d6a4",
+                    "name": "Jakob Ehn"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "385695",
+                "title": "Microsoft",
+                "description": "From Microsoft Sweden: Learn more on the status for the Microsoft Cloud region in Sweden, the architecture and what is currently available. Also, what is the latest on digital sovereignty and Microsoft cloud for Sovereignty?",
+                "startsAt": "2023-02-09T09:00:00",
+                "endsAt": "2023-02-09T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "ee7a09c5-8262-41f1-97fc-31af4bb491d8",
+                    "name": "Daniel Akenine"
+                  },
+                  {
+                    "id": "4c36872d-ebee-4864-a18e-c24218ae4275",
+                    "name": "Asbjörn Ejsing"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "392567",
+                "title": "Hacking the Juice Shop",
+                "description": "Capture The Flag is both fun and educational at the same time, and a great tool to raise security awareness. You can do it by yourself, together in a team, or in competition mode against others. \r\nThe OWASP Juice Shop is a site that you can set up and use for this. It has a great Tutorial mode for beginners and a lot of challenges at all different levels as well as a scoreboard where you can track your progress. You can also set up a scoring-server for competitions, like getting the highest score or doing it jeopardy-style. \r\nIn this session, you will learn how to set it up, and how it works, and get a kickstart on the hacking. After this session, you will have the knowledge to host your own CFT event.",
+                "startsAt": "2023-02-09T09:00:00",
+                "endsAt": "2023-02-09T09:55:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "a91cd283-f5c2-40d2-8da1-f9dceebeec6f",
+                    "name": "Cecilia Wirén"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "10:10:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "383469",
+                "title": "Real-Time Connected Apps with .NET MAUI, Blazor and SignalR",
+                "description": "In today's world apps are expected to update instantly and your users demand to collaborate and play games in real-time. One way to do that is by using SignalR.\r\n\r\nDuring this session Gerald will teach you what SignalR is, how to use it in different ways and blow you away with a couple of cool demos showing real-time connections between native mobile apps with .NET MAUI and web apps built with ASP.NET and Blazor.",
+                "startsAt": "2023-02-09T10:10:00",
+                "endsAt": "2023-02-09T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "b5f674c8-199a-444d-bfaf-e8f8cd8a6248",
+                    "name": "Gerald Versluis"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "388583",
+                "title": "User Experience Pitfalls",
+                "description": "User Experience has become a buzzword in the tech industry. Project managers and business partners are clamoring to improve the experience. You understand UX is a business necessity, but you aren't quite sure what it means to you or where to begin. This session discusses some common pitfalls of user interface design and simple techniques to inject UX into your applications from the start. These are the basic UX design principles you need to start adding UX to your project today.",
+                "startsAt": "2023-02-09T10:10:00",
+                "endsAt": "2023-02-09T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "49d109f0-32cf-4187-aedc-dcfcf234a92e",
+                    "name": "Ash Banaszek"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "396147",
+                "title": "How does software contribute to climate change and what can you do about it?",
+                "description": "You might have heard about how cryptocurrency is responsible for a huge amount of the world's carbon emissions.\r\nBut did you make the connection that the software we build also has a significant carbon footprint? In fact, the carbon footprint of our industry is the same size as the entire world's aviation industry. \r\n\r\nIn this talk, you will learn about the environmental impact of software services and products and how you can use your skills (accessibility, caching, cloud regions and load-shifting) to reduce the carbon footprint. ",
+                "startsAt": "2023-02-09T10:10:00",
+                "endsAt": "2023-02-09T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "1cb9e529-6471-40f4-9990-e8377474b5aa",
+                    "name": "Sofia Larsson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "391804",
+                "title": "Power BI for .NET developers",
+                "description": "This session will give you an overview of Power BI as a tool to enrich your .NET web application with interactive reports visualizing your business critical data. You will learn how to embed reports into your web application, how to refresh data sets, create new reports from templates and customize existing reports using Power BI REST API, how to assign user permissions and ensure secure access to your data, and finally how to orchestrate everything using CI/CD pipelines.",
+                "startsAt": "2023-02-09T10:10:00",
+                "endsAt": "2023-02-09T11:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "6d0c13d5-01ad-4dff-97c6-b736276cc91c",
+                    "name": "Irina Dragunova"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "11:10:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "392287",
+                "title": "Git Hidden Gems",
+                "description": "There is more to Git than meets the eye. On the surface, it's a version control system. Underneath, it's a virtual file system built to track your files. And right in between is a wealth of productivity features very few people know about.\r\n\r\nAs a Git enthusiast, I feel it's my duty to spread the knowledge about these hidden Git gems. From automating common daily tasks, to better handling of merge conflicts, these features are the quality of life improvements you always wished you knew about.\r\n\r\nSo don't waste your time wondering what Git can do for you; come to this session and be ready to take your workflow to the next level with these hidden gems.",
+                "startsAt": "2023-02-09T11:10:00",
+                "endsAt": "2023-02-09T12:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "63b2c908-a6f0-41b6-ace8-46a3f5482c54",
+                    "name": "Enrico Campidoglio"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "392807",
+                "title": "Implementera BankID som inloggning i ASP.NET på en timme",
+                "description": "Svenska BankID har över 8 miljoner användare och sannolikheten att du är en av dem är ganska stor. Bland svenskar i åldern 41-50 har imponerande 100% ett BankID och övriga ålderskategorier är inte långt därefter. Frågan många ställer sig är - hur komplext är det att använda BankID som inloggningsmetod i mina tjänster och hur gör jag det på ett säkert sätt?\r\nI den här sessionen kommer vi att berätta om hur du som .NET-utvecklare kan använda BankID som inloggningsmetod i dina webbapplikationer. Tack vare open source-komponenten Active Login går det att gå från nytt projekt till fungerande inloggning på under en timme. I den här sessionen får du lära dig mer om hur BankID fungerar. Hur de senaste säkerhetsfunktionerna i BankID ökar säkerheten samt hur du som utvecklare kan komma igång med BankID i din verksamhets applikationer.",
+                "startsAt": "2023-02-09T11:10:00",
+                "endsAt": "2023-02-09T12:00:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "6289b73f-e6a0-4d1d-804d-ca1062dc93f3",
+                    "name": "Elin Fokine"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            }
+          ]
+        },
+        {
+          "slotStart": "11:50:00",
+          "rooms": [
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "384788",
+                "title": "How I built a ZX Spectrum emulator from scratch using C# and Blazor",
+                "description": "This session starts in 1985 when I was 7 years old.\r\nI got my first computer, a Sinclair ZX Spectrum.\r\nI still remember that the first thing I did was to sit down and write:\r\n10 PRINT \"Jimmy\"\r\n20 GOTO 10\r\nThis was my code, I made the machine do things!\r\nThis was the moment when I decided that I wanted to become a developer.\r\nMany different computers followed, ZX Spectrum+, Commodore 64, and Commodore Amiga 500, but the ZX Spectrum still has a very special place in my heart.\r\n\r\nOnce I became a developer I thought, -\"would it be possible to build an emulator?\" so I set out to build an emulator.\r\n\r\nIn this session, I will share that journey.\r\nWe will touch base on, registers, memory management, sound, handling input, and output.\r\nAll of this is in a Blazor WebAssembly application.",
+                "startsAt": "2023-02-09T11:50:00",
+                "endsAt": "2023-02-09T12:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "887b6c2e-49a1-4fda-94cf-7ec421f61c3c",
+                    "name": "Jimmy Engström"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "385069",
+                "title": "Introducing the Windows App SDK",
+                "description": "The Windows App SDK is a new library of developer tools and components that provide a unified experience in developing Windows apps. It builds on existing frameworks like WPF and WinForms instead of trying to be the next framework.\r\n\r\nIn this session I will take you through the Windows App SDK, from installation to usage in a new project and how to shoehorn it into an existing project. The session is aimed at people developing Desktop applications for Windows who want to modernize their applications, or start a new application from scratch.\r\n",
+                "startsAt": "2023-02-09T11:50:00",
+                "endsAt": "2023-02-09T12:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "23da6a18-7d00-4d39-8b8a-86abd5bd66e7",
+                    "name": "Nico Vermeir"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "12:50:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "383510",
+                "title": "Awesome UI with .NET MAUI",
+                "description": "Whether building an app for consumers or enterprises, for games or line-of-business apps, you can do it all with .NET MAUI. In this session, I'll share my pro tips from 25 years of developing beautiful UIs for desktop, mobile, and web applications. Going cross-platform doesn't mean you need to sacrifice amazing design. Making UI beautiful doesn't mean you need to sacrifice usability and accessibility. ",
+                "startsAt": "2023-02-09T12:50:00",
+                "endsAt": "2023-02-09T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "9fd10a46-6e2a-4eae-9b6d-9cf8ff0ecf15",
+                    "name": "David Ortinau"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "391760",
+                "title": "I'm just trying to keep my head above water",
+                "description": "I'm a lucky guy, and I know it! I'm a middle-aged white male with a good job, a great wife, and all of that. Life is pretty good! Or at least it should be...\r\n\r\nThe other side of the story is that I have spent most of my career struggling mentally. I've not only questioned myself professionally since day one, but I have also had to take time off work because I couldn't even get out of bed in the morning. Still, most people around me don't have a clue about my situation. When they find out, they generally go \"What? You? I would never have thought that\"... A response that probably indicates how well I manage to hide it from the world. But I am more and more certain that that is not the right way to handle it...\r\n\r\nI have spent a LOT of time trying to find ways to cope with the struggles in my life. Trying to balance my private life and work. Something that is much harder than it sounds in our industry. And I think we need to talk about it.\r\n\r\nI want to talk about some of the things I have experienced, and some of the things I have done to try and make my life…well…a life for me. I also want to explain how getting a book about living with ADHD from my parents when I was 40 became a life altering experience. Not to mention what I think we as an industry could do to make life better for the people in it.\r\n",
+                "startsAt": "2023-02-09T12:50:00",
+                "endsAt": "2023-02-09T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "239cf374-ad4d-4877-a5e5-951cb4cd9291",
+                    "name": "Chris Klug"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "437846",
+                "title": "Applied Codespaces",
+                "description": "How easy is it to get a new development environment up and running? How quickly can you get to first commit when starting working on a new project? Codespaces is a cloud service from GitHub aimed to remove the friction we often have in managing our development environments. Wouldn't it be great to have an environment available for every version of the products you support?\r\n\r\nIn this session we want to share how we have adopted  this exciting technology. Of course as tech-savvy individuals we always want to use new, shiny things. Some we find interesting but not so useful, others are gems you want to spend time using. Codespaces have that special quality and we're seeing lots of opportunities in Codespaces to always have a new development environment that is always up to date. \r\n\r\nIn this practical session we'll go through what and then cover how we've adopted Codespace, including:\r\n\r\n• Enabling Codespace \r\n• Configuring your project for Codespaces\r\n• Developing with Codespaces\r\n• Customize your development environment \r\n",
+                "startsAt": "2023-02-09T12:50:00",
+                "endsAt": "2023-02-09T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "3d5839b1-6a69-43cc-9786-9ce721e0dfd2",
+                    "name": "Magnus Timner"
+                  },
+                  {
+                    "id": "c342bb28-62ab-40bf-824c-b9ecf6209b0c",
+                    "name": "Mathias Olausson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "389493",
+                "title": "Free security resources that your competitors use!",
+                "description": "There are tons of resources available for someone who wants to become better at writing secure code, and lots of them are free. OWASP naturally comes to mind, and there are several active projects which should be recognized as bag of tricks in the discipline of secure development. And there are others as well! In this session we will give you some of our personal recommendations that will help both individuals, teams and organizations.",
+                "startsAt": "2023-02-09T12:50:00",
+                "endsAt": "2023-02-09T13:40:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "886c0123-7466-4ca5-b27f-875d815fec7e",
+                    "name": "Johan Lindfors"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "13:55:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "391494",
+                "title": "Failure is Always an Option",
+                "description": "Software runs the world. We use software to manage our calendars, talk to our friends, run our businesses - and, as our societies inevitably try to replace people and paperwork with apps and algorithms, we find ourselves facing some vital questions about the reliability of that software. If you take the time to actually read the terms and conditions, you’ll find that just about every system we rely on comes with no warranties and no safeguards - you use it at your own risk, and if it doesn’t work, that’s your problem.\r\n\r\nBut there’s more to building reliable systems than just writing good code. Reliability isn’t just about software engineering, it’s about systems engineering; about taking a holistic view of services that includes software, hardware, networks, and people. Join Dylan Beattie for an insightful look at the history of systems engineering, at some of the strategies and design patterns that we can use to build reliability into our systems, and at what happens when the software that runs the world has a bad day.",
+                "startsAt": "2023-02-09T13:55:00",
+                "endsAt": "2023-02-09T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "1d7dcbfc-1de6-4228-8bd6-04f4ba1c4267",
+                    "name": "Dylan Beattie"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "389413",
+                "title": "The latest and greatest from Azure Service Bus",
+                "description": "As the program manager of Azure Service Bus, it is always amazing to share the latest developments of our service. It allows us get direct feedback from the community, and ensures that we are building the right product for your scenarios.\r\n\r\nIn this session we will have a look at recently delivered features, and what we are currently working on. You will get a chance to hear all about these latest developments, how we are building them, and why we made certain choices.\r\n\r\nAnd who knows, we might even have a look at what is coming up on the roadmap! This will be your chance to see what is coming in the next months, and give your feedback which will help us give shape to these features.",
+                "startsAt": "2023-02-09T13:55:00",
+                "endsAt": "2023-02-09T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "11a684d4-ace1-49e8-be4b-c4e5ff215a7c",
+                    "name": "Eldert Grootenboer"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "392386",
+                "title": "Lessons Learnt from 10 years of Developer Advocacy",
+                "description": "Technical developer advocacy is no longer a role that you have to explain – it is critical to the success of most software product companies. And the craft has evolved over the past few years – come learn the many nuances to be successful. Take away well-accepted tricks of the trade applicable to most audiences – with real world developer advocacy examples and resources. How do you tell stories & weave your products in? How do you stay humble while making a name for yourself? How do you create a niche, write well, speak well and move the needle? How do you scale? How do you create value? And how do you inspire? Come be awesome!",
+                "startsAt": "2023-02-09T13:55:00",
+                "endsAt": "2023-02-09T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "fc1d0cd3-9675-4188-aa98-e0088069f1a4",
+                    "name": "Sam Basu"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "385180",
+                "title": "The intersection point of Low-code vs Pro-Code projects with regards to return on investment",
+                "description": "Low code and pro code seem to get into a fight whenever they are brought together.  But is it fair to assume that a project done in a pro code environment is always better?\r\n\r\nFor distinguishing the turn-over point between the two approaches, a lot of information has to be put into account. Complexity, availability of resources, licenses and much more is all to be considered.\r\n\r\nDuring this session, a look into what makes a low code candidate a good candidate will be provided as well as information on when not to go for low-code. An honoust overview of the complexity on low-code will be provided to show that sometimes a pro-code approach can indeed be more beneficial. \r\n\r\nWill this be a session for team pro-code? No, damage will be dealt towards pro-code to show the benefits of having low-code in your battlepack!\r\n\r\nLow-code vs Pro-code decided once and for all? Find out during this informative session between the titans ;-)",
+                "startsAt": "2023-02-09T13:55:00",
+                "endsAt": "2023-02-09T14:45:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "7242e99e-99e5-4ac4-b976-b69ab70407ee",
+                    "name": "Iona Varga"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        },
+        {
+          "slotStart": "15:15:00",
+          "rooms": [
+            {
+              "id": 28553,
+              "name": "Liljeholmssalen",
+              "session": {
+                "id": "385396",
+                "title": "What is new in .NET 7 and C# 11",
+                "description": "November 2022 marked the release of .NET 7 and C# 11. In this session, I will talk about what is new in the latest version of .NET and what the future will bring for the .NET platform in general. You will be able to vote for the features you want to hear about during the session. Expect an extensive number of new .NET 7 and C# 11 features and examples of those features.",
+                "startsAt": "2023-02-09T15:15:00",
+                "endsAt": "2023-02-09T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "20eb7c88-ec9a-4a26-95a4-8ab436350067",
+                    "name": "Johnny Hooyberghs"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28553,
+                "room": "Liljeholmssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 0
+            },
+            {
+              "id": 28554,
+              "name": "Katrinebergssalen",
+              "session": {
+                "id": "384309",
+                "title": "From Panic Attacks to Public Speaking and Beyond - My Journey",
+                "description": "Techorama came to the Netherlands for the first time in 2018. The biggest .Net conference in the Netherlands with a host of amazing speakers!\r\n\r\nSuffering from severe anxiety it was going to be a tough couple of days, but still, I wanted to go!\r\n\r\nThis is a story about how a panic attack on day one of the conference, followed by a couple of chance meetings lead me to overcome my fear of flying, fear of travelling and fear of people in order to speak at my first conference.",
+                "startsAt": "2023-02-09T15:15:00",
+                "endsAt": "2023-02-09T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "64877cf3-2b61-4987-966a-b4e025128d3a",
+                    "name": "Stacy Cashmore"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28554,
+                "room": "Katrinebergssalen",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 1
+            },
+            {
+              "id": 28555,
+              "name": "Trekanten",
+              "session": {
+                "id": "392046",
+                "title": "From Bricks to Bytes",
+                "description": "Our world of digital crafting has many similarities with building physical structures. We spend so many hours on our computers, phones, and other screens, that we can speak of an entire digital world. A world where we do our work, perform daily tasks, talk to friends, go shopping and even find the perfect date. Just like we would have done before by visiting different physical buildings in a city. Digital interfaces are our new houses and through the years our personal devices have become our own private safe space. \r\nGraduated in engineering-architecture, I was struck many times by the similarities between both worlds. I want to highlight the important touch points between physical and digital architecture. The ones where we can learn from architects and builders and how it can help us build better digital experiences.",
+                "startsAt": "2023-02-09T15:15:00",
+                "endsAt": "2023-02-09T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "2ead3802-cbdf-462f-acd8-40a1ebf5da6c",
+                    "name": "Evelyne Wauters"
+                  }
+                ],
+                "categories": [],
+                "roomId": 28555,
+                "room": "Trekanten",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 2
+            },
+            {
+              "id": 30753,
+              "name": "Telerummet",
+              "session": {
+                "id": "391342",
+                "title": "Pre-flight checks for the Cloud",
+                "description": "So, your company is going to the Azure Cloud. Wonderful! How will you do it? There’s more to it than most know, and most are not really equipped for the flight to the Azure Cloud when it is time to taxi onto the runway.\r\nFuel for your journey are the business goals, which you must use to navigate when it begins to get cloudy. Your teams of ground staff, tower operators, flight crew and pilots must be organized in a purposeful way so that everyone is ready for great time in the skies. Pre-flight check is your tactical planning that gives you a practical mapping between strategy, organization, and cloud.\r\n\r\nIn this session I will discuss the exceptionally important steps of Strategy, Organization and Planning to get Ready for the Cloud. I will add my own experience as an Azure MVP, Lead Cloud Architect, and as owner of Loftysoft AB a consultancy for Azure expertise. Reality is that cloud is complex, and everyone can take even better care of the services and opportunities in the cloud platforms. It is my job to take on the cloud of my customers and “just” make it more cost optimized, faster to deliver, and easier to work with – better! \r\n\r\nWelcome to the key advice for your better cloud now!\r\n",
+                "startsAt": "2023-02-09T15:15:00",
+                "endsAt": "2023-02-09T16:05:00",
+                "isServiceSession": false,
+                "isPlenumSession": false,
+                "speakers": [
+                  {
+                    "id": "c173d7ee-e503-46dc-9392-d016ca0c39f8",
+                    "name": "Magnus Mårtensson"
+                  }
+                ],
+                "categories": [],
+                "roomId": 30753,
+                "room": "Telerummet",
+                "liveUrl": null,
+                "recordingUrl": null,
+                "status": "Accepted",
+                "isInformed": true,
+                "isConfirmed": true
+              },
+              "index": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
