@@ -45,6 +45,11 @@ namespace Swetugg.Functions
             return response;
         }
 
+        /// <summary>
+        /// Sets the format of an image to the specified format.
+        /// </summary>
+        /// <param name="req">The HTTP request data.</param>
+        /// <returns>The formatted image as an HTTP response.</returns>
         [Function("SetFormat")]
         public async Task<HttpResponseData> SetFormat([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req)
         {

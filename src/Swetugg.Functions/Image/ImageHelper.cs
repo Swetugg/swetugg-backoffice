@@ -1,12 +1,6 @@
 ﻿using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Processing;
 using Swetugg.Shared.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using ImageSharp = SixLabors.ImageSharp;
 
 namespace Swetugg.Functions.Image;
