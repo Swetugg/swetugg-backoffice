@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swetugg.Web", "Swetugg.Web\Swetugg.Web.csproj", "{BCDBCADA-8D3C-4050-AD29-76C6ECCA35BC}"
 EndProject
@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A61B34
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swetugg.Shared", "Swetugg.Shared\Swetugg.Shared.csproj", "{88144F03-B8B3-42E5-8021-D16C0592843C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,8 +22,15 @@ Global
 		{BCDBCADA-8D3C-4050-AD29-76C6ECCA35BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCDBCADA-8D3C-4050-AD29-76C6ECCA35BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCDBCADA-8D3C-4050-AD29-76C6ECCA35BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88144F03-B8B3-42E5-8021-D16C0592843C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88144F03-B8B3-42E5-8021-D16C0592843C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88144F03-B8B3-42E5-8021-D16C0592843C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88144F03-B8B3-42E5-8021-D16C0592843C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7057D2B-2D32-41BD-975D-B6D96695EA4B}
 	EndGlobalSection
 EndGlobal
