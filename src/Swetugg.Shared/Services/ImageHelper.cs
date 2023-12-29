@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Swetugg.Shared.Services;
 
 ///  <inheritdoc />
-internal class ImageHelper(HttpClient httpClient, string baseUrl) : IImageHelper
+public class ImageHelper(HttpClient httpClient, string baseUrl) : IImageHelper
 {
     // Since this is currently in a .net standard library and accessible by both framework and net8.0, we can't use the HttpClientFactory
     // Once we migrate this to a .net8 library, we can use the HttpClientFactory
