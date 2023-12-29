@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Swetugg.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7043",
+      "launchBrowser": false
+    }
+  }
+}
