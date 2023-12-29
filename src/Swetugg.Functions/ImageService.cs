@@ -1,8 +1,9 @@
-using System.Net;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Swetugg.Shared.Helpers;
+using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace Swetugg.Functions
 {
@@ -28,9 +29,15 @@ namespace Swetugg.Functions
         {
             _logger.LogInformation($"HTTP triggered ResizeImage.");
 
-            // Having argumentnull exceptions here is a bit weird, but they are query variables that are required.
-            int width = Int32.Parse(req.Query["width"] ?? throw new ArgumentNullException(nameof(width)));
-            int height = Int32.Parse(req.Query["height"] ?? throw new ArgumentNullException(nameof(height)));
+            if (!Int32.TryParse(req.Query["width"], out var width))
+            {
+                return MissingArgumentError(req, nameof(width));
+            }
+            if (!Int32.TryParse(req.Query["height"], out var height))
+            {
+                return MissingArgumentError(req, nameof(height));
+            }
+
             bool pad = bool.Parse(req.Query["pad"] ?? "false");
             var origImage = ReadAllBytes(req.Body);
 
@@ -55,7 +62,10 @@ namespace Swetugg.Functions
         {
             _logger.LogInformation($"HTTP triggered SetFormat.");
 
-            ImageFormat format = Enum.Parse<ImageFormat>(req.Query["format"] ?? throw new ArgumentNullException(nameof(format)));
+            if (!Enum.TryParse<ImageFormat>(req.Query["format"], out var format))
+            {
+                return MissingArgumentError(req, nameof(format));
+            }
             var origImage = ReadAllBytes(req.Body);
 
             var formattedImage = await _imageHelper.SetFormat(origImage, ImageFormat.WebP);
@@ -76,6 +86,14 @@ namespace Swetugg.Functions
                 stream.CopyTo(ms);
                 return ms.ToArray();
             }
+        }
+
+        private HttpResponseData MissingArgumentError(HttpRequestData req, string argumentName, [CallerMemberName] string? caller = null)
+        {
+            _logger.LogInformation($"{caller}: Missing or invalid required parameter '{argumentName}'");
+            var resp = req.CreateResponse(HttpStatusCode.BadRequest);
+            resp.WriteString($"Missing or invalid required parameter '{argumentName}'");
+            return resp;
         }
     }
 }
