@@ -52,6 +52,11 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
+                                @Html.LabelFor(m => m.SessionizeId)
+                                @Html.TextBoxFor(m => m.SessionizeId, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.SessionizeId)
+                            </div>
+                            <div class="form-group">
                                 @Html.LabelFor(m => m.Slug)
                                 @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Slug)

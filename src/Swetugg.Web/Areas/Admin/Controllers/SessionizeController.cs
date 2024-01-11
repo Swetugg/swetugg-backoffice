@@ -122,20 +122,20 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             try
             {
 
-            var request = WebRequest.Create($"https://sessionize.com/" + baseurl + "/GridSmart");
-            request.Method = WebRequestMethods.Http.Get;
-            request.ContentType = "application/json; charset=utf-8";
-            using (var response = await request.GetResponseAsync())
-            {
-                using (var responseStream = response.GetResponseStream())
+                var request = WebRequest.Create($"https://sessionize.com/" + baseurl + "/GridSmart");
+                request.Method = WebRequestMethods.Http.Get;
+                request.ContentType = "application/json; charset=utf-8";
+                using (var response = await request.GetResponseAsync())
                 {
-                    using (var streamReader = new StreamReader(responseStream))
+                    using (var responseStream = response.GetResponseStream())
                     {
-                        var text = streamReader.ReadToEnd();
-                        schedule = JsonConvert.DeserializeObject<List<SezzionizeSchedule>>(text);
+                        using (var streamReader = new StreamReader(responseStream))
+                        {
+                            var text = streamReader.ReadToEnd();
+                            schedule = JsonConvert.DeserializeObject<List<SezzionizeSchedule>>(text);
+                        }
                     }
                 }
-            }
 
 
             }
@@ -211,38 +211,87 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             try
             {
+                var sessionizeSchedule = await GetScheduleFromSessionize();
 
-            var sessionizeSchedule = await GetScheduleFromSessionize();
-            //var room = List < Room > rooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId).ToList();
+                // rooms
 
-            var rooms = sessionizeSchedule.SelectMany(s => s.Rooms).DistinctBy(r => r.Id).Select(r => new
-            {
-                SessionizeId = r.Id,
-                //ConferenceId = ConferenceId,
-                r.Name,
-                Slug = r.Name.Slugify(),
-                Priority = 100
-            }).ToList();
+                //var ExistingRooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId).ToList();
 
-            var slots = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { se.StartsAt, se.EndsAt }))).Distinct().Select(s2 => s2);
-
-                //foreach (var scheduleDay in sessionizeSchedule)
+                //var rooms = sessionizeSchedule.SelectMany(s => s.Rooms).DistinctBy(r => r.Id).Select(r => new
                 //{
+                //    SessionizeId = r.Id,
+                //    ConferenceId = ConferenceId,
+                //    RoomId = ExistingRooms.Where(er => er.SessionizeId == r.Id).Select(er => er.Id).FirstOrDefault(),
+                //    r.Name,
+                //    Slug = r.Name.Slugify(),
+                //    Priority = 100
+                //}).ToList();
 
-                //    var day = scheduleDay.Date;
-                //    foreach (var room in scheduleDay)
+                //var roomsnotindb = rooms.Where(r => r.RoomId == 0).ToList();
+
+
+
+                //foreach (var room in roomsnotindb)
+                //{
+                //    var roomEntity = new Room()
                 //    {
-
-                //    }
-
+                //        ConferenceId = ConferenceId,
+                //        SessionizeId = room.SessionizeId,
+                //        Name = room.Name,
+                //        Slug = room.Slug,
+                //        Priority = room.Priority
+                //    };
+                //    dbContext.Entry(roomEntity).State = EntityState.Added;
                 //}
+
+                // slots
+
+                //var slots = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { se.StartsAt, se.EndsAt, se.IsPlenumSession, Title = se.IsPlenumSession ? se.Title : "" }))).Distinct().Select(se => new { start = DateTime.Parse(se.StartsAt), end = DateTime.Parse(se.EndsAt), se.IsPlenumSession, Title = se.Title, id = Guid.NewGuid() }).ToList();
+
+
+                //var plenumSlots = slots.Where(s => s.IsPlenumSession).ToList();
+
+                ////select the slot that have a start time inside a plenumslot start and end
+                //var lunchslots = slots.Where(s => s.IsPlenumSession == false).Where(s => plenumSlots.Any(ps => s.start >= ps.start && s.end <= ps.end));
+
+                //var realslots = slots.Where(s => !lunchslots.Any(ls => ls.id == s.id));
+
+                //var ExistingSlots = dbContext.Slots.Where(r => r.ConferenceId == ConferenceId).ToList();
+
+                //var newSlots = realslots.Where(rs => !ExistingSlots.Any(ex => rs.start == ex.Start && rs.end == ex.End)).ToList();
+
+                //foreach (var slot in newSlots)
+                //{
+                //    var slotEntity = new Slot()
+                //    {
+                //        ConferenceId = ConferenceId,
+                //        Title = slot.Title,
+                //        Start = slot.start,
+                //        End = slot.end,
+                //        HasSessions = slot.IsPlenumSession,
+                //    };
+                //    dbContext.Entry(slotEntity).State = EntityState.Added;
+                //}
+
+                //roomslots
+                var sessions = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { SessionSessionizeId = se.Id, RoomSessionizeId = se.RoomId, Start = DateTime.Parse(se.StartsAt), End = DateTime.Parse(se.EndsAt) })));
+
+                //hämta befintliga roomslots
+
+                //skapa entiterna, special om de faller inom tiden för en lunchslot samt special om de är lunchslot
+
+                //jämför dessa
+
                 var i = 0;
+                await dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
 
                 throw;
             }
+
+
 
             return RedirectToAction("Index");
         }
@@ -306,7 +355,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
-        
+
 
     }
 }

@@ -36,7 +36,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             }
 
         }
-        protected int ConferenceId
+        public int ConferenceId
         {
             get
             {
@@ -44,6 +44,10 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     return conferenceId;
 
                 return conferenceId = Conference.Id;
+            }
+            set
+            {
+                conferenceId = value;
             }
         }
 
