@@ -70,7 +70,38 @@
                         </td>
                         @if (!string.IsNullOrEmpty(slot.Title))
                         {
-                            <th colspan="@Model.Rooms.Count">@slot.Title</th>
+                            if (slot.HasSessions) //lunch & sessions
+                            {
+                                <td colspan="@Model.Rooms.Count" style="width: 100%">
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <th colspan="@Model.Rooms.Count">@slot.Title</th>
+                                        </tr>
+                                        <tr>
+                                            @foreach (var room in Model.Rooms)
+                                            {
+                                                var Session = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id)?.AssignedSession;
+                                                <td style="width: @(100 / Model.Rooms.Count)%">
+                                                    @if (Session != null)
+                                                    {
+                                                        <div>
+                                                            @Session.Name
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="session-name">(None)</div>
+                                                    }
+                                                </td>
+                                            }
+                                        </tr>
+                                    </table>
+                                </td>
+                            }
+                            else
+                            {
+                                <th colspan="@Model.Rooms.Count">@slot.Title</th>
+                            }
                         }
                         else
                         {
@@ -78,6 +109,8 @@
                             foreach (var room in Model.Rooms)
                             {
                                 var roomSlot = slot.RoomSlots.SingleOrDefault(rs => rs.RoomId == room.Id);
+                                //hämta även sessioner som inte är kopplat till något rum
+
                                 if (roomSlot != null)
                                 {
                                     <td>
