@@ -7,12 +7,11 @@ A possibly working sample of this is published to http://swetuggpreview.azureweb
 
 Getting started
 ---------------
-You should be able to start up an empty version of the swetugg site simply by hitting F5 in Visual Studio. This will create a local database using Entity Framework Code First Migrations, if this fails with the error message "failed with the operating system error 2(The system cannot find the file specified.).", then try removing your `App_Data` folder and recreate it from Visual Studio. If this fails with the exception `SqlException: Cannot attach the file 'C:\projects\swetugg-web\src\Swetugg.Web\App_Data\aspnet-Swetugg.Web-20150406030259.mdf' as database 'aspnet-Swetugg.Web-20150406030259'.` then you may create it by opening `TOOLS > Connect o Database` and navigate to `{project location}\src\Swetugg.Web\App_Data\aspnet-Swetugg.Web-20150406030259.mdf` and click `yes` when it asks if you want to create the file. However, since the database will be empty you won't be able to actually browse to the frontpage. The first thing you should do is to make sure the database is seeded with a default admin account:
 
-### Seed the database
-In Visual Studio, open up the Package Manager Console and run:
-
-    Update-Database
+### Running the site locally
+There are a few steps necessary before you can run the site locally.
+First of all, you need to copy the `Web.Example.config` file to `web.config` and fill out the necessary settings. See the section on [Configuring](#configuring) for more information.
+The web.config file is included in the .gitignore file, so you don't have to worry about accidentally checking in your settings.
 
 ### Admin page
 The entry point to the admin backend is found at `/start`. In order to do anything you have to have an account, the default admin account is `info@swetugg.se` with password `ChangeMe.123`. 
@@ -28,13 +27,12 @@ Configuring
 There are a few things that needs to be set up in order for the web site to work completely.
 
 ### Connection strings
-The connection string named `DefaultConnection` is used as the main database for the Swetugg site. By default this is a local SQL Express file placed in the `App_Data` folder.
-If running SQL Server 2014 then change `Data Source=(LocalDb)\v11.0;` to `Data Source=(LocalDb)\v12.0;` in the `DefaultConnection` connection string. SQL2014 doesn't create a local db instance some cases, you can resolve that by running `sqllocaldb create "v12.0"` from administrator command prompt.
+The connection string for the database is named `DefaultConnection`. The required value can be found in 1pass.
+This database is copied from live and replaced once per day, so it will always be fresh. Note that this means that you may need to reapply your migrations and reseed the database between days.
 
-Speaker images are uploaded to Azure Blob storage if the StorageConnection connection string is set correctly
+It is also possible to run the site with a local database. In order to do this, you need to change the connection string to point to a local database. Once you've set the connection string to an existing database, you will need to run the migration and the seed method.
 
-    <!-- Connection to Blob storage for images etc -->
-    <add name="StorageConnection" connectionString="DefaultEndpointsProtocol=https;AccountName={account-name};AccountKey={account-key}" />
+There is a second connection string called `StorageConnection` which is used for storing images and other files. This is not necessary for the site to work, but it will not be possible to upload images for speakers etc if this is not set up correctly.
 
 ### Login providers
 There are entries in `web.config` to enable login via 3rd party providers such as Facebook and Google. To enable each provider, set its corresponding Enabled-setting to true and fill out the different keys. For more information on how to get the keys, see [this article](http://go.microsoft.com/fwlink/?LinkId=403804)
