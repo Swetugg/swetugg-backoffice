@@ -1319,6 +1319,7 @@
     <Content Include="Content\swetugg-2017\css\swetugg.css.map" />
     <Content Include="Content\swetugg-2017\css\swetugg.less" />
     <Content Include="Content\swetugg-2017\css\variables.less" />
+    <Content Include="Migrations\_sql\sessionizeschedule.sql" />
     <Content Include="ms-icon-144x144.png" />
     <Content Include="ms-icon-150x150.png" />
     <Content Include="ms-icon-310x310.png" />
