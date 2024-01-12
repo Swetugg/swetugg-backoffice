@@ -219,6 +219,3 @@ pip-log.txt
 #Cake Binaries Ignore
 [Tt]ools/
 build.cake
-
-#Custom
-/src/Swetugg.Web/Web.config
