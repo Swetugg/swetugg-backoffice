@@ -13,6 +13,7 @@ using Swetugg.Web.Controllers;
 using Swetugg.Web.Services;
 using System.Configuration;
 using Microsoft.Ajax.Utilities;
+using Microsoft.ApplicationInsights.Web;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
@@ -213,74 +214,141 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             {
                 var sessionizeSchedule = await GetScheduleFromSessionize();
 
-                // rooms
+                //rooms
 
-                //var ExistingRooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId).ToList();
+                var ExistingRooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId).ToList();
 
-                //var rooms = sessionizeSchedule.SelectMany(s => s.Rooms).DistinctBy(r => r.Id).Select(r => new
-                //{
-                //    SessionizeId = r.Id,
-                //    ConferenceId = ConferenceId,
-                //    RoomId = ExistingRooms.Where(er => er.SessionizeId == r.Id).Select(er => er.Id).FirstOrDefault(),
-                //    r.Name,
-                //    Slug = r.Name.Slugify(),
-                //    Priority = 100
-                //}).ToList();
+                var rooms = sessionizeSchedule.SelectMany(s => s.Rooms).DistinctBy(r => r.Id).Select(r => new
+                {
+                    SessionizeId = r.Id,
+                    ConferenceId = ConferenceId,
+                    RoomId = ExistingRooms.Where(er => er.SessionizeId == r.Id).Select(er => er.Id).FirstOrDefault(),
+                    r.Name,
+                    Slug = r.Name.Slugify(),
+                    Priority = 100
+                }).ToList();
 
-                //var roomsnotindb = rooms.Where(r => r.RoomId == 0).ToList();
+                var roomsnotindb = rooms.Where(r => r.RoomId == 0).ToList();
 
 
 
-                //foreach (var room in roomsnotindb)
-                //{
-                //    var roomEntity = new Room()
-                //    {
-                //        ConferenceId = ConferenceId,
-                //        SessionizeId = room.SessionizeId,
-                //        Name = room.Name,
-                //        Slug = room.Slug,
-                //        Priority = room.Priority
-                //    };
-                //    dbContext.Entry(roomEntity).State = EntityState.Added;
-                //}
+                foreach (var room in roomsnotindb)
+                {
+                    var roomEntity = new Room()
+                    {
+                        ConferenceId = ConferenceId,
+                        SessionizeId = room.SessionizeId,
+                        Name = room.Name,
+                        Slug = room.Slug,
+                        Priority = room.Priority
+                    };
+                    dbContext.Entry(roomEntity).State = EntityState.Added;
+                }
+
+                await dbContext.SaveChangesAsync();
 
                 // slots
 
-                //var slots = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { se.StartsAt, se.EndsAt, se.IsPlenumSession, Title = se.IsPlenumSession ? se.Title : "" }))).Distinct().Select(se => new { start = DateTime.Parse(se.StartsAt), end = DateTime.Parse(se.EndsAt), se.IsPlenumSession, Title = se.Title, id = Guid.NewGuid() }).ToList();
+                var slots = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { se.StartsAt, se.EndsAt, se.IsPlenumSession, Title = se.IsPlenumSession ? se.Title : "" }))).Distinct().Select(se => new { start = DateTime.Parse(se.StartsAt), end = DateTime.Parse(se.EndsAt), se.IsPlenumSession, Title = se.Title, id = Guid.NewGuid() }).ToList();
 
 
-                //var plenumSlots = slots.Where(s => s.IsPlenumSession).ToList();
+                var plenumSlots = slots.Where(s => s.IsPlenumSession).ToList();
 
-                ////select the slot that have a start time inside a plenumslot start and end
-                //var lunchslots = slots.Where(s => s.IsPlenumSession == false).Where(s => plenumSlots.Any(ps => s.start >= ps.start && s.end <= ps.end));
+                //select the slot that have a start time inside a plenumslot start and end
+                var lunchslots = slots.Where(s => s.IsPlenumSession == false).Where(s => plenumSlots.Any(ps => s.start >= ps.start && s.end <= ps.end));
 
-                //var realslots = slots.Where(s => !lunchslots.Any(ls => ls.id == s.id));
+                var realslots = slots.Where(s => !lunchslots.Any(ls => ls.id == s.id));
 
-                //var ExistingSlots = dbContext.Slots.Where(r => r.ConferenceId == ConferenceId).ToList();
+                var ExistingSlots = dbContext.Slots.Where(r => r.ConferenceId == ConferenceId).ToList();
 
-                //var newSlots = realslots.Where(rs => !ExistingSlots.Any(ex => rs.start == ex.Start && rs.end == ex.End)).ToList();
+                var newSlots = realslots.Where(rs => !ExistingSlots.Any(ex => rs.start == ex.Start && rs.end == ex.End)).ToList();
 
-                //foreach (var slot in newSlots)
-                //{
-                //    var slotEntity = new Slot()
-                //    {
-                //        ConferenceId = ConferenceId,
-                //        Title = slot.Title,
-                //        Start = slot.start,
-                //        End = slot.end,
-                //        HasSessions = slot.IsPlenumSession,
-                //    };
-                //    dbContext.Entry(slotEntity).State = EntityState.Added;
-                //}
+                foreach (var slot in newSlots)
+                {
+                    var slotEntity = new Slot()
+                    {
+                        ConferenceId = ConferenceId,
+                        Title = slot.Title,
+                        Start = slot.start,
+                        End = slot.end,
+                        HasSessions = slot.IsPlenumSession,
+                    };
+                    dbContext.Entry(slotEntity).State = EntityState.Added;
+                }
+
+                await dbContext.SaveChangesAsync();
 
                 //roomslots
-                var sessions = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { SessionSessionizeId = se.Id, RoomSessionizeId = se.RoomId, Start = DateTime.Parse(se.StartsAt), End = DateTime.Parse(se.EndsAt) })));
+                var sessions = sessionizeSchedule.SelectMany(s => s.Rooms.SelectMany(r => r.Sessions.Select(se => new { SessionSessionizeId = se.Id, RoomSessionizeId = se.RoomId, Start = DateTime.Parse(se.StartsAt), End = DateTime.Parse(se.EndsAt), RoomId = 0, SessionId = 0, LunchSession = se.IsPlenumSession })));
+
+                var aviableSlots = dbContext.Slots.Where(r => r.ConferenceId == ConferenceId).ToList();
+                var aviablelunchSlots = aviableSlots.Where(s => s.HasSessions == true).ToList();
 
                 //hämta befintliga roomslots
+                var aviableRooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId);
+                var roomslotsExisting = dbContext.RoomSlots
+                    .Where(rs => aviableRooms.Any(r => rs.RoomId == r.Id))
+                    .ToList();
+                var aviableSessions = dbContext.Sessions.Where(s => s.ConferenceId == ConferenceId).ToList();
 
-                //skapa entiterna, special om de faller inom tiden för en lunchslot samt special om de är lunchslot
+                var newRoomsSlots = new List<RoomSlot>();
 
-                //jämför dessa
+                foreach (var session in sessions)
+                {
+                    if (session.LunchSession)
+                    { continue; }
+
+                    var sessionId = aviableSessions.FirstOrDefault(s => s.SessionizeId == int.Parse(session.SessionSessionizeId));
+                    if (sessionId == null) //inte importerad ännu
+                        continue;
+
+                    var room = aviableRooms.First(r => r.SessionizeId == session.RoomSessionizeId);
+                    var slot = aviableSlots.FirstOrDefault(s => s.Start == session.Start && s.End == session.End);
+
+
+
+                    RoomSlot roomslot;
+
+                    if (slot == null)
+                    {
+                        Slot lunchslot = aviablelunchSlots.First(ls => session.Start >= ls.Start && session.End <= ls.End);
+                        roomslot = new RoomSlot()
+                        {
+                            RoomId = room.Id,
+                            SlotId = lunchslot.Id,
+                            Start = session.Start,
+                            End = session.End,
+                            AssignedSessionId = sessionId.Id
+                        };
+                    }
+                    else
+                    {
+                        roomslot = new RoomSlot()
+                        {
+                            RoomId = room.Id,
+                            SlotId = slot.Id,
+                            AssignedSessionId = sessionId.Id
+                        };
+                    }
+
+                    newRoomsSlots.Add(roomslot);
+                }
+
+                var newRoolsSlotsToAdd = newRoomsSlots.Where(nrl => !roomslotsExisting.Any(roomslotExisting => roomslotExisting.RoomId == nrl.RoomId && roomslotExisting.SlotId == nrl.SlotId)).ToList();
+
+                foreach (var rs in newRoolsSlotsToAdd)
+                {
+                    var roomslotsIdentity = new RoomSlot
+                    {
+                        RoomId = rs.RoomId,
+                        SlotId = rs.SlotId,
+                        AssignedSessionId = rs.AssignedSessionId,
+                        Start = rs.Start,
+                        End = rs.End
+                    };
+                    dbContext.Entry(roomslotsIdentity).State = EntityState.Added;
+                }
+
 
                 var i = 0;
                 await dbContext.SaveChangesAsync();
