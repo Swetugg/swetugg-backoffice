@@ -1401,10 +1401,13 @@
     <Content Include="Views\Database\Backups.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <None Include="Web.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web.Example.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
