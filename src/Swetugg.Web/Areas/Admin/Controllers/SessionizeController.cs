@@ -299,7 +299,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     { continue; }
 
                     var sessionId = aviableSessions.FirstOrDefault(s => s.SessionizeId == int.Parse(session.SessionSessionizeId));
-                    if (sessionId == null) //inte importerad ännu
+                    if (sessionId == null) //session inte importerad ännu, måste göras först
                         continue;
 
                     var room = aviableRooms.First(r => r.SessionizeId == session.RoomSessionizeId);
@@ -334,9 +334,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     newRoomsSlots.Add(roomslot);
                 }
 
-                var newRoolsSlotsToAdd = newRoomsSlots.Where(nrl => !roomslotsExisting.Any(roomslotExisting => roomslotExisting.RoomId == nrl.RoomId && roomslotExisting.SlotId == nrl.SlotId)).ToList();
+                var newRoomSlotsToAdd = newRoomsSlots.Where(nrl => !roomslotsExisting.Any(roomslotExisting => roomslotExisting.RoomId == nrl.RoomId && roomslotExisting.SlotId == nrl.SlotId && roomslotExisting.AssignedSessionId == nrl.AssignedSessionId)).ToList();
 
-                foreach (var rs in newRoolsSlotsToAdd)
+                foreach (var rs in newRoomSlotsToAdd)
                 {
                     var roomslotsIdentity = new RoomSlot
                     {
@@ -349,6 +349,12 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     dbContext.Entry(roomslotsIdentity).State = EntityState.Added;
                 }
 
+                var roomslotsToRemove = roomslotsExisting.Where(nrl => !newRoomsSlots.Any(roomslotExisting => roomslotExisting.RoomId == nrl.RoomId && roomslotExisting.SlotId == nrl.SlotId && roomslotExisting.AssignedSessionId == nrl.AssignedSessionId)).ToList();
+                
+                foreach (var rs in roomslotsToRemove)
+                {
+                    dbContext.Entry(rs).State = EntityState.Deleted;
+                }
 
                 var i = 0;
                 await dbContext.SaveChangesAsync();
