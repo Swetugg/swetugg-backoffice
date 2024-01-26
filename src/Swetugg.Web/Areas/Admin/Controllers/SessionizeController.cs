@@ -117,7 +117,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
             return SessionGroups;
         }
 
-        public static async Task<List<SezzionizeSchedule>> GetScheduleFromSessionize()
+        public static async Task<(List<SezzionizeSchedule> Schedule, string Checksum)> GetScheduleFromSessionize()
         {
             List<SezzionizeSchedule> schedule;
             try
@@ -134,6 +134,14 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                         {
                             var text = streamReader.ReadToEnd();
                             schedule = JsonConvert.DeserializeObject<List<SezzionizeSchedule>>(text);
+
+                            // Compute the SHA256 hash of the text
+                            using (var sha256 = SHA256.Create())
+                            {
+                                var bytes = Encoding.UTF8.GetBytes(text);
+                                var hashBytes = sha256.ComputeHash(bytes);
+                                checksum = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                            }
                         }
                     }
                 }
@@ -145,7 +153,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
 
                 throw;
             }
-            return schedule;
+            return (schedule, checksum);
         }
 
         [ValidateAntiForgeryToken]
@@ -212,7 +220,9 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             try
             {
-                var sessionizeSchedule = await GetScheduleFromSessionize();
+                var (sessionizeSchedule, checksum) = await GetScheduleFromSessionize();
+
+                
 
                 //rooms
 
@@ -284,7 +294,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                 var aviableSlots = dbContext.Slots.Where(r => r.ConferenceId == ConferenceId).ToList();
                 var aviablelunchSlots = aviableSlots.Where(s => s.HasSessions == true).ToList();
 
-                //hämta befintliga roomslots
+                //hï¿½mta befintliga roomslots
                 var aviableRooms = dbContext.Rooms.Where(r => r.ConferenceId == ConferenceId);
                 var roomslotsExisting = dbContext.RoomSlots
                     .Where(rs => aviableRooms.Any(r => rs.RoomId == r.Id))
@@ -299,7 +309,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     { continue; }
 
                     var sessionId = aviableSessions.FirstOrDefault(s => s.SessionizeId == int.Parse(session.SessionSessionizeId));
-                    if (sessionId == null) //session inte importerad ännu, måste göras först
+                    if (sessionId == null) //session inte importerad ï¿½nnu, mï¿½ste gï¿½ras fï¿½rst
                         continue;
 
                     var room = aviableRooms.First(r => r.SessionizeId == session.RoomSessionizeId);

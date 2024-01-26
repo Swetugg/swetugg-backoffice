@@ -35,6 +35,7 @@ namespace Swetugg.Web.Models
 
         [Display(Name = "Min speakers on front page")]
         public int MinNumberOfSpeakers { get; set; }
+        
         [Display(Name = "Sessionize API code")]
         public string SessionizeAPICode { get; set; }
 
