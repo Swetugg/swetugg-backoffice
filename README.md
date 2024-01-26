@@ -3,34 +3,23 @@ Swetugg Web
 
 This is the source code for the Swetugg website. See anything broken? Why not send a PR? :)
 
-A possibly working sample of this is published to http://swetuggpreview.azurewebsites.net/start. If you want admin privileges to try it out, create an account and ping me [@CodingInsomnia](https://twitter.com/CodingInsomnia) on Twitter.
-
 Getting started
 ---------------
 
 ### Running the site locally
 There are a few steps necessary before you can run the site locally.
-First of all, you need to copy the `Web.Example.config` file to `web.config` and fill out the necessary settings. See the section on [Configuring](#configuring) for more information.
-The web.config file is included in the .gitignore file, so you don't have to worry about accidentally checking in your settings.
+Update the Connectionstring DefaultConnection in `web.config` from the value in 1pass for the dev database. Most development only need this but in case something else is needed see the section on [Configuring](#configuring) for more information.
 
 ### Admin page
-The entry point to the admin backend is found at `/start`. In order to do anything you have to have an account, the default admin account is `info@swetugg.se` with password `ChangeMe.123`. 
+The entry point to the admin backend is found at `/start`. Use the same login as for the main site.
 
-### Creating a new conference
-The first thing you need to do is to create a conference. You do this by selecting Admin->Conferences on the top menu, then hitting the New conference button and filling out the form. Be careful when you choose the "slug", as this will need to be matched with the name of an area route in your app. 
-
-Once the conference is created, you'll end up on the main admin page for it. This is where you'll find links to manage speakers and sessions as well as setting up rooms and finally the schedule.
-
-
-Configuring
+### Configuring
 -----------
-There are a few things that needs to be set up in order for the web site to work completely.
+There are a few things that need to be set for the web site to work completely.
 
 ### Connection strings
 The connection string for the database is named `DefaultConnection`. The required value can be found in 1pass.
-This database is copied from live and replaced once per day, so it will always be fresh. Note that this means that you may need to reapply your migrations and reseed the database between days.
-
-It is also possible to run the site with a local database. In order to do this, you need to change the connection string to point to a local database. Once you've set the connection string to an existing database, you will need to run the migration and the seed method.
+This database is copied from live and replaced once per day, so it will always be fresh.
 
 There is a second connection string called `StorageConnection` which is used for storing images and other files. This is not necessary for the site to work, but it will not be possible to upload images for speakers etc if this is not set up correctly.
 
