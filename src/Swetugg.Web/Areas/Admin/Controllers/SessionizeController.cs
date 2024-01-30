@@ -14,6 +14,8 @@ using Swetugg.Web.Services;
 using System.Configuration;
 using Microsoft.Ajax.Utilities;
 using Microsoft.ApplicationInsights.Web;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Swetugg.Web.Areas.Admin.Controllers
 {
@@ -120,6 +122,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         public static async Task<(List<SezzionizeSchedule> Schedule, string Checksum)> GetScheduleFromSessionize()
         {
             List<SezzionizeSchedule> schedule;
+            string checksum = string.Empty;
             try
             {
 
@@ -220,9 +223,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
         {
             try
             {
-                var (sessionizeSchedule, checksum) = await GetScheduleFromSessionize();
-
-                
+                var (sessionizeSchedule, checksum) = await GetScheduleFromSessionize();   
 
                 //rooms
 
