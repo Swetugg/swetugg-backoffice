@@ -309,7 +309,7 @@ namespace Swetugg.Web.Areas.Admin.Controllers
                     { continue; }
 
                     var sessionId = aviableSessions.FirstOrDefault(s => s.SessionizeId == int.Parse(session.SessionSessionizeId));
-                    if (sessionId == null) //session inte importerad �nnu, m�ste g�ras f�rst
+                    if (sessionId == null) //session inte importerad ännu, måste göras först
                         continue;
 
                     var room = aviableRooms.First(r => r.SessionizeId == session.RoomSessionizeId);
